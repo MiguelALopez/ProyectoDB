@@ -1,3 +1,6 @@
+
+import javax.swing.JOptionPane;
+
 /**
  * ********************************************
  * Autor: Camilo Ruiz Casanova - 1324486
@@ -10,8 +13,14 @@
  * *********************************************
  */
 
-public class SoftwareMio {
-    public static void main(String[] args) {
-
+public class SoftwareMio
+{
+    public static void main(String[] args) 
+    {
+        JOptionPane.showMessageDialog(null, "Empiecen pues.");
+        
+        Interfaz.Interfaz interfaz = new Interfaz.Interfaz();
+        interfaz.setLocationRelativeTo(null);
+        interfaz.setVisible(true);
     }
 }
