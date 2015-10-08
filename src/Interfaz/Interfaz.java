@@ -6,6 +6,9 @@
 
 package Interfaz;
 
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
 /**
  *
  * @author Camilo Ruiz Casanova
@@ -18,8 +21,35 @@ public class Interfaz extends javax.swing.JFrame
     public Interfaz() 
     {
         initComponents();
+        
+        ManejaEventos eventos = new ManejaEventos();
+        
+        bEmpleados.addActionListener(eventos);
+        bSolicitudes.addActionListener(eventos);
     }
-
+    
+    
+    
+    private class ManejaEventos implements ActionListener
+    {
+        @Override
+        public void actionPerformed(ActionEvent ae) 
+        {
+            if (ae.getSource() == bEmpleados)
+            {                
+                fEmpleados.pack();
+                fEmpleados.setLocationRelativeTo(null);
+                fEmpleados.setVisible(true);
+            }
+            else if (ae.getSource() == bSolicitudes)
+            {                
+                fSolicitudes.pack();
+                fSolicitudes.setLocationRelativeTo(null);
+                fSolicitudes.setVisible(true);
+            }
+        }        
+    }
+    
     /**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -29,46 +59,44 @@ public class Interfaz extends javax.swing.JFrame
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        jTabbedPane1 = new javax.swing.JTabbedPane();
-        jScrollPane1 = new javax.swing.JScrollPane();
-        jPanel1 = new javax.swing.JPanel();
-        jScrollPane2 = new javax.swing.JScrollPane();
-        jPanel2 = new javax.swing.JPanel();
+        fEmpleados = new javax.swing.JFrame();
+        fSolicitudes = new javax.swing.JFrame();
+        bEmpleados = new javax.swing.JButton();
+        jLabel1 = new javax.swing.JLabel();
+        bSolicitudes = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
 
+        javax.swing.GroupLayout fEmpleadosLayout = new javax.swing.GroupLayout(fEmpleados.getContentPane());
+        fEmpleados.getContentPane().setLayout(fEmpleadosLayout);
+        fEmpleadosLayout.setHorizontalGroup(
+            fEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        fEmpleadosLayout.setVerticalGroup(
+            fEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout fSolicitudesLayout = new javax.swing.GroupLayout(fSolicitudes.getContentPane());
+        fSolicitudes.getContentPane().setLayout(fSolicitudesLayout);
+        fSolicitudesLayout.setHorizontalGroup(
+            fSolicitudesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 400, Short.MAX_VALUE)
+        );
+        fSolicitudesLayout.setVerticalGroup(
+            fSolicitudesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 300, Short.MAX_VALUE)
+        );
+
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
-        javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
-        jPanel1.setLayout(jPanel1Layout);
-        jPanel1Layout.setHorizontalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 547, Short.MAX_VALUE)
-        );
-        jPanel1Layout.setVerticalGroup(
-            jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 284, Short.MAX_VALUE)
-        );
+        bEmpleados.setText("Gestion de Empleados");
 
-        jScrollPane1.setViewportView(jPanel1);
+        jLabel1.setText("Modulos del Sistema");
 
-        jTabbedPane1.addTab("Menu Principal", jScrollPane1);
-
-        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
-        jPanel2.setLayout(jPanel2Layout);
-        jPanel2Layout.setHorizontalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 547, Short.MAX_VALUE)
-        );
-        jPanel2Layout.setVerticalGroup(
-            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 284, Short.MAX_VALUE)
-        );
-
-        jScrollPane2.setViewportView(jPanel2);
-
-        jTabbedPane1.addTab("Gestion de Empleados", jScrollPane2);
+        bSolicitudes.setText("Solicitudes");
 
         jMenu1.setText("File");
         jMenuBar1.add(jMenu1);
@@ -82,24 +110,40 @@ public class Interfaz extends javax.swing.JFrame
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(52, 52, 52)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(bEmpleados, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(bSolicitudes, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(169, 169, 169)
+                        .addComponent(jLabel1)))
+                .addContainerGap(169, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jTabbedPane1)
+            .addGroup(layout.createSequentialGroup()
+                .addGap(28, 28, 28)
+                .addComponent(jLabel1)
+                .addGap(36, 36, 36)
+                .addComponent(bEmpleados)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(bSolicitudes)
+                .addContainerGap(184, Short.MAX_VALUE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bEmpleados;
+    private javax.swing.JButton bSolicitudes;
+    private javax.swing.JFrame fEmpleados;
+    private javax.swing.JFrame fSolicitudes;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JScrollPane jScrollPane1;
-    private javax.swing.JScrollPane jScrollPane2;
-    private javax.swing.JTabbedPane jTabbedPane1;
     // End of variables declaration//GEN-END:variables
 }
