@@ -37,15 +37,11 @@ public class Interfaz extends javax.swing.JFrame
         {
             if (ae.getSource() == bEmpleados)
             {                
-                fEmpleados.pack();
-                fEmpleados.setLocationRelativeTo(null);
-                fEmpleados.setVisible(true);
+                
             }
             else if (ae.getSource() == bSolicitudes)
             {                
-                fSolicitudes.pack();
-                fSolicitudes.setLocationRelativeTo(null);
-                fSolicitudes.setVisible(true);
+                
             }
         }        
     }
@@ -59,36 +55,12 @@ public class Interfaz extends javax.swing.JFrame
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        fEmpleados = new javax.swing.JFrame();
-        fSolicitudes = new javax.swing.JFrame();
         bEmpleados = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
         bSolicitudes = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenu2 = new javax.swing.JMenu();
-
-        javax.swing.GroupLayout fEmpleadosLayout = new javax.swing.GroupLayout(fEmpleados.getContentPane());
-        fEmpleados.getContentPane().setLayout(fEmpleadosLayout);
-        fEmpleadosLayout.setHorizontalGroup(
-            fEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        fEmpleadosLayout.setVerticalGroup(
-            fEmpleadosLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
-
-        javax.swing.GroupLayout fSolicitudesLayout = new javax.swing.GroupLayout(fSolicitudes.getContentPane());
-        fSolicitudes.getContentPane().setLayout(fSolicitudesLayout);
-        fSolicitudesLayout.setHorizontalGroup(
-            fSolicitudesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
-        );
-        fSolicitudesLayout.setVerticalGroup(
-            fSolicitudesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 300, Short.MAX_VALUE)
-        );
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -139,8 +111,6 @@ public class Interfaz extends javax.swing.JFrame
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton bEmpleados;
     private javax.swing.JButton bSolicitudes;
-    private javax.swing.JFrame fEmpleados;
-    private javax.swing.JFrame fSolicitudes;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
