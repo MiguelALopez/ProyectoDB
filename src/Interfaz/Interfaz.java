@@ -25,7 +25,7 @@ public class Interfaz extends javax.swing.JFrame
         ManejaEventos eventos = new ManejaEventos();
         
         bEmpleados.addActionListener(eventos);
-        bSolicitudes.addActionListener(eventos);
+        bTarjetas.addActionListener(eventos);
     }
     
     
@@ -39,7 +39,7 @@ public class Interfaz extends javax.swing.JFrame
             {                
                 
             }
-            else if (ae.getSource() == bSolicitudes)
+            else if (ae.getSource() == bTarjetas)
             {                
                 
             }
@@ -56,10 +56,28 @@ public class Interfaz extends javax.swing.JFrame
     private void initComponents() {
 
         jPanel1 = new javax.swing.JPanel();
+        jPanel5 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
+        filler3 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 0));
+        bGestion = new javax.swing.JButton();
+        bVentas = new javax.swing.JButton();
+        bReportes = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
+        jPanel3 = new javax.swing.JPanel();
         bEmpleados = new javax.swing.JButton();
-        bSolicitudes = new javax.swing.JButton();
+        bTarjetas = new javax.swing.JButton();
+        bUsuarios = new javax.swing.JButton();
+        bBuses = new javax.swing.JButton();
+        bEstaciones = new javax.swing.JButton();
+        bRutas = new javax.swing.JButton();
+        filler1 = new javax.swing.Box.Filler(new java.awt.Dimension(0, 0), new java.awt.Dimension(0, 0), new java.awt.Dimension(32767, 32767));
+        bReclamos = new javax.swing.JButton();
+        jPanel4 = new javax.swing.JPanel();
+        panelSeleccione = new javax.swing.JPanel();
+        jLabel2 = new javax.swing.JLabel();
+        panelGestionEmpleados = new javax.swing.JPanel();
+        bCrearEmpleado = new javax.swing.JButton();
+        bActualizarEmpleado = new javax.swing.JButton();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenu1 = new javax.swing.JMenu();
         jMenuSalir = new javax.swing.JMenuItem();
@@ -76,14 +94,86 @@ public class Interfaz extends javax.swing.JFrame
         jPanel1.setPreferredSize(new java.awt.Dimension(480, 280));
         jPanel1.setLayout(new java.awt.BorderLayout());
 
-        jLabel1.setText("Modulos del Sistema");
-        jPanel1.add(jLabel1, java.awt.BorderLayout.PAGE_START);
+        jPanel5.setLayout(new java.awt.GridLayout(1, 4, 10, 10));
 
-        bEmpleados.setText("Gestion de Empleados");
-        jPanel2.add(bEmpleados);
+        jLabel1.setText("Modulos");
+        jPanel5.add(jLabel1);
 
-        bSolicitudes.setText("Solicitudes");
-        jPanel2.add(bSolicitudes);
+        filler3.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
+        jPanel5.add(filler3);
+
+        bGestion.setText("Gestion");
+        bGestion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel5.add(bGestion);
+
+        bVentas.setText("Ventas");
+        bVentas.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel5.add(bVentas);
+
+        bReportes.setText("Reportes");
+        bReportes.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jPanel5.add(bReportes);
+
+        jPanel1.add(jPanel5, java.awt.BorderLayout.NORTH);
+
+        jPanel2.setLayout(new java.awt.BorderLayout());
+
+        jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder("Gestion"));
+        jPanel3.setLayout(new java.awt.GridLayout(3, 3, 10, 10));
+
+        bEmpleados.setText("Empleados");
+        bEmpleados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bEmpleadosActionPerformed(evt);
+            }
+        });
+        jPanel3.add(bEmpleados);
+
+        bTarjetas.setText("Tarjetas");
+        bTarjetas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                bTarjetasActionPerformed(evt);
+            }
+        });
+        jPanel3.add(bTarjetas);
+
+        bUsuarios.setText("Usuarios");
+        jPanel3.add(bUsuarios);
+
+        bBuses.setText("Buses");
+        jPanel3.add(bBuses);
+
+        bEstaciones.setText("Estaciones");
+        jPanel3.add(bEstaciones);
+
+        bRutas.setText("Rutas");
+        jPanel3.add(bRutas);
+        jPanel3.add(filler1);
+
+        bReclamos.setText("Reclamos");
+        jPanel3.add(bReclamos);
+
+        jPanel2.add(jPanel3, java.awt.BorderLayout.NORTH);
+
+        jPanel4.setLayout(new javax.swing.OverlayLayout(jPanel4));
+
+        jLabel2.setText("Seleccionar una opcion");
+        panelSeleccione.add(jLabel2);
+
+        jPanel4.add(panelSeleccione);
+
+        panelGestionEmpleados.setBorder(javax.swing.BorderFactory.createTitledBorder("Gestion de Empleados"));
+
+        bCrearEmpleado.setText("Crear");
+        panelGestionEmpleados.add(bCrearEmpleado);
+
+        bActualizarEmpleado.setText("Actualizar");
+        panelGestionEmpleados.add(bActualizarEmpleado);
+
+        jPanel4.add(panelGestionEmpleados);
+        panelGestionEmpleados.setVisible(false);
+
+        jPanel2.add(jPanel4, java.awt.BorderLayout.CENTER);
 
         jPanel1.add(jPanel2, java.awt.BorderLayout.CENTER);
 
@@ -113,15 +203,43 @@ public class Interfaz extends javax.swing.JFrame
         System.exit(0);
     }//GEN-LAST:event_jMenuSalirActionPerformed
 
+    private void bEmpleadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bEmpleadosActionPerformed
+        // TODO add your handling code here:
+        panelSeleccione.setVisible(false);
+        panelGestionEmpleados.setVisible(true);
+    }//GEN-LAST:event_bEmpleadosActionPerformed
+
+    private void bTarjetasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_bTarjetasActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_bTarjetasActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton bActualizarEmpleado;
+    private javax.swing.JButton bBuses;
+    private javax.swing.JButton bCrearEmpleado;
     private javax.swing.JButton bEmpleados;
-    private javax.swing.JButton bSolicitudes;
+    private javax.swing.JButton bEstaciones;
+    private javax.swing.JButton bGestion;
+    private javax.swing.JButton bReclamos;
+    private javax.swing.JButton bReportes;
+    private javax.swing.JButton bRutas;
+    private javax.swing.JButton bTarjetas;
+    private javax.swing.JButton bUsuarios;
+    private javax.swing.JButton bVentas;
+    private javax.swing.Box.Filler filler1;
+    private javax.swing.Box.Filler filler3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenu2;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuSalir;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
+    private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel panelGestionEmpleados;
+    private javax.swing.JPanel panelSeleccione;
     // End of variables declaration//GEN-END:variables
 }
