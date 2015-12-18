@@ -10,6 +10,7 @@ CREATE TABLE empleado (
     empleado_telefono   VARCHAR(15)     NOT NULL,
     empleado_direccion  VARCHAR(100)    NOT NULL,
     empleado_email      VARCHAR(100),
+    empleado_cargo      VARCHAR(50)     NOT NULL,
     empleado_salario    MONEY           NOT NULL,
     jefe_empleado_id    VARCHAR(15),
     PRIMARY KEY (empleado_id),
@@ -47,11 +48,7 @@ CREATE TABLE tarjeta (
     tarjeta_id              VARCHAR(15) NOT NULL,
     tarjeta_saldo           MONEY       NOT NULL,
     tarjeta_estado          VARCHAR(30) NOT NULL,
-    tarjeta_fecha_venta     DATE,
-    tarjeta_precio_venta    MONEY,
-    estacion_nombre         VARCHAR(50),
-    PRIMARY KEY (tarjeta_id),
-    FOREIGN KEY (estacion_nombre) REFERENCES estacion (estacion_nombre)
+    PRIMARY KEY (tarjeta_id)
 );
 
 DROP TABLE IF EXISTS pasajero CASCADE;
@@ -73,6 +70,18 @@ CREATE TABLE turno (
     conductor_empleado_id   VARCHAR(15) UNIQUE NOT NULL,
     PRIMARY KEY (bus_serial, turno_turno),
     FOREIGN KEY (conductor_empleado_id) REFERENCES empleado (empleado_id)
+);
+
+DROP TABLE IF EXISTS venta CASCADE;
+CREATE TABLE venta (
+    venta_id        SERIAL      NOT NULL,
+    venta_fecha     DATE        NOT NULL,
+    venta_valor     MONEY       NOT NULL,
+    estacion_nombre VARCHAR(50) NOT NULL,
+    tarjeta_id      VARCHAR(15) UNIQUE NOT NULL,
+    PRIMARY KEY (venta_id),
+    FOREIGN KEY (estacion_nombre) REFERENCES estacion (estacion_nombre),
+    FOREIGN KEY (tarjeta_id) REFERENCES tarjeta (tarjeta_id)
 );
 
 DROP SEQUENCE IF EXISTS solicitud_seq CASCADE;
@@ -112,8 +121,8 @@ CREATE TABLE tarjeta_ruta (
     FOREIGN KEY (ruta_nombre) REFERENCES ruta (ruta_nombre)
 );
 
-DROP TABLE IF EXISTS ruta_estacion CASCADE;
-CREATE TABLE ruta_estacion (
+DROP TABLE IF EXISTS estacion_ruta CASCADE;
+CREATE TABLE estacion_ruta (
     ruta_nombre     VARCHAR(50) NOT NULL,
     estacion_nombre VARCHAR(50) NOT NULL,
     PRIMARY KEY (ruta_nombre, estacion_nombre),

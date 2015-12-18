@@ -74,7 +74,7 @@ public class ModuloEstaciones extends javax.swing.JFrame
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(600, 400));
-        setPreferredSize(new java.awt.Dimension(600, 400));
+        getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
         jTabbedPane1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
 
@@ -128,7 +128,7 @@ public class ModuloEstaciones extends javax.swing.JFrame
                                 .addComponent(jLabel4)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfCrearNombreEstacion, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
+                            .addComponent(tfCrearNombreEstacion, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
                             .addComponent(tfCrearUbicacionEstacion)
                             .addComponent(tfCrearDirectorEstacion)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
@@ -161,7 +161,7 @@ public class ModuloEstaciones extends javax.swing.JFrame
                     .addComponent(jLabel7))
                 .addGap(18, 18, 18)
                 .addComponent(bCrearEstacion)
-                .addContainerGap(166, Short.MAX_VALUE))
+                .addContainerGap(188, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Crear Estacion", jPanel1);
@@ -227,7 +227,7 @@ public class ModuloEstaciones extends javax.swing.JFrame
                                 .addComponent(jLabel9)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfModificarNombreEstacion, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
+                            .addComponent(tfModificarNombreEstacion, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
                             .addComponent(tfModificarUbicacionEstacion)
                             .addComponent(tfModificarDirectorEstacion)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
@@ -271,7 +271,7 @@ public class ModuloEstaciones extends javax.swing.JFrame
                     .addComponent(jLabel14))
                 .addGap(18, 18, 18)
                 .addComponent(bModificarEstacion)
-                .addContainerGap(123, Short.MAX_VALUE))
+                .addContainerGap(145, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Modificar Estacion", jPanel2);
@@ -320,7 +320,7 @@ public class ModuloEstaciones extends javax.swing.JFrame
                             .addComponent(jLabel21))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfEliminarNombreEstacion, javax.swing.GroupLayout.DEFAULT_SIZE, 376, Short.MAX_VALUE)
+                            .addComponent(tfEliminarNombreEstacion, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
                             .addComponent(tfEliminarUbicacionEstacion)
                             .addComponent(tfEliminarDirectorEstacion)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
@@ -353,7 +353,7 @@ public class ModuloEstaciones extends javax.swing.JFrame
                     .addComponent(tfEliminarDirectorEstacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(bEliminarEstacion)
-                .addContainerGap(155, Short.MAX_VALUE))
+                .addContainerGap(177, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Eliminar Estacion", jPanel3);
@@ -390,7 +390,7 @@ public class ModuloEstaciones extends javax.swing.JFrame
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 555, Short.MAX_VALUE)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE)
                     .addComponent(bActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
@@ -398,7 +398,7 @@ public class ModuloEstaciones extends javax.swing.JFrame
             jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel4Layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 278, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 300, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
                 .addComponent(bActualizar)
                 .addContainerGap())
@@ -406,22 +406,7 @@ public class ModuloEstaciones extends javax.swing.JFrame
 
         jTabbedPane1.addTab("Consultar Estacion", jPanel4);
 
-        javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
-        getContentPane().setLayout(layout);
-        layout.setHorizontalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTabbedPane1)
-                .addContainerGap())
-        );
-        layout.setVerticalGroup(
-            layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jTabbedPane1)
-                .addContainerGap())
-        );
+        getContentPane().add(jTabbedPane1);
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
