@@ -72,7 +72,6 @@ public class ModuloEstaciones extends javax.swing.JFrame
         tEstaciones = new javax.swing.JTable();
         bActualizar = new javax.swing.JButton();
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setMinimumSize(new java.awt.Dimension(600, 400));
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 

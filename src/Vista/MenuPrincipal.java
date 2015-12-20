@@ -12,16 +12,16 @@ package Vista;
  * @author Camilo Ruiz Casanova
  */
 public class MenuPrincipal extends javax.swing.JFrame 
-{
+{    
     /**
      * Creates new form Interfaz
      */
     public MenuPrincipal() 
     {
-        initComponents();        
+        initComponents();
         
-        setLocationRelativeTo(null);
-        setVisible(true);
+        this.setLocationRelativeTo(null);
+        this.setVisible(true);
     }
     
     /**
@@ -37,13 +37,13 @@ public class MenuPrincipal extends javax.swing.JFrame
         jLabel1 = new javax.swing.JLabel();
         jPanel1 = new javax.swing.JPanel();
         jPanel2 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
+        bEstaciones = new javax.swing.JButton();
+        bRutas = new javax.swing.JButton();
+        bBuses = new javax.swing.JButton();
+        bEstacionRutas = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        jButton4 = new javax.swing.JButton();
-        jButton5 = new javax.swing.JButton();
+        bEmpleados = new javax.swing.JButton();
+        bTurnos = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jPanel5 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
@@ -52,7 +52,6 @@ public class MenuPrincipal extends javax.swing.JFrame
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SistemaMIO");
         setMinimumSize(new java.awt.Dimension(800, 600));
-        setPreferredSize(new java.awt.Dimension(800, 600));
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
         panelPrincipal.setLayout(new java.awt.BorderLayout());
@@ -67,34 +66,34 @@ public class MenuPrincipal extends javax.swing.JFrame
         jPanel2.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Gestion de Estaciones, Rutas y Buses", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
         jPanel2.setLayout(new java.awt.GridLayout(4, 1, 0, 10));
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton1.setText("Modulo de Estaciones");
-        jPanel2.add(jButton1);
+        bEstaciones.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        bEstaciones.setText("Modulo de Estaciones");
+        jPanel2.add(bEstaciones);
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton2.setText("Modulo de Rutas");
-        jPanel2.add(jButton2);
+        bRutas.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        bRutas.setText("Modulo de Rutas");
+        jPanel2.add(bRutas);
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton3.setText("Modulo de Buses");
-        jPanel2.add(jButton3);
+        bBuses.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        bBuses.setText("Modulo de Buses");
+        jPanel2.add(bBuses);
 
-        jButton6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton6.setText("Gestion de Rutas y Estaciones");
-        jPanel2.add(jButton6);
+        bEstacionRutas.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        bEstacionRutas.setText("Gestion de Rutas y Estaciones");
+        jPanel2.add(bEstacionRutas);
 
         jPanel1.add(jPanel2);
 
         jPanel3.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Gestion de Empleados", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
         jPanel3.setLayout(new java.awt.GridLayout(2, 1, 0, 10));
 
-        jButton4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton4.setText("Modulo de Empleados");
-        jPanel3.add(jButton4);
+        bEmpleados.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        bEmpleados.setText("Modulo de Empleados");
+        jPanel3.add(bEmpleados);
 
-        jButton5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton5.setText("Gestion de Turnos");
-        jPanel3.add(jButton5);
+        bTurnos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        bTurnos.setText("Modulo de Turnos");
+        jPanel3.add(bTurnos);
 
         jPanel1.add(jPanel3);
 
@@ -117,12 +116,12 @@ public class MenuPrincipal extends javax.swing.JFrame
         pack();
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JButton jButton3;
-    private javax.swing.JButton jButton4;
-    private javax.swing.JButton jButton5;
-    private javax.swing.JButton jButton6;
+    public javax.swing.JButton bBuses;
+    public javax.swing.JButton bEmpleados;
+    public javax.swing.JButton bEstacionRutas;
+    public javax.swing.JButton bEstaciones;
+    public javax.swing.JButton bRutas;
+    public javax.swing.JButton bTurnos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

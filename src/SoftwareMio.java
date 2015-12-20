@@ -10,6 +10,7 @@
  * *********************************************
  */
 
+import Controlador.MenuPrincipal_Eventos;
 import Vista.MenuPrincipal;
 
 
@@ -18,7 +19,8 @@ public class SoftwareMio
     public static void main(String[] args) 
     {
         setLookAndFeel();        
-        MenuPrincipal menuPrincipal = new MenuPrincipal();        
+        MenuPrincipal menuPrincipal = new MenuPrincipal();
+        MenuPrincipal_Eventos menuPrincipal_Eventos = new MenuPrincipal_Eventos(menuPrincipal);
     }
     
     public static void setLookAndFeel() {
