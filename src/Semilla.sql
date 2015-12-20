@@ -9,7 +9,7 @@ CREATE TABLE empleado (
     empleado_nombre     VARCHAR(50)     NOT NULL,
     empleado_telefono   VARCHAR(15)     NOT NULL,
     empleado_direccion  VARCHAR(100)    NOT NULL,
-    empleado_email      VARCHAR(100),
+    empleado_email      VARCHAR(100)    NOT NULL,
     empleado_cargo      VARCHAR(50)     NOT NULL,
     empleado_salario    MONEY           NOT NULL,
     jefe_empleado_id    VARCHAR(15),
