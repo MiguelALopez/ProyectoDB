@@ -32,43 +32,43 @@ public class ModuloEstacionesRutas extends javax.swing.JFrame
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
-        jTextField1 = new javax.swing.JTextField();
-        jTextField2 = new javax.swing.JTextField();
+        tfCrearNombreEstacion = new javax.swing.JTextField();
+        tfCrearNombreRuta = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         jLabel8 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jButton1 = new javax.swing.JButton();
+        bAsignar = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
-        jTextField3 = new javax.swing.JTextField();
-        jTextField4 = new javax.swing.JTextField();
+        tfEliminarNombreRuta = new javax.swing.JTextField();
+        tfEliminarNombreEstacion = new javax.swing.JTextField();
         jLabel6 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        jButton2 = new javax.swing.JButton();
+        bEliminar = new javax.swing.JButton();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jPanel3 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
-        jButton3 = new javax.swing.JButton();
+        tEstacionesRutas = new javax.swing.JTable();
+        bActualizar1 = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
+        tRutas = new javax.swing.JTable();
         jLabel16 = new javax.swing.JLabel();
-        jTextField6 = new javax.swing.JTextField();
-        jButton7 = new javax.swing.JButton();
+        tfBuscarEstacion = new javax.swing.JTextField();
+        bBuscarEstacion = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
-        jButton8 = new javax.swing.JButton();
+        bActualzar2 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
-        jButton9 = new javax.swing.JButton();
+        bActualizar3 = new javax.swing.JButton();
         jLabel17 = new javax.swing.JLabel();
-        jButton10 = new javax.swing.JButton();
-        jTextField7 = new javax.swing.JTextField();
+        bBuscarRuta = new javax.swing.JButton();
+        tfBuscarRuta = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
         jScrollPane6 = new javax.swing.JScrollPane();
-        jTable3 = new javax.swing.JTable();
+        tEstaciones = new javax.swing.JTable();
 
         setMinimumSize(new java.awt.Dimension(600, 400));
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
@@ -79,9 +79,9 @@ public class ModuloEstacionesRutas extends javax.swing.JFrame
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Nombre de la Ruta:");
 
-        jTextField1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tfCrearNombreEstacion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        jTextField2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tfCrearNombreRuta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel3.setForeground(new java.awt.Color(255, 0, 0));
         jLabel3.setText("*");
@@ -94,8 +94,8 @@ public class ModuloEstacionesRutas extends javax.swing.JFrame
         jLabel7.setForeground(new java.awt.Color(255, 0, 0));
         jLabel7.setText("*");
 
-        jButton1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton1.setText("Asignar Ruta a la Estacion");
+        bAsignar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        bAsignar.setText("Asignar Ruta a la Estacion");
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -104,7 +104,7 @@ public class ModuloEstacionesRutas extends javax.swing.JFrame
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE)
+                    .addComponent(bAsignar, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel1Layout.createSequentialGroup()
@@ -117,8 +117,8 @@ public class ModuloEstacionesRutas extends javax.swing.JFrame
                                 .addComponent(jLabel4)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField1)
-                            .addComponent(jTextField2)))
+                            .addComponent(tfCrearNombreEstacion)
+                            .addComponent(tfCrearNombreRuta)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -132,19 +132,19 @@ public class ModuloEstacionesRutas extends javax.swing.JFrame
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(jTextField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfCrearNombreEstacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel3))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(jTextField2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfCrearNombreRuta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel7)
                     .addComponent(jLabel8))
                 .addGap(18, 18, 18)
-                .addComponent(jButton1)
+                .addComponent(bAsignar)
                 .addContainerGap(223, Short.MAX_VALUE))
         );
 
@@ -153,9 +153,9 @@ public class ModuloEstacionesRutas extends javax.swing.JFrame
         jLabel5.setForeground(new java.awt.Color(255, 0, 0));
         jLabel5.setText("*");
 
-        jTextField3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tfEliminarNombreRuta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        jTextField4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tfEliminarNombreEstacion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel6.setText("Nombre de la Ruta:");
@@ -163,8 +163,8 @@ public class ModuloEstacionesRutas extends javax.swing.JFrame
         jLabel9.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel9.setText("Nombre de la Estacion:");
 
-        jButton2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton2.setText("Eliminar Asignacion");
+        bEliminar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        bEliminar.setText("Eliminar Asignacion");
 
         jLabel10.setForeground(new java.awt.Color(255, 0, 0));
         jLabel10.setText("*");
@@ -181,7 +181,7 @@ public class ModuloEstacionesRutas extends javax.swing.JFrame
             .addGroup(jPanel2Layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE)
+                    .addComponent(bEliminar, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE)
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(jPanel2Layout.createSequentialGroup()
@@ -194,8 +194,8 @@ public class ModuloEstacionesRutas extends javax.swing.JFrame
                                 .addComponent(jLabel12)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jTextField4)
-                            .addComponent(jTextField3)))
+                            .addComponent(tfEliminarNombreEstacion)
+                            .addComponent(tfEliminarNombreRuta)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel10)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -209,26 +209,26 @@ public class ModuloEstacionesRutas extends javax.swing.JFrame
                 .addContainerGap()
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel9)
-                    .addComponent(jTextField4, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfEliminarNombreEstacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
-                    .addComponent(jTextField3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfEliminarNombreRuta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel12))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
                     .addComponent(jLabel11))
                 .addGap(18, 18, 18)
-                .addComponent(jButton2)
+                .addComponent(bEliminar)
                 .addContainerGap(223, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("Eliminar Asignacion", jPanel2);
 
-        jTable1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
+        tEstacionesRutas.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tEstacionesRutas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -244,13 +244,13 @@ public class ModuloEstacionesRutas extends javax.swing.JFrame
                 return canEdit [columnIndex];
             }
         });
-        jTable1.setColumnSelectionAllowed(true);
-        jTable1.getTableHeader().setReorderingAllowed(false);
-        jScrollPane1.setViewportView(jTable1);
-        jTable1.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
+        tEstacionesRutas.setColumnSelectionAllowed(true);
+        tEstacionesRutas.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tEstacionesRutas);
+        tEstacionesRutas.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton3.setText("Actualizar Lista");
+        bActualizar1.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        bActualizar1.setText("Actualizar Lista");
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -260,7 +260,7 @@ public class ModuloEstacionesRutas extends javax.swing.JFrame
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE)
-                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(bActualizar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel3Layout.setVerticalGroup(
@@ -269,13 +269,13 @@ public class ModuloEstacionesRutas extends javax.swing.JFrame
                 .addContainerGap()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 301, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton3)
+                .addComponent(bActualizar1)
                 .addContainerGap())
         );
 
         jTabbedPane1.addTab("Consultar Asignacion", jPanel3);
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        tRutas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -291,27 +291,27 @@ public class ModuloEstacionesRutas extends javax.swing.JFrame
                 return canEdit [columnIndex];
             }
         });
-        jTable2.setColumnSelectionAllowed(true);
-        jTable2.setEnabled(false);
-        jTable2.getTableHeader().setReorderingAllowed(false);
-        jScrollPane5.setViewportView(jTable2);
-        jTable2.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        tRutas.setColumnSelectionAllowed(true);
+        tRutas.setEnabled(false);
+        tRutas.getTableHeader().setReorderingAllowed(false);
+        jScrollPane5.setViewportView(tRutas);
+        tRutas.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel16.setText("Rutas de la Estacion");
 
-        jTextField6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tfBuscarEstacion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        jButton7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton7.setText("Buscar Estacion");
+        bBuscarEstacion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        bBuscarEstacion.setText("Buscar Estacion");
 
         jLabel15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel15.setText("Buscar Estacion (Nombre):");
 
-        jButton8.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton8.setText("Actualizar Lista");
-        jButton8.setEnabled(false);
+        bActualzar2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        bActualzar2.setText("Actualizar Lista");
+        bActualzar2.setEnabled(false);
 
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
@@ -324,11 +324,11 @@ public class ModuloEstacionesRutas extends javax.swing.JFrame
                     .addGroup(jPanel4Layout.createSequentialGroup()
                         .addComponent(jLabel15)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField6)
+                        .addComponent(tfBuscarEstacion)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton7))
+                        .addComponent(bBuscarEstacion))
                     .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE)
-                    .addComponent(jButton8, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(bActualzar2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -337,36 +337,36 @@ public class ModuloEstacionesRutas extends javax.swing.JFrame
                 .addContainerGap()
                 .addGroup(jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
-                    .addComponent(jButton7)
-                    .addComponent(jTextField6, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(bBuscarEstacion)
+                    .addComponent(tfBuscarEstacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel16)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton8)
+                .addComponent(bActualzar2)
                 .addContainerGap())
         );
 
         jTabbedPane1.addTab("Consultar Rutas por Estacion", jPanel4);
 
-        jButton9.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        jButton9.setText("Actualizar Lista");
-        jButton9.setEnabled(false);
+        bActualizar3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        bActualizar3.setText("Actualizar Lista");
+        bActualizar3.setEnabled(false);
 
         jLabel17.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel17.setText("Buscar Ruta (Nombre):");
 
-        jButton10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton10.setText("Buscar Ruta");
+        bBuscarRuta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        bBuscarRuta.setText("Buscar Ruta");
 
-        jTextField7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tfBuscarRuta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel18.setText("Estaciones de la Ruta");
 
-        jTable3.setModel(new javax.swing.table.DefaultTableModel(
+        tEstaciones.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
@@ -382,10 +382,10 @@ public class ModuloEstacionesRutas extends javax.swing.JFrame
                 return canEdit [columnIndex];
             }
         });
-        jTable3.setEnabled(false);
-        jTable3.getTableHeader().setReorderingAllowed(false);
-        jScrollPane6.setViewportView(jTable3);
-        jTable3.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
+        tEstaciones.setEnabled(false);
+        tEstaciones.getTableHeader().setReorderingAllowed(false);
+        jScrollPane6.setViewportView(tEstaciones);
+        tEstaciones.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
         javax.swing.GroupLayout jPanel5Layout = new javax.swing.GroupLayout(jPanel5);
         jPanel5.setLayout(jPanel5Layout);
@@ -398,11 +398,11 @@ public class ModuloEstacionesRutas extends javax.swing.JFrame
                     .addGroup(jPanel5Layout.createSequentialGroup()
                         .addComponent(jLabel17)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTextField7)
+                        .addComponent(tfBuscarRuta)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jButton10))
+                        .addComponent(bBuscarRuta))
                     .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE)
-                    .addComponent(jButton9, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(bActualizar3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -411,14 +411,14 @@ public class ModuloEstacionesRutas extends javax.swing.JFrame
                 .addContainerGap()
                 .addGroup(jPanel5Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
-                    .addComponent(jButton10)
-                    .addComponent(jTextField7, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(bBuscarRuta)
+                    .addComponent(tfBuscarRuta, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabel18)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(jButton9)
+                .addComponent(bActualizar3)
                 .addContainerGap())
         );
 
@@ -429,13 +429,13 @@ public class ModuloEstacionesRutas extends javax.swing.JFrame
         pack();
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
-    public javax.swing.JButton jButton10;
-    public javax.swing.JButton jButton2;
-    public javax.swing.JButton jButton3;
-    public javax.swing.JButton jButton7;
-    public javax.swing.JButton jButton8;
-    public javax.swing.JButton jButton9;
+    public javax.swing.JButton bActualizar1;
+    public javax.swing.JButton bActualizar3;
+    public javax.swing.JButton bActualzar2;
+    public javax.swing.JButton bAsignar;
+    public javax.swing.JButton bBuscarEstacion;
+    public javax.swing.JButton bBuscarRuta;
+    public javax.swing.JButton bEliminar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -461,14 +461,14 @@ public class ModuloEstacionesRutas extends javax.swing.JFrame
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JTabbedPane jTabbedPane1;
-    public javax.swing.JTable jTable1;
-    public javax.swing.JTable jTable2;
-    public javax.swing.JTable jTable3;
-    private javax.swing.JTextField jTextField1;
-    private javax.swing.JTextField jTextField2;
-    public javax.swing.JTextField jTextField3;
-    public javax.swing.JTextField jTextField4;
-    public javax.swing.JTextField jTextField6;
-    public javax.swing.JTextField jTextField7;
+    public javax.swing.JTable tEstaciones;
+    public javax.swing.JTable tEstacionesRutas;
+    public javax.swing.JTable tRutas;
+    public javax.swing.JTextField tfBuscarEstacion;
+    public javax.swing.JTextField tfBuscarRuta;
+    public javax.swing.JTextField tfCrearNombreEstacion;
+    public javax.swing.JTextField tfCrearNombreRuta;
+    public javax.swing.JTextField tfEliminarNombreEstacion;
+    public javax.swing.JTextField tfEliminarNombreRuta;
     // End of variables declaration//GEN-END:variables
 }

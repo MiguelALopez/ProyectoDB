@@ -31,11 +31,11 @@ public class ModuloEstaciones extends javax.swing.JFrame
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
-        tfCrearNombreEstacion = new javax.swing.JTextField();
+        tfCrearNombre = new javax.swing.JTextField();
         jLabel2 = new javax.swing.JLabel();
-        tfCrearUbicacionEstacion = new javax.swing.JTextField();
+        tfCrearUbicacion = new javax.swing.JTextField();
         jLabel3 = new javax.swing.JLabel();
-        tfCrearDirectorEstacion = new javax.swing.JTextField();
+        tfCrearDirector = new javax.swing.JTextField();
         jLabel4 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
@@ -44,11 +44,11 @@ public class ModuloEstaciones extends javax.swing.JFrame
         jPanel2 = new javax.swing.JPanel();
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
-        tfModificarNombreEstacion = new javax.swing.JTextField();
-        tfModificarUbicacionEstacion = new javax.swing.JTextField();
+        tfModificarNombre = new javax.swing.JTextField();
+        tfModificarUbicacion = new javax.swing.JTextField();
         jLabel10 = new javax.swing.JLabel();
         jLabel11 = new javax.swing.JLabel();
-        tfModificarDirectorEstacion = new javax.swing.JTextField();
+        tfModificarDirector = new javax.swing.JTextField();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
@@ -57,10 +57,10 @@ public class ModuloEstaciones extends javax.swing.JFrame
         tfModificarBuscar = new javax.swing.JTextField();
         bModificarBuscar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
-        tfEliminarNombreEstacion = new javax.swing.JTextField();
-        tfEliminarUbicacionEstacion = new javax.swing.JTextField();
+        tfEliminarNombre = new javax.swing.JTextField();
+        tfEliminarUbicacion = new javax.swing.JTextField();
         jLabel16 = new javax.swing.JLabel();
-        tfEliminarDirectorEstacion = new javax.swing.JTextField();
+        tfEliminarDirector = new javax.swing.JTextField();
         jLabel18 = new javax.swing.JLabel();
         bEliminarEstacion = new javax.swing.JButton();
         jLabel21 = new javax.swing.JLabel();
@@ -80,17 +80,17 @@ public class ModuloEstaciones extends javax.swing.JFrame
         jLabel1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel1.setText("Nombre de la Estacion:");
 
-        tfCrearNombreEstacion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tfCrearNombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel2.setText("Ubicacion de la Estacion:");
 
-        tfCrearUbicacionEstacion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tfCrearUbicacion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Director de la Estacion (ID):");
 
-        tfCrearDirectorEstacion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tfCrearDirector.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel4.setForeground(new java.awt.Color(255, 0, 0));
         jLabel4.setText("*");
@@ -127,9 +127,9 @@ public class ModuloEstaciones extends javax.swing.JFrame
                                 .addComponent(jLabel4)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfCrearNombreEstacion, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
-                            .addComponent(tfCrearUbicacionEstacion)
-                            .addComponent(tfCrearDirectorEstacion)))
+                            .addComponent(tfCrearNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
+                            .addComponent(tfCrearUbicacion)
+                            .addComponent(tfCrearDirector)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel7)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -143,17 +143,17 @@ public class ModuloEstaciones extends javax.swing.JFrame
                 .addContainerGap()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(tfCrearNombreEstacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfCrearNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel4))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(tfCrearUbicacionEstacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfCrearUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel5))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(tfCrearDirectorEstacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfCrearDirector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel6)
@@ -171,11 +171,11 @@ public class ModuloEstaciones extends javax.swing.JFrame
         jLabel9.setForeground(new java.awt.Color(255, 0, 0));
         jLabel9.setText("*");
 
-        tfModificarNombreEstacion.setEditable(false);
-        tfModificarNombreEstacion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tfModificarNombre.setEditable(false);
+        tfModificarNombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        tfModificarUbicacionEstacion.setEditable(false);
-        tfModificarUbicacionEstacion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tfModificarUbicacion.setEditable(false);
+        tfModificarUbicacion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel10.setText("Ubicacion de la Estacion:");
@@ -183,8 +183,8 @@ public class ModuloEstaciones extends javax.swing.JFrame
         jLabel11.setForeground(new java.awt.Color(255, 0, 0));
         jLabel11.setText("*");
 
-        tfModificarDirectorEstacion.setEditable(false);
-        tfModificarDirectorEstacion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tfModificarDirector.setEditable(false);
+        tfModificarDirector.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel12.setText("Director de la Estacion (ID):");
@@ -226,9 +226,9 @@ public class ModuloEstaciones extends javax.swing.JFrame
                                 .addComponent(jLabel9)))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfModificarNombreEstacion, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
-                            .addComponent(tfModificarUbicacionEstacion)
-                            .addComponent(tfModificarDirectorEstacion)))
+                            .addComponent(tfModificarNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
+                            .addComponent(tfModificarUbicacion)
+                            .addComponent(tfModificarDirector)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel14)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -253,17 +253,17 @@ public class ModuloEstaciones extends javax.swing.JFrame
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel8)
-                    .addComponent(tfModificarNombreEstacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfModificarNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel9))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel10)
-                    .addComponent(tfModificarUbicacionEstacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfModificarUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel11))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel12)
-                    .addComponent(tfModificarDirectorEstacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfModificarDirector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel13)
@@ -275,17 +275,17 @@ public class ModuloEstaciones extends javax.swing.JFrame
 
         jTabbedPane1.addTab("Modificar Estacion", jPanel2);
 
-        tfEliminarNombreEstacion.setEditable(false);
-        tfEliminarNombreEstacion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tfEliminarNombre.setEditable(false);
+        tfEliminarNombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        tfEliminarUbicacionEstacion.setEditable(false);
-        tfEliminarUbicacionEstacion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tfEliminarUbicacion.setEditable(false);
+        tfEliminarUbicacion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel16.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel16.setText("Ubicacion de la Estacion:");
 
-        tfEliminarDirectorEstacion.setEditable(false);
-        tfEliminarDirectorEstacion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tfEliminarDirector.setEditable(false);
+        tfEliminarDirector.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel18.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel18.setText("Director de la Estacion (ID):");
@@ -319,9 +319,9 @@ public class ModuloEstaciones extends javax.swing.JFrame
                             .addComponent(jLabel21))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfEliminarNombreEstacion, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
-                            .addComponent(tfEliminarUbicacionEstacion)
-                            .addComponent(tfEliminarDirectorEstacion)))
+                            .addComponent(tfEliminarNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 396, Short.MAX_VALUE)
+                            .addComponent(tfEliminarUbicacion)
+                            .addComponent(tfEliminarDirector)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel22)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
@@ -341,15 +341,15 @@ public class ModuloEstaciones extends javax.swing.JFrame
                 .addGap(18, 18, 18)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel21)
-                    .addComponent(tfEliminarNombreEstacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfEliminarNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel16)
-                    .addComponent(tfEliminarUbicacionEstacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfEliminarUbicacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel18)
-                    .addComponent(tfEliminarDirectorEstacion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfEliminarDirector, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(bEliminarEstacion)
                 .addContainerGap(177, Short.MAX_VALUE))
@@ -442,16 +442,16 @@ public class ModuloEstaciones extends javax.swing.JFrame
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     public javax.swing.JTable tEstaciones;
-    public javax.swing.JTextField tfCrearDirectorEstacion;
-    public javax.swing.JTextField tfCrearNombreEstacion;
-    public javax.swing.JTextField tfCrearUbicacionEstacion;
+    public javax.swing.JTextField tfCrearDirector;
+    public javax.swing.JTextField tfCrearNombre;
+    public javax.swing.JTextField tfCrearUbicacion;
     public javax.swing.JTextField tfEliminarBuscar;
-    public javax.swing.JTextField tfEliminarDirectorEstacion;
-    public javax.swing.JTextField tfEliminarNombreEstacion;
-    public javax.swing.JTextField tfEliminarUbicacionEstacion;
+    public javax.swing.JTextField tfEliminarDirector;
+    public javax.swing.JTextField tfEliminarNombre;
+    public javax.swing.JTextField tfEliminarUbicacion;
     public javax.swing.JTextField tfModificarBuscar;
-    public javax.swing.JTextField tfModificarDirectorEstacion;
-    public javax.swing.JTextField tfModificarNombreEstacion;
-    public javax.swing.JTextField tfModificarUbicacionEstacion;
+    public javax.swing.JTextField tfModificarDirector;
+    public javax.swing.JTextField tfModificarNombre;
+    public javax.swing.JTextField tfModificarUbicacion;
     // End of variables declaration//GEN-END:variables
 }

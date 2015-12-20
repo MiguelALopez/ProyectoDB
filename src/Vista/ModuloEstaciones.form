@@ -66,9 +66,9 @@
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="tfCrearNombreEstacion" pref="396" max="32767" attributes="0"/>
-                                  <Component id="tfCrearUbicacionEstacion" max="32767" attributes="0"/>
-                                  <Component id="tfCrearDirectorEstacion" max="32767" attributes="0"/>
+                                  <Component id="tfCrearNombre" pref="396" max="32767" attributes="0"/>
+                                  <Component id="tfCrearUbicacion" max="32767" attributes="0"/>
+                                  <Component id="tfCrearDirector" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" attributes="0">
@@ -88,19 +88,19 @@
                       <EmptySpace max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel1" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="tfCrearNombreEstacion" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfCrearNombre" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel4" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel2" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="tfCrearUbicacionEstacion" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfCrearUbicacion" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel5" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel3" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="tfCrearDirectorEstacion" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfCrearDirector" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -123,7 +123,7 @@
                 <Property name="text" type="java.lang.String" value="Nombre de la Estacion:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="tfCrearNombreEstacion">
+            <Component class="javax.swing.JTextField" name="tfCrearNombre">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="14" style="0"/>
@@ -141,7 +141,7 @@
                 <Property name="text" type="java.lang.String" value="Ubicacion de la Estacion:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="tfCrearUbicacionEstacion">
+            <Component class="javax.swing.JTextField" name="tfCrearUbicacion">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="14" style="0"/>
@@ -159,7 +159,7 @@
                 <Property name="text" type="java.lang.String" value="Director de la Estacion (ID):"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="tfCrearDirectorEstacion">
+            <Component class="javax.swing.JTextField" name="tfCrearDirector">
               <Properties>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
                   <Font name="Tahoma" size="14" style="0"/>
@@ -243,9 +243,9 @@
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="tfModificarNombreEstacion" alignment="0" pref="396" max="32767" attributes="0"/>
-                                  <Component id="tfModificarUbicacionEstacion" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="tfModificarDirectorEstacion" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="tfModificarNombre" alignment="0" pref="396" max="32767" attributes="0"/>
+                                  <Component id="tfModificarUbicacion" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="tfModificarDirector" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" attributes="0">
@@ -278,19 +278,19 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel8" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="tfModificarNombreEstacion" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfModificarNombre" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel9" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel10" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="tfModificarUbicacionEstacion" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfModificarUbicacion" alignment="3" min="-2" max="-2" attributes="0"/>
                           <Component id="jLabel11" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel12" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="tfModificarDirectorEstacion" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfModificarDirector" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
@@ -321,7 +321,7 @@
                 <Property name="text" type="java.lang.String" value="*"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="tfModificarNombreEstacion">
+            <Component class="javax.swing.JTextField" name="tfModificarNombre">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -332,7 +332,7 @@
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JTextField" name="tfModificarUbicacionEstacion">
+            <Component class="javax.swing.JTextField" name="tfModificarUbicacion">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -359,7 +359,7 @@
                 <Property name="text" type="java.lang.String" value="*"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="tfModificarDirectorEstacion">
+            <Component class="javax.swing.JTextField" name="tfModificarDirector">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -457,9 +457,9 @@
                               </Group>
                               <EmptySpace type="unrelated" max="-2" attributes="0"/>
                               <Group type="103" groupAlignment="0" attributes="0">
-                                  <Component id="tfEliminarNombreEstacion" alignment="0" pref="396" max="32767" attributes="0"/>
-                                  <Component id="tfEliminarUbicacionEstacion" alignment="0" max="32767" attributes="0"/>
-                                  <Component id="tfEliminarDirectorEstacion" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="tfEliminarNombre" alignment="0" pref="396" max="32767" attributes="0"/>
+                                  <Component id="tfEliminarUbicacion" alignment="0" max="32767" attributes="0"/>
+                                  <Component id="tfEliminarDirector" alignment="0" max="32767" attributes="0"/>
                               </Group>
                           </Group>
                           <Group type="102" alignment="0" attributes="0">
@@ -486,17 +486,17 @@
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel21" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="tfEliminarNombreEstacion" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfEliminarNombre" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel16" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="tfEliminarUbicacionEstacion" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfEliminarUbicacion" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="unrelated" max="-2" attributes="0"/>
                       <Group type="103" groupAlignment="3" attributes="0">
                           <Component id="jLabel18" alignment="3" min="-2" max="-2" attributes="0"/>
-                          <Component id="tfEliminarDirectorEstacion" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="tfEliminarDirector" alignment="3" min="-2" max="-2" attributes="0"/>
                       </Group>
                       <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="bEliminarEstacion" min="-2" max="-2" attributes="0"/>
@@ -506,7 +506,7 @@
             </DimensionLayout>
           </Layout>
           <SubComponents>
-            <Component class="javax.swing.JTextField" name="tfEliminarNombreEstacion">
+            <Component class="javax.swing.JTextField" name="tfEliminarNombre">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -517,7 +517,7 @@
                 <AuxValue name="JavaCodeGenerator_VariableModifier" type="java.lang.Integer" value="1"/>
               </AuxValues>
             </Component>
-            <Component class="javax.swing.JTextField" name="tfEliminarUbicacionEstacion">
+            <Component class="javax.swing.JTextField" name="tfEliminarUbicacion">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
@@ -536,7 +536,7 @@
                 <Property name="text" type="java.lang.String" value="Ubicacion de la Estacion:"/>
               </Properties>
             </Component>
-            <Component class="javax.swing.JTextField" name="tfEliminarDirectorEstacion">
+            <Component class="javax.swing.JTextField" name="tfEliminarDirector">
               <Properties>
                 <Property name="editable" type="boolean" value="false"/>
                 <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
