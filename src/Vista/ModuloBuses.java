@@ -34,8 +34,6 @@ public class ModuloBuses extends javax.swing.JFrame
         jLabel2 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
-        tfCrearCapacidad = new javax.swing.JTextField();
-        tfCrearTipo = new javax.swing.JTextField();
         tfCrearSerial = new javax.swing.JTextField();
         tfCrearRuta = new javax.swing.JTextField();
         jLabel5 = new javax.swing.JLabel();
@@ -44,12 +42,12 @@ public class ModuloBuses extends javax.swing.JFrame
         jLabel8 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         bCrearBus = new javax.swing.JButton();
+        cbCrearTipo = new javax.swing.JComboBox<>();
+        tfCrearCapacidad = new javax.swing.JFormattedTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel10 = new javax.swing.JLabel();
         bModificarBuscar = new javax.swing.JButton();
         tfModificarBuscar = new javax.swing.JTextField();
-        tfModificarCapacidad = new javax.swing.JTextField();
-        tfModificarTipo = new javax.swing.JTextField();
         tfModificarSerial = new javax.swing.JTextField();
         tfModificarRuta = new javax.swing.JTextField();
         jLabel11 = new javax.swing.JLabel();
@@ -62,6 +60,8 @@ public class ModuloBuses extends javax.swing.JFrame
         jLabel18 = new javax.swing.JLabel();
         jLabel19 = new javax.swing.JLabel();
         bModificarBus = new javax.swing.JButton();
+        cbModificarTipo = new javax.swing.JComboBox<>();
+        tfModificarCapacidad = new javax.swing.JFormattedTextField();
         jPanel3 = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
         jLabel22 = new javax.swing.JLabel();
@@ -97,10 +97,6 @@ public class ModuloBuses extends javax.swing.JFrame
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Ruta del Bus:");
 
-        tfCrearCapacidad.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-
-        tfCrearTipo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-
         tfCrearSerial.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         tfCrearRuta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -121,6 +117,12 @@ public class ModuloBuses extends javax.swing.JFrame
 
         bCrearBus.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         bCrearBus.setText("Crear Bus");
+
+        cbCrearTipo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cbCrearTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Articulado", "Padron", "Alimentador" }));
+
+        tfCrearCapacidad.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        tfCrearCapacidad.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -148,9 +150,9 @@ public class ModuloBuses extends javax.swing.JFrame
                         .addGap(16, 16, 16)
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tfCrearSerial, javax.swing.GroupLayout.DEFAULT_SIZE, 432, Short.MAX_VALUE)
-                            .addComponent(tfCrearTipo)
                             .addComponent(tfCrearRuta)
-                            .addComponent(tfCrearCapacidad, javax.swing.GroupLayout.Alignment.TRAILING)))
+                            .addComponent(cbCrearTipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(tfCrearCapacidad)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel8)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -169,13 +171,13 @@ public class ModuloBuses extends javax.swing.JFrame
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
-                    .addComponent(tfCrearTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel6))
+                    .addComponent(jLabel6)
+                    .addComponent(cbCrearTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel3)
-                    .addComponent(tfCrearCapacidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel7))
+                    .addComponent(jLabel7)
+                    .addComponent(tfCrearCapacidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -198,12 +200,6 @@ public class ModuloBuses extends javax.swing.JFrame
         bModificarBuscar.setText("Buscar Bus");
 
         tfModificarBuscar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-
-        tfModificarCapacidad.setEditable(false);
-        tfModificarCapacidad.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-
-        tfModificarTipo.setEditable(false);
-        tfModificarTipo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         tfModificarSerial.setEditable(false);
         tfModificarSerial.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -240,6 +236,14 @@ public class ModuloBuses extends javax.swing.JFrame
         bModificarBus.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         bModificarBus.setText("Modificar Bus");
 
+        cbModificarTipo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        cbModificarTipo.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Articulado", "Padron", "Alimentador" }));
+        cbModificarTipo.setEnabled(false);
+
+        tfModificarCapacidad.setEditable(false);
+        tfModificarCapacidad.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
+        tfModificarCapacidad.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -272,9 +276,9 @@ public class ModuloBuses extends javax.swing.JFrame
                         .addGap(16, 16, 16)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tfModificarSerial, javax.swing.GroupLayout.DEFAULT_SIZE, 432, Short.MAX_VALUE)
-                            .addComponent(tfModificarTipo)
                             .addComponent(tfModificarRuta)
-                            .addComponent(tfModificarCapacidad, javax.swing.GroupLayout.Alignment.TRAILING)))
+                            .addComponent(cbModificarTipo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(tfModificarCapacidad)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel16)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
@@ -298,13 +302,13 @@ public class ModuloBuses extends javax.swing.JFrame
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel15)
-                    .addComponent(tfModificarTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel12))
+                    .addComponent(jLabel12)
+                    .addComponent(cbModificarTipo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel17)
-                    .addComponent(tfModificarCapacidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jLabel14))
+                    .addComponent(jLabel14)
+                    .addComponent(tfModificarCapacidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel19)
@@ -473,6 +477,8 @@ public class ModuloBuses extends javax.swing.JFrame
     public javax.swing.JButton bEliminarBuscar;
     public javax.swing.JButton bModificarBus;
     public javax.swing.JButton bModificarBuscar;
+    public javax.swing.JComboBox<String> cbCrearTipo;
+    public javax.swing.JComboBox<String> cbModificarTipo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -504,19 +510,17 @@ public class ModuloBuses extends javax.swing.JFrame
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTabbedPane jTabbedPane1;
     public javax.swing.JTable tBuses;
-    public javax.swing.JTextField tfCrearCapacidad;
+    public javax.swing.JFormattedTextField tfCrearCapacidad;
     public javax.swing.JTextField tfCrearRuta;
     public javax.swing.JTextField tfCrearSerial;
-    public javax.swing.JTextField tfCrearTipo;
     public javax.swing.JTextField tfEliminarBuscar;
     public javax.swing.JTextField tfEliminarCapacidad;
     public javax.swing.JTextField tfEliminarRuta;
     public javax.swing.JTextField tfEliminarSerial;
     public javax.swing.JTextField tfEliminarTipo;
     public javax.swing.JTextField tfModificarBuscar;
-    public javax.swing.JTextField tfModificarCapacidad;
+    public javax.swing.JFormattedTextField tfModificarCapacidad;
     public javax.swing.JTextField tfModificarRuta;
     public javax.swing.JTextField tfModificarSerial;
-    public javax.swing.JTextField tfModificarTipo;
     // End of variables declaration//GEN-END:variables
 }
