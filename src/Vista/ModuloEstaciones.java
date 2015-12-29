@@ -363,7 +363,7 @@ public class ModuloEstaciones extends javax.swing.JFrame
 
             },
             new String [] {
-                "Nombre", "Ubicacion", "Director"
+                "NOMBRE", "UBICACION", "DIRECTOR"
             }
         ) {
             boolean[] canEdit = new boolean [] {

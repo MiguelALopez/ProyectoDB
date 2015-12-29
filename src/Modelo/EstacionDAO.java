@@ -107,15 +107,29 @@ public class EstacionDAO
         conexionBD.conectar();
         boolean exito = false;
         
+        String query1 = "DELETE FROM venta WHERE estacion_nombre = ?;";
+        String query2 = "DELETE FROM solicitud WHERE estacion_nombre = ?;";
+        String query3 = "DELETE FROM estacion_ruta WHERE estacion_nombre = ?;";
         String query = "DELETE FROM estacion WHERE estacion_nombre = ?;";
         
         try
         {
-            PreparedStatement st = conexionBD.conexion.prepareStatement(query);
-            
-            st.setString(1, nombre);
-            
+            PreparedStatement st = conexionBD.conexion.prepareStatement(query1);
+            st.setString(1, nombre);            
             int resultado = st.executeUpdate();
+            
+            st = conexionBD.conexion.prepareStatement(query2);
+            st.setString(1, nombre);            
+            resultado = st.executeUpdate();
+            
+            st = conexionBD.conexion.prepareStatement(query3);
+            st.setString(1, nombre);            
+            resultado = st.executeUpdate();
+            
+            st = conexionBD.conexion.prepareStatement(query);
+            st.setString(1, nombre);            
+            resultado = st.executeUpdate();
+            
             exito = true;
         } 
         catch (SQLException ex) 
