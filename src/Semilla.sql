@@ -11,7 +11,7 @@ CREATE TABLE empleado (
     empleado_direccion  VARCHAR(100)    NOT NULL,
     empleado_email      VARCHAR(100)    NOT NULL,
     empleado_cargo      VARCHAR(50)     NOT NULL,
-    empleado_salario    MONEY           NOT NULL,
+    empleado_salario    DECIMAL         NOT NULL,
     jefe_empleado_id    VARCHAR(15),
     PRIMARY KEY (empleado_id),
     FOREIGN KEY (jefe_empleado_id) REFERENCES empleado (empleado_id)
@@ -46,7 +46,7 @@ CREATE TABLE bus (
 DROP TABLE IF EXISTS tarjeta CASCADE;
 CREATE TABLE tarjeta (
     tarjeta_id              VARCHAR(15) NOT NULL,
-    tarjeta_saldo           MONEY       NOT NULL,
+    tarjeta_saldo           DECIMAL     NOT NULL,
     tarjeta_estado          VARCHAR(30) NOT NULL,
     PRIMARY KEY (tarjeta_id)
 );
@@ -76,7 +76,7 @@ DROP TABLE IF EXISTS venta CASCADE;
 CREATE TABLE venta (
     venta_id        SERIAL      NOT NULL,
     venta_fecha     DATE        NOT NULL,
-    venta_valor     MONEY       NOT NULL,
+    venta_valor     DECIMAL     NOT NULL,
     estacion_nombre VARCHAR(50) NOT NULL,
     tarjeta_id      VARCHAR(15) UNIQUE NOT NULL,
     PRIMARY KEY (venta_id),

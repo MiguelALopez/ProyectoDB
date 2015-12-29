@@ -110,15 +110,19 @@ public class BusDAO
         conexionBD.conectar();
         boolean exito = false;
         
+        String query1 = "DELETE FROM turno WHERE bus_serial = ?;";
         String query = "DELETE FROM bus WHERE bus_serial = ?;";
         
         try
         {
-            PreparedStatement st = conexionBD.conexion.prepareStatement(query);
-            
+            PreparedStatement st = conexionBD.conexion.prepareStatement(query1);
             st.setString(1, serial);
-            
             int resultado = st.executeUpdate();
+            
+            st = conexionBD.conexion.prepareStatement(query);
+            st.setString(1, serial);
+            resultado = st.executeUpdate();
+            
             exito = true;
         } 
         catch (SQLException ex) 

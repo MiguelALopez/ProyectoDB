@@ -49,13 +49,13 @@ public class ModuloEmpleados extends javax.swing.JFrame
         jLabel13 = new javax.swing.JLabel();
         jLabel14 = new javax.swing.JLabel();
         bCrearEmpleado = new javax.swing.JButton();
-        tfCrearTelefono = new javax.swing.JFormattedTextField();
-        tfCrearSalario = new javax.swing.JFormattedTextField();
         jLabel38 = new javax.swing.JLabel();
         cbCrearCargo = new javax.swing.JComboBox<>();
         jLabel39 = new javax.swing.JLabel();
         tfCrearJefe = new javax.swing.JTextField();
         jLabel43 = new javax.swing.JLabel();
+        tfCrearSalario = new javax.swing.JTextField();
+        tfCrearTelefono = new javax.swing.JTextField();
         jPanel2 = new javax.swing.JPanel();
         jLabel15 = new javax.swing.JLabel();
         bModificarBuscar = new javax.swing.JButton();
@@ -68,8 +68,6 @@ public class ModuloEmpleados extends javax.swing.JFrame
         jLabel18 = new javax.swing.JLabel();
         tfModificarEmail = new javax.swing.JTextField();
         jLabel19 = new javax.swing.JLabel();
-        tfModificarTelefono = new javax.swing.JFormattedTextField();
-        tfModificarSalario = new javax.swing.JFormattedTextField();
         jLabel20 = new javax.swing.JLabel();
         tfModificarJefe = new javax.swing.JTextField();
         jLabel21 = new javax.swing.JLabel();
@@ -86,6 +84,8 @@ public class ModuloEmpleados extends javax.swing.JFrame
         jLabel41 = new javax.swing.JLabel();
         cbModificarCargo = new javax.swing.JComboBox<>();
         jLabel44 = new javax.swing.JLabel();
+        tfModificarTelefono = new javax.swing.JTextField();
+        tfModificarSalario = new javax.swing.JTextField();
         jPanel3 = new javax.swing.JPanel();
         tfEliminarNombre = new javax.swing.JTextField();
         tfEliminarID = new javax.swing.JTextField();
@@ -93,8 +93,6 @@ public class ModuloEmpleados extends javax.swing.JFrame
         jLabel30 = new javax.swing.JLabel();
         tfEliminarEmail = new javax.swing.JTextField();
         jLabel31 = new javax.swing.JLabel();
-        tfEliminarTelefono = new javax.swing.JFormattedTextField();
-        tfEliminarSalario = new javax.swing.JFormattedTextField();
         jLabel32 = new javax.swing.JLabel();
         tfEliminarJefe = new javax.swing.JTextField();
         jLabel33 = new javax.swing.JLabel();
@@ -107,6 +105,8 @@ public class ModuloEmpleados extends javax.swing.JFrame
         tfEliminarBuscar = new javax.swing.JTextField();
         jLabel42 = new javax.swing.JLabel();
         tfEliminarCargo = new javax.swing.JTextField();
+        tfEliminarSalario = new javax.swing.JTextField();
+        tfEliminarTelefono = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tEmpleados = new javax.swing.JTable();
@@ -169,12 +169,6 @@ public class ModuloEmpleados extends javax.swing.JFrame
         bCrearEmpleado.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         bCrearEmpleado.setText("Crear Empleado");
 
-        tfCrearTelefono.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
-        tfCrearTelefono.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-
-        tfCrearSalario.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
-        tfCrearSalario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-
         jLabel38.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel38.setText("Cargo del Empleado:");
 
@@ -184,10 +178,15 @@ public class ModuloEmpleados extends javax.swing.JFrame
         jLabel39.setForeground(new java.awt.Color(255, 0, 0));
         jLabel39.setText("*");
 
+        tfCrearJefe.setEditable(false);
         tfCrearJefe.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel43.setForeground(new java.awt.Color(255, 0, 0));
         jLabel43.setText("*");
+
+        tfCrearSalario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        tfCrearTelefono.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
@@ -238,10 +237,10 @@ public class ModuloEmpleados extends javax.swing.JFrame
                             .addComponent(tfCrearNombre)
                             .addComponent(tfCrearID)
                             .addComponent(tfCrearEmail)
-                            .addComponent(tfCrearTelefono)
-                            .addComponent(tfCrearSalario)
                             .addComponent(cbCrearCargo, 0, 407, Short.MAX_VALUE)
-                            .addComponent(tfCrearJefe))))
+                            .addComponent(tfCrearJefe)
+                            .addComponent(tfCrearSalario)
+                            .addComponent(tfCrearTelefono))))
                 .addContainerGap())
         );
         jPanel1Layout.setVerticalGroup(
@@ -328,14 +327,6 @@ public class ModuloEmpleados extends javax.swing.JFrame
         jLabel19.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel19.setText("Nombre del Empleado:");
 
-        tfModificarTelefono.setEditable(false);
-        tfModificarTelefono.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
-        tfModificarTelefono.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-
-        tfModificarSalario.setEditable(false);
-        tfModificarSalario.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
-        tfModificarSalario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-
         jLabel20.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel20.setText("Telefono del Empleado:");
 
@@ -385,6 +376,12 @@ public class ModuloEmpleados extends javax.swing.JFrame
         jLabel44.setForeground(new java.awt.Color(255, 0, 0));
         jLabel44.setText("*");
 
+        tfModificarTelefono.setEditable(false);
+        tfModificarTelefono.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        tfModificarSalario.setEditable(false);
+        tfModificarSalario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
         javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
         jPanel2.setLayout(jPanel2Layout);
         jPanel2Layout.setHorizontalGroup(
@@ -395,7 +392,7 @@ public class ModuloEmpleados extends javax.swing.JFrame
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addComponent(jLabel15)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tfModificarBuscar)
+                        .addComponent(tfModificarBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(bModificarBuscar))
                     .addComponent(bModificarEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -426,15 +423,19 @@ public class ModuloEmpleados extends javax.swing.JFrame
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                                 .addComponent(jLabel29))
                             .addComponent(jLabel27))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfModificarDireccion)
-                            .addComponent(tfModificarNombre)
-                            .addComponent(tfModificarID)
-                            .addComponent(tfModificarEmail)
-                            .addComponent(tfModificarJefe)
-                            .addComponent(tfModificarTelefono)
-                            .addComponent(tfModificarSalario, javax.swing.GroupLayout.DEFAULT_SIZE, 407, Short.MAX_VALUE)))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                                    .addComponent(tfModificarDireccion)
+                                    .addComponent(tfModificarNombre)
+                                    .addComponent(tfModificarID)
+                                    .addComponent(tfModificarEmail)
+                                    .addComponent(tfModificarJefe)
+                                    .addComponent(tfModificarTelefono)))
+                            .addGroup(jPanel2Layout.createSequentialGroup()
+                                .addGap(10, 10, 10)
+                                .addComponent(tfModificarSalario))))
                     .addGroup(jPanel2Layout.createSequentialGroup()
                         .addGap(168, 168, 168)
                         .addComponent(cbModificarCargo, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -524,14 +525,6 @@ public class ModuloEmpleados extends javax.swing.JFrame
         jLabel31.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel31.setText("Nombre del Empleado:");
 
-        tfEliminarTelefono.setEditable(false);
-        tfEliminarTelefono.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter(new java.text.DecimalFormat("#0"))));
-        tfEliminarTelefono.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-
-        tfEliminarSalario.setEditable(false);
-        tfEliminarSalario.setFormatterFactory(new javax.swing.text.DefaultFormatterFactory(new javax.swing.text.NumberFormatter()));
-        tfEliminarSalario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-
         jLabel32.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel32.setText("Telefono del Empleado:");
 
@@ -545,7 +538,7 @@ public class ModuloEmpleados extends javax.swing.JFrame
         jLabel34.setText("Email del Empleado:");
 
         jLabel35.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel35.setText("Salario del Empleado:");
+        jLabel35.setText("Cargo del Empleado:");
 
         jLabel36.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel36.setText("Jefe del Empleado:");
@@ -562,10 +555,16 @@ public class ModuloEmpleados extends javax.swing.JFrame
         tfEliminarBuscar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jLabel42.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel42.setText("Cargo del Empleado:");
+        jLabel42.setText("Salario del Empleado:");
 
         tfEliminarCargo.setEditable(false);
         tfEliminarCargo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        tfEliminarSalario.setEditable(false);
+        tfEliminarSalario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+
+        tfEliminarTelefono.setEditable(false);
+        tfEliminarTelefono.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
         jPanel3.setLayout(jPanel3Layout);
@@ -575,13 +574,9 @@ public class ModuloEmpleados extends javax.swing.JFrame
                 .addContainerGap()
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel3Layout.createSequentialGroup()
-                        .addComponent(jLabel42)
-                        .addGap(31, 31, 31)
-                        .addComponent(tfEliminarCargo))
-                    .addGroup(jPanel3Layout.createSequentialGroup()
                         .addComponent(jLabel37)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(tfEliminarBuscar)
+                        .addComponent(tfEliminarBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(bEliminarBuscar))
                     .addComponent(bEliminarEmpleado, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
@@ -589,23 +584,25 @@ public class ModuloEmpleados extends javax.swing.JFrame
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel35)
                             .addComponent(jLabel36))
-                        .addGap(29, 29, 29)
+                        .addGap(31, 31, 31)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(tfEliminarSalario)
-                            .addComponent(tfEliminarJefe)))
+                            .addComponent(tfEliminarJefe)
+                            .addComponent(tfEliminarCargo)))
                     .addGroup(jPanel3Layout.createSequentialGroup()
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabel33)
                             .addComponent(jLabel30)
                             .addComponent(jLabel31)
                             .addComponent(jLabel32)
-                            .addComponent(jLabel34))
+                            .addComponent(jLabel34)
+                            .addComponent(jLabel42))
                         .addGap(12, 12, 12)
                         .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(tfEliminarDireccion)
                             .addComponent(tfEliminarNombre)
                             .addComponent(tfEliminarID)
                             .addComponent(tfEliminarEmail)
+                            .addComponent(tfEliminarSalario)
                             .addComponent(tfEliminarTelefono))))
                 .addContainerGap())
         );
@@ -640,11 +637,11 @@ public class ModuloEmpleados extends javax.swing.JFrame
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel42)
-                    .addComponent(tfEliminarCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfEliminarSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel35)
-                    .addComponent(tfEliminarSalario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(tfEliminarCargo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel36)
@@ -774,8 +771,8 @@ public class ModuloEmpleados extends javax.swing.JFrame
     public javax.swing.JTextField tfCrearID;
     public javax.swing.JTextField tfCrearJefe;
     public javax.swing.JTextField tfCrearNombre;
-    public javax.swing.JFormattedTextField tfCrearSalario;
-    public javax.swing.JFormattedTextField tfCrearTelefono;
+    public javax.swing.JTextField tfCrearSalario;
+    public javax.swing.JTextField tfCrearTelefono;
     public javax.swing.JTextField tfEliminarBuscar;
     public javax.swing.JTextField tfEliminarCargo;
     public javax.swing.JTextField tfEliminarDireccion;
@@ -783,15 +780,15 @@ public class ModuloEmpleados extends javax.swing.JFrame
     public javax.swing.JTextField tfEliminarID;
     public javax.swing.JTextField tfEliminarJefe;
     public javax.swing.JTextField tfEliminarNombre;
-    public javax.swing.JFormattedTextField tfEliminarSalario;
-    public javax.swing.JFormattedTextField tfEliminarTelefono;
+    public javax.swing.JTextField tfEliminarSalario;
+    public javax.swing.JTextField tfEliminarTelefono;
     public javax.swing.JTextField tfModificarBuscar;
     public javax.swing.JTextField tfModificarDireccion;
     public javax.swing.JTextField tfModificarEmail;
     public javax.swing.JTextField tfModificarID;
     public javax.swing.JTextField tfModificarJefe;
     public javax.swing.JTextField tfModificarNombre;
-    public javax.swing.JFormattedTextField tfModificarSalario;
-    public javax.swing.JFormattedTextField tfModificarTelefono;
+    public javax.swing.JTextField tfModificarSalario;
+    public javax.swing.JTextField tfModificarTelefono;
     // End of variables declaration//GEN-END:variables
 }

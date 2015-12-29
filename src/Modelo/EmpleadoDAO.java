@@ -32,7 +32,7 @@ public class EmpleadoDAO
         boolean exito = false;
         
         String query = "INSERT INTO empleado (empleado_id, empleado_nombre, empleado_telefono, empleado_direccion, "
-                + "empleado_email, empleado_cargo, empleado_salario, jefe_empleado_id) VALUES (?,?,?,?,?,?,MONEY(?),?);";
+                + "empleado_email, empleado_cargo, empleado_salario, jefe_empleado_id) VALUES (?,?,?,?,?,?,?,?);";
         
         try
         {
@@ -44,7 +44,7 @@ public class EmpleadoDAO
             st.setString(4, empleado.getDireccion());
             st.setString(5, empleado.getEmail());
             st.setString(6, empleado.getCargo());
-            st.setDouble(7, empleado.getSalario());
+            st.setObject(7, empleado.getSalario(), java.sql.Types.DECIMAL);
             
             if (empleado.getJefe().isEmpty())
             {
@@ -80,7 +80,7 @@ public class EmpleadoDAO
                 + "empleado_direccion = ?, "
                 + "empleado_email = ?, "
                 + "empleado_cargo = ?, "
-                + "empleado_salario = MONEY(?), "
+                + "empleado_salario = ?, "
                 + "jefe_empleado_id = ?"
                 + "WHERE empleado_id = ?;";
         
@@ -94,7 +94,7 @@ public class EmpleadoDAO
             st.setString(3, empleado.getDireccion());
             st.setString(4, empleado.getEmail());
             st.setString(5, empleado.getCargo());
-            st.setDouble(6, empleado.getSalario());
+            st.setObject(6, empleado.getSalario(), java.sql.Types.DECIMAL);
             
             if (empleado.getJefe().isEmpty())
             {
@@ -118,20 +118,36 @@ public class EmpleadoDAO
         return exito;
     }
     
-    public boolean eliminarEmpleado(String serial)
+    public boolean eliminarEmpleado(String id)
     {
         conexionBD.conectar();
         boolean exito = false;
         
+        String query1 = "UPDATE estacion SET director_empleado_id = ? WHERE director_empleado_id = ?;";
+        String query2 = "DELETE FROM turno WHERE conductor_empleado_id = ?;";
+        String query3 = "UPDATE empleado SET jefe_empleado_id = ? WHERE jefe_empleado_id = ?;";
         String query = "DELETE FROM empleado WHERE empleado_id = ?;";
         
         try
         {
-            PreparedStatement st = conexionBD.conexion.prepareStatement(query);
-            
-            st.setString(1, serial);
-            
+            PreparedStatement st = conexionBD.conexion.prepareStatement(query1);
+            st.setNull(1, java.sql.Types.VARCHAR);
+            st.setString(2, id);
             int resultado = st.executeUpdate();
+            
+            st = conexionBD.conexion.prepareStatement(query2);
+            st.setString(1, id);
+            resultado = st.executeUpdate();
+            
+            st = conexionBD.conexion.prepareStatement(query3);
+            st.setNull(1, java.sql.Types.VARCHAR);
+            st.setString(2, id);
+            resultado = st.executeUpdate();
+            
+            st = conexionBD.conexion.prepareStatement(query);
+            st.setString(1, id);            
+            resultado = st.executeUpdate();
+            
             exito = true;
         } 
         catch (SQLException ex) 
@@ -144,7 +160,7 @@ public class EmpleadoDAO
         return exito;
     }
     
-    public Empleado consultarEmpleado(String serial)
+    public Empleado consultarEmpleado(String id)
     {
         conexionBD.conectar();        
         Empleado empleado = null;
@@ -154,7 +170,7 @@ public class EmpleadoDAO
         try
         {
             PreparedStatement st = conexionBD.conexion.prepareStatement(query);            
-            st.setString(1, serial);
+            st.setString(1, id);
             
             ResultSet tabla = st.executeQuery();
             
