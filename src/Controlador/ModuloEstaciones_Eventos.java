@@ -299,7 +299,7 @@ public class ModuloEstaciones_Eventos
 
             if (exito)
             {
-                JOptionPane.showMessageDialog(moduloEstaciones, "Estacion modificada exitosamente.", "", JOptionPane.INFORMATION_MESSAGE);
+                JOptionPane.showMessageDialog(moduloEstaciones, "Estacion eliminada exitosamente.", "", JOptionPane.INFORMATION_MESSAGE);
                 limpiarCamposEliminar();
             }
             else

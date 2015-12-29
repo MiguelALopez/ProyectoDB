@@ -180,9 +180,37 @@ public class BusDAO
             
             while (tabla.next())
             {
-                lista.add(new Bus(tabla.getString(1), 
-                        tabla.getString(2), tabla.getInt(3), 
-                        tabla.getString(4)));
+                lista.add(new Bus(tabla.getString(1), tabla.getString(2), tabla.getInt(3), tabla.getString(4)));
+            }        
+        } 
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(BusDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        conexionBD.cerrarConexion();
+        
+        return lista;
+    }
+    
+    public ArrayList<Bus> consultarBuses(String ruta)
+    {
+        conexionBD.conectar();        
+        ArrayList<Bus> lista = null;
+        
+        String query = "SELECT * FROM bus WHERE ruta_nombre = ?;";
+        
+        try
+        {
+            PreparedStatement st = conexionBD.conexion.prepareStatement(query);
+            st.setString(1, ruta);
+            ResultSet tabla = st.executeQuery();
+            
+            lista = new ArrayList();
+            
+            while (tabla.next())
+            {
+                lista.add(new Bus(tabla.getString(1), tabla.getString(2), tabla.getInt(3), tabla.getString(4)));
             }        
         } 
         catch (SQLException ex) 

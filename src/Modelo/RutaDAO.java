@@ -104,15 +104,30 @@ public class RutaDAO
         conexionBD.conectar();
         boolean exito = false;
         
+        String query1 = "UPDATE bus SET ruta_nombre = ? WHERE ruta_nombre = ?;";
+        String query2 = "DELETE FROM tarjeta_ruta WHERE ruta_nombre = ?;";
+        String query3 = "DELETE FROM estacion_ruta WHERE ruta_nombre = ?;";
         String query = "DELETE FROM ruta WHERE ruta_nombre = ?;";
         
         try
         {
-            PreparedStatement st = conexionBD.conexion.prepareStatement(query);
-            
-            st.setString(1, nombre);
-            
+            PreparedStatement st = conexionBD.conexion.prepareStatement(query1);
+            st.setNull(1, java.sql.Types.VARCHAR);
+            st.setString(2, nombre);
             int resultado = st.executeUpdate();
+            
+            st = conexionBD.conexion.prepareStatement(query);
+            st.setString(1, nombre);
+            resultado = st.executeUpdate();
+            
+            st = conexionBD.conexion.prepareStatement(query);
+            st.setString(1, nombre);
+            resultado = st.executeUpdate();
+            
+            st = conexionBD.conexion.prepareStatement(query);
+            st.setString(1, nombre);
+            resultado = st.executeUpdate();
+            
             exito = true;
         } 
         catch (SQLException ex) 
