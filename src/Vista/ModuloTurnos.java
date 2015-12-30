@@ -454,6 +454,7 @@ public class ModuloTurnos extends javax.swing.JFrame
 
         jTabbedPane1.addTab("Eliminar Turno", jPanel3);
 
+        tTurnos.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tTurnos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 

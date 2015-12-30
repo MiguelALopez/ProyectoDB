@@ -139,17 +139,17 @@ public class TurnoDAO
         return exito;
     }
     
-    public Turno consultarTurno(String nombre)
+    public Turno consultarTurno(String conductor)
     {
         conexionBD.conectar();        
         Turno turno = null;
         
-        String query = "SELECT * FROM turno WHERE turno_nombre = ?;";
+        String query = "SELECT * FROM turno WHERE conductor_empleado_id = ?;";
         
         try
         {
             PreparedStatement st = conexionBD.conexion.prepareStatement(query);            
-            st.setString(1, nombre);
+            st.setString(1, conductor);
             
             ResultSet tabla = st.executeQuery();
             
@@ -168,7 +168,37 @@ public class TurnoDAO
         return turno;
     }
     
-    public ArrayList<Turno> consultarTurnoes()
+    public Turno consultarTurno(String serial, String turno)
+    {
+        conexionBD.conectar();        
+        Turno t = null;
+        
+        String query = "SELECT * FROM turno WHERE bus_serial = ? AND turno_turno = ?;";
+        
+        try
+        {
+            PreparedStatement st = conexionBD.conexion.prepareStatement(query);
+            st.setString(1, serial);
+            st.setString(2, turno);
+            
+            ResultSet tabla = st.executeQuery();
+            
+            if (tabla.next())
+            {
+                t = new Turno(tabla.getString(1), tabla.getString(2), tabla.getString(3));
+            }
+        } 
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(TurnoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        conexionBD.cerrarConexion();
+        
+        return t;
+    }
+    
+    public ArrayList<Turno> consultarTurnos()
     {
         conexionBD.conectar();        
         ArrayList<Turno> lista = null;
