@@ -199,4 +199,35 @@ public class EstacionDAO
         
         return lista;
     }
+    
+    public ArrayList<Estacion> consultarEstaciones(String ruta)
+    {
+        conexionBD.conectar();        
+        ArrayList<Estacion> lista = null;
+        
+        String query = "SELECT * FROM estacion NATURAL JOIN estacion_ruta WHERE ruta_nombre = ?;";
+        
+        try
+        {
+            PreparedStatement st = conexionBD.conexion.prepareStatement(query);
+            st.setString(1, ruta);
+            
+            ResultSet tabla = st.executeQuery();
+            
+            lista = new ArrayList();
+            
+            while (tabla.next())
+            {
+                lista.add(new Estacion(tabla.getString(1), tabla.getString(2), tabla.getString(3)));
+            }        
+        } 
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(EstacionDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        conexionBD.cerrarConexion();
+        
+        return lista;
+    }
 }

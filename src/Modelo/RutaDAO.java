@@ -197,4 +197,35 @@ public class RutaDAO
         
         return lista;
     }
+    
+    public ArrayList<Ruta> consultarRutas(String estacion)
+    {
+        conexionBD.conectar();        
+        ArrayList<Ruta> lista = null;
+        
+        String query = "SELECT ruta_nombre, ruta_descripcion FROM ruta NATURAL JOIN estacion_ruta WHERE estacion_nombre = ?;";
+        
+        try
+        {
+            PreparedStatement st = conexionBD.conexion.prepareStatement(query);
+            st.setString(1, estacion);
+            
+            ResultSet tabla = st.executeQuery();
+            
+            lista = new ArrayList();
+            
+            while (tabla.next())
+            {
+                lista.add(new Ruta(tabla.getString(1), tabla.getString(2)));
+            }        
+        } 
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(RutaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+        conexionBD.cerrarConexion();
+        
+        return lista;
+    }
 }

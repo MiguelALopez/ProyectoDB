@@ -123,8 +123,8 @@ CREATE TABLE tarjeta_ruta (
 
 DROP TABLE IF EXISTS estacion_ruta CASCADE;
 CREATE TABLE estacion_ruta (
-    ruta_nombre     VARCHAR(50) NOT NULL,
     estacion_nombre VARCHAR(50) NOT NULL,
+    ruta_nombre     VARCHAR(50) NOT NULL,    
     PRIMARY KEY (ruta_nombre, estacion_nombre),
     FOREIGN KEY (ruta_nombre) REFERENCES ruta (ruta_nombre),
     FOREIGN KEY (estacion_nombre) REFERENCES estacion (estacion_nombre)

@@ -60,9 +60,7 @@ public class ModuloEstacionesRutas extends javax.swing.JFrame
         tfBuscarEstacion = new javax.swing.JTextField();
         bBuscarEstacion = new javax.swing.JButton();
         jLabel15 = new javax.swing.JLabel();
-        bActualzar2 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
-        bActualizar3 = new javax.swing.JButton();
         jLabel17 = new javax.swing.JLabel();
         bBuscarRuta = new javax.swing.JButton();
         tfBuscarRuta = new javax.swing.JTextField();
@@ -275,6 +273,7 @@ public class ModuloEstacionesRutas extends javax.swing.JFrame
 
         jTabbedPane1.addTab("Consultar Asignacion", jPanel3);
 
+        tRutas.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tRutas.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -309,10 +308,6 @@ public class ModuloEstacionesRutas extends javax.swing.JFrame
         jLabel15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel15.setText("Buscar Estacion (Nombre):");
 
-        bActualzar2.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        bActualzar2.setText("Actualizar Lista");
-        bActualzar2.setEnabled(false);
-
         javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
         jPanel4.setLayout(jPanel4Layout);
         jPanel4Layout.setHorizontalGroup(
@@ -327,8 +322,7 @@ public class ModuloEstacionesRutas extends javax.swing.JFrame
                         .addComponent(tfBuscarEstacion)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(bBuscarEstacion))
-                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE)
-                    .addComponent(bActualzar2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel4Layout.setVerticalGroup(
@@ -342,17 +336,11 @@ public class ModuloEstacionesRutas extends javax.swing.JFrame
                 .addGap(18, 18, 18)
                 .addComponent(jLabel16)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(bActualzar2)
+                .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
         jTabbedPane1.addTab("Consultar Rutas por Estacion", jPanel4);
-
-        bActualizar3.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
-        bActualizar3.setText("Actualizar Lista");
-        bActualizar3.setEnabled(false);
 
         jLabel17.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel17.setText("Buscar Ruta (Nombre):");
@@ -366,6 +354,7 @@ public class ModuloEstacionesRutas extends javax.swing.JFrame
         jLabel18.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
         jLabel18.setText("Estaciones de la Ruta");
 
+        tEstaciones.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tEstaciones.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
@@ -401,8 +390,7 @@ public class ModuloEstacionesRutas extends javax.swing.JFrame
                         .addComponent(tfBuscarRuta)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(bBuscarRuta))
-                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE)
-                    .addComponent(bActualizar3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 575, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanel5Layout.setVerticalGroup(
@@ -416,9 +404,7 @@ public class ModuloEstacionesRutas extends javax.swing.JFrame
                 .addGap(18, 18, 18)
                 .addComponent(jLabel18)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 235, Short.MAX_VALUE)
-                .addGap(18, 18, 18)
-                .addComponent(bActualizar3)
+                .addComponent(jScrollPane6, javax.swing.GroupLayout.DEFAULT_SIZE, 284, Short.MAX_VALUE)
                 .addContainerGap())
         );
 
@@ -430,8 +416,6 @@ public class ModuloEstacionesRutas extends javax.swing.JFrame
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton bActualizar1;
-    public javax.swing.JButton bActualizar3;
-    public javax.swing.JButton bActualzar2;
     public javax.swing.JButton bAsignar;
     public javax.swing.JButton bBuscarEstacion;
     public javax.swing.JButton bBuscarRuta;
