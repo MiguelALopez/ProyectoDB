@@ -48,6 +48,7 @@ public class MenuPrincipal extends javax.swing.JFrame
         jPanel5 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
+        bReportes = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SistemaMIO");
@@ -106,7 +107,13 @@ public class MenuPrincipal extends javax.swing.JFrame
         jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "C", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
         jPanel1.add(jPanel8);
 
-        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "D", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Reportes", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
+        jPanel6.setLayout(new java.awt.GridLayout());
+
+        bReportes.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        bReportes.setText("Modulo de Reportes");
+        jPanel6.add(bReportes);
+
         jPanel1.add(jPanel6);
 
         panelPrincipal.add(jPanel1, java.awt.BorderLayout.CENTER);
@@ -120,6 +127,7 @@ public class MenuPrincipal extends javax.swing.JFrame
     public javax.swing.JButton bEmpleados;
     public javax.swing.JButton bEstacionRutas;
     public javax.swing.JButton bEstaciones;
+    public javax.swing.JButton bReportes;
     public javax.swing.JButton bRutas;
     public javax.swing.JButton bTurnos;
     private javax.swing.JLabel jLabel1;

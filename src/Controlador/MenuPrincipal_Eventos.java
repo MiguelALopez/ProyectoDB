@@ -10,6 +10,7 @@ import Vista.ModuloBuses;
 import Vista.ModuloEmpleados;
 import Vista.ModuloEstaciones;
 import Vista.ModuloEstacionesRutas;
+import Vista.ModuloReportes;
 import Vista.ModuloRutas;
 import Vista.ModuloTurnos;
 import java.awt.event.ActionEvent;
@@ -105,6 +106,20 @@ public class MenuPrincipal_Eventos
                 {
                     ModuloTurnos m = new ModuloTurnos();
                     ModuloTurnos_Eventos me = new ModuloTurnos_Eventos(m);
+                    m.setLocationRelativeTo(null);
+                    m.setVisible(true);
+                }                
+            }
+        );
+        
+        this.menuPrincipal.bReportes.addActionListener(
+            new ActionListener()
+            {
+                @Override
+                public void actionPerformed(ActionEvent ae) 
+                {
+                    ModuloReportes m = new ModuloReportes();
+                    ModuloReportes_Eventos me = new ModuloReportes_Eventos(m);
                     m.setLocationRelativeTo(null);
                     m.setVisible(true);
                 }                
