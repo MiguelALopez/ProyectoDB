@@ -32,15 +32,13 @@ public class ConexionBD
     public ConexionBD()
     {
         
-        url = "jdbc:postgresql://localhost:5432/proyectobd";
+        /*url = "jdbc:postgresql://localhost:5432/proyectobd";
         user = "postgres";
-        password = "postgresql";
+        password = "postgresql";*/
         
-        /*
-        url = "jdbc:postgresql://ec2-107-21-219-142.compute-1.amazonaws.com:5432/dbee7bg2hs2mfe?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory";
-        user = "tyjtckgxrzvutm";
-        password = "vkbANSMRviN0md_cSyXhrtjpjj";
-        */
+        url = "jdbc:postgresql://ec2-54-235-134-128.compute-1.amazonaws.com:5432/dc9hbo17sbqu82?ssl=true&sslfactory=org.postgresql.ssl.NonValidatingFactory";
+        user = "osyfvrgdyuecvl";
+        password = "ZBDjUO9iCnn7XlEW7yvowibngK";
     }
     
     /**
