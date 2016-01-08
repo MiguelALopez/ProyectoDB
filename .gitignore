@@ -22,3 +22,6 @@ ProyectoDB.iml
 /nbproject/
 /build.xml
 /manifest.mf
+
+# Archivos esternos
+*.pdf
