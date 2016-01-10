@@ -22,7 +22,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Camilo Ruiz Casanova
  */
-class ModuloEstacionesRutas_Eventos 
+public class ModuloEstacionesRutas_Eventos
 {
     private ModuloEstacionesRutas moduloEstacionesRutas;
 

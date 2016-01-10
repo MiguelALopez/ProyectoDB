@@ -19,7 +19,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Camilo Ruiz Casanova
  */
-class ModuloBuses_Eventos 
+public class ModuloBuses_Eventos
 {
     private ModuloBuses moduloBuses;
 

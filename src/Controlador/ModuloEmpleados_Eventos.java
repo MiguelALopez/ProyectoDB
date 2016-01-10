@@ -18,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Camilo Ruiz Casanova
  */
-class ModuloEmpleados_Eventos 
+public class ModuloEmpleados_Eventos
 {
     private ModuloEmpleados moduloEmpleados;
 

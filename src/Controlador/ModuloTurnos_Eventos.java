@@ -18,7 +18,7 @@ import javax.swing.table.DefaultTableModel;
  *
  * @author Camilo Ruiz Casanova
  */
-class ModuloTurnos_Eventos 
+public class ModuloTurnos_Eventos
 {
     private ModuloTurnos moduloTurnos;
 
