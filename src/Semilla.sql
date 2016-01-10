@@ -43,9 +43,13 @@ CREATE TABLE bus (
     FOREIGN KEY (ruta_nombre) REFERENCES ruta (ruta_nombre)
 );
 
+DROP SEQUENCE IF EXISTS tarjeta_seq CASCADE;
+CREATE SEQUENCE tarjeta_seq
+START WITH 100000;
+
 DROP TABLE IF EXISTS tarjeta CASCADE;
 CREATE TABLE tarjeta (
-    tarjeta_id              VARCHAR(15) NOT NULL,
+    tarjeta_id              VARCHAR DEFAULT nextval('tarjeta_seq'::regclass)  NOT NULL,
     tarjeta_saldo           DECIMAL     NOT NULL,
     tarjeta_estado          VARCHAR(30) NOT NULL,
     PRIMARY KEY (tarjeta_id)

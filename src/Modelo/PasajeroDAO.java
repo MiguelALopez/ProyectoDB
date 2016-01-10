@@ -11,10 +11,7 @@
  */
 package Modelo;
 
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Types;
+import java.sql.*;
 import java.util.ArrayList;
 
 public class PasajeroDAO {
@@ -146,8 +143,8 @@ public class PasajeroDAO {
         String query = "SELECT * FROM pasajero;";
 
         try {
-            PreparedStatement st = conexionBD.conexion.prepareStatement(query);
-            ResultSet tabla = st.executeQuery();
+            Statement st = conexionBD.conexion.createStatement();
+            ResultSet tabla = st.executeQuery(query);
 
             lista = new ArrayList<>();
 
