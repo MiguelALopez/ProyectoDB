@@ -22,6 +22,11 @@ public class TarjetaRutaDAO {
         this.conexionBD = new ConexionBD();
     }
 
+    /**
+     * Metodo encargado de insertar un registro de las rutas tomadas en la base de dato
+     * @param tarjetaRuta registro nuevo que se insertara en la base de datos
+     * @return retorna verdadero si la operacion se realizo con exito false de lo contrario
+     */
     public boolean insertarRegistro(TarjetaRuta tarjetaRuta){
         boolean exito = false;
 
@@ -44,13 +49,19 @@ public class TarjetaRutaDAO {
         return exito;
     }
 
-    public ArrayList<TarjetaRuta> consultarRegistros(){
+    /**
+     * Metodo encargado de consultar todas las rutas abordadas por un usuario
+     * @param tarjetaID identificacion de la tarjeta que se le desea hacer el seguimiento
+     * @return retorna un ArrayList con los registros de rutas abordadas
+     */
+    public ArrayList<TarjetaRuta> consultarRegistrosUsuario(String tarjetaID){
         ArrayList<TarjetaRuta> list = null;
-        String query = "SELECT * FROM tarjeta_ruta";
+        String query = "SELECT * FROM tarjeta_ruta WHERE tarjeta_id = ? ORDER BY tarjeta_ruta_fecha;";
         conexionBD.conectar();
         try {
-            Statement st = conexionBD.conexion.createStatement();
-            ResultSet tabla = st.executeQuery(query);
+            PreparedStatement st = conexionBD.conexion.prepareStatement(query);
+            st.setString(1, tarjetaID);
+            ResultSet tabla = st.executeQuery();
 
             list = new ArrayList<>();
 
