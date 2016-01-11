@@ -13,41 +13,114 @@ package Controlador;
 
 import Modelo.Pasajero;
 import Modelo.PasajeroDAO;
+import Modelo.TarjetaRuta;
+import Modelo.TarjetaRutaDAO;
 import Vista.ModuloUsuarios;
 
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.table.TableRowSorter;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
+import java.util.ArrayList;
 
 public class ModuloUsuarios_Eventos {
 
     private ModuloUsuarios moduloUsuarios;
+    private TableRowSorter sorter;
 
     public ModuloUsuarios_Eventos(final ModuloUsuarios moduloUsuarios){
         this.moduloUsuarios = moduloUsuarios;
+        sorter = new TableRowSorter<>(moduloUsuarios.tableUsuarios.getModel());
+        moduloUsuarios.tableUsuarios.setRowSorter(sorter);
 
         this.moduloUsuarios.bCrearUsuario.addActionListener(
-                e -> {
-                    crearUsuario();
+                new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        crearUsuario();
+                    }
                 }
         );
 
         this.moduloUsuarios.bModifBuscar.addActionListener(
-                e1 -> {
-                    modifBuscarUsuario();
+                new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        modifBuscarUsuario();
+                    }
                 }
         );
 
         this.moduloUsuarios.bModifCancelar.addActionListener(
-                e1 -> {
-                    limpiarCamposModificar();
-                    enableModificar(false);
+                new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        limpiarCamposModificar();
+                        enableModificar(false);
+                    }
                 }
         );
 
         this.moduloUsuarios.bModificarUsuario.addActionListener(
-                e -> {
-                    modificarUsuario();
+                new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        modificarUsuario();
+                    }
                 }
         );
+
+        this.moduloUsuarios.jTabbedPane1.addChangeListener(
+                new ChangeListener() {
+                    @Override
+                    public void stateChanged(ChangeEvent e) {
+                        JTabbedPane TabbedPane = (JTabbedPane) e.getSource();
+                        int tab = TabbedPane.getSelectedIndex();
+                        if (tab == 2) {
+                            consultarUsuarios();
+                        } else if (tab == 3) {
+
+                        }
+                    }
+                }
+        );
+
+        this.moduloUsuarios.bConsulActualizar.addActionListener(
+                new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        consultarUsuarios();
+                    }
+                }
+        );
+
+        this.moduloUsuarios.tConsulBuscarTarjeta.addKeyListener(
+                new KeyAdapter() {
+                    @Override
+                    public void keyReleased(KeyEvent e) {
+//                        super.keyReleased(e);
+//                        String cadena = (moduloUsuarios.tConsulBuscarTarjeta.getText());
+//                        moduloUsuarios.tConsulBuscarTarjeta.setText(cadena);
+//                        moduloUsuarios.repaint();
+                        filtro();
+                    }
+                }
+        );
+
+        this.moduloUsuarios.bHistoryBuscar.addActionListener(
+                new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        consutarHistorial();
+                    }
+                }
+        );
+
     }
 
     public void limpiarCamposCrear(){
@@ -197,6 +270,41 @@ public class ModuloUsuarios_Eventos {
                 enableModificar(false);
             }else {
                 JOptionPane.showMessageDialog(moduloUsuarios, "Error al modificar el usuario", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
+
+    public void consultarUsuarios(){
+        ArrayList<Pasajero> lista = new PasajeroDAO().consultarPasajeros();
+
+        if (lista!= null){
+            DefaultTableModel model = (DefaultTableModel) moduloUsuarios.tableUsuarios.getModel();
+            model.setRowCount(lista.size());
+
+            for (int i = 0; i < lista.size(); i++) {
+                model.setValueAt(lista.get(i).getId(),i,0);
+                model.setValueAt(lista.get(i).getTarjeta(),i,1);
+                model.setValueAt(lista.get(i).getNombre(),i,2);
+                model.setValueAt(lista.get(i).getTelefono(),i,3);
+                model.setValueAt(lista.get(i).getDireccion(),i,4);
+                model.setValueAt(lista.get(i).getEmail(),i,5);
+            }
+        }
+    }
+    public void filtro() {
+        sorter.setRowFilter(RowFilter.regexFilter(moduloUsuarios.tConsulBuscarTarjeta.getText(), 1));
+    }
+
+    public void consutarHistorial(){
+        ArrayList<TarjetaRuta> list = new TarjetaRutaDAO().consultarRegistrosUsuario(moduloUsuarios.tHistoryBuscarTarjeta.getText());
+        if (list != null){
+            DefaultTableModel model = (DefaultTableModel) moduloUsuarios.tableHistory.getModel();
+            model.setRowCount(list.size());
+
+            for (int i = 0; i < list.size(); i++) {
+                model.setValueAt(list.get(i).getRuta_nombre(),i,0);
+                model.setValueAt(list.get(i).getFecha(),i,1);
+                model.setValueAt(list.get(i).getHora(),i,2);
             }
         }
     }
