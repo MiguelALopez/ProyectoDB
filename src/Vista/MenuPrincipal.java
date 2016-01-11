@@ -48,6 +48,7 @@ public class MenuPrincipal extends javax.swing.JFrame
         jPanel4 = new javax.swing.JPanel();
         bTarjetas = new javax.swing.JButton();
         bUsuarios = new javax.swing.JButton();
+        jSeparator1 = new javax.swing.JSeparator();
         jPanel5 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
@@ -123,6 +124,11 @@ public class MenuPrincipal extends javax.swing.JFrame
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel4.add(bUsuarios, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.weighty = 1.0;
+        jPanel4.add(jSeparator1, gridBagConstraints);
 
         jPanel1.add(jPanel4);
 
@@ -166,6 +172,7 @@ public class MenuPrincipal extends javax.swing.JFrame
     private javax.swing.JPanel jPanel5;
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JSeparator jSeparator1;
     private javax.swing.JPanel panelPrincipal;
     // End of variables declaration//GEN-END:variables
 }

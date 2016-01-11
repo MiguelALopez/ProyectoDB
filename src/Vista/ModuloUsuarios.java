@@ -20,7 +20,7 @@ public class ModuloUsuarios extends javax.swing.JFrame {
         java.awt.GridBagConstraints gridBagConstraints;
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
-        jPanel1 = new javax.swing.JPanel();
+        panelCrear = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
         jLabel9 = new javax.swing.JLabel();
         tCrearCedula = new javax.swing.JTextField();
@@ -43,7 +43,7 @@ public class ModuloUsuarios extends javax.swing.JFrame {
         jLabel16 = new javax.swing.JLabel();
         jSeparator1 = new javax.swing.JSeparator();
         bCrearUsuario = new javax.swing.JButton();
-        jPanel2 = new javax.swing.JPanel();
+        panelModif = new javax.swing.JPanel();
         jLabel7 = new javax.swing.JLabel();
         jLabel17 = new javax.swing.JLabel();
         tModifCedula = new javax.swing.JTextField();
@@ -70,29 +70,25 @@ public class ModuloUsuarios extends javax.swing.JFrame {
         bModifBuscar = new javax.swing.JButton();
         tModifBuscarTarjeta = new javax.swing.JTextField();
         bModifCancelar = new javax.swing.JButton();
-        jPanel3 = new javax.swing.JPanel();
+        panelConsul = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tableUsuarios = new javax.swing.JTable();
         bConsulActualizar = new javax.swing.JButton();
         jLabel30 = new javax.swing.JLabel();
         tConsulBuscarTarjeta = new javax.swing.JTextField();
         bConsulBuscar = new javax.swing.JButton();
-        jPanel4 = new javax.swing.JPanel();
+        paneHistory = new javax.swing.JPanel();
         jLabel31 = new javax.swing.JLabel();
         bHistoryBuscar = new javax.swing.JButton();
         tHistoryBuscarTarjeta = new javax.swing.JTextField();
         jScrollPane2 = new javax.swing.JScrollPane();
         tableHistory = new javax.swing.JTable();
-        jLabel32 = new javax.swing.JLabel();
-        tHistoryNombre = new javax.swing.JTextField();
-        jLabel33 = new javax.swing.JLabel();
-        tHistoryCedula = new javax.swing.JTextField();
 
         setMinimumSize(new java.awt.Dimension(600, 480));
         setPreferredSize(new java.awt.Dimension(600, 480));
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
-        jPanel1.setLayout(new java.awt.GridBagLayout());
+        panelCrear.setLayout(new java.awt.GridBagLayout());
 
         jLabel1.setText("Cedula del Pasajero: ");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -100,7 +96,7 @@ public class ModuloUsuarios extends javax.swing.JFrame {
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(17, 5, 7, 0);
-        jPanel1.add(jLabel1, gridBagConstraints);
+        panelCrear.add(jLabel1, gridBagConstraints);
 
         jLabel9.setForeground(new java.awt.Color(255, 0, 0));
         jLabel9.setText("*");
@@ -108,14 +104,14 @@ public class ModuloUsuarios extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.insets = new java.awt.Insets(17, 10, 7, 0);
-        jPanel1.add(jLabel9, gridBagConstraints);
+        panelCrear.add(jLabel9, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(17, 10, 7, 10);
-        jPanel1.add(tCrearCedula, gridBagConstraints);
+        panelCrear.add(tCrearCedula, gridBagConstraints);
 
         jLabel2.setText("Nombre:");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -123,7 +119,7 @@ public class ModuloUsuarios extends javax.swing.JFrame {
         gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(7, 5, 7, 0);
-        jPanel1.add(jLabel2, gridBagConstraints);
+        panelCrear.add(jLabel2, gridBagConstraints);
 
         jLabel10.setForeground(new java.awt.Color(255, 0, 0));
         jLabel10.setText("*");
@@ -131,14 +127,14 @@ public class ModuloUsuarios extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.insets = new java.awt.Insets(7, 10, 7, 0);
-        jPanel1.add(jLabel10, gridBagConstraints);
+        panelCrear.add(jLabel10, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(7, 10, 7, 10);
-        jPanel1.add(tCrearNombre, gridBagConstraints);
+        panelCrear.add(tCrearNombre, gridBagConstraints);
 
         jLabel11.setForeground(new java.awt.Color(255, 0, 0));
         jLabel11.setText("*");
@@ -146,7 +142,7 @@ public class ModuloUsuarios extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.insets = new java.awt.Insets(7, 10, 7, 0);
-        jPanel1.add(jLabel11, gridBagConstraints);
+        panelCrear.add(jLabel11, gridBagConstraints);
 
         jLabel12.setForeground(new java.awt.Color(255, 0, 0));
         jLabel12.setText("*");
@@ -154,7 +150,7 @@ public class ModuloUsuarios extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.insets = new java.awt.Insets(7, 10, 7, 0);
-        jPanel1.add(jLabel12, gridBagConstraints);
+        panelCrear.add(jLabel12, gridBagConstraints);
 
         jLabel13.setForeground(new java.awt.Color(255, 0, 0));
         jLabel13.setText("*");
@@ -162,7 +158,7 @@ public class ModuloUsuarios extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.insets = new java.awt.Insets(7, 10, 7, 0);
-        jPanel1.add(jLabel13, gridBagConstraints);
+        panelCrear.add(jLabel13, gridBagConstraints);
 
         jLabel14.setForeground(new java.awt.Color(255, 0, 0));
         jLabel14.setText("*");
@@ -170,7 +166,7 @@ public class ModuloUsuarios extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 5;
         gridBagConstraints.insets = new java.awt.Insets(7, 10, 7, 0);
-        jPanel1.add(jLabel14, gridBagConstraints);
+        panelCrear.add(jLabel14, gridBagConstraints);
 
         jLabel3.setText("Telefono:");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -178,7 +174,7 @@ public class ModuloUsuarios extends javax.swing.JFrame {
         gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(7, 5, 7, 0);
-        jPanel1.add(jLabel3, gridBagConstraints);
+        panelCrear.add(jLabel3, gridBagConstraints);
 
         jLabel4.setText("Direccion:");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -186,7 +182,7 @@ public class ModuloUsuarios extends javax.swing.JFrame {
         gridBagConstraints.gridy = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(7, 5, 7, 0);
-        jPanel1.add(jLabel4, gridBagConstraints);
+        panelCrear.add(jLabel4, gridBagConstraints);
 
         jLabel5.setText("Email:");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -194,7 +190,7 @@ public class ModuloUsuarios extends javax.swing.JFrame {
         gridBagConstraints.gridy = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(7, 5, 7, 0);
-        jPanel1.add(jLabel5, gridBagConstraints);
+        panelCrear.add(jLabel5, gridBagConstraints);
 
         jLabel6.setText("ID Tarjeta");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -202,35 +198,35 @@ public class ModuloUsuarios extends javax.swing.JFrame {
         gridBagConstraints.gridy = 5;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(7, 5, 7, 0);
-        jPanel1.add(jLabel6, gridBagConstraints);
+        panelCrear.add(jLabel6, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(7, 10, 7, 10);
-        jPanel1.add(tCrearTelefono, gridBagConstraints);
+        panelCrear.add(tCrearTelefono, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(7, 10, 7, 10);
-        jPanel1.add(tCrearDireccion, gridBagConstraints);
+        panelCrear.add(tCrearDireccion, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(7, 10, 7, 10);
-        jPanel1.add(tCrearEmail, gridBagConstraints);
+        panelCrear.add(tCrearEmail, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(7, 10, 7, 10);
-        jPanel1.add(tCrearTarjeta, gridBagConstraints);
+        panelCrear.add(tCrearTarjeta, gridBagConstraints);
 
         jLabel15.setText("Campos Obligatorios");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -238,7 +234,7 @@ public class ModuloUsuarios extends javax.swing.JFrame {
         gridBagConstraints.gridy = 6;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(7, 5, 7, 0);
-        jPanel1.add(jLabel15, gridBagConstraints);
+        panelCrear.add(jLabel15, gridBagConstraints);
 
         jLabel16.setForeground(new java.awt.Color(255, 0, 0));
         jLabel16.setText("*");
@@ -246,14 +242,14 @@ public class ModuloUsuarios extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
         gridBagConstraints.insets = new java.awt.Insets(7, 10, 7, 0);
-        jPanel1.add(jLabel16, gridBagConstraints);
+        panelCrear.add(jLabel16, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 8;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weighty = 1.0;
-        jPanel1.add(jSeparator1, gridBagConstraints);
+        panelCrear.add(jSeparator1, gridBagConstraints);
 
         bCrearUsuario.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         bCrearUsuario.setText("Crear Usuario");
@@ -265,11 +261,11 @@ public class ModuloUsuarios extends javax.swing.JFrame {
         gridBagConstraints.ipadx = 5;
         gridBagConstraints.ipady = 5;
         gridBagConstraints.insets = new java.awt.Insets(20, 20, 20, 20);
-        jPanel1.add(bCrearUsuario, gridBagConstraints);
+        panelCrear.add(bCrearUsuario, gridBagConstraints);
 
-        jTabbedPane1.addTab("Crear Usuario", jPanel1);
+        jTabbedPane1.addTab("Crear Usuario", panelCrear);
 
-        jPanel2.setLayout(new java.awt.GridBagLayout());
+        panelModif.setLayout(new java.awt.GridBagLayout());
 
         jLabel7.setText("Cedula del Pasajero: ");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -277,7 +273,7 @@ public class ModuloUsuarios extends javax.swing.JFrame {
         gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(7, 5, 7, 0);
-        jPanel2.add(jLabel7, gridBagConstraints);
+        panelModif.add(jLabel7, gridBagConstraints);
 
         jLabel17.setForeground(new java.awt.Color(255, 0, 0));
         jLabel17.setText("*");
@@ -285,7 +281,7 @@ public class ModuloUsuarios extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.insets = new java.awt.Insets(7, 10, 7, 0);
-        jPanel2.add(jLabel17, gridBagConstraints);
+        panelModif.add(jLabel17, gridBagConstraints);
 
         tModifCedula.setEditable(false);
         tModifCedula.setEnabled(false);
@@ -296,7 +292,7 @@ public class ModuloUsuarios extends javax.swing.JFrame {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(7, 10, 7, 10);
-        jPanel2.add(tModifCedula, gridBagConstraints);
+        panelModif.add(tModifCedula, gridBagConstraints);
 
         jLabel8.setText("Nombre:");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -304,7 +300,7 @@ public class ModuloUsuarios extends javax.swing.JFrame {
         gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(7, 5, 7, 0);
-        jPanel2.add(jLabel8, gridBagConstraints);
+        panelModif.add(jLabel8, gridBagConstraints);
 
         jLabel18.setForeground(new java.awt.Color(255, 0, 0));
         jLabel18.setText("*");
@@ -312,7 +308,7 @@ public class ModuloUsuarios extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.insets = new java.awt.Insets(7, 10, 7, 0);
-        jPanel2.add(jLabel18, gridBagConstraints);
+        panelModif.add(jLabel18, gridBagConstraints);
 
         tModifNombre.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -322,7 +318,7 @@ public class ModuloUsuarios extends javax.swing.JFrame {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(7, 10, 7, 10);
-        jPanel2.add(tModifNombre, gridBagConstraints);
+        panelModif.add(tModifNombre, gridBagConstraints);
 
         jLabel19.setForeground(new java.awt.Color(255, 0, 0));
         jLabel19.setText("*");
@@ -330,7 +326,7 @@ public class ModuloUsuarios extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.insets = new java.awt.Insets(7, 10, 7, 0);
-        jPanel2.add(jLabel19, gridBagConstraints);
+        panelModif.add(jLabel19, gridBagConstraints);
 
         jLabel20.setForeground(new java.awt.Color(255, 0, 0));
         jLabel20.setText("*");
@@ -338,7 +334,7 @@ public class ModuloUsuarios extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.insets = new java.awt.Insets(7, 10, 7, 0);
-        jPanel2.add(jLabel20, gridBagConstraints);
+        panelModif.add(jLabel20, gridBagConstraints);
 
         jLabel21.setForeground(new java.awt.Color(255, 0, 0));
         jLabel21.setText("*");
@@ -346,7 +342,7 @@ public class ModuloUsuarios extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 5;
         gridBagConstraints.insets = new java.awt.Insets(7, 10, 7, 0);
-        jPanel2.add(jLabel21, gridBagConstraints);
+        panelModif.add(jLabel21, gridBagConstraints);
 
         jLabel22.setForeground(new java.awt.Color(255, 0, 0));
         jLabel22.setText("*");
@@ -354,7 +350,7 @@ public class ModuloUsuarios extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
         gridBagConstraints.insets = new java.awt.Insets(7, 10, 7, 0);
-        jPanel2.add(jLabel22, gridBagConstraints);
+        panelModif.add(jLabel22, gridBagConstraints);
 
         jLabel23.setText("Telefono:");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -362,7 +358,7 @@ public class ModuloUsuarios extends javax.swing.JFrame {
         gridBagConstraints.gridy = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(7, 5, 7, 0);
-        jPanel2.add(jLabel23, gridBagConstraints);
+        panelModif.add(jLabel23, gridBagConstraints);
 
         jLabel24.setText("Direccion:");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -370,7 +366,7 @@ public class ModuloUsuarios extends javax.swing.JFrame {
         gridBagConstraints.gridy = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(7, 5, 7, 0);
-        jPanel2.add(jLabel24, gridBagConstraints);
+        panelModif.add(jLabel24, gridBagConstraints);
 
         jLabel25.setText("Email:");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -378,7 +374,7 @@ public class ModuloUsuarios extends javax.swing.JFrame {
         gridBagConstraints.gridy = 5;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(7, 5, 7, 0);
-        jPanel2.add(jLabel25, gridBagConstraints);
+        panelModif.add(jLabel25, gridBagConstraints);
 
         jLabel26.setText("ID Tarjeta");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -386,7 +382,7 @@ public class ModuloUsuarios extends javax.swing.JFrame {
         gridBagConstraints.gridy = 6;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(7, 5, 7, 0);
-        jPanel2.add(jLabel26, gridBagConstraints);
+        panelModif.add(jLabel26, gridBagConstraints);
 
         tModifTelefono.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -396,7 +392,7 @@ public class ModuloUsuarios extends javax.swing.JFrame {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(7, 10, 7, 10);
-        jPanel2.add(tModifTelefono, gridBagConstraints);
+        panelModif.add(tModifTelefono, gridBagConstraints);
 
         tModifDireccion.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -406,7 +402,7 @@ public class ModuloUsuarios extends javax.swing.JFrame {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(7, 10, 7, 10);
-        jPanel2.add(tModifDireccion, gridBagConstraints);
+        panelModif.add(tModifDireccion, gridBagConstraints);
 
         tModifEmail.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -416,7 +412,7 @@ public class ModuloUsuarios extends javax.swing.JFrame {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(7, 10, 7, 10);
-        jPanel2.add(tModifEmail, gridBagConstraints);
+        panelModif.add(tModifEmail, gridBagConstraints);
 
         tModifTarjeta.setEditable(false);
         tModifTarjeta.setEnabled(false);
@@ -427,7 +423,7 @@ public class ModuloUsuarios extends javax.swing.JFrame {
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(7, 10, 7, 10);
-        jPanel2.add(tModifTarjeta, gridBagConstraints);
+        panelModif.add(tModifTarjeta, gridBagConstraints);
 
         jLabel27.setText("Campos Obligatorios");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -435,7 +431,7 @@ public class ModuloUsuarios extends javax.swing.JFrame {
         gridBagConstraints.gridy = 7;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(7, 5, 7, 0);
-        jPanel2.add(jLabel27, gridBagConstraints);
+        panelModif.add(jLabel27, gridBagConstraints);
 
         jLabel28.setForeground(new java.awt.Color(255, 0, 0));
         jLabel28.setText("*");
@@ -443,14 +439,14 @@ public class ModuloUsuarios extends javax.swing.JFrame {
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 7;
         gridBagConstraints.insets = new java.awt.Insets(7, 10, 7, 0);
-        jPanel2.add(jLabel28, gridBagConstraints);
+        panelModif.add(jLabel28, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 9;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weighty = 1.0;
-        jPanel2.add(jSeparator2, gridBagConstraints);
+        panelModif.add(jSeparator2, gridBagConstraints);
 
         bModificarUsuario.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         bModificarUsuario.setText("ModificarUsuario");
@@ -463,7 +459,7 @@ public class ModuloUsuarios extends javax.swing.JFrame {
         gridBagConstraints.ipady = 5;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 0, 20);
-        jPanel2.add(bModificarUsuario, gridBagConstraints);
+        panelModif.add(bModificarUsuario, gridBagConstraints);
 
         jLabel29.setText("Buscar Usuario (ID Tarjeta):");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -471,7 +467,7 @@ public class ModuloUsuarios extends javax.swing.JFrame {
         gridBagConstraints.gridy = 0;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.insets = new java.awt.Insets(17, 10, 7, 0);
-        jPanel2.add(jLabel29, gridBagConstraints);
+        panelModif.add(jLabel29, gridBagConstraints);
 
         bModifBuscar.setText("Buscar");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -480,14 +476,14 @@ public class ModuloUsuarios extends javax.swing.JFrame {
         gridBagConstraints.ipadx = 5;
         gridBagConstraints.ipady = 2;
         gridBagConstraints.insets = new java.awt.Insets(15, 0, 7, 10);
-        jPanel2.add(bModifBuscar, gridBagConstraints);
+        panelModif.add(bModifBuscar, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(17, 10, 7, 10);
-        jPanel2.add(tModifBuscarTarjeta, gridBagConstraints);
+        panelModif.add(tModifBuscarTarjeta, gridBagConstraints);
 
         bModifCancelar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         bModifCancelar.setText("Cancelar");
@@ -499,11 +495,11 @@ public class ModuloUsuarios extends javax.swing.JFrame {
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(10, 20, 0, 0);
-        jPanel2.add(bModifCancelar, gridBagConstraints);
+        panelModif.add(bModifCancelar, gridBagConstraints);
 
-        jTabbedPane1.addTab("Modificar Usuario", jPanel2);
+        jTabbedPane1.addTab("Modificar Usuario", panelModif);
 
-        jPanel3.setLayout(new java.awt.GridBagLayout());
+        panelConsul.setLayout(new java.awt.GridBagLayout());
 
         tableUsuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -529,7 +525,7 @@ public class ModuloUsuarios extends javax.swing.JFrame {
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        jPanel3.add(jScrollPane1, gridBagConstraints);
+        panelConsul.add(jScrollPane1, gridBagConstraints);
 
         bConsulActualizar.setFont(new java.awt.Font("Arial", 0, 14)); // NOI18N
         bConsulActualizar.setText("Actualizar");
@@ -541,21 +537,21 @@ public class ModuloUsuarios extends javax.swing.JFrame {
         gridBagConstraints.ipadx = 10;
         gridBagConstraints.ipady = 10;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        jPanel3.add(bConsulActualizar, gridBagConstraints);
+        panelConsul.add(bConsulActualizar, gridBagConstraints);
 
         jLabel30.setText("Buscar Usuario (ID Tarjeta): ");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 0);
-        jPanel3.add(jLabel30, gridBagConstraints);
+        panelConsul.add(jLabel30, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        jPanel3.add(tConsulBuscarTarjeta, gridBagConstraints);
+        panelConsul.add(tConsulBuscarTarjeta, gridBagConstraints);
 
         bConsulBuscar.setText("Buscar");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -564,37 +560,35 @@ public class ModuloUsuarios extends javax.swing.JFrame {
         gridBagConstraints.ipadx = 4;
         gridBagConstraints.ipady = 2;
         gridBagConstraints.insets = new java.awt.Insets(10, 5, 10, 10);
-        jPanel3.add(bConsulBuscar, gridBagConstraints);
+        panelConsul.add(bConsulBuscar, gridBagConstraints);
 
-        jTabbedPane1.addTab("Consultar Usuario", jPanel3);
+        jTabbedPane1.addTab("Consultar Usuario", panelConsul);
 
-        jPanel4.setLayout(new java.awt.GridBagLayout());
+        paneHistory.setLayout(new java.awt.GridBagLayout());
 
         jLabel31.setText("Buscar Usuario (ID Tarjeta):");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(17, 10, 7, 0);
-        jPanel4.add(jLabel31, gridBagConstraints);
+        paneHistory.add(jLabel31, gridBagConstraints);
 
         bHistoryBuscar.setText("Buscar");
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 5;
+        gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.ipadx = 5;
         gridBagConstraints.ipady = 2;
         gridBagConstraints.insets = new java.awt.Insets(17, 0, 7, 10);
-        jPanel4.add(bHistoryBuscar, gridBagConstraints);
+        paneHistory.add(bHistoryBuscar, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.gridwidth = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(17, 10, 7, 10);
-        jPanel4.add(tHistoryBuscarTarjeta, gridBagConstraints);
+        paneHistory.add(tHistoryBuscarTarjeta, gridBagConstraints);
 
         tableHistory.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -616,48 +610,15 @@ public class ModuloUsuarios extends javax.swing.JFrame {
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 6;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
-        jPanel4.add(jScrollPane2, gridBagConstraints);
+        paneHistory.add(jScrollPane2, gridBagConstraints);
 
-        jLabel32.setText("Nombre:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 0);
-        jPanel4.add(jLabel32, gridBagConstraints);
-
-        tHistoryNombre.setEditable(false);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 10);
-        jPanel4.add(tHistoryNombre, gridBagConstraints);
-
-        jLabel33.setText("Cedula:");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 1;
-        jPanel4.add(jLabel33, gridBagConstraints);
-
-        tHistoryCedula.setEditable(false);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(0, 10, 0, 10);
-        jPanel4.add(tHistoryCedula, gridBagConstraints);
-
-        jTabbedPane1.addTab("Historial Rutas", jPanel4);
+        jTabbedPane1.addTab("Historial Rutas", paneHistory);
 
         getContentPane().add(jTabbedPane1);
 
@@ -698,23 +659,21 @@ public class ModuloUsuarios extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel31;
-    private javax.swing.JLabel jLabel32;
-    private javax.swing.JLabel jLabel33;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
-    private javax.swing.JPanel jPanel1;
-    private javax.swing.JPanel jPanel2;
-    private javax.swing.JPanel jPanel3;
-    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JSeparator jSeparator1;
     private javax.swing.JSeparator jSeparator2;
-    private javax.swing.JTabbedPane jTabbedPane1;
+    public javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JPanel paneHistory;
+    public javax.swing.JPanel panelConsul;
+    private javax.swing.JPanel panelCrear;
+    private javax.swing.JPanel panelModif;
     public javax.swing.JTextField tConsulBuscarTarjeta;
     public javax.swing.JTextField tCrearCedula;
     public javax.swing.JTextField tCrearDireccion;
@@ -723,8 +682,6 @@ public class ModuloUsuarios extends javax.swing.JFrame {
     public javax.swing.JTextField tCrearTarjeta;
     public javax.swing.JTextField tCrearTelefono;
     public javax.swing.JTextField tHistoryBuscarTarjeta;
-    public javax.swing.JTextField tHistoryCedula;
-    public javax.swing.JTextField tHistoryNombre;
     public javax.swing.JTextField tModifBuscarTarjeta;
     public javax.swing.JTextField tModifCedula;
     public javax.swing.JTextField tModifDireccion;
