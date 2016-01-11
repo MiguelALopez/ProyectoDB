@@ -47,7 +47,7 @@ public class MenuPrincipal extends javax.swing.JFrame
         bTurnos = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         bTarjetas = new javax.swing.JButton();
-        jButton3 = new javax.swing.JButton();
+        bUsuarios = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
@@ -114,15 +114,15 @@ public class MenuPrincipal extends javax.swing.JFrame
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
         jPanel4.add(bTarjetas, gridBagConstraints);
 
-        jButton3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton3.setText("Modulo de Usuarios");
+        bUsuarios.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        bUsuarios.setText("Modulo de Usuarios");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
-        jPanel4.add(jButton3, gridBagConstraints);
+        jPanel4.add(bUsuarios, gridBagConstraints);
 
         jPanel1.add(jPanel4);
 
@@ -155,9 +155,9 @@ public class MenuPrincipal extends javax.swing.JFrame
     public javax.swing.JButton bEstaciones;
     public javax.swing.JButton bReportes;
     public javax.swing.JButton bRutas;
-    private javax.swing.JButton bTarjetas;
+    public javax.swing.JButton bTarjetas;
     public javax.swing.JButton bTurnos;
-    private javax.swing.JButton jButton3;
+    public javax.swing.JButton bUsuarios;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

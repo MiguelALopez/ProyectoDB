@@ -76,18 +76,17 @@ public class PasajeroDAO {
         try{
             PreparedStatement st = conexionBD.conexion.prepareStatement(query);
 
-            st.setString(1, pasajero.getId());
-            st.setString(2, pasajero.getNombre());
-            st.setString(3, pasajero.getTelefono());
-            st.setString(4, pasajero.getDireccion());
+            st.setString(1, pasajero.getNombre());
+            st.setString(2, pasajero.getTelefono());
+            st.setString(3, pasajero.getDireccion());
             if (pasajero.getEmail().isEmpty()){ // Por si no tiene email
-                st.setNull(5, Types.VARCHAR);
+                st.setNull(4, Types.VARCHAR);
             }else {
-                st.setString(5, pasajero.getEmail());
+                st.setString(4, pasajero.getEmail());
             }
-            st.setString(6, pasajero.getTarjeta());
+            st.setString(5, pasajero.getTarjeta());
 
-            int resultado = st.executeUpdate();
+            st.executeUpdate();
             exito = true;
         }catch (SQLException e){
             System.err.println("Error al Modificar un pasajero");
@@ -102,7 +101,7 @@ public class PasajeroDAO {
      * Metodo encargado de consultar un determinado pasajero atravez del id de su tarjeta
      * @param tarjeta_id identificacion de la terjeta del pasajero
      * @return retorna el pasajero asociado al id de la tarjeta, o null si no se encuentra
-     * @throws NullPointerException Puede ocasionar fallos si no se encuentra el pasajero
+     * @throws NullPointerException Puede retornar null si no se encuentra el pasajero
      */
     public Pasajero consultarPasajero(String tarjeta_id) throws NullPointerException{
         conexionBD.conectar();

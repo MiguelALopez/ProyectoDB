@@ -5,14 +5,8 @@
  */
 package Controlador;
 
-import Vista.MenuPrincipal;
-import Vista.ModuloBuses;
-import Vista.ModuloEmpleados;
-import Vista.ModuloEstaciones;
-import Vista.ModuloEstacionesRutas;
-import Vista.ModuloReportes;
-import Vista.ModuloRutas;
-import Vista.ModuloTurnos;
+import Vista.*;
+
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
@@ -110,6 +104,18 @@ public class MenuPrincipal_Eventos
                     m.setVisible(true);
                 }                
             }
+        );
+
+        this.menuPrincipal.bUsuarios.addActionListener(
+                new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        ModuloUsuarios m = new ModuloUsuarios();
+                        ModuloUsuarios_Eventos me = new ModuloUsuarios_Eventos(m);
+                        m.setLocationRelativeTo(null);
+                        m.setVisible(true);
+                    }
+                }
         );
         
         this.menuPrincipal.bReportes.addActionListener(
