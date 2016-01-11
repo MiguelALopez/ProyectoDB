@@ -137,3 +137,44 @@ CREATE TABLE estacion_ruta (
 --INSERT INTO solicitud (solicitud_motivo, solicitud_descripcion, solicitud_fecha, solicitud_estado)
 --VALUES ('ninguno', 'nada que hacer', '17-12-2015', 'nuevo');
 --SELECT solicitud_id FROM solicitud;
+
+-- Valores iniciales
+INSERT INTO ruta (ruta_nombre, ruta_descripcion) VALUES ('P10A', 'Ruta de norte a sur');
+INSERT INTO ruta (ruta_nombre, ruta_descripcion) VALUES ('P10B', 'Ruta de norte a sur');
+INSERT INTO ruta (ruta_nombre, ruta_descripcion) VALUES ('P10D', 'Ruta de norte a sur');
+INSERT INTO ruta (ruta_nombre, ruta_descripcion) VALUES ('T31', 'Ruta de norte a sur');
+INSERT INTO ruta (ruta_nombre, ruta_descripcion) VALUES ('P40B', 'Ruta de norte a sur');
+INSERT INTO ruta (ruta_nombre, ruta_descripcion) VALUES ('P40A', 'Ruta de norte a sur');
+
+INSERT INTO tarjeta (tarjeta_id, tarjeta_saldo, tarjeta_estado) VALUES (100000, 1000, 'ACTIVA');
+INSERT INTO tarjeta (tarjeta_id, tarjeta_saldo, tarjeta_estado) VALUES (100001, 1000, 'ACTIVA');
+INSERT INTO tarjeta (tarjeta_id, tarjeta_saldo, tarjeta_estado) VALUES (100002, 1000, 'ACTIVA');
+INSERT INTO tarjeta (tarjeta_id, tarjeta_saldo, tarjeta_estado) VALUES (100003, 1000, 'ACTIVA');
+INSERT INTO tarjeta (tarjeta_id, tarjeta_saldo, tarjeta_estado) VALUES (100004, 1000, 'ACTIVA');
+INSERT INTO tarjeta (tarjeta_id, tarjeta_saldo, tarjeta_estado) VALUES (100005, 1000, 'ACTIVA');
+
+INSERT INTO pasajero (pasajero_id, pasajero_nombre, pasajero_telefono, pasajero_direccion, pasajero_email, tarjeta_id)
+VALUES ('123', 'pepito1', '1234567', 'Carrera', 'no tengo', 100000);
+INSERT INTO pasajero (pasajero_id, pasajero_nombre, pasajero_telefono, pasajero_direccion, pasajero_email, tarjeta_id)
+VALUES ('124', 'pepito2', '1234567', 'Carrera', 'no tengo', 100001);
+INSERT INTO pasajero (pasajero_id, pasajero_nombre, pasajero_telefono, pasajero_direccion, pasajero_email, tarjeta_id)
+VALUES ('125', 'pepito3', '1234567', 'Carrera', 'no tengo', 100002);
+INSERT INTO pasajero (pasajero_id, pasajero_nombre, pasajero_telefono, pasajero_direccion, pasajero_email, tarjeta_id)
+VALUES ('126', 'pepito4', '1234567', 'Carrera', 'no tengo', 100003);
+INSERT INTO pasajero (pasajero_id, pasajero_nombre, pasajero_telefono, pasajero_direccion, pasajero_email, tarjeta_id)
+VALUES ('127', 'pepito5', '1234567', 'Carrera', 'no tengo', 100004);
+
+INSERT INTO tarjeta_ruta (tarjeta_id, ruta_nombre, tarjeta_ruta_fecha, tarjeta_ruta_hora)
+VALUES ('100000','P10A','2015-12-15','12:45:00');
+INSERT INTO tarjeta_ruta (tarjeta_id, ruta_nombre, tarjeta_ruta_fecha, tarjeta_ruta_hora)
+VALUES ('100000','P10B','2015-12-17','12:45:00');
+INSERT INTO tarjeta_ruta (tarjeta_id, ruta_nombre, tarjeta_ruta_fecha, tarjeta_ruta_hora)
+VALUES ('100000','T31','2015-12-16','12:45:00');
+INSERT INTO tarjeta_ruta (tarjeta_id, ruta_nombre, tarjeta_ruta_fecha, tarjeta_ruta_hora)
+VALUES ('100000','P10A','2015-12-18','12:45:00');
+INSERT INTO tarjeta_ruta (tarjeta_id, ruta_nombre, tarjeta_ruta_fecha, tarjeta_ruta_hora)
+VALUES ('100001','P10B','2015-12-20','12:45:00');
+INSERT INTO tarjeta_ruta (tarjeta_id, ruta_nombre, tarjeta_ruta_fecha, tarjeta_ruta_hora)
+VALUES ('100001','P10B','2015-12-19','12:45:00');
+INSERT INTO tarjeta_ruta (tarjeta_id, ruta_nombre, tarjeta_ruta_fecha, tarjeta_ruta_hora)
+VALUES ('100001','P10D','2015-12-11','12:45:00');
