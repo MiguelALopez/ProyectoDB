@@ -1,14 +1,16 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * ********************************************
+ * Autor: Camilo Ruiz Casanova - 1324486
+ * Autor: Miguel Angel Lopez - 1326691
+ * Autor: Andres Felipe Polanco - 1324539
+ * Fecha: 10-ene-2016
+ * Nombre del Archivo: Pasajero.java
+ * Plan: Ingeniería de Sistemas - 3743
+ * Institución Educativa: Universidad del Valle (Cali - Colombia)
+ * *********************************************
  */
 package Modelo;
 
-/**
- *
- * @author Camilo Ruiz Casanova
- */
 public class Pasajero
 {
     private String id;
@@ -18,6 +20,15 @@ public class Pasajero
     private String email;
     private String tarjeta;
 
+    /**
+     * Constructor usado para simular a un pasajero registrado en el sistema MIO
+     * @param id identificacion del pasajero (Cedula)
+     * @param nombre nombre del pasajero
+     * @param telefono telefono del pasajero
+     * @param direccion direccion del pasajero
+     * @param email email del pasajero
+     * @param tarjeta numero de la tarjeta asignada al pasajero
+     */
     public Pasajero(String id, String nombre, String telefono, String direccion, String email, String tarjeta) 
     {
         this.id = id;

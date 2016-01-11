@@ -1,22 +1,29 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * ********************************************
+ * Autor: Camilo Ruiz Casanova - 1324486
+ * Autor: Miguel Angel Lopez - 1326691
+ * Autor: Andres Felipe Polanco - 1324539
+ * Fecha: 11-ene-2016
+ * Nombre del Archivo: Tarjeta.java
+ * Plan: Ingeniería de Sistemas - 3743
+ * Institución Educativa: Universidad del Valle (Cali - Colombia)
+ * *********************************************
  */
 package Modelo;
 
-/**
- *
- * @author Camilo Ruiz Casanova
- */
 public class Tarjeta 
 {
     private String id;
     private double saldo;
     private String estado;
 
-    public Tarjeta(String id, double saldo, String estado) 
-    {
+    /**
+     * Constructor usado para simular una tarjeta del sistema MIO
+     * @param id numero de identificacion de la tarjeta
+     * @param saldo saldo de la tarjeta
+     * @param estado estado de la tarjeta "ACTIVA" o "INACTIVA"
+     */
+    public Tarjeta(String id, double saldo, String estado){
         this.id = id;
         this.saldo = saldo;
         this.estado = estado;
