@@ -18,7 +18,7 @@ public class SoftwareMio
 {
     public static void main(String[] args) 
     {
-        setLookAndFeel();        
+        setLookAndFeel();
         MenuPrincipal menuPrincipal = new MenuPrincipal();
         MenuPrincipal_Eventos menuPrincipal_Eventos = new MenuPrincipal_Eventos(menuPrincipal);
     }
@@ -26,7 +26,7 @@ public class SoftwareMio
     public static void setLookAndFeel() {
         try {
             for (javax.swing.UIManager.LookAndFeelInfo info : javax.swing.UIManager.getInstalledLookAndFeels()) {
-                System.out.println(info.getClassName());
+//                System.out.println(info.getClassName());
                 if ("com.sun.java.swing.plaf.windows.WindowsLookAndFeel".equals(info.getClassName()) || "com.sun.java.swing.plaf.gtk.GTKLookAndFeel".equals(info.getClassName())) {   
                    javax.swing.UIManager.setLookAndFeel(info.getClassName());
                    break;

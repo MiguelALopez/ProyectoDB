@@ -32,6 +32,7 @@ public class MenuPrincipal extends javax.swing.JFrame
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
+        java.awt.GridBagConstraints gridBagConstraints;
 
         panelPrincipal = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -45,6 +46,8 @@ public class MenuPrincipal extends javax.swing.JFrame
         bEmpleados = new javax.swing.JButton();
         bTurnos = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
+        bTarjetas = new javax.swing.JButton();
+        jButton3 = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
         jPanel6 = new javax.swing.JPanel();
@@ -98,17 +101,39 @@ public class MenuPrincipal extends javax.swing.JFrame
 
         jPanel1.add(jPanel3);
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "A", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Modulo de Tarjetas y Usuarios", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
+        jPanel4.setLayout(new java.awt.GridBagLayout());
+
+        bTarjetas.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        bTarjetas.setText("Modulo de Tajetas");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        jPanel4.add(bTarjetas, gridBagConstraints);
+
+        jButton3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jButton3.setText("Modulo de Usuarios");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 5);
+        jPanel4.add(jButton3, gridBagConstraints);
+
         jPanel1.add(jPanel4);
 
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "B", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Modulo de Venta y Recarga de Tarjetas", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
         jPanel1.add(jPanel5);
 
         jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "C", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
         jPanel1.add(jPanel8);
 
         jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Reportes", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
-        jPanel6.setLayout(new java.awt.GridLayout());
+        jPanel6.setLayout(new java.awt.GridLayout(1, 0));
 
         bReportes.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         bReportes.setText("Modulo de Reportes");
@@ -122,6 +147,7 @@ public class MenuPrincipal extends javax.swing.JFrame
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton bBuses;
     public javax.swing.JButton bEmpleados;
@@ -129,7 +155,9 @@ public class MenuPrincipal extends javax.swing.JFrame
     public javax.swing.JButton bEstaciones;
     public javax.swing.JButton bReportes;
     public javax.swing.JButton bRutas;
+    private javax.swing.JButton bTarjetas;
     public javax.swing.JButton bTurnos;
+    private javax.swing.JButton jButton3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
