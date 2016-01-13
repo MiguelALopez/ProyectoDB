@@ -56,8 +56,13 @@ public class EstacionDAO
         {
             Logger.getLogger(EstacionDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        conexionBD.cerrarConexion();
+        finally
+        {
+            if (conexionBD != null)
+            {
+                conexionBD.cerrarConexion();
+            }
+        }
         
         return exito;
     }
@@ -96,8 +101,13 @@ public class EstacionDAO
         {
             Logger.getLogger(EstacionDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        conexionBD.cerrarConexion();
+        finally
+        {
+            if (conexionBD != null)
+            {
+                conexionBD.cerrarConexion();
+            }
+        }
         
         return exito;
     }
@@ -136,8 +146,13 @@ public class EstacionDAO
         {
             Logger.getLogger(EstacionDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        conexionBD.cerrarConexion();
+        finally
+        {
+            if (conexionBD != null)
+            {
+                conexionBD.cerrarConexion();
+            }
+        }
         
         return exito;
     }
@@ -165,8 +180,13 @@ public class EstacionDAO
         {
             Logger.getLogger(EstacionDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        conexionBD.cerrarConexion();
+        finally
+        {
+            if (conexionBD != null)
+            {
+                conexionBD.cerrarConexion();
+            }
+        }
         
         return estacion;
     }
@@ -194,8 +214,13 @@ public class EstacionDAO
         {
             Logger.getLogger(EstacionDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        conexionBD.cerrarConexion();
+        finally
+        {
+            if (conexionBD != null)
+            {
+                conexionBD.cerrarConexion();
+            }
+        }
         
         return lista;
     }
@@ -225,8 +250,13 @@ public class EstacionDAO
         {
             Logger.getLogger(EstacionDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        conexionBD.cerrarConexion();
+        finally
+        {
+            if (conexionBD != null)
+            {
+                conexionBD.cerrarConexion();
+            }
+        }
         
         return lista;
     }

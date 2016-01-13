@@ -62,8 +62,13 @@ public class EmpleadoDAO
         {
             Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        conexionBD.cerrarConexion();
+        finally
+        {
+            if (conexionBD != null)
+            {
+                conexionBD.cerrarConexion();
+            }
+        }
         
         return exito;
     }
@@ -112,8 +117,13 @@ public class EmpleadoDAO
         {
             Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        conexionBD.cerrarConexion();
+        finally
+        {
+            if (conexionBD != null)
+            {
+                conexionBD.cerrarConexion();
+            }
+        }
         
         return exito;
     }
@@ -154,8 +164,13 @@ public class EmpleadoDAO
         {
             Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        conexionBD.cerrarConexion();
+        finally
+        {
+            if (conexionBD != null)
+            {
+                conexionBD.cerrarConexion();
+            }
+        }
         
         return exito;
     }
@@ -184,8 +199,13 @@ public class EmpleadoDAO
         {
             Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        conexionBD.cerrarConexion();
+        finally
+        {
+            if (conexionBD != null)
+            {
+                conexionBD.cerrarConexion();
+            }
+        }
         
         return empleado;
     }
@@ -214,8 +234,13 @@ public class EmpleadoDAO
         {
             Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        conexionBD.cerrarConexion();
+        finally
+        {
+            if (conexionBD != null)
+            {
+                conexionBD.cerrarConexion();
+            }
+        }
         
         return lista;
     }

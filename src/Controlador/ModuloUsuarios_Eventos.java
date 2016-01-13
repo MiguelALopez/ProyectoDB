@@ -116,7 +116,7 @@ public class ModuloUsuarios_Eventos {
                 new ActionListener() {
                     @Override
                     public void actionPerformed(ActionEvent e) {
-                        consutarHistorial();
+                        consultarHistorial();
                     }
                 }
         );
@@ -295,7 +295,7 @@ public class ModuloUsuarios_Eventos {
         sorter.setRowFilter(RowFilter.regexFilter(moduloUsuarios.tConsulBuscarTarjeta.getText(), 1));
     }
 
-    public void consutarHistorial(){
+    public void consultarHistorial(){
         ArrayList<TarjetaRuta> list = new TarjetaRutaDAO().consultarRegistrosUsuario(moduloUsuarios.tHistoryBuscarTarjeta.getText());
         if (list != null){
             DefaultTableModel model = (DefaultTableModel) moduloUsuarios.tableHistory.getModel();

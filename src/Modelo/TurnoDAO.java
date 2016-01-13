@@ -48,8 +48,13 @@ public class TurnoDAO
         {
             Logger.getLogger(TurnoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        conexionBD.cerrarConexion();
+        finally
+        {
+            if (conexionBD != null)
+            {
+                conexionBD.cerrarConexion();
+            }
+        }
         
         return exito;
     }
@@ -80,8 +85,13 @@ public class TurnoDAO
         {
             Logger.getLogger(TurnoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        conexionBD.cerrarConexion();
+        finally
+        {
+            if (conexionBD != null)
+            {
+                conexionBD.cerrarConexion();
+            }
+        }
         
         return exito;
     }
@@ -107,8 +117,13 @@ public class TurnoDAO
         {
             Logger.getLogger(TurnoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        conexionBD.cerrarConexion();
+        finally
+        {
+            if (conexionBD != null)
+            {
+                conexionBD.cerrarConexion();
+            }
+        }
         
         return exito;
     }
@@ -133,8 +148,13 @@ public class TurnoDAO
         {
             Logger.getLogger(TurnoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        conexionBD.cerrarConexion();
+        finally
+        {
+            if (conexionBD != null)
+            {
+                conexionBD.cerrarConexion();
+            }
+        }
         
         return exito;
     }
@@ -162,8 +182,13 @@ public class TurnoDAO
         {
             Logger.getLogger(TurnoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        conexionBD.cerrarConexion();
+        finally
+        {
+            if (conexionBD != null)
+            {
+                conexionBD.cerrarConexion();
+            }
+        }
         
         return turno;
     }
@@ -192,8 +217,13 @@ public class TurnoDAO
         {
             Logger.getLogger(TurnoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        conexionBD.cerrarConexion();
+        finally
+        {
+            if (conexionBD != null)
+            {
+                conexionBD.cerrarConexion();
+            }
+        }
         
         return t;
     }
@@ -221,8 +251,13 @@ public class TurnoDAO
         {
             Logger.getLogger(TurnoDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        conexionBD.cerrarConexion();
+        finally
+        {
+            if (conexionBD != null)
+            {
+                conexionBD.cerrarConexion();
+            }
+        }
         
         return lista;
     }

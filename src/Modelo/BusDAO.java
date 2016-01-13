@@ -57,8 +57,13 @@ public class BusDAO
         {
             Logger.getLogger(BusDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        conexionBD.cerrarConexion();
+        finally
+        {
+            if (conexionBD != null)
+            {
+                conexionBD.cerrarConexion();
+            }
+        }
         
         return exito;
     }
@@ -99,8 +104,13 @@ public class BusDAO
         {
             Logger.getLogger(BusDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        conexionBD.cerrarConexion();
+        finally
+        {
+            if (conexionBD != null)
+            {
+                conexionBD.cerrarConexion();
+            }
+        }
         
         return exito;
     }
@@ -129,8 +139,13 @@ public class BusDAO
         {
             Logger.getLogger(BusDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        conexionBD.cerrarConexion();
+        finally
+        {
+            if (conexionBD != null)
+            {
+                conexionBD.cerrarConexion();
+            }
+        }
         
         return exito;
     }
@@ -158,8 +173,13 @@ public class BusDAO
         {
             Logger.getLogger(BusDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        conexionBD.cerrarConexion();
+        finally
+        {
+            if (conexionBD != null)
+            {
+                conexionBD.cerrarConexion();
+            }
+        }
         
         return bus;
     }
@@ -187,8 +207,13 @@ public class BusDAO
         {
             Logger.getLogger(BusDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        conexionBD.cerrarConexion();
+        finally
+        {
+            if (conexionBD != null)
+            {
+                conexionBD.cerrarConexion();
+            }
+        }
         
         return lista;
     }
@@ -217,8 +242,13 @@ public class BusDAO
         {
             Logger.getLogger(BusDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        conexionBD.cerrarConexion();
+        finally
+        {
+            if (conexionBD != null)
+            {
+                conexionBD.cerrarConexion();
+            }
+        }
         
         return lista;
     }

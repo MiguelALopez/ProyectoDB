@@ -27,8 +27,7 @@ public class ReportesDAO
     
     public ArrayList<Pasajero> reporte1()
     {
-        //return new PasajeroDAO().consultarPasajeros();
-        return null;
+        return new PasajeroDAO().consultarPasajeros();
     }
     
     public ArrayList<ArrayList<String>> reporte2(String fecha)
@@ -61,8 +60,13 @@ public class ReportesDAO
         {
             Logger.getLogger(ReportesDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        conexionBD.cerrarConexion();
+        finally
+        {
+            if (conexionBD != null)
+            {
+                conexionBD.cerrarConexion();
+            }
+        }
         
         return lista;
     }
@@ -97,8 +101,13 @@ public class ReportesDAO
         {
             Logger.getLogger(ReportesDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        conexionBD.cerrarConexion();
+        finally
+        {
+            if (conexionBD != null)
+            {
+                conexionBD.cerrarConexion();
+            }
+        }
         
         return lista;
     }
@@ -150,8 +159,13 @@ public class ReportesDAO
         {
             Logger.getLogger(ReportesDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        conexionBD.cerrarConexion();
+        finally
+        {
+            if (conexionBD != null)
+            {
+                conexionBD.cerrarConexion();
+            }
+        }
         
         return lista;
     }
@@ -210,8 +224,13 @@ public class ReportesDAO
         {
             Logger.getLogger(ReportesDAO.class.getName()).log(Level.SEVERE, null, ex);
         }
-        
-        conexionBD.cerrarConexion();
+        finally
+        {
+            if (conexionBD != null)
+            {
+                conexionBD.cerrarConexion();
+            }
+        }
         
         return lista;
     }

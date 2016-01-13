@@ -1,6 +1,5 @@
 package Vista;
 
-import javax.swing.table.DefaultTableModel;
 
 public class ModuloUsuarios extends javax.swing.JFrame {
     
