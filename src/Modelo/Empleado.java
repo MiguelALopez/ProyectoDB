@@ -19,8 +19,9 @@ public class Empleado
     private String cargo;
     private double salario;
     private String jefe;
+    private boolean estado;
 
-    public Empleado(String id, String nombre, String telefono, String direccion, String email, String cargo, double salario, String jefe) 
+    public Empleado(String id, String nombre, String telefono, String direccion, String email, String cargo, double salario, String jefe, boolean estado) 
     {
         this.id = id;
         this.nombre = nombre;
@@ -38,6 +39,8 @@ public class Empleado
         {
             this.jefe  = "";
         }
+        
+        this.estado = estado;
     }
 
     public String getId() {
@@ -102,5 +105,20 @@ public class Empleado
 
     public void setJefe(String jefe) {
         this.jefe = jefe;
+    }
+
+    public boolean isEstado() {
+        return estado;
+    }
+    
+    public String getEstado() {
+        if (this.estado)
+            return "Activo";
+        else
+            return "Inactivo";
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
     }
 }

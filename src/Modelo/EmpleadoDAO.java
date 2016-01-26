@@ -32,7 +32,8 @@ public class EmpleadoDAO
         boolean exito = false;
         
         String query = "INSERT INTO empleado (empleado_id, empleado_nombre, empleado_telefono, empleado_direccion, "
-                + "empleado_email, empleado_cargo, empleado_salario, jefe_empleado_id) VALUES (?,?,?,?,?,?,?,?);";
+                + "empleado_email, empleado_cargo, empleado_salario, jefe_empleado_id, empleado_estado) "
+                + "VALUES (?,?,?,?,?,?,?,?,?);";
         
         try
         {
@@ -54,6 +55,8 @@ public class EmpleadoDAO
             {
                 st.setString(8, empleado.getJefe());
             }
+            
+            st.setBoolean(9, empleado.isEstado());
             
             int resultado = st.executeUpdate();
             exito = true;
@@ -86,14 +89,14 @@ public class EmpleadoDAO
                 + "empleado_email = ?, "
                 + "empleado_cargo = ?, "
                 + "empleado_salario = ?, "
-                + "jefe_empleado_id = ?"
+                + "jefe_empleado_id = ?, "
+                + "empleado_estado = ? "
                 + "WHERE empleado_id = ?;";
         
         try
         {
             PreparedStatement st = conexionBD.conexion.prepareStatement(query);
             
-            st.setString(8, empleado.getId());
             st.setString(1, empleado.getNombre());
             st.setString(2, empleado.getTelefono());
             st.setString(3, empleado.getDireccion());
@@ -109,6 +112,9 @@ public class EmpleadoDAO
             {
                 st.setString(7, empleado.getJefe());
             }
+            
+            st.setBoolean(8, empleado.isEstado());            
+            st.setString(9, empleado.getId());
             
             int resultado = st.executeUpdate();
             exito = true;
@@ -133,29 +139,28 @@ public class EmpleadoDAO
         conexionBD.conectar();
         boolean exito = false;
         
-        String query1 = "UPDATE estacion SET director_empleado_id = ? WHERE director_empleado_id = ?;";
+        String query = "UPDATE empleado SET empleado_estado = ? WHERE empleado_id = ?;";
+        String query1 = "UPDATE estacion SET director_empleado_id = NULL WHERE director_empleado_id = ?;";
         String query2 = "DELETE FROM turno WHERE conductor_empleado_id = ?;";
-        String query3 = "UPDATE empleado SET jefe_empleado_id = ? WHERE jefe_empleado_id = ?;";
-        String query = "DELETE FROM empleado WHERE empleado_id = ?;";
+        String query3 = "UPDATE empleado SET jefe_empleado_id = NULL WHERE jefe_empleado_id = ?;";        
         
         try
         {
-            PreparedStatement st = conexionBD.conexion.prepareStatement(query1);
-            st.setNull(1, java.sql.Types.VARCHAR);
+            PreparedStatement st = conexionBD.conexion.prepareStatement(query);
+            st.setBoolean(1, false);
             st.setString(2, id);
             int resultado = st.executeUpdate();
+            
+            st = conexionBD.conexion.prepareStatement(query1);
+            st.setString(1, id);
+            resultado = st.executeUpdate();
             
             st = conexionBD.conexion.prepareStatement(query2);
             st.setString(1, id);
             resultado = st.executeUpdate();
             
             st = conexionBD.conexion.prepareStatement(query3);
-            st.setNull(1, java.sql.Types.VARCHAR);
-            st.setString(2, id);
-            resultado = st.executeUpdate();
-            
-            st = conexionBD.conexion.prepareStatement(query);
-            st.setString(1, id);            
+            st.setString(1, id);
             resultado = st.executeUpdate();
             
             exito = true;
@@ -192,7 +197,7 @@ public class EmpleadoDAO
             if (tabla.next())
             {
                 empleado = new Empleado(tabla.getString(1), tabla.getString(2), tabla.getString(3), tabla.getString(4),
-                    tabla.getString(5), tabla.getString(6), tabla.getDouble(7), tabla.getString(8));
+                    tabla.getString(5), tabla.getString(6), tabla.getDouble(7), tabla.getString(8), tabla.getBoolean(9));
             }
         } 
         catch (SQLException ex) 
@@ -219,15 +224,50 @@ public class EmpleadoDAO
         
         try
         {
-            Statement st = conexionBD.conexion.createStatement();
-            ResultSet tabla = st.executeQuery(query);
+            PreparedStatement st = conexionBD.conexion.prepareStatement(query);
+            ResultSet tabla = st.executeQuery();
             
             lista = new ArrayList();
             
             while (tabla.next())
             {
                 lista.add(new Empleado(tabla.getString(1), tabla.getString(2), tabla.getString(3), tabla.getString(4),
-                    tabla.getString(5), tabla.getString(6), tabla.getDouble(7), tabla.getString(8)));
+                    tabla.getString(5), tabla.getString(6), tabla.getDouble(7), tabla.getString(8), tabla.getBoolean(9)));
+            }        
+        } 
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(EmpleadoDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally
+        {
+            if (conexionBD != null)
+            {
+                conexionBD.cerrarConexion();
+            }
+        }
+        
+        return lista;
+    }
+    
+    public ArrayList<Empleado> consultarDirectores()
+    {
+        conexionBD.conectar();        
+        ArrayList<Empleado> lista = null;
+        
+        String query = "SELECT * FROM empleado WHERE empleado_cargo = 'Director' AND empleado_estado = true;";
+        
+        try
+        {
+            PreparedStatement st = conexionBD.conexion.prepareStatement(query);
+            ResultSet tabla = st.executeQuery();
+            
+            lista = new ArrayList();
+            
+            while (tabla.next())
+            {
+                lista.add(new Empleado(tabla.getString(1), tabla.getString(2), tabla.getString(3), tabla.getString(4),
+                    tabla.getString(5), tabla.getString(6), tabla.getDouble(7), tabla.getString(8), tabla.getBoolean(9)));
             }        
         } 
         catch (SQLException ex) 

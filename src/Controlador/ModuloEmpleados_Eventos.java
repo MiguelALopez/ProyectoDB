@@ -10,6 +10,8 @@ import Modelo.EmpleadoDAO;
 import Vista.ModuloEmpleados;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -48,6 +50,39 @@ public class ModuloEmpleados_Eventos
             }
         );
         
+        this.moduloEmpleados.bSeleccionCrear.addActionListener(
+            new ActionListener()
+            {
+                @Override
+                public void actionPerformed(ActionEvent ae) 
+                {
+                    consultarJefesCrear();
+                }
+            }
+        );
+        
+        this.moduloEmpleados.bSeleccionarCrear.addActionListener(
+            new ActionListener()
+            {
+                @Override
+                public void actionPerformed(ActionEvent ae) 
+                {
+                    seleccionarJefeCrear();
+                }
+            }
+        );
+        
+        this.moduloEmpleados.bCancelarCrear.addActionListener(
+            new ActionListener()
+            {
+                @Override
+                public void actionPerformed(ActionEvent ae) 
+                {
+                    cerrarSeleccionCrear();
+                }
+            }
+        );
+        
         this.moduloEmpleados.bModificarBuscar.addActionListener(
             new ActionListener()
             {
@@ -77,6 +112,39 @@ public class ModuloEmpleados_Eventos
                 public void actionPerformed(ActionEvent ae) 
                 {
                     verificarSeleccionModificar();
+                }
+            }
+        );
+        
+        this.moduloEmpleados.bSeleccionModificar.addActionListener(
+            new ActionListener()
+            {
+                @Override
+                public void actionPerformed(ActionEvent ae) 
+                {
+                    consultarJefesModificar();
+                }
+            }
+        );
+        
+        this.moduloEmpleados.bSeleccionarModificar.addActionListener(
+            new ActionListener()
+            {
+                @Override
+                public void actionPerformed(ActionEvent ae) 
+                {
+                    seleccionarJefeModificar();
+                }
+            }
+        );
+        
+        this.moduloEmpleados.bCancelarModificar.addActionListener(
+            new ActionListener()
+            {
+                @Override
+                public void actionPerformed(ActionEvent ae) 
+                {
+                    cerrarSeleccionModificar();
                 }
             }
         );
@@ -113,6 +181,41 @@ public class ModuloEmpleados_Eventos
                 }
             }
         );
+        
+        this.moduloEmpleados.addWindowListener(
+            new WindowListener()
+            {
+                @Override
+                public void windowOpened(WindowEvent e) {
+                }
+
+                @Override
+                public void windowClosing(WindowEvent e) 
+                {
+                    cerrarVentana();
+                }
+
+                @Override
+                public void windowClosed(WindowEvent e) {
+                }
+
+                @Override
+                public void windowIconified(WindowEvent e) {
+                }
+
+                @Override
+                public void windowDeiconified(WindowEvent e) {
+                }
+
+                @Override
+                public void windowActivated(WindowEvent e) {
+                }
+
+                @Override
+                public void windowDeactivated(WindowEvent e) {
+                }
+            }
+        );
     }
     
     public void crearEmpleado()
@@ -127,12 +230,13 @@ public class ModuloEmpleados_Eventos
             double salario = Double.parseDouble(this.moduloEmpleados.tfCrearSalario.getText());
             String cargo = (String) this.moduloEmpleados.cbCrearCargo.getSelectedItem();
             String jefe = this.moduloEmpleados.tfCrearJefe.getText();
+            boolean estado = true;
             
             int op = JOptionPane.showConfirmDialog(moduloEmpleados, "Desea crear el Empleado " + id + "?", "", JOptionPane.YES_NO_OPTION);
             
             if (op == JOptionPane.YES_OPTION)
             {
-                Empleado e = new Empleado(id, nombre, telefono, direccion, email, cargo, salario, jefe);
+                Empleado e = new Empleado(id, nombre, telefono, direccion, email, cargo, salario, jefe, estado);
                 
                 boolean exito = new EmpleadoDAO().insertarEmpleado(e);
                 
@@ -243,14 +347,67 @@ public class ModuloEmpleados_Eventos
     
     public void verificarSeleccionCrear()
     {
+        this.moduloEmpleados.tfCrearJefe.setText("");
+        
         if (this.moduloEmpleados.cbCrearCargo.getSelectedItem().equals("Auxiliar"))
         {
             this.moduloEmpleados.tfCrearJefe.setEditable(true);
+            this.moduloEmpleados.bSeleccionCrear.setEnabled(true);
         }
         else
         {
             this.moduloEmpleados.tfCrearJefe.setEditable(false);
+            this.moduloEmpleados.bSeleccionCrear.setEnabled(false);
         }
+    }
+    
+    public void consultarJefesCrear()
+    {
+        ArrayList<Empleado> listaDirectores = new EmpleadoDAO().consultarDirectores();
+        
+        if(listaDirectores != null)
+        {
+            DefaultTableModel model = (DefaultTableModel) this.moduloEmpleados.tJefesCrear.getModel();
+            model.setRowCount(listaDirectores.size());
+            
+            for (int i = 0; i < listaDirectores.size(); i++) 
+            {
+                this.moduloEmpleados.tJefesCrear.setValueAt(listaDirectores.get(i).getId(), i, 0);
+                this.moduloEmpleados.tJefesCrear.setValueAt(listaDirectores.get(i).getNombre(), i, 1);
+                this.moduloEmpleados.tJefesCrear.setValueAt(listaDirectores.get(i).getCargo(), i, 2);
+            }
+            
+            this.moduloEmpleados.fSelJefeCrear.setLocationRelativeTo(moduloEmpleados);
+            this.moduloEmpleados.fSelJefeCrear.setVisible(true);
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(moduloEmpleados, "Error al consultar.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void seleccionarJefeCrear()
+    {
+        int row = this.moduloEmpleados.tJefesCrear.getSelectedRow();
+        
+        if(row != -1)
+        {
+            this.moduloEmpleados.tfCrearJefe.setText((String) this.moduloEmpleados.tJefesCrear.getValueAt(row, 0));
+            
+            DefaultTableModel model = (DefaultTableModel) this.moduloEmpleados.tJefesCrear.getModel();
+            model.setRowCount(0);
+            
+            this.moduloEmpleados.fSelJefeCrear.setVisible(false);
+        }
+	else
+	{
+	    JOptionPane.showMessageDialog(this.moduloEmpleados.fSelJefeCrear, "Seleccione un director.", "", JOptionPane.ERROR_MESSAGE);
+	}
+    }
+    
+    public void cerrarSeleccionCrear()
+    {
+        this.moduloEmpleados.fSelJefeCrear.setVisible(false);
     }
     
     public void buscarEmpleadoModificar()
@@ -269,12 +426,13 @@ public class ModuloEmpleados_Eventos
             this.moduloEmpleados.tfModificarSalario.setText(String.valueOf(e.getSalario()));
             this.moduloEmpleados.cbModificarCargo.setSelectedItem(e.getCargo());
             this.moduloEmpleados.tfModificarJefe.setText(e.getJefe());
+            this.moduloEmpleados.cbModificarEstado.setSelectedItem(e.getEstado());
             
             habilitarCamposModificar(true);
         }
         else
         {
-            JOptionPane.showMessageDialog(moduloEmpleados, "Empleado inexistente.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(moduloEmpleados, "Error al consultar o Empleado inexistente.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
     
@@ -288,6 +446,56 @@ public class ModuloEmpleados_Eventos
         this.moduloEmpleados.tfModificarSalario.setEditable(b);
         //this.moduloEmpleados.cbModificarCargo.setEnabled(b);
         //this.moduloEmpleados.tfModificarJefe.setEditable(b);
+        this.moduloEmpleados.cbModificarEstado.setEnabled(b);
+    }
+    
+    public void consultarJefesModificar()
+    {
+        ArrayList<Empleado> listaDirectores = new EmpleadoDAO().consultarDirectores();
+        
+        if(listaDirectores != null)
+        {
+            DefaultTableModel model = (DefaultTableModel) this.moduloEmpleados.tJefesModificar.getModel();
+            model.setRowCount(listaDirectores.size());
+            
+            for (int i = 0; i < listaDirectores.size(); i++) 
+            {
+                this.moduloEmpleados.tJefesModificar.setValueAt(listaDirectores.get(i).getId(), i, 0);
+                this.moduloEmpleados.tJefesModificar.setValueAt(listaDirectores.get(i).getNombre(), i, 1);
+                this.moduloEmpleados.tJefesModificar.setValueAt(listaDirectores.get(i).getCargo(), i, 2);
+            }
+            
+            this.moduloEmpleados.fSelJefeModificar.setLocationRelativeTo(moduloEmpleados);
+            this.moduloEmpleados.fSelJefeModificar.setVisible(true);
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(moduloEmpleados, "Error al consultar.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void seleccionarJefeModificar()
+    {
+        int row = this.moduloEmpleados.tJefesModificar.getSelectedRow();
+        
+        if(row != -1)
+        {
+            this.moduloEmpleados.tfModificarJefe.setText((String) this.moduloEmpleados.tJefesModificar.getValueAt(row, 0));
+            
+            DefaultTableModel model = (DefaultTableModel) this.moduloEmpleados.tJefesModificar.getModel();
+            model.setRowCount(0);
+            
+            this.moduloEmpleados.fSelJefeModificar.setVisible(false);
+        }
+	else
+	{
+	    JOptionPane.showMessageDialog(this.moduloEmpleados.fSelJefeModificar, "Seleccione un director.", "", JOptionPane.ERROR_MESSAGE);
+	}
+    }
+    
+    public void cerrarSeleccionModificar()
+    {
+        this.moduloEmpleados.fSelJefeModificar.setVisible(false);
     }
     
     public void modificarEmpleado()
@@ -302,12 +510,22 @@ public class ModuloEmpleados_Eventos
             double salario = Double.parseDouble(this.moduloEmpleados.tfModificarSalario.getText());
             String cargo = (String) this.moduloEmpleados.cbModificarCargo.getSelectedItem();
             String jefe = this.moduloEmpleados.tfModificarJefe.getText();
+            boolean estado = true;
+            
+            if (this.moduloEmpleados.cbModificarEstado.getSelectedItem().equals("Activo"))
+            {
+                estado = true;
+            }
+            else if (this.moduloEmpleados.cbModificarEstado.getSelectedItem().equals("Inactivo"))
+            {
+                estado = false;
+            }
             
             int op = JOptionPane.showConfirmDialog(moduloEmpleados, "Desea modificar el Empleado " + id + "?", "", JOptionPane.YES_NO_OPTION);
             
             if (op == JOptionPane.YES_OPTION)
             {
-                Empleado e = new Empleado(id, nombre, telefono, direccion, email, cargo, salario, jefe);
+                Empleado e = new Empleado(id, nombre, telefono, direccion, email, cargo, salario, jefe, estado);
                 
                 boolean exito = new EmpleadoDAO().modificarEmpleado(e);
                 
@@ -417,17 +635,22 @@ public class ModuloEmpleados_Eventos
         this.moduloEmpleados.tfModificarSalario.setText("");
         this.moduloEmpleados.cbModificarCargo.setSelectedIndex(0);
         this.moduloEmpleados.tfModificarJefe.setText("");
+        this.moduloEmpleados.cbModificarEstado.setSelectedIndex(0);
     }
     
     public void verificarSeleccionModificar()
     {
+        this.moduloEmpleados.tfModificarJefe.setText("");
+        
         if (this.moduloEmpleados.cbModificarCargo.getSelectedItem().equals("Auxiliar"))
         {
             this.moduloEmpleados.tfModificarJefe.setEditable(true);
+            this.moduloEmpleados.bSeleccionModificar.setEnabled(true);
         }
         else
         {
             this.moduloEmpleados.tfModificarJefe.setEditable(false);
+            this.moduloEmpleados.bSeleccionModificar.setEnabled(false);
         }
     }
     
@@ -439,18 +662,25 @@ public class ModuloEmpleados_Eventos
         
         if (e != null)
         {
-            this.moduloEmpleados.tfEliminarID.setText(e.getId());
-            this.moduloEmpleados.tfEliminarNombre.setText(e.getNombre());
-            this.moduloEmpleados.tfEliminarTelefono.setText(e.getTelefono());
-            this.moduloEmpleados.tfEliminarDireccion.setText(e.getDireccion());
-            this.moduloEmpleados.tfEliminarEmail.setText(e.getEmail());
-            this.moduloEmpleados.tfEliminarSalario.setText(String.valueOf(e.getSalario()));
-            this.moduloEmpleados.tfEliminarCargo.setText(e.getCargo());
-            this.moduloEmpleados.tfEliminarJefe.setText(e.getJefe());
+            if (e.isEstado())
+            {
+                this.moduloEmpleados.tfEliminarID.setText(e.getId());
+                this.moduloEmpleados.tfEliminarNombre.setText(e.getNombre());
+                this.moduloEmpleados.tfEliminarTelefono.setText(e.getTelefono());
+                this.moduloEmpleados.tfEliminarDireccion.setText(e.getDireccion());
+                this.moduloEmpleados.tfEliminarEmail.setText(e.getEmail());
+                this.moduloEmpleados.tfEliminarSalario.setText(String.valueOf(e.getSalario()));
+                this.moduloEmpleados.tfEliminarCargo.setText(e.getCargo());
+                this.moduloEmpleados.tfEliminarJefe.setText(e.getJefe());
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(moduloEmpleados, "El Empleado ya esta eliminado.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
         }
         else
         {
-            JOptionPane.showMessageDialog(moduloEmpleados, "Empleado inexistente.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(moduloEmpleados, "Error a consultar o Empleado inexistente.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
     
@@ -485,7 +715,7 @@ public class ModuloEmpleados_Eventos
         this.moduloEmpleados.tfEliminarTelefono.setText("");
         this.moduloEmpleados.tfEliminarDireccion.setText("");
         this.moduloEmpleados.tfEliminarEmail.setText("");
-        this.moduloEmpleados.tfEliminarCargo.setText("");
+        this.moduloEmpleados.tfEliminarSalario.setText("");
         this.moduloEmpleados.tfEliminarCargo.setText("");
         this.moduloEmpleados.tfEliminarJefe.setText("");
     }
@@ -504,7 +734,15 @@ public class ModuloEmpleados_Eventos
                 model.setValueAt(lista.get(i).getId(), i, 0);
                 model.setValueAt(lista.get(i).getNombre(), i, 1);
                 model.setValueAt(lista.get(i).getCargo(), i, 2);
+                model.setValueAt(lista.get(i).getEstado(), i, 3);
             }
         }
+    }
+    
+    public void cerrarVentana()
+    {
+        this.moduloEmpleados.fSelJefeCrear.setVisible(false);
+        this.moduloEmpleados.fSelJefeModificar.setVisible(false);
+        this.moduloEmpleados.setVisible(false);
     }
 }
