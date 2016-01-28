@@ -84,7 +84,7 @@ CREATE TABLE turno (
 DROP TABLE IF EXISTS venta CASCADE;
 CREATE TABLE venta (
     venta_id        SERIAL      NOT NULL,
-    venta_fecha     DATE        NOT NULL,
+    venta_fecha     TIMESTAMP   NOT NULL,
     venta_valor     DECIMAL     NOT NULL,
     estacion_nombre VARCHAR(50) NOT NULL,
     tarjeta_id      VARCHAR(15) UNIQUE NOT NULL,
@@ -102,7 +102,7 @@ CREATE TABLE solicitud (
     solicitud_id            VARCHAR DEFAULT nextval('solicitud_seq'::regclass)  NOT NULL,
     solicitud_motivo        VARCHAR(30) NOT NULL,
     solicitud_descripcion   TEXT        NOT NULL,
-    solicitud_fecha         DATE        NOT NULL,
+    solicitud_fecha         TIMESTAMP   NOT NULL,
     solicitud_estado        VARCHAR(30) NOT NULL,
     pasajero_id             VARCHAR(15) NOT NULL,
     estacion_nombre         VARCHAR(50) NOT NULL,
@@ -123,9 +123,8 @@ DROP TABLE IF EXISTS tarjeta_ruta CASCADE;
 CREATE TABLE tarjeta_ruta (
     tarjeta_id          VARCHAR(15) NOT NULL,
     ruta_nombre         VARCHAR(50) NOT NULL,
-    tarjeta_ruta_fecha  DATE        NOT NULL,
-    tarjeta_ruta_hora   TIME        NOT NULL,
-    PRIMARY KEY (tarjeta_id, ruta_nombre, tarjeta_ruta_fecha, tarjeta_ruta_hora),
+    tarjeta_ruta_fecha  TIMESTAMP   NOT NULL,
+    PRIMARY KEY (tarjeta_id, ruta_nombre, tarjeta_ruta_fecha),
     FOREIGN KEY (tarjeta_id) REFERENCES tarjeta (tarjeta_id),
     FOREIGN KEY (ruta_nombre) REFERENCES ruta (ruta_nombre)
 );
@@ -169,17 +168,17 @@ VALUES ('126', 'pepito4', '1234567', 'Carrera', 'no tengo', 100003, TRUE);
 INSERT INTO pasajero (pasajero_id, pasajero_nombre, pasajero_telefono, pasajero_direccion, pasajero_email, tarjeta_id, pasajero_estado)
 VALUES ('127', 'pepito5', '1234567', 'Carrera', 'no tengo', 100004, FALSE);
 
-INSERT INTO tarjeta_ruta (tarjeta_id, ruta_nombre, tarjeta_ruta_fecha, tarjeta_ruta_hora)
-VALUES ('100000','P10A','2015-12-15','12:45:00');
-INSERT INTO tarjeta_ruta (tarjeta_id, ruta_nombre, tarjeta_ruta_fecha, tarjeta_ruta_hora)
-VALUES ('100000','P10B','2015-12-17','12:45:00');
-INSERT INTO tarjeta_ruta (tarjeta_id, ruta_nombre, tarjeta_ruta_fecha, tarjeta_ruta_hora)
-VALUES ('100000','T31','2015-12-16','12:45:00');
-INSERT INTO tarjeta_ruta (tarjeta_id, ruta_nombre, tarjeta_ruta_fecha, tarjeta_ruta_hora)
-VALUES ('100000','P10A','2015-12-18','12:45:00');
-INSERT INTO tarjeta_ruta (tarjeta_id, ruta_nombre, tarjeta_ruta_fecha, tarjeta_ruta_hora)
-VALUES ('100001','P10B','2015-12-20','12:45:00');
-INSERT INTO tarjeta_ruta (tarjeta_id, ruta_nombre, tarjeta_ruta_fecha, tarjeta_ruta_hora)
-VALUES ('100001','P10B','2015-12-19','12:45:00');
-INSERT INTO tarjeta_ruta (tarjeta_id, ruta_nombre, tarjeta_ruta_fecha, tarjeta_ruta_hora)
-VALUES ('100001','P10D','2015-12-11','12:45:00');
+INSERT INTO tarjeta_ruta (tarjeta_id, ruta_nombre, tarjeta_ruta_fecha)
+VALUES ('100000','P10A','2015-12-15 12:45:00');
+INSERT INTO tarjeta_ruta (tarjeta_id, ruta_nombre, tarjeta_ruta_fecha)
+VALUES ('100000','P10B','2015-12-17 12:45:00');
+INSERT INTO tarjeta_ruta (tarjeta_id, ruta_nombre, tarjeta_ruta_fecha)
+VALUES ('100000','T31','2015-12-16 12:45:00');
+INSERT INTO tarjeta_ruta (tarjeta_id, ruta_nombre, tarjeta_ruta_fecha)
+VALUES ('100000','P10A','2015-12-18 12:45:00');
+INSERT INTO tarjeta_ruta (tarjeta_id, ruta_nombre, tarjeta_ruta_fecha)
+VALUES ('100001','P10B','2015-12-20 12:45:00');
+INSERT INTO tarjeta_ruta (tarjeta_id, ruta_nombre, tarjeta_ruta_fecha)
+VALUES ('100001','P10B','2015-12-19 12:45:00');
+INSERT INTO tarjeta_ruta (tarjeta_id, ruta_nombre, tarjeta_ruta_fecha)
+VALUES ('100001','P10D','2015-12-11 12:45:00');
