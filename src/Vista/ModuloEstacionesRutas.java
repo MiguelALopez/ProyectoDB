@@ -315,22 +315,20 @@ public class ModuloEstacionesRutas extends javax.swing.JFrame
 
             },
             new String [] {
-                "NOMBRE", "DESCRIPCION"
+                "NOMBRE", "DESCRIPCION", "ESTADO"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
                 return canEdit [columnIndex];
             }
         });
-        tRutas.setColumnSelectionAllowed(true);
         tRutas.setEnabled(false);
         tRutas.getTableHeader().setReorderingAllowed(false);
         jScrollPane5.setViewportView(tRutas);
-        tRutas.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -426,11 +424,11 @@ public class ModuloEstacionesRutas extends javax.swing.JFrame
 
             },
             new String [] {
-                "NOMBRE", "UBICACION"
+                "NOMBRE", "UBICACION", "DIRECTOR", "ESTADO"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false
+                false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {
@@ -440,7 +438,6 @@ public class ModuloEstacionesRutas extends javax.swing.JFrame
         tEstaciones.setEnabled(false);
         tEstaciones.getTableHeader().setReorderingAllowed(false);
         jScrollPane6.setViewportView(tEstaciones);
-        tEstaciones.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_INTERVAL_SELECTION);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;

@@ -12,6 +12,8 @@ import Modelo.EstacionDAO;
 import Vista.ModuloEstaciones;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -157,6 +159,41 @@ public class ModuloEstaciones_Eventos
                 {
                     consultarEstaciones();
                 }                
+            }
+        );
+        
+        this.moduloEstaciones.addWindowListener(
+            new WindowListener()
+            {
+                @Override
+                public void windowOpened(WindowEvent e) {
+                }
+
+                @Override
+                public void windowClosing(WindowEvent e) 
+                {
+                    cerrarVentana();
+                }
+
+                @Override
+                public void windowClosed(WindowEvent e) {
+                }
+
+                @Override
+                public void windowIconified(WindowEvent e) {
+                }
+
+                @Override
+                public void windowDeiconified(WindowEvent e) {
+                }
+
+                @Override
+                public void windowActivated(WindowEvent e) {
+                }
+
+                @Override
+                public void windowDeactivated(WindowEvent e) {
+                }
             }
         );
     }
@@ -535,5 +572,12 @@ public class ModuloEstaciones_Eventos
                 model.setValueAt(lista.get(i).getEstado(), i, 3);
             }
         }
+    }
+    
+    public void cerrarVentana()
+    {
+        this.moduloEstaciones.fSelDirCrear.setVisible(false);
+        this.moduloEstaciones.fSelDirModificar.setVisible(false);
+        this.moduloEstaciones.setVisible(false);
     }
 }

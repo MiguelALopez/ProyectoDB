@@ -41,6 +41,28 @@ public class ModuloEmpleados extends javax.swing.JFrame
         tJefesModificar = new javax.swing.JTable();
         bSeleccionarModificar = new javax.swing.JButton();
         bCancelarModificar = new javax.swing.JButton();
+        fDetalles = new javax.swing.JFrame();
+        jPanel6 = new javax.swing.JPanel();
+        tfDetallesNombre = new javax.swing.JTextField();
+        tfDetallesID = new javax.swing.JTextField();
+        jLabel51 = new javax.swing.JLabel();
+        tfDetallesEmail = new javax.swing.JTextField();
+        jLabel52 = new javax.swing.JLabel();
+        jLabel53 = new javax.swing.JLabel();
+        tfDetallesJefe = new javax.swing.JTextField();
+        jLabel54 = new javax.swing.JLabel();
+        jLabel56 = new javax.swing.JLabel();
+        jLabel58 = new javax.swing.JLabel();
+        jLabel60 = new javax.swing.JLabel();
+        tfDetallesDireccion = new javax.swing.JTextField();
+        jLabel63 = new javax.swing.JLabel();
+        tfDetallesTelefono = new javax.swing.JTextField();
+        tfDetallesSalario = new javax.swing.JTextField();
+        jLabel66 = new javax.swing.JLabel();
+        tfDetallesCargo = new javax.swing.JTextField();
+        tfDetallesEstado = new javax.swing.JTextField();
+        bCerrarDetalles = new javax.swing.JButton();
+        jLabel49 = new javax.swing.JLabel();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -267,10 +289,212 @@ public class ModuloEmpleados extends javax.swing.JFrame
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 10, 10);
         fSelJefeModificar.getContentPane().add(bCancelarModificar, gridBagConstraints);
 
+        fDetalles.setMinimumSize(new java.awt.Dimension(500, 450));
+        fDetalles.setPreferredSize(new java.awt.Dimension(500, 450));
+        fDetalles.getContentPane().setLayout(new java.awt.GridBagLayout());
+
+        jPanel6.setLayout(new java.awt.GridBagLayout());
+
+        tfDetallesNombre.setEditable(false);
+        tfDetallesNombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 10);
+        jPanel6.add(tfDetallesNombre, gridBagConstraints);
+
+        tfDetallesID.setEditable(false);
+        tfDetallesID.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 5, 10);
+        jPanel6.add(tfDetallesID, gridBagConstraints);
+
+        jLabel51.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel51.setText("ID del Empleado:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 5, 0);
+        jPanel6.add(jLabel51, gridBagConstraints);
+
+        tfDetallesEmail.setEditable(false);
+        tfDetallesEmail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 10);
+        jPanel6.add(tfDetallesEmail, gridBagConstraints);
+
+        jLabel52.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel52.setText("Nombre del Empleado:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 0);
+        jPanel6.add(jLabel52, gridBagConstraints);
+
+        jLabel53.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel53.setText("Telefono del Empleado:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 0);
+        jPanel6.add(jLabel53, gridBagConstraints);
+
+        tfDetallesJefe.setEditable(false);
+        tfDetallesJefe.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 10);
+        jPanel6.add(tfDetallesJefe, gridBagConstraints);
+
+        jLabel54.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel54.setText("Direccion del Empleado:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 0);
+        jPanel6.add(jLabel54, gridBagConstraints);
+
+        jLabel56.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel56.setText("Email del Empleado:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 0);
+        jPanel6.add(jLabel56, gridBagConstraints);
+
+        jLabel58.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel58.setText("Salario del Empleado:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 0);
+        jPanel6.add(jLabel58, gridBagConstraints);
+
+        jLabel60.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel60.setText("Jefe del Empleado:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 8;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 0);
+        jPanel6.add(jLabel60, gridBagConstraints);
+
+        tfDetallesDireccion.setEditable(false);
+        tfDetallesDireccion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 10);
+        jPanel6.add(tfDetallesDireccion, gridBagConstraints);
+
+        jLabel63.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel63.setText("Cargo del Empleado:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 0);
+        jPanel6.add(jLabel63, gridBagConstraints);
+
+        tfDetallesTelefono.setEditable(false);
+        tfDetallesTelefono.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 10);
+        jPanel6.add(tfDetallesTelefono, gridBagConstraints);
+
+        tfDetallesSalario.setEditable(false);
+        tfDetallesSalario.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 6;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 10);
+        jPanel6.add(tfDetallesSalario, gridBagConstraints);
+
+        jLabel66.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel66.setText("Estado del Empleado:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 10, 0);
+        jPanel6.add(jLabel66, gridBagConstraints);
+
+        tfDetallesCargo.setEditable(false);
+        tfDetallesCargo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 10);
+        jPanel6.add(tfDetallesCargo, gridBagConstraints);
+
+        tfDetallesEstado.setEditable(false);
+        tfDetallesEstado.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 9;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 10, 10);
+        jPanel6.add(tfDetallesEstado, gridBagConstraints);
+
+        bCerrarDetalles.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        bCerrarDetalles.setText("Cerrar");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 10;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+        jPanel6.add(bCerrarDetalles, gridBagConstraints);
+
+        jLabel49.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel49.setText("DETALLES DEL EMPLEADO");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+        jPanel6.add(jLabel49, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        fDetalles.getContentPane().add(jPanel6, gridBagConstraints);
+
         setMinimumSize(new java.awt.Dimension(800, 500));
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
-        jTabbedPane1.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
+        jTabbedPane1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
@@ -1100,10 +1324,8 @@ public class ModuloEmpleados extends javax.swing.JFrame
                 return canEdit [columnIndex];
             }
         });
-        tEmpleados.setColumnSelectionAllowed(true);
         tEmpleados.getTableHeader().setReorderingAllowed(false);
         jScrollPane1.setViewportView(tEmpleados);
-        tEmpleados.getColumnModel().getSelectionModel().setSelectionMode(javax.swing.ListSelectionModel.SINGLE_SELECTION);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -1146,6 +1368,7 @@ public class ModuloEmpleados extends javax.swing.JFrame
     public javax.swing.JButton bActualizar;
     public javax.swing.JButton bCancelarCrear;
     public javax.swing.JButton bCancelarModificar;
+    public javax.swing.JButton bCerrarDetalles;
     public javax.swing.JButton bCrearEmpleado;
     public javax.swing.JButton bDetalles;
     public javax.swing.JButton bEliminarBuscar;
@@ -1159,6 +1382,7 @@ public class ModuloEmpleados extends javax.swing.JFrame
     public javax.swing.JComboBox<String> cbCrearCargo;
     public javax.swing.JComboBox<String> cbModificarCargo;
     public javax.swing.JComboBox<String> cbModificarEstado;
+    public javax.swing.JFrame fDetalles;
     public javax.swing.JFrame fSelJefeCrear;
     public javax.swing.JFrame fSelJefeModificar;
     private javax.swing.JLabel jLabel1;
@@ -1204,8 +1428,18 @@ public class ModuloEmpleados extends javax.swing.JFrame
     private javax.swing.JLabel jLabel46;
     private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel48;
+    private javax.swing.JLabel jLabel49;
     private javax.swing.JLabel jLabel5;
+    private javax.swing.JLabel jLabel51;
+    private javax.swing.JLabel jLabel52;
+    private javax.swing.JLabel jLabel53;
+    private javax.swing.JLabel jLabel54;
+    private javax.swing.JLabel jLabel56;
+    private javax.swing.JLabel jLabel58;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel60;
+    private javax.swing.JLabel jLabel63;
+    private javax.swing.JLabel jLabel66;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
@@ -1214,6 +1448,7 @@ public class ModuloEmpleados extends javax.swing.JFrame
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -1231,6 +1466,15 @@ public class ModuloEmpleados extends javax.swing.JFrame
     public javax.swing.JTextField tfCrearNombre;
     public javax.swing.JTextField tfCrearSalario;
     public javax.swing.JTextField tfCrearTelefono;
+    public javax.swing.JTextField tfDetallesCargo;
+    public javax.swing.JTextField tfDetallesDireccion;
+    public javax.swing.JTextField tfDetallesEmail;
+    public javax.swing.JTextField tfDetallesEstado;
+    public javax.swing.JTextField tfDetallesID;
+    public javax.swing.JTextField tfDetallesJefe;
+    public javax.swing.JTextField tfDetallesNombre;
+    public javax.swing.JTextField tfDetallesSalario;
+    public javax.swing.JTextField tfDetallesTelefono;
     public javax.swing.JTextField tfEliminarBuscar;
     public javax.swing.JTextField tfEliminarCargo;
     public javax.swing.JTextField tfEliminarDireccion;

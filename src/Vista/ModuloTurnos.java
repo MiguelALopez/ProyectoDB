@@ -70,7 +70,6 @@ public class ModuloTurnos extends javax.swing.JFrame
         jPanel3 = new javax.swing.JPanel();
         jLabel20 = new javax.swing.JLabel();
         tfEliminarSerial = new javax.swing.JTextField();
-        cbEliminarTurno = new javax.swing.JComboBox<>();
         tfEliminarID = new javax.swing.JTextField();
         jLabel25 = new javax.swing.JLabel();
         bEliminarTurno = new javax.swing.JButton();
@@ -85,6 +84,7 @@ public class ModuloTurnos extends javax.swing.JFrame
         bBuscar4 = new javax.swing.JButton();
         bBuscar3 = new javax.swing.JButton();
         jSeparator3 = new javax.swing.JSeparator();
+        tfEliminarTurno = new javax.swing.JTextField();
         jPanel4 = new javax.swing.JPanel();
         jScrollPane1 = new javax.swing.JScrollPane();
         tTurnos = new javax.swing.JTable();
@@ -446,17 +446,6 @@ public class ModuloTurnos extends javax.swing.JFrame
         gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 10);
         jPanel3.add(tfEliminarSerial, gridBagConstraints);
 
-        cbEliminarTurno.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        cbEliminarTurno.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Dia", "Noche" }));
-        cbEliminarTurno.setEnabled(false);
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 10);
-        jPanel3.add(cbEliminarTurno, gridBagConstraints);
-
         tfEliminarID.setEditable(false);
         tfEliminarID.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -484,7 +473,7 @@ public class ModuloTurnos extends javax.swing.JFrame
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 10, 10);
+        gridBagConstraints.insets = new java.awt.Insets(15, 10, 10, 10);
         jPanel3.add(bEliminarTurno, gridBagConstraints);
 
         jLabel28.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -560,7 +549,6 @@ public class ModuloTurnos extends javax.swing.JFrame
         gridBagConstraints.gridy = 1;
         gridBagConstraints.gridheight = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(10, 5, 10, 10);
         jPanel6.add(bBuscar4, gridBagConstraints);
 
@@ -587,6 +575,16 @@ public class ModuloTurnos extends javax.swing.JFrame
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weighty = 1.0;
         jPanel3.add(jSeparator3, gridBagConstraints);
+
+        tfEliminarTurno.setEditable(false);
+        tfEliminarTurno.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 10);
+        jPanel3.add(tfEliminarTurno, gridBagConstraints);
 
         jTabbedPane1.addTab("Eliminar Turno", jPanel3);
 
@@ -652,7 +650,6 @@ public class ModuloTurnos extends javax.swing.JFrame
     public javax.swing.JComboBox<String> cbBuscarTurno1;
     public javax.swing.JComboBox<String> cbBuscarTurno2;
     public javax.swing.JComboBox<String> cbCrearTurno;
-    public javax.swing.JComboBox<String> cbEliminarTurno;
     public javax.swing.JComboBox<String> cbModificarTurno;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
@@ -699,6 +696,7 @@ public class ModuloTurnos extends javax.swing.JFrame
     public javax.swing.JTextField tfCrearSerial;
     public javax.swing.JTextField tfEliminarID;
     public javax.swing.JTextField tfEliminarSerial;
+    public javax.swing.JTextField tfEliminarTurno;
     public javax.swing.JTextField tfModificarID;
     public javax.swing.JTextField tfModificarSerial;
     // End of variables declaration//GEN-END:variables

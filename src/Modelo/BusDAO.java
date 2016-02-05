@@ -8,7 +8,6 @@ package Modelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,7 +30,7 @@ public class BusDAO
         conexionBD.conectar();
         boolean exito = false;
         
-        String query = "INSERT INTO bus (bus_serial, bus_tipo, bus_capacidad, ruta_nombre) VALUES (?,?,?,?);";
+        String query = "INSERT INTO bus (bus_serial, bus_tipo, bus_capacidad, ruta_nombre, bus_estado) VALUES (?,?,?,?,?);";
         
         try
         {
@@ -49,6 +48,8 @@ public class BusDAO
             {
                 st.setString(4, bus.getRuta());
             }
+            
+            st.setBoolean(5, bus.isEstado());
             
             int resultado = st.executeUpdate();
             exito = true;
@@ -77,14 +78,15 @@ public class BusDAO
                 //+ "bus_serial = ?, "
                 + "bus_tipo = ?, "
                 + "bus_capacidad = ?, "
-                + "ruta_nombre = ? "
+                + "ruta_nombre = ?, "
+                + "bus_estado = ? "
                 + "WHERE bus_serial = ?;";
         
         try
         {
             PreparedStatement st = conexionBD.conexion.prepareStatement(query);
             
-            st.setString(4, bus.getSerial());
+            st.setString(5, bus.getSerial());
             st.setString(1, bus.getTipo());
             st.setInt(2, bus.getCapacidad());
             
@@ -96,6 +98,8 @@ public class BusDAO
             {
                 st.setString(3, bus.getRuta());
             }
+            
+            st.setBoolean(4, bus.isEstado());
             
             int resultado = st.executeUpdate();
             exito = true;
@@ -121,7 +125,7 @@ public class BusDAO
         boolean exito = false;
         
         String query1 = "DELETE FROM turno WHERE bus_serial = ?;";
-        String query = "DELETE FROM bus WHERE bus_serial = ?;";
+        String query = "UPDATE bus SET bus_estado = ? WHERE bus_serial = ?;";
         
         try
         {
@@ -130,7 +134,8 @@ public class BusDAO
             int resultado = st.executeUpdate();
             
             st = conexionBD.conexion.prepareStatement(query);
-            st.setString(1, serial);
+            st.setBoolean(1, false);
+            st.setString(2, serial);
             resultado = st.executeUpdate();
             
             exito = true;
@@ -152,7 +157,7 @@ public class BusDAO
     
     public Bus consultarBus(String serial)
     {
-        conexionBD.conectar();        
+        conexionBD.conectar();
         Bus bus = null;
         
         String query = "SELECT * FROM bus WHERE bus_serial = ?;";
@@ -166,7 +171,8 @@ public class BusDAO
             
             if (tabla.next())
             {
-                bus = new Bus(tabla.getString(1), tabla.getString(2), tabla.getInt(3), tabla.getString(4));
+                bus = new Bus(tabla.getString(1), tabla.getString(2), tabla.getInt(3), 
+                        tabla.getString(4), tabla.getBoolean(5));
             }
         } 
         catch (SQLException ex) 
@@ -193,14 +199,15 @@ public class BusDAO
         
         try
         {
-            Statement st = conexionBD.conexion.createStatement();
-            ResultSet tabla = st.executeQuery(query);
+            PreparedStatement st = conexionBD.conexion.prepareStatement(query);
+            ResultSet tabla = st.executeQuery();
             
             lista = new ArrayList();
             
             while (tabla.next())
             {
-                lista.add(new Bus(tabla.getString(1), tabla.getString(2), tabla.getInt(3), tabla.getString(4)));
+                lista.add(new Bus(tabla.getString(1), tabla.getString(2), tabla.getInt(3), 
+                        tabla.getString(4), tabla.getBoolean(5)));
             }        
         } 
         catch (SQLException ex) 
@@ -235,7 +242,81 @@ public class BusDAO
             
             while (tabla.next())
             {
-                lista.add(new Bus(tabla.getString(1), tabla.getString(2), tabla.getInt(3), tabla.getString(4)));
+                lista.add(new Bus(tabla.getString(1), tabla.getString(2), tabla.getInt(3), 
+                        tabla.getString(4), tabla.getBoolean(5)));
+            }        
+        } 
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(BusDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally
+        {
+            if (conexionBD != null)
+            {
+                conexionBD.cerrarConexion();
+            }
+        }
+        
+        return lista;
+    }
+    
+    public ArrayList<Bus> consultarBuses(String ruta, boolean estado)
+    {
+        conexionBD.conectar();        
+        ArrayList<Bus> lista = null;
+        
+        String query = "SELECT * FROM bus WHERE ruta_nombre = ? AND bus_estado = ?;";
+        
+        try
+        {
+            PreparedStatement st = conexionBD.conexion.prepareStatement(query);
+            st.setString(1, ruta);
+            st.setBoolean(2, estado);
+            ResultSet tabla = st.executeQuery();
+            
+            lista = new ArrayList();
+            
+            while (tabla.next())
+            {
+                lista.add(new Bus(tabla.getString(1), tabla.getString(2), tabla.getInt(3), 
+                        tabla.getString(4), tabla.getBoolean(5)));
+            }        
+        } 
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(BusDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally
+        {
+            if (conexionBD != null)
+            {
+                conexionBD.cerrarConexion();
+            }
+        }
+        
+        return lista;
+    }
+    
+    public ArrayList<Bus> consultarBuses(boolean estado)
+    {
+        conexionBD.conectar();        
+        ArrayList<Bus> lista = null;
+        
+        String query = "SELECT * FROM bus WHERE bus_estado = ?;";
+        
+        try
+        {
+            PreparedStatement st = conexionBD.conexion.prepareStatement(query);
+            st.setBoolean(1, estado);
+            ResultSet tabla = st.executeQuery();
+            
+            lista = new ArrayList();
+            
+            while (tabla.next())
+            {
+                lista.add(new Bus(tabla.getString(1), tabla.getString(2), tabla.getInt(3), 
+                        tabla.getString(4), tabla.getBoolean(5)));
             }        
         } 
         catch (SQLException ex) 

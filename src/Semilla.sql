@@ -140,6 +140,47 @@ CREATE TABLE estacion_ruta (
 
 
 -- Valores iniciales
+INSERT INTO empleado (empleado_id, empleado_nombre, empleado_telefono, empleado_direccion, empleado_email, empleado_cargo, empleado_salario, empleado_estado)
+VALUES ('1', 'Anne Diaz', '1111111', 'Calle 1', '1@1.com', 'Director', 10000, TRUE);
+INSERT INTO empleado (empleado_id, empleado_nombre, empleado_telefono, empleado_direccion, empleado_email, empleado_cargo, empleado_salario, empleado_estado)
+VALUES ('2', 'Patricia Torres', '2222222', 'Calle 2', '2@2.com', 'Director', 5000, TRUE);
+INSERT INTO empleado (empleado_id, empleado_nombre, empleado_telefono, empleado_direccion, empleado_email, empleado_cargo, empleado_salario, empleado_estado)
+VALUES ('3', 'Eugene Phillips', '3333333', 'Calle 3', '3@3.com', 'Director', 5000, TRUE);
+INSERT INTO empleado (empleado_id, empleado_nombre, empleado_telefono, empleado_direccion, empleado_email, empleado_cargo, empleado_salario, empleado_estado)
+VALUES ('4', 'Irene Ward', '4444444', 'Calle 4', '4@4.com', 'Director', 5000, TRUE);
+INSERT INTO empleado (empleado_id, empleado_nombre, empleado_telefono, empleado_direccion, empleado_email, empleado_cargo, empleado_salario, empleado_estado)
+VALUES ('5', 'Jack Long', '5555555', 'Calle 5', '5@5.com', 'Director', 5000, TRUE);
+INSERT INTO empleado (empleado_id, empleado_nombre, empleado_telefono, empleado_direccion, empleado_email, empleado_cargo, empleado_salario, empleado_estado)
+VALUES ('6', 'Rebecca Morris', '6666666', 'Calle 6', '6@6.com', 'Auxiliar', 2000, TRUE);
+INSERT INTO empleado (empleado_id, empleado_nombre, empleado_telefono, empleado_direccion, empleado_email, empleado_cargo, empleado_salario, empleado_estado)
+VALUES ('7', 'Craig Foster', '7777777', 'Calle 7', '7@7.com', 'Auxiliar', 2000, TRUE);
+INSERT INTO empleado (empleado_id, empleado_nombre, empleado_telefono, empleado_direccion, empleado_email, empleado_cargo, empleado_salario, empleado_estado)
+VALUES ('8', 'James Cooper', '8888888', 'Calle 8', '8@8.com', 'Auxiliar', 2000, TRUE);
+INSERT INTO empleado (empleado_id, empleado_nombre, empleado_telefono, empleado_direccion, empleado_email, empleado_cargo, empleado_salario, empleado_estado)
+VALUES ('9', 'Bobby Brown', '9999999', 'Calle 9', '9@9.com', 'Auxiliar', 2000, TRUE);
+INSERT INTO empleado (empleado_id, empleado_nombre, empleado_telefono, empleado_direccion, empleado_email, empleado_cargo, empleado_salario, empleado_estado)
+VALUES ('10', 'Lillian Thompson', '142131', 'Calle 10', '10@10.com', 'Auxiliar', 2000, TRUE);
+INSERT INTO empleado (empleado_id, empleado_nombre, empleado_telefono, empleado_direccion, empleado_email, empleado_cargo, empleado_salario, empleado_estado)
+VALUES ('11', 'Phyllis Stewart', '64563456', 'Calle 11', '11@11.com', 'Conductor', 3000, TRUE);
+INSERT INTO empleado (empleado_id, empleado_nombre, empleado_telefono, empleado_direccion, empleado_email, empleado_cargo, empleado_salario, empleado_estado)
+VALUES ('12', 'Frank Butler', '63213', 'Calle 12', '12@12.com', 'Conductor', 3000, TRUE);
+INSERT INTO empleado (empleado_id, empleado_nombre, empleado_telefono, empleado_direccion, empleado_email, empleado_cargo, empleado_salario, empleado_estado)
+VALUES ('13', 'Deborah Wright', '312312', 'Calle 13', '13@13.com', 'Conductor', 3000, TRUE);
+INSERT INTO empleado (empleado_id, empleado_nombre, empleado_telefono, empleado_direccion, empleado_email, empleado_cargo, empleado_salario, empleado_estado)
+VALUES ('14', 'Roger Perry', '57657', 'Calle 14', '14@14.com', 'Conductor', 3000, TRUE);
+INSERT INTO empleado (empleado_id, empleado_nombre, empleado_telefono, empleado_direccion, empleado_email, empleado_cargo, empleado_salario, empleado_estado)
+VALUES ('15', 'Johnny Parker', '41124', 'Calle 15', '15@15.com', 'Conductor', 3000, TRUE);
+INSERT INTO empleado (empleado_id, empleado_nombre, empleado_telefono, empleado_direccion, empleado_email, empleado_cargo, empleado_salario, empleado_estado)
+VALUES ('16', 'Wanda Kelly', '1234123', 'Calle 16', '16@16.com', 'Conductor', 3000, TRUE);
+INSERT INTO empleado (empleado_id, empleado_nombre, empleado_telefono, empleado_direccion, empleado_email, empleado_cargo, empleado_salario, empleado_estado)
+VALUES ('17', 'Amy Wilson', '765753', 'Calle 17', '17@17.com', 'Conductor', 3000, TRUE);
+INSERT INTO empleado (empleado_id, empleado_nombre, empleado_telefono, empleado_direccion, empleado_email, empleado_cargo, empleado_salario, empleado_estado)
+VALUES ('18', 'Sharon King', '154347', 'Calle 18', '18@18.com', 'Conductor', 3000, TRUE);
+INSERT INTO empleado (empleado_id, empleado_nombre, empleado_telefono, empleado_direccion, empleado_email, empleado_cargo, empleado_salario, empleado_estado)
+VALUES ('19', 'Karen Edwards', '659760', 'Calle 19', '19@19.com', 'Conductor', 3000, TRUE);
+INSERT INTO empleado (empleado_id, empleado_nombre, empleado_telefono, empleado_direccion, empleado_email, empleado_cargo, empleado_salario, empleado_estado)
+VALUES ('20', 'Richard Adams', '675674', 'Calle 20', '20@20.com', 'Conductor', 3000, TRUE);
+
 INSERT INTO ruta (ruta_nombre, ruta_descripcion, ruta_estado) VALUES ('E21', 'TERMINAL MENGA - UNIVERSIDADES', TRUE);
 INSERT INTO ruta (ruta_nombre, ruta_descripcion, ruta_estado) VALUES ('E27', 'TERMINAL MENGA - CAPRI', TRUE);
 INSERT INTO ruta (ruta_nombre, ruta_descripcion, ruta_estado) VALUES ('E31', 'EXPRESO CHIMINANGOS - UNIVERSIDADES', TRUE);

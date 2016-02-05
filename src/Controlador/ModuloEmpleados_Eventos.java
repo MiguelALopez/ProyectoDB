@@ -182,6 +182,28 @@ public class ModuloEmpleados_Eventos
             }
         );
         
+        this.moduloEmpleados.bDetalles.addActionListener(
+            new ActionListener()
+            {
+                @Override
+                public void actionPerformed(ActionEvent ae) 
+                {
+                    verDetalles();
+                }
+            }
+        );
+        
+        this.moduloEmpleados.bCerrarDetalles.addActionListener(
+            new ActionListener()
+            {
+                @Override
+                public void actionPerformed(ActionEvent ae) 
+                {
+                    cerrarDetalles();
+                }
+            }
+        );
+        
         this.moduloEmpleados.addWindowListener(
             new WindowListener()
             {
@@ -320,6 +342,12 @@ public class ModuloEmpleados_Eventos
                 if (!e.getCargo().equals("Director"))
                 {
                     JOptionPane.showMessageDialog(moduloEmpleados, "El Empleado no es un Director.", "Error", JOptionPane.ERROR_MESSAGE);
+                    return false;
+                }
+                
+                if (!e.isEstado())
+                {
+                    JOptionPane.showMessageDialog(moduloEmpleados, "El Empleado no esta Activo.", "Error", JOptionPane.ERROR_MESSAGE);
                     return false;
                 }
             }
@@ -612,6 +640,12 @@ public class ModuloEmpleados_Eventos
                     JOptionPane.showMessageDialog(moduloEmpleados, "El Empleado no es un Director.", "Error", JOptionPane.ERROR_MESSAGE);
                     return false;
                 }
+                
+                if (!e.isEstado())
+                {
+                    JOptionPane.showMessageDialog(moduloEmpleados, "El Empleado no esta Activo.", "Error", JOptionPane.ERROR_MESSAGE);
+                    return false;
+                }
             }
             else
             {
@@ -739,10 +773,48 @@ public class ModuloEmpleados_Eventos
         }
     }
     
+    public void verDetalles()
+    {
+        int row = moduloEmpleados.tEmpleados.getSelectedRow();
+                        
+        if (row != -1)
+        {
+            String cedula = (String) moduloEmpleados.tEmpleados.getValueAt(row, 0);
+            
+            Empleado usuario = new EmpleadoDAO().consultarEmpleado(cedula);
+
+            if (usuario != null)
+            {
+                this.moduloEmpleados.tfDetallesID.setText(usuario.getId());
+                this.moduloEmpleados.tfDetallesNombre.setText(usuario.getNombre());
+                this.moduloEmpleados.tfDetallesTelefono.setText(usuario.getTelefono());
+                this.moduloEmpleados.tfDetallesDireccion.setText(usuario.getDireccion());
+                this.moduloEmpleados.tfDetallesEmail.setText(usuario.getEmail());
+                this.moduloEmpleados.tfDetallesSalario.setText(String.valueOf(usuario.getSalario()));
+                this.moduloEmpleados.tfDetallesCargo.setText(usuario.getCargo());
+                this.moduloEmpleados.tfDetallesJefe.setText(usuario.getJefe());
+                this.moduloEmpleados.tfDetallesEstado.setText(usuario.getEstado());
+		
+		this.moduloEmpleados.fDetalles.setLocationRelativeTo(moduloEmpleados);
+		this.moduloEmpleados.fDetalles.setVisible(true);
+            }
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(moduloEmpleados, "No ha seleccionado ningun Empleado.", "Advertencia", JOptionPane.WARNING_MESSAGE);
+        }
+    }
+    
+    public void cerrarDetalles()
+    {
+        this.moduloEmpleados.fDetalles.setVisible(false);
+    }
+    
     public void cerrarVentana()
     {
         this.moduloEmpleados.fSelJefeCrear.setVisible(false);
         this.moduloEmpleados.fSelJefeModificar.setVisible(false);
+        this.moduloEmpleados.fDetalles.setVisible(false);
         this.moduloEmpleados.setVisible(false);
     }
 }

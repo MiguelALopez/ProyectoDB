@@ -24,7 +24,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ModuloEstacionesRutas_Eventos
 {
-    private ModuloEstacionesRutas moduloEstacionesRutas;
+    private final ModuloEstacionesRutas moduloEstacionesRutas;
 
     public ModuloEstacionesRutas_Eventos(final ModuloEstacionesRutas moduloEstacionesRutas) 
     {
@@ -186,36 +186,55 @@ public class ModuloEstacionesRutas_Eventos
     public void buscarPorEstacion()
     {
         String estacion = this.moduloEstacionesRutas.tfBuscarEstacion.getText();
-        ArrayList<Ruta> lista = new RutaDAO().consultarRutas(estacion);
         
-        if (lista != null)
+        if (!estacion.isEmpty())
         {
-            DefaultTableModel model = (DefaultTableModel) this.moduloEstacionesRutas.tRutas.getModel();
-            model.setRowCount(lista.size());
-            
-            for (int i = 0; i < lista.size(); i++) 
+            ArrayList<Ruta> lista = new RutaDAO().consultarRutas(estacion);
+
+            if (lista != null)
             {
-                model.setValueAt(lista.get(i).getNombre(), i, 0);
-                model.setValueAt(lista.get(i).getDescripcion(), i, 1);
+                DefaultTableModel model = (DefaultTableModel) this.moduloEstacionesRutas.tRutas.getModel();
+                model.setRowCount(lista.size());
+
+                for (int i = 0; i < lista.size(); i++) 
+                {
+                    model.setValueAt(lista.get(i).getNombre(), i, 0);
+                    model.setValueAt(lista.get(i).getDescripcion(), i, 1);
+                    model.setValueAt(lista.get(i).getEstado(), i, 2);
+                }
             }
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(moduloEstacionesRutas, "Debe ingresar un nombre para buscar.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
     
     public void buscarPorRuta()
     {
         String ruta = this.moduloEstacionesRutas.tfBuscarRuta.getText();
-        ArrayList<Estacion> lista = new EstacionDAO().consultarEstaciones(ruta);
         
-        if (lista != null)
+        if (!ruta.isEmpty())
         {
-            DefaultTableModel model = (DefaultTableModel) this.moduloEstacionesRutas.tEstaciones.getModel();
-            model.setRowCount(lista.size());
-            
-            for (int i = 0; i < lista.size(); i++) 
+            ArrayList<Estacion> lista = new EstacionDAO().consultarEstaciones(ruta);
+
+            if (lista != null)
             {
-                model.setValueAt(lista.get(i).getNombre(), i, 0);
-                model.setValueAt(lista.get(i).getUbicacion(), i, 1);
+                DefaultTableModel model = (DefaultTableModel) this.moduloEstacionesRutas.tEstaciones.getModel();
+                model.setRowCount(lista.size());
+
+                for (int i = 0; i < lista.size(); i++) 
+                {
+                    model.setValueAt(lista.get(i).getNombre(), i, 0);
+                    model.setValueAt(lista.get(i).getUbicacion(), i, 1);
+                    model.setValueAt(lista.get(i).getDirector(), i, 2);
+                    model.setValueAt(lista.get(i).getEstado(), i, 3);
+                }
             }
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(moduloEstacionesRutas, "Debe ingresar un nombre para buscar.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
 }

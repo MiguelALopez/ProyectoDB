@@ -15,8 +15,9 @@ public class Bus
     private String tipo;
     private int capacidad;
     private String ruta;
+    private boolean estado;
 
-    public Bus(String serial, String tipo, int capacidad, String ruta) 
+    public Bus(String serial, String tipo, int capacidad, String ruta, boolean estado) 
     {
         this.serial = serial;
         this.tipo = tipo;
@@ -30,6 +31,8 @@ public class Bus
         {
             this.ruta  = "";
         }
+        
+        this.estado = estado;
     }
 
     public String getSerial() {
@@ -62,5 +65,20 @@ public class Bus
 
     public void setRuta(String ruta) {
         this.ruta = ruta;
-    }    
+    }
+    
+    public String getEstado() {
+        if (this.estado)
+            return "Activo";
+        else
+            return "Inactivo";
+    }
+
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
 }

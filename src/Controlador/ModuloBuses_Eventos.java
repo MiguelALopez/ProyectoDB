@@ -7,10 +7,13 @@ package Controlador;
 
 import Modelo.Bus;
 import Modelo.BusDAO;
+import Modelo.Ruta;
 import Modelo.RutaDAO;
 import Vista.ModuloBuses;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.WindowEvent;
+import java.awt.event.WindowListener;
 import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
@@ -21,7 +24,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ModuloBuses_Eventos
 {
-    private ModuloBuses moduloBuses;
+    private final ModuloBuses moduloBuses;
 
     public ModuloBuses_Eventos(final ModuloBuses moduloBuses) 
     {
@@ -35,6 +38,39 @@ public class ModuloBuses_Eventos
                 {
                     crearBus();
                 }                
+            }
+        );
+        
+        this.moduloBuses.bSeleccionCrear.addActionListener(
+            new ActionListener()
+            {
+                @Override
+                public void actionPerformed(ActionEvent ae) 
+                {
+                    consultarRutasCrear();
+                }
+            }
+        );
+        
+        this.moduloBuses.bSeleccionarCrear.addActionListener(
+            new ActionListener()
+            {
+                @Override
+                public void actionPerformed(ActionEvent ae) 
+                {
+                    seleccionarRutasCrear();
+                }
+            }
+        );
+        
+        this.moduloBuses.bCancelarCrear.addActionListener(
+            new ActionListener()
+            {
+                @Override
+                public void actionPerformed(ActionEvent ae) 
+                {
+                    cerrarSeleccionCrear();
+                }
             }
         );
         
@@ -57,6 +93,39 @@ public class ModuloBuses_Eventos
                 {
                     modificarBus();
                 }                
+            }
+        );
+        
+        this.moduloBuses.bSeleccionModificar.addActionListener(
+            new ActionListener()
+            {
+                @Override
+                public void actionPerformed(ActionEvent ae) 
+                {
+                    consultarRutasModificar();
+                }
+            }
+        );
+        
+        this.moduloBuses.bSeleccionarModificar.addActionListener(
+            new ActionListener()
+            {
+                @Override
+                public void actionPerformed(ActionEvent ae) 
+                {
+                    seleccionarRutasModificar();
+                }
+            }
+        );
+        
+        this.moduloBuses.bCancelarModificar.addActionListener(
+            new ActionListener()
+            {
+                @Override
+                public void actionPerformed(ActionEvent ae) 
+                {
+                    cerrarSeleccionModificar();
+                }
             }
         );
         
@@ -92,6 +161,41 @@ public class ModuloBuses_Eventos
                 }    
             }
         );
+        
+        this.moduloBuses.addWindowListener(
+            new WindowListener()
+            {
+                @Override
+                public void windowOpened(WindowEvent e) {
+                }
+
+                @Override
+                public void windowClosing(WindowEvent e) 
+                {
+                    cerrarVentana();
+                }
+
+                @Override
+                public void windowClosed(WindowEvent e) {
+                }
+
+                @Override
+                public void windowIconified(WindowEvent e) {
+                }
+
+                @Override
+                public void windowDeiconified(WindowEvent e) {
+                }
+
+                @Override
+                public void windowActivated(WindowEvent e) {
+                }
+
+                @Override
+                public void windowDeactivated(WindowEvent e) {
+                }
+            }
+        );
     }
     
     public void crearBus()
@@ -102,12 +206,13 @@ public class ModuloBuses_Eventos
             String tipo = (String) this.moduloBuses.cbCrearTipo.getSelectedItem();
             int capacidad = Integer.parseInt(this.moduloBuses.tfCrearCapacidad.getText());
             String ruta = this.moduloBuses.tfCrearRuta.getText();
+            boolean estado = true;
             
-            int op = JOptionPane.showConfirmDialog(moduloBuses, "Desea crear el Bus " + serial + ".", "", JOptionPane.YES_NO_OPTION);
+            int op = JOptionPane.showConfirmDialog(moduloBuses, "Desea crear el Bus " + serial + "?", "", JOptionPane.YES_NO_OPTION);
         
             if (op == JOptionPane.YES_OPTION)
             {
-                boolean exito = new BusDAO().insertarBus(new Bus(serial, tipo, capacidad, ruta));
+                boolean exito = new BusDAO().insertarBus(new Bus(serial, tipo, capacidad, ruta, estado));
 
                 if (exito)
                 {
@@ -144,7 +249,17 @@ public class ModuloBuses_Eventos
         
         if (!this.moduloBuses.tfCrearRuta.getText().isEmpty())
         {
-            if (new RutaDAO().consultarRuta(this.moduloBuses.tfCrearRuta.getText()) == null)
+            Ruta ruta = new RutaDAO().consultarRuta(this.moduloBuses.tfCrearRuta.getText());
+            
+            if (ruta != null)
+            {
+                if (!ruta.isEstado())
+                {
+                    JOptionPane.showMessageDialog(moduloBuses, "La Ruta no esta Activa.", "Error", JOptionPane.ERROR_MESSAGE);
+                    return false;
+                }
+            }
+            else
             {
                 JOptionPane.showMessageDialog(moduloBuses, "Ruta invalida.", "Error", JOptionPane.ERROR_MESSAGE);
                 return false;
@@ -162,6 +277,54 @@ public class ModuloBuses_Eventos
         this.moduloBuses.tfCrearRuta.setText("");
     }
     
+    public void consultarRutasCrear()
+    {
+        ArrayList<Ruta> listaRutas = new RutaDAO().consultarRutas();
+        
+        if(listaRutas != null)
+        {
+            DefaultTableModel model = (DefaultTableModel) this.moduloBuses.tRutasCrear.getModel();
+            model.setRowCount(listaRutas.size());
+            
+            for (int i = 0; i < listaRutas.size(); i++) 
+            {
+                this.moduloBuses.tRutasCrear.setValueAt(listaRutas.get(i).getNombre(), i, 0);
+                this.moduloBuses.tRutasCrear.setValueAt(listaRutas.get(i).getDescripcion(), i, 1);
+            }
+            
+            this.moduloBuses.fSelRutaCrear.setLocationRelativeTo(moduloBuses);
+            this.moduloBuses.fSelRutaCrear.setVisible(true);
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(moduloBuses, "Error al consultar.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void seleccionarRutasCrear()
+    {
+        int row = this.moduloBuses.tRutasCrear.getSelectedRow();
+        
+        if(row != -1)
+        {
+            this.moduloBuses.tfCrearRuta.setText((String) this.moduloBuses.tRutasCrear.getValueAt(row, 0));
+            
+            DefaultTableModel model = (DefaultTableModel) this.moduloBuses.tRutasCrear.getModel();
+            model.setRowCount(0);
+            
+            this.moduloBuses.fSelRutaCrear.setVisible(false);
+        }
+	else
+	{
+	    JOptionPane.showMessageDialog(this.moduloBuses.fSelRutaCrear, "Seleccione una ruta.", "", JOptionPane.ERROR_MESSAGE);
+	}
+    }
+    
+    public void cerrarSeleccionCrear()
+    {
+        this.moduloBuses.fSelRutaCrear.setVisible(false);
+    }
+    
     public void buscarBusModificar()
     {
         String serial = this.moduloBuses.tfModificarBuscar.getText();
@@ -174,6 +337,7 @@ public class ModuloBuses_Eventos
             this.moduloBuses.cbModificarTipo.setSelectedItem(bus.getTipo());
             this.moduloBuses.tfModificarCapacidad.setText(String.valueOf(bus.getCapacidad()));
             this.moduloBuses.tfModificarRuta.setText(bus.getRuta());
+            this.moduloBuses.cbModificarEstado.setSelectedItem(bus.getEstado());
             
             habilitarCamposModificar(true);
         }
@@ -189,6 +353,8 @@ public class ModuloBuses_Eventos
         this.moduloBuses.cbModificarTipo.setEnabled(b);
         this.moduloBuses.tfModificarCapacidad.setEditable(b);
         this.moduloBuses.tfModificarRuta.setEditable(b);
+        this.moduloBuses.bSeleccionModificar.setEnabled(b);
+        this.moduloBuses.cbModificarEstado.setEnabled(b);
     }
     
     public void modificarBus()
@@ -199,12 +365,22 @@ public class ModuloBuses_Eventos
             String tipo = (String) this.moduloBuses.cbModificarTipo.getSelectedItem();
             int capacidad = Integer.parseInt(this.moduloBuses.tfModificarCapacidad.getText());
             String ruta = this.moduloBuses.tfModificarRuta.getText();
+            boolean estado = true;
+            
+            if (this.moduloBuses.cbModificarEstado.getSelectedItem().equals("Activo"))
+            {
+                estado = true;
+            }
+            else if (this.moduloBuses.cbModificarEstado.getSelectedItem().equals("Inactivo"))
+            {
+                estado = false;
+            }
                 
-            int op = JOptionPane.showConfirmDialog(moduloBuses, "Desea modificar el Bus " + serial + ".", "", JOptionPane.YES_NO_OPTION);
+            int op = JOptionPane.showConfirmDialog(moduloBuses, "Desea modificar el Bus " + serial + "?", "", JOptionPane.YES_NO_OPTION);
         
             if (op == JOptionPane.YES_OPTION)
             {
-                boolean exito = new BusDAO().modificarBus(new Bus(serial, tipo, capacidad, ruta));
+                boolean exito = new BusDAO().modificarBus(new Bus(serial, tipo, capacidad, ruta, estado));
 
                 if (exito)
                 {
@@ -242,7 +418,17 @@ public class ModuloBuses_Eventos
         
         if (!this.moduloBuses.tfModificarRuta.getText().isEmpty())
         {
-            if (new RutaDAO().consultarRuta(this.moduloBuses.tfModificarRuta.getText()) == null)
+            Ruta ruta = new RutaDAO().consultarRuta(this.moduloBuses.tfModificarRuta.getText());
+            
+            if (ruta != null)
+            {
+                if (!ruta.isEstado())
+                {
+                    JOptionPane.showMessageDialog(moduloBuses, "La Ruta no esta Activa.", "Error", JOptionPane.ERROR_MESSAGE);
+                    return false;
+                }
+            }
+            else
             {
                 JOptionPane.showMessageDialog(moduloBuses, "Ruta invalida.", "Error", JOptionPane.ERROR_MESSAGE);
                 return false;
@@ -260,24 +446,87 @@ public class ModuloBuses_Eventos
         this.moduloBuses.cbModificarTipo.setSelectedIndex(0);
         this.moduloBuses.tfModificarCapacidad.setText("");
         this.moduloBuses.tfModificarRuta.setText("");
+        this.moduloBuses.cbModificarEstado.setSelectedIndex(0);
+    }
+    
+    public void consultarRutasModificar()
+    {
+        ArrayList<Ruta> listaRutas = new RutaDAO().consultarRutas();
+        
+        if(listaRutas != null)
+        {
+            DefaultTableModel model = (DefaultTableModel) this.moduloBuses.tRutasModificar.getModel();
+            model.setRowCount(listaRutas.size());
+            
+            for (int i = 0; i < listaRutas.size(); i++) 
+            {
+                this.moduloBuses.tRutasModificar.setValueAt(listaRutas.get(i).getNombre(), i, 0);
+                this.moduloBuses.tRutasModificar.setValueAt(listaRutas.get(i).getDescripcion(), i, 1);
+            }
+            
+            this.moduloBuses.fSelRutaModificar.setLocationRelativeTo(moduloBuses);
+            this.moduloBuses.fSelRutaModificar.setVisible(true);
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(moduloBuses, "Error al consultar.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void seleccionarRutasModificar()
+    {
+        int row = this.moduloBuses.tRutasModificar.getSelectedRow();
+        
+        if(row != -1)
+        {
+            this.moduloBuses.tfModificarRuta.setText((String) this.moduloBuses.tRutasModificar.getValueAt(row, 0));
+            
+            DefaultTableModel model = (DefaultTableModel) this.moduloBuses.tRutasModificar.getModel();
+            model.setRowCount(0);
+            
+            this.moduloBuses.fSelRutaModificar.setVisible(false);
+        }
+	else
+	{
+	    JOptionPane.showMessageDialog(this.moduloBuses.fSelRutaModificar, "Seleccione una ruta.", "", JOptionPane.ERROR_MESSAGE);
+	}
+    }
+    
+    public void cerrarSeleccionModificar()
+    {
+        this.moduloBuses.fSelRutaModificar.setVisible(false);
     }
     
     public void buscarBusEliminar()
     {
         String serial = this.moduloBuses.tfEliminarBuscar.getText();
         
-        Bus bus = new BusDAO().consultarBus(serial);
-        
-        if (bus != null)
+        if (!serial.isEmpty())
         {
-            this.moduloBuses.tfEliminarSerial.setText(bus.getSerial());
-            this.moduloBuses.tfEliminarTipo.setText(bus.getTipo());
-            this.moduloBuses.tfEliminarCapacidad.setText(String.valueOf(bus.getCapacidad()));
-            this.moduloBuses.tfEliminarRuta.setText(bus.getRuta());
+            Bus bus = new BusDAO().consultarBus(serial);
+        
+            if (bus != null)
+            {
+                if (bus.isEstado())
+                {
+                    this.moduloBuses.tfEliminarSerial.setText(bus.getSerial());
+                    this.moduloBuses.tfEliminarTipo.setText(bus.getTipo());
+                    this.moduloBuses.tfEliminarCapacidad.setText(String.valueOf(bus.getCapacidad()));
+                    this.moduloBuses.tfEliminarRuta.setText(bus.getRuta());
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(moduloBuses, "El bus ya esta eliminado.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(moduloBuses, "Bus inexistente.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
         }
         else
         {
-            JOptionPane.showMessageDialog(moduloBuses, "Bus inexistente.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(moduloBuses, "Debe introducir un serial para buscar.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
     
@@ -285,20 +534,28 @@ public class ModuloBuses_Eventos
     {
         String serial = this.moduloBuses.tfEliminarSerial.getText();
         
-        int op = JOptionPane.showConfirmDialog(moduloBuses, "Desea eliminar el Bus " + serial + ".", "", JOptionPane.YES_NO_OPTION);
-        
-        if (op == JOptionPane.YES_OPTION)
+        if (!serial.isEmpty())
         {
-            boolean exito = new BusDAO().eliminarBus(serial);
+            int op = JOptionPane.showConfirmDialog(moduloBuses, "Desea eliminar el Bus " + serial + "?", "", JOptionPane.YES_NO_OPTION);
 
-            if (exito)
+            if (op == JOptionPane.YES_OPTION)
             {
-                JOptionPane.showMessageDialog(moduloBuses, "Bus eliminado exitosamente.", "", JOptionPane.INFORMATION_MESSAGE);
+                boolean exito = new BusDAO().eliminarBus(serial);
+
+                if (exito)
+                {
+                    JOptionPane.showMessageDialog(moduloBuses, "Bus eliminado exitosamente.", "", JOptionPane.INFORMATION_MESSAGE);
+                    limpiarCamposEliminar();
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(moduloBuses, "Error al eliminar.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
             }
-            else
-            {
-                JOptionPane.showMessageDialog(moduloBuses, "Error al eliminar.", "Error", JOptionPane.ERROR_MESSAGE);
-            }
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(moduloBuses, "No ha buscado un bus.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
     
@@ -327,7 +584,15 @@ public class ModuloBuses_Eventos
                 model.setValueAt(lista.get(i).getTipo(), i, 1);
                 model.setValueAt(lista.get(i).getCapacidad(), i, 2);
                 model.setValueAt(lista.get(i).getRuta(), i, 3);
+                model.setValueAt(lista.get(i).getEstado(), i, 4);
             }
         }
+    }
+    
+    public void cerrarVentana()
+    {
+        this.moduloBuses.fSelRutaCrear.setVisible(false);
+        this.moduloBuses.fSelRutaModificar.setVisible(false);
+        this.moduloBuses.setVisible(false);
     }
 }

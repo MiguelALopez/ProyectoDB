@@ -20,7 +20,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ModuloTurnos_Eventos
 {
-    private ModuloTurnos moduloTurnos;
+    private final ModuloTurnos moduloTurnos;
 
     public ModuloTurnos_Eventos(final ModuloTurnos moduloTurnos) 
     {
@@ -226,7 +226,7 @@ public class ModuloTurnos_Eventos
         {
             String conductor = this.moduloTurnos.tfModificarID.getText();
             String bus = this.moduloTurnos.tfModificarSerial.getText();
-            String turno = (String) this.moduloTurnos.cbEliminarTurno.getSelectedItem();
+            String turno = (String) this.moduloTurnos.cbModificarTurno.getSelectedItem();
             
             int op = JOptionPane.showConfirmDialog(moduloTurnos, "Desea modificar la Turno " + conductor + "?", "", JOptionPane.YES_NO_OPTION);
             
@@ -289,7 +289,7 @@ public class ModuloTurnos_Eventos
         {
             this.moduloTurnos.tfEliminarID.setText(e.getConductor());
             this.moduloTurnos.tfEliminarSerial.setText(e.getBus());
-            this.moduloTurnos.cbEliminarTurno.setSelectedItem(e.getTurno());
+            this.moduloTurnos.tfEliminarTurno.setText(e.getTurno());
         }
         else
         {
@@ -308,7 +308,7 @@ public class ModuloTurnos_Eventos
         {
             this.moduloTurnos.tfEliminarID.setText(e.getConductor());
             this.moduloTurnos.tfEliminarSerial.setText(e.getBus());
-            this.moduloTurnos.cbEliminarTurno.setSelectedItem(e.getTurno());
+            this.moduloTurnos.tfEliminarTurno.setText(e.getTurno());
         }
         else
         {
@@ -346,7 +346,7 @@ public class ModuloTurnos_Eventos
         
         this.moduloTurnos.tfEliminarID.setText("");
         this.moduloTurnos.tfEliminarSerial.setText("");
-        this.moduloTurnos.cbEliminarTurno.setSelectedIndex(0);
+        this.moduloTurnos.tfEliminarTurno.setText("");
     }
     
     public void consultarTurnos()
