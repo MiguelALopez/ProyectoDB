@@ -13,8 +13,9 @@ public class Ruta
 {
     private String nombre;
     private String descripcion;
+    private boolean estado;
 
-    public Ruta(String nombre, String descripcion) 
+    public Ruta(String nombre, String descripcion, boolean estado) 
     {
         this.nombre = nombre;
         
@@ -26,6 +27,8 @@ public class Ruta
         {
             this.descripcion  = "";
         }
+        
+        this.estado = estado;
     }
 
     public String getNombre() {
@@ -42,5 +45,20 @@ public class Ruta
 
     public void setDescripcion(String descripcion) {
         this.descripcion = descripcion;
-    }    
+    }
+    
+    public String getEstado() {
+        if (this.estado)
+            return "Activo";
+        else
+            return "Inactivo";
+    }
+
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
 }

@@ -22,7 +22,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ModuloEstaciones_Eventos 
 {
-    private ModuloEstaciones moduloEstaciones;
+    private final ModuloEstaciones moduloEstaciones;
     
     public ModuloEstaciones_Eventos(final ModuloEstaciones moduloEstaciones)
     {
@@ -36,6 +36,39 @@ public class ModuloEstaciones_Eventos
                 {
                     crearEstacion();
                 }                
+            }
+        );
+        
+        this.moduloEstaciones.bSeleccionCrear.addActionListener(
+            new ActionListener()
+            {
+                @Override
+                public void actionPerformed(ActionEvent ae) 
+                {
+                    consultarDirCrear();
+                }
+            }
+        );
+        
+        this.moduloEstaciones.bSeleccionarCrear.addActionListener(
+            new ActionListener()
+            {
+                @Override
+                public void actionPerformed(ActionEvent ae) 
+                {
+                    seleccionarDirCrear();
+                }
+            }
+        );
+        
+        this.moduloEstaciones.bCancelarCrear.addActionListener(
+            new ActionListener()
+            {
+                @Override
+                public void actionPerformed(ActionEvent ae) 
+                {
+                    cerrarSeleccionCrear();
+                }
             }
         );
         
@@ -58,6 +91,39 @@ public class ModuloEstaciones_Eventos
                 {
                     modificarEstacion();
                 }                
+            }
+        );
+        
+        this.moduloEstaciones.bSeleccionModificar.addActionListener(
+            new ActionListener()
+            {
+                @Override
+                public void actionPerformed(ActionEvent ae) 
+                {
+                    consultarDirModificar();
+                }
+            }
+        );
+        
+        this.moduloEstaciones.bSeleccionarModificar.addActionListener(
+            new ActionListener()
+            {
+                @Override
+                public void actionPerformed(ActionEvent ae) 
+                {
+                    seleccionarDirModificar();
+                }
+            }
+        );
+        
+        this.moduloEstaciones.bCancelarModificar.addActionListener(
+            new ActionListener()
+            {
+                @Override
+                public void actionPerformed(ActionEvent ae) 
+                {
+                    cerrarSeleccionModificar();
+                }
             }
         );
         
@@ -102,12 +168,13 @@ public class ModuloEstaciones_Eventos
             String nombre = this.moduloEstaciones.tfCrearNombre.getText();
             String ubicacion = this.moduloEstaciones.tfCrearUbicacion.getText();
             String director = this.moduloEstaciones.tfCrearDirector.getText();
+            boolean estado = true;
             
             int op = JOptionPane.showConfirmDialog(moduloEstaciones, "Desea crear la Estacion " + nombre + "?", "", JOptionPane.YES_NO_OPTION);
             
             if (op == JOptionPane.YES_OPTION)
             {
-                Estacion e = new Estacion(nombre, ubicacion, director);
+                Estacion e = new Estacion(nombre, ubicacion, director, estado);
                 
                 boolean exito = new EstacionDAO().insertarEstacion(e);
                 
@@ -167,6 +234,55 @@ public class ModuloEstaciones_Eventos
         this.moduloEstaciones.tfCrearDirector.setText("");
     }
     
+    public void consultarDirCrear()
+    {
+        ArrayList<Empleado> listaDirectores = new EmpleadoDAO().consultarDirectores();
+        
+        if(listaDirectores != null)
+        {
+            DefaultTableModel model = (DefaultTableModel) this.moduloEstaciones.tDirCrear.getModel();
+            model.setRowCount(listaDirectores.size());
+            
+            for (int i = 0; i < listaDirectores.size(); i++) 
+            {
+                this.moduloEstaciones.tDirCrear.setValueAt(listaDirectores.get(i).getId(), i, 0);
+                this.moduloEstaciones.tDirCrear.setValueAt(listaDirectores.get(i).getNombre(), i, 1);
+                this.moduloEstaciones.tDirCrear.setValueAt(listaDirectores.get(i).getCargo(), i, 2);
+            }
+            
+            this.moduloEstaciones.fSelDirCrear.setLocationRelativeTo(moduloEstaciones);
+            this.moduloEstaciones.fSelDirCrear.setVisible(true);
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(moduloEstaciones, "Error al consultar.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void seleccionarDirCrear()
+    {
+        int row = this.moduloEstaciones.tDirCrear.getSelectedRow();
+        
+        if(row != -1)
+        {
+            this.moduloEstaciones.tfCrearDirector.setText((String) this.moduloEstaciones.tDirCrear.getValueAt(row, 0));
+            
+            DefaultTableModel model = (DefaultTableModel) this.moduloEstaciones.tDirCrear.getModel();
+            model.setRowCount(0);
+            
+            this.moduloEstaciones.fSelDirCrear.setVisible(false);
+        }
+	else
+	{
+	    JOptionPane.showMessageDialog(this.moduloEstaciones.fSelDirCrear, "Seleccione un director.", "", JOptionPane.ERROR_MESSAGE);
+	}
+    }
+    
+    public void cerrarSeleccionCrear()
+    {
+        this.moduloEstaciones.fSelDirCrear.setVisible(false);
+    }
+    
     public void buscarEstacionModificar()
     {
         String nombre = this.moduloEstaciones.tfModificarBuscar.getText();
@@ -178,6 +294,7 @@ public class ModuloEstaciones_Eventos
             this.moduloEstaciones.tfModificarNombre.setText(e.getNombre());
             this.moduloEstaciones.tfModificarUbicacion.setText(e.getUbicacion());
             this.moduloEstaciones.tfModificarDirector.setText(e.getDirector());
+            this.moduloEstaciones.cbModificarEstado.setSelectedItem(e.getEstado());
             
             habilitarCamposModificar(true);
         }
@@ -192,6 +309,8 @@ public class ModuloEstaciones_Eventos
         //this.moduloEstaciones.tfModificarNombre.setEditable(b);
         this.moduloEstaciones.tfModificarUbicacion.setEditable(b);
         this.moduloEstaciones.tfModificarDirector.setEditable(b);
+        this.moduloEstaciones.bSeleccionModificar.setEnabled(b);
+        this.moduloEstaciones.cbModificarEstado.setEnabled(b);
     }
     
     public void modificarEstacion()
@@ -201,12 +320,22 @@ public class ModuloEstaciones_Eventos
             String nombre = this.moduloEstaciones.tfModificarNombre.getText();
             String ubicacion = this.moduloEstaciones.tfModificarUbicacion.getText();
             String director = this.moduloEstaciones.tfModificarDirector.getText();
+            boolean estado = true;
+            
+            if (this.moduloEstaciones.cbModificarEstado.getSelectedItem().equals("Activo"))
+            {
+                estado = true;
+            }
+            else if(this.moduloEstaciones.cbModificarEstado.getSelectedItem().equals("Inactivo"))
+            {
+                estado = false;
+            }
             
             int op = JOptionPane.showConfirmDialog(moduloEstaciones, "Desea modificar la Estacion " + nombre + "?", "", JOptionPane.YES_NO_OPTION);
             
             if (op == JOptionPane.YES_OPTION)
             {
-                Estacion e = new Estacion(nombre, ubicacion, director);
+                Estacion e = new Estacion(nombre, ubicacion, director, estado);
                 
                 boolean exito = new EstacionDAO().modificarEstacion(e);
                 
@@ -267,46 +396,117 @@ public class ModuloEstaciones_Eventos
         this.moduloEstaciones.tfModificarNombre.setText("");
         this.moduloEstaciones.tfModificarUbicacion.setText("");
         this.moduloEstaciones.tfModificarDirector.setText("");
+        this.moduloEstaciones.cbModificarEstado.setSelectedIndex(0);
+    }
+    
+    public void consultarDirModificar()
+    {
+        ArrayList<Empleado> listaDirectores = new EmpleadoDAO().consultarDirectores();
+        
+        if(listaDirectores != null)
+        {
+            DefaultTableModel model = (DefaultTableModel) this.moduloEstaciones.tDirModificar.getModel();
+            model.setRowCount(listaDirectores.size());
+            
+            for (int i = 0; i < listaDirectores.size(); i++) 
+            {
+                this.moduloEstaciones.tDirModificar.setValueAt(listaDirectores.get(i).getId(), i, 0);
+                this.moduloEstaciones.tDirModificar.setValueAt(listaDirectores.get(i).getNombre(), i, 1);
+                this.moduloEstaciones.tDirModificar.setValueAt(listaDirectores.get(i).getCargo(), i, 2);
+            }
+            
+            this.moduloEstaciones.fSelDirModificar.setLocationRelativeTo(moduloEstaciones);
+            this.moduloEstaciones.fSelDirModificar.setVisible(true);
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(moduloEstaciones, "Error al consultar.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+    }
+    
+    public void seleccionarDirModificar()
+    {
+        int row = this.moduloEstaciones.tDirModificar.getSelectedRow();
+        
+        if(row != -1)
+        {
+            this.moduloEstaciones.tfModificarDirector.setText((String) this.moduloEstaciones.tDirModificar.getValueAt(row, 0));
+            
+            DefaultTableModel model = (DefaultTableModel) this.moduloEstaciones.tDirModificar.getModel();
+            model.setRowCount(0);
+            
+            this.moduloEstaciones.fSelDirModificar.setVisible(false);
+        }
+	else
+	{
+	    JOptionPane.showMessageDialog(this.moduloEstaciones.fSelDirModificar, "Seleccione un director.", "", JOptionPane.ERROR_MESSAGE);
+	}
+    }
+    
+    public void cerrarSeleccionModificar()
+    {
+        this.moduloEstaciones.fSelDirModificar.setVisible(false);
     }
     
     public void buscarEstacionEliminar()
     {
         String nombre = this.moduloEstaciones.tfEliminarBuscar.getText();
         
-        Estacion e = new EstacionDAO().consultarEstacion(nombre);
-        
-        if (e != null)
+        if (!nombre.isEmpty())
         {
-            this.moduloEstaciones.tfEliminarNombre.setText(e.getNombre());
-            this.moduloEstaciones.tfEliminarUbicacion.setText(e.getUbicacion());
-            this.moduloEstaciones.tfEliminarDirector.setText(e.getDirector());
+            Estacion e = new EstacionDAO().consultarEstacion(nombre);
+        
+            if (e != null)
+            {
+                if (e.isEstado())
+                {
+                    this.moduloEstaciones.tfEliminarNombre.setText(e.getNombre());
+                    this.moduloEstaciones.tfEliminarUbicacion.setText(e.getUbicacion());
+                    this.moduloEstaciones.tfEliminarDirector.setText(e.getDirector());
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(moduloEstaciones, "La Estacion ya esta eliminada.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(moduloEstaciones, "Estacion inexistente.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
         }
         else
         {
-            JOptionPane.showMessageDialog(moduloEstaciones, "Estacion inexistente.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(moduloEstaciones, "Debe introducir un nombre para buscar.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
     
     public void eliminarEstacion()
     {
         String nombre = this.moduloEstaciones.tfEliminarNombre.getText();
-
-        int op = JOptionPane.showConfirmDialog(moduloEstaciones, "Desea eliminar la Estacion " + nombre + "?", "", JOptionPane.YES_NO_OPTION);
-
-        if (op == JOptionPane.YES_OPTION)
+        
+        if (!nombre.isEmpty())
         {
-            boolean exito = new EstacionDAO().eliminarEstacion(nombre);
+            int op = JOptionPane.showConfirmDialog(moduloEstaciones, "Desea eliminar la Estacion " + nombre + "?", "", JOptionPane.YES_NO_OPTION);
 
-            if (exito)
+            if (op == JOptionPane.YES_OPTION)
             {
-                JOptionPane.showMessageDialog(moduloEstaciones, "Estacion eliminada exitosamente.", "", JOptionPane.INFORMATION_MESSAGE);
-                limpiarCamposEliminar();
+                boolean exito = new EstacionDAO().eliminarEstacion(nombre);
+
+                if (exito)
+                {
+                    JOptionPane.showMessageDialog(moduloEstaciones, "Estacion eliminada exitosamente.", "", JOptionPane.INFORMATION_MESSAGE);
+                    limpiarCamposEliminar();
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(moduloEstaciones, "Error al eliminar.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
             }
-            else
-            {
-                JOptionPane.showMessageDialog(moduloEstaciones, "Error al eliminar.", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        }        
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(moduloEstaciones, "No ha buscado una estacion.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
     
     public void limpiarCamposEliminar()
@@ -332,6 +532,7 @@ public class ModuloEstaciones_Eventos
                 model.setValueAt(lista.get(i).getNombre(), i, 0);
                 model.setValueAt(lista.get(i).getUbicacion(), i, 1);
                 model.setValueAt(lista.get(i).getDirector(), i, 2);
+                model.setValueAt(lista.get(i).getEstado(), i, 3);
             }
         }
     }

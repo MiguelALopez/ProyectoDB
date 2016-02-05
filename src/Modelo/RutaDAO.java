@@ -8,7 +8,6 @@ package Modelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,7 +30,7 @@ public class RutaDAO
         conexionBD.conectar();
         boolean exito = false;
         
-        String query = "INSERT INTO ruta (ruta_nombre, ruta_descripcion) VALUES (?,?);";
+        String query = "INSERT INTO ruta (ruta_nombre, ruta_descripcion, ruta_estado) VALUES (?,?,?);";
         
         try
         {
@@ -47,6 +46,8 @@ public class RutaDAO
             {
                 st.setString(2, ruta.getDescripcion());
             }
+            
+            st.setBoolean(3, ruta.isEstado());
             
             int resultado = st.executeUpdate();
             exito = true;
@@ -74,13 +75,14 @@ public class RutaDAO
         String query = "UPDATE ruta SET "
                 //+ "ruta_nombre = ?, "
                 + "ruta_descripcion = ?, "
+                + "ruta_estado = ? "
                 + "WHERE ruta_nombre = ?;";
         
         try
         {
             PreparedStatement st = conexionBD.conexion.prepareStatement(query);
             
-            st.setString(2, ruta.getNombre());
+            st.setString(3, ruta.getNombre());
             
             if (ruta.getDescripcion().isEmpty())
             {
@@ -90,6 +92,8 @@ public class RutaDAO
             {
                 st.setString(1, ruta.getDescripcion());
             }
+            
+            st.setBoolean(2, ruta.isEstado());
             
             int resultado = st.executeUpdate();
             exito = true;
@@ -114,13 +118,14 @@ public class RutaDAO
         conexionBD.conectar();
         boolean exito = false;
         
-        String query1 = "UPDATE bus SET ruta_nombre = ? WHERE ruta_nombre = ?;";
-        String query2 = "DELETE FROM tarjeta_ruta WHERE ruta_nombre = ?;";
-        String query3 = "DELETE FROM estacion_ruta WHERE ruta_nombre = ?;";
-        String query = "DELETE FROM ruta WHERE ruta_nombre = ?;";
+        //String query1 = "UPDATE bus SET ruta_nombre = ? WHERE ruta_nombre = ?;";
+        //String query2 = "DELETE FROM tarjeta_ruta WHERE ruta_nombre = ?;";
+        //String query3 = "DELETE FROM estacion_ruta WHERE ruta_nombre = ?;";
+        String query = "UPDATE ruta SET ruta_estado = ? WHERE ruta_nombre = ?;";
         
         try
         {
+            /*
             PreparedStatement st = conexionBD.conexion.prepareStatement(query1);
             st.setNull(1, java.sql.Types.VARCHAR);
             st.setString(2, nombre);
@@ -133,10 +138,11 @@ public class RutaDAO
             st = conexionBD.conexion.prepareStatement(query);
             st.setString(1, nombre);
             resultado = st.executeUpdate();
-            
-            st = conexionBD.conexion.prepareStatement(query);
-            st.setString(1, nombre);
-            resultado = st.executeUpdate();
+            */
+            PreparedStatement st = conexionBD.conexion.prepareStatement(query);
+            st.setBoolean(1, false);
+            st.setString(2, nombre);
+            int resultado = st.executeUpdate();
             
             exito = true;
         } 
@@ -171,7 +177,7 @@ public class RutaDAO
             
             if (tabla.next())
             {
-                ruta = new Ruta(tabla.getString(1), tabla.getString(2));
+                ruta = new Ruta(tabla.getString(1), tabla.getString(2), tabla.getBoolean(3));
             }
         } 
         catch (SQLException ex) 
@@ -198,14 +204,14 @@ public class RutaDAO
         
         try
         {
-            Statement st = conexionBD.conexion.createStatement();
-            ResultSet tabla = st.executeQuery(query);
+            PreparedStatement st = conexionBD.conexion.prepareStatement(query);
+            ResultSet tabla = st.executeQuery();
             
             lista = new ArrayList();
             
             while (tabla.next())
             {
-                lista.add(new Ruta(tabla.getString(1), tabla.getString(2)));
+                lista.add(new Ruta(tabla.getString(1), tabla.getString(2), tabla.getBoolean(3)));
             }        
         } 
         catch (SQLException ex) 
@@ -228,7 +234,9 @@ public class RutaDAO
         conexionBD.conectar();        
         ArrayList<Ruta> lista = null;
         
-        String query = "SELECT ruta_nombre, ruta_descripcion FROM ruta NATURAL JOIN estacion_ruta WHERE estacion_nombre = ?;";
+        String query = "SELECT ruta_nombre, ruta_descripcion, ruta_estado "
+                + "FROM ruta NATURAL JOIN estacion_ruta "
+                + "WHERE estacion_nombre = ?;";
         
         try
         {
@@ -241,7 +249,42 @@ public class RutaDAO
             
             while (tabla.next())
             {
-                lista.add(new Ruta(tabla.getString(1), tabla.getString(2)));
+                lista.add(new Ruta(tabla.getString(1), tabla.getString(2), tabla.getBoolean(3)));
+            }        
+        } 
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(RutaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally
+        {
+            if (conexionBD != null)
+            {
+                conexionBD.cerrarConexion();
+            }
+        }
+        
+        return lista;
+    }
+    
+    public ArrayList<Ruta> consultarRutas(boolean estado)
+    {
+        conexionBD.conectar();        
+        ArrayList<Ruta> lista = null;
+        
+        String query = "SELECT * FROM ruta WHERE ruta_estado = ?;";
+        
+        try
+        {
+            PreparedStatement st = conexionBD.conexion.prepareStatement(query);
+            st.setBoolean(1, estado);
+            ResultSet tabla = st.executeQuery();
+            
+            lista = new ArrayList();
+            
+            while (tabla.next())
+            {
+                lista.add(new Ruta(tabla.getString(1), tabla.getString(2), tabla.getBoolean(3)));
             }        
         } 
         catch (SQLException ex) 

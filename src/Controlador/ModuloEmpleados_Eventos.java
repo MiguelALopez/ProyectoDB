@@ -22,7 +22,7 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ModuloEmpleados_Eventos
 {
-    private ModuloEmpleados moduloEmpleados;
+    private final ModuloEmpleados moduloEmpleados;
 
     public ModuloEmpleados_Eventos(final ModuloEmpleados moduloEmpleados) 
     {

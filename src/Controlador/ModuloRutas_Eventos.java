@@ -112,12 +112,13 @@ public class ModuloRutas_Eventos
         {
             String nombre = this.moduloRutas.tfCrearNombre.getText();
             String descripcion = this.moduloRutas.taCrearDescripcion.getText();
+            boolean estado = true;
             
             int op = JOptionPane.showConfirmDialog(moduloRutas, "Desea crear la Ruta " + nombre + "?", "", JOptionPane.YES_NO_OPTION);
             
             if (op == JOptionPane.YES_OPTION)
             {
-                Ruta e = new Ruta(nombre, descripcion);
+                Ruta e = new Ruta(nombre, descripcion, estado);
                 
                 boolean exito = new RutaDAO().insertarRuta(e);
                 
@@ -180,6 +181,7 @@ public class ModuloRutas_Eventos
     {
         //this.moduloRutas.tfModificarNombre.setEditable(b);
         this.moduloRutas.taModificarDescripcion.setEditable(b);
+        this.moduloRutas.cbModificarEstado.setEnabled(b);
     }
     
     public void modificarRuta()
@@ -188,12 +190,22 @@ public class ModuloRutas_Eventos
         {
             String nombre = this.moduloRutas.tfModificarNombre.getText();
             String descripcion = this.moduloRutas.taModificarDescripcion.getText();
+            boolean estado = true;
+            
+            if (this.moduloRutas.cbModificarEstado.getSelectedItem().equals("Activo"))
+            {
+                estado = true;
+            }
+            else if (this.moduloRutas.cbModificarEstado.getSelectedItem().equals("Inactivo"))
+            {
+                estado = false;
+            }
             
             int op = JOptionPane.showConfirmDialog(moduloRutas, "Desea modificar la Ruta " + nombre + "?", "", JOptionPane.YES_NO_OPTION);
             
             if (op == JOptionPane.YES_OPTION)
             {
-                Ruta e = new Ruta(nombre, descripcion);
+                Ruta e = new Ruta(nombre, descripcion, estado);
                 
                 boolean exito = new RutaDAO().modificarRuta(e);
                 
@@ -234,45 +246,67 @@ public class ModuloRutas_Eventos
         
         this.moduloRutas.tfModificarNombre.setText("");
         this.moduloRutas.taModificarDescripcion.setText("");
+        this.moduloRutas.cbModificarEstado.setSelectedIndex(0);
     }
     
     public void buscarRutaEliminar()
     {
         String nombre = this.moduloRutas.tfEliminarBuscar.getText();
         
-        Ruta e = new RutaDAO().consultarRuta(nombre);
-        
-        if (e != null)
+        if (!nombre.isEmpty())
         {
-            this.moduloRutas.tfEliminarNombre.setText(e.getNombre());
-            this.moduloRutas.taEliminarDescripcion.setText(e.getDescripcion());
+            Ruta e = new RutaDAO().consultarRuta(nombre);
+        
+            if (e != null)
+            {
+                if (e.isEstado())
+                {
+                    this.moduloRutas.tfEliminarNombre.setText(e.getNombre());
+                    this.moduloRutas.taEliminarDescripcion.setText(e.getDescripcion());
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(moduloRutas, "La Ruta ya esta eliminada.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(moduloRutas, "Ruta inexistente.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
         }
         else
         {
-            JOptionPane.showMessageDialog(moduloRutas, "Ruta inexistente.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(moduloRutas, "Debe introducir un nombre para buscar.", "Error", JOptionPane.ERROR_MESSAGE);
         }
     }
     
     public void eliminarRuta()
     {
         String nombre = this.moduloRutas.tfEliminarNombre.getText();
-
-        int op = JOptionPane.showConfirmDialog(moduloRutas, "Desea eliminar la Ruta " + nombre + "?", "", JOptionPane.YES_NO_OPTION);
-
-        if (op == JOptionPane.YES_OPTION)
+        
+        if (!nombre.isEmpty())
         {
-            boolean exito = new RutaDAO().eliminarRuta(nombre);
+            int op = JOptionPane.showConfirmDialog(moduloRutas, "Desea eliminar la Ruta " + nombre + "?", "", JOptionPane.YES_NO_OPTION);
 
-            if (exito)
+            if (op == JOptionPane.YES_OPTION)
             {
-                JOptionPane.showMessageDialog(moduloRutas, "Ruta eliminada exitosamente.", "", JOptionPane.INFORMATION_MESSAGE);
-                limpiarCamposEliminar();
+                boolean exito = new RutaDAO().eliminarRuta(nombre);
+
+                if (exito)
+                {
+                    JOptionPane.showMessageDialog(moduloRutas, "Ruta eliminada exitosamente.", "", JOptionPane.INFORMATION_MESSAGE);
+                    limpiarCamposEliminar();
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(moduloRutas, "Error al eliminar.", "Error", JOptionPane.ERROR_MESSAGE);
+                }
             }
-            else
-            {
-                JOptionPane.showMessageDialog(moduloRutas, "Error al eliminar.", "Error", JOptionPane.ERROR_MESSAGE);
-            }
-        }        
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(moduloRutas, "No ha buscado una ruta.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
     
     public void limpiarCamposEliminar()
@@ -296,6 +330,7 @@ public class ModuloRutas_Eventos
             {
                 model.setValueAt(lista.get(i).getNombre(), i, 0);
                 model.setValueAt(lista.get(i).getDescripcion(), i, 1);
+                model.setValueAt(lista.get(i).getEstado(), i, 2);
             }
         }
     }

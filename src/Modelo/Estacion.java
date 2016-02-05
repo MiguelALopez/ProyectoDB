@@ -14,8 +14,9 @@ public class Estacion
     private String nombre;
     private String ubicacion;
     private String director;
-
-    public Estacion(String nombre, String ubicacion, String director) 
+    private boolean estado;
+    
+    public Estacion(String nombre, String ubicacion, String director, boolean estado) 
     {
         this.nombre = nombre;
         this.ubicacion = ubicacion;
@@ -28,6 +29,8 @@ public class Estacion
         {
             this.director  = "";
         }
+        
+        this.estado = estado;
     }
 
     public String getNombre() {
@@ -52,5 +55,20 @@ public class Estacion
 
     public void setDirector(String director) {
         this.director = director;
-    }    
+    }
+    
+    public String getEstado() {
+        if (this.estado)
+            return "Activo";
+        else
+            return "Inactivo";
+    }
+    
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
 }

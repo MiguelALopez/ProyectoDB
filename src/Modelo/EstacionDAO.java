@@ -8,7 +8,6 @@ package Modelo;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -31,7 +30,8 @@ public class EstacionDAO
         conexionBD.conectar();
         boolean exito = false;
         
-        String query = "INSERT INTO estacion (estacion_nombre, estacion_ubicacion, director_empleado_id) VALUES (?,?,?);";
+        String query = "INSERT INTO estacion (estacion_nombre, estacion_ubicacion, director_empleado_id, estacion_estado) "
+                + "VALUES (?,?,?,?);";
         
         try
         {
@@ -48,6 +48,8 @@ public class EstacionDAO
             {
                 st.setString(3, estacion.getDirector());
             }
+            
+            st.setBoolean(4, estacion.isEstado());
             
             int resultado = st.executeUpdate();
             exito = true;
@@ -75,14 +77,15 @@ public class EstacionDAO
         String query = "UPDATE estacion SET "
                 //+ "estacion_nombre = ?, "
                 + "estacion_ubicacion = ?, "
-                + "director_empleado_id = ? "
+                + "director_empleado_id = ?, "
+                + "estacion_estado = ? "
                 + "WHERE estacion_nombre = ?;";
         
         try
         {
             PreparedStatement st = conexionBD.conexion.prepareStatement(query);
             
-            st.setString(3, estacion.getNombre());
+            st.setString(4, estacion.getNombre());
             st.setString(1, estacion.getUbicacion());
             
             if (estacion.getDirector().isEmpty())
@@ -93,6 +96,8 @@ public class EstacionDAO
             {
                 st.setString(2, estacion.getDirector());
             }
+            
+            st.setBoolean(3, estacion.isEstado());
             
             int resultado = st.executeUpdate();
             exito = true;
@@ -117,13 +122,14 @@ public class EstacionDAO
         conexionBD.conectar();
         boolean exito = false;
         
-        String query1 = "DELETE FROM venta WHERE estacion_nombre = ?;";
-        String query2 = "DELETE FROM solicitud WHERE estacion_nombre = ?;";
-        String query3 = "DELETE FROM estacion_ruta WHERE estacion_nombre = ?;";
-        String query = "DELETE FROM estacion WHERE estacion_nombre = ?;";
+        //String query1 = "DELETE FROM venta WHERE estacion_nombre = ?;";
+        //String query2 = "DELETE FROM solicitud WHERE estacion_nombre = ?;";
+        //String query3 = "DELETE FROM estacion_ruta WHERE estacion_nombre = ?;";
+        String query = "UPDATE estacin SET estacion_estado = ? WHERE estacion_nombre = ?;";
         
         try
         {
+            /*
             PreparedStatement st = conexionBD.conexion.prepareStatement(query1);
             st.setString(1, nombre);            
             int resultado = st.executeUpdate();
@@ -135,10 +141,11 @@ public class EstacionDAO
             st = conexionBD.conexion.prepareStatement(query3);
             st.setString(1, nombre);            
             resultado = st.executeUpdate();
-            
-            st = conexionBD.conexion.prepareStatement(query);
-            st.setString(1, nombre);            
-            resultado = st.executeUpdate();
+            */
+            PreparedStatement st = conexionBD.conexion.prepareStatement(query);
+            st.setBoolean(1, false);
+            st.setString(2, nombre);
+            int resultado = st.executeUpdate();
             
             exito = true;
         } 
@@ -173,7 +180,7 @@ public class EstacionDAO
             
             if (tabla.next())
             {
-                estacion = new Estacion(tabla.getString(1), tabla.getString(2), tabla.getString(3));
+                estacion = new Estacion(tabla.getString(1), tabla.getString(2), tabla.getString(3), tabla.getBoolean(4));
             }
         } 
         catch (SQLException ex) 
@@ -200,14 +207,14 @@ public class EstacionDAO
         
         try
         {
-            Statement st = conexionBD.conexion.createStatement();
+            PreparedStatement st = conexionBD.conexion.prepareStatement(query);
             ResultSet tabla = st.executeQuery(query);
             
             lista = new ArrayList();
             
             while (tabla.next())
             {
-                lista.add(new Estacion(tabla.getString(1), tabla.getString(2), tabla.getString(3)));
+                lista.add(new Estacion(tabla.getString(1), tabla.getString(2), tabla.getString(3), tabla.getBoolean(4)));
             }        
         } 
         catch (SQLException ex) 
@@ -230,7 +237,8 @@ public class EstacionDAO
         conexionBD.conectar();        
         ArrayList<Estacion> lista = null;
         
-        String query = "SELECT * FROM estacion NATURAL JOIN estacion_ruta WHERE ruta_nombre = ?;";
+        String query = "SELECT estacion_nombre, estacion_ubicacion, director_empleado_id, estacion_estado "
+                + "FROM estacion NATURAL JOIN estacion_ruta WHERE ruta_nombre = ?;";
         
         try
         {
@@ -243,7 +251,43 @@ public class EstacionDAO
             
             while (tabla.next())
             {
-                lista.add(new Estacion(tabla.getString(1), tabla.getString(2), tabla.getString(3)));
+                lista.add(new Estacion(tabla.getString(1), tabla.getString(2), tabla.getString(3), tabla.getBoolean(4)));
+            }        
+        } 
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(EstacionDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally
+        {
+            if (conexionBD != null)
+            {
+                conexionBD.cerrarConexion();
+            }
+        }
+        
+        return lista;
+    }
+    
+    public ArrayList<Estacion> consultarEstaciones(boolean estado)
+    {
+        conexionBD.conectar();        
+        ArrayList<Estacion> lista = null;
+        
+        String query = "SELECT * FROM estacion WHERE estacion_estado = ?;";
+        
+        try
+        {
+            PreparedStatement st = conexionBD.conexion.prepareStatement(query);
+            st.setBoolean(1, estado);
+            
+            ResultSet tabla = st.executeQuery();
+            
+            lista = new ArrayList();
+            
+            while (tabla.next())
+            {
+                lista.add(new Estacion(tabla.getString(1), tabla.getString(2), tabla.getString(3), tabla.getBoolean(4)));
             }        
         } 
         catch (SQLException ex) 
