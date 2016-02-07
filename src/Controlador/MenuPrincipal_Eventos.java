@@ -131,5 +131,16 @@ public class MenuPrincipal_Eventos
                 }                
             }
         );
+
+        this.menuPrincipal.bTarjetas.addActionListener(
+                new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        ModuloTarjetas m = new ModuloTarjetas();
+                        m.setLocationRelativeTo(null);
+                        m.setVisible(true);
+                    }
+                }
+        );
     }
 }
