@@ -137,6 +137,7 @@ public class MenuPrincipal_Eventos
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         ModuloTarjetas m = new ModuloTarjetas();
+                        ModuloTarjetas_Eventos me = new ModuloTarjetas_Eventos(m);
                         m.setLocationRelativeTo(null);
                         m.setVisible(true);
                     }

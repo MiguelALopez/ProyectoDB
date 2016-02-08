@@ -77,7 +77,6 @@ public class ModuloUsuarios extends javax.swing.JFrame {
         bConsulActualizar = new javax.swing.JButton();
         jLabel30 = new javax.swing.JLabel();
         tConsulBuscarTarjeta = new javax.swing.JTextField();
-        bConsulBuscar = new javax.swing.JButton();
         paneHistory = new javax.swing.JPanel();
         jLabel31 = new javax.swing.JLabel();
         bHistoryBuscar = new javax.swing.JButton();
@@ -86,7 +85,6 @@ public class ModuloUsuarios extends javax.swing.JFrame {
         tableHistory = new javax.swing.JTable();
 
         setMinimumSize(new java.awt.Dimension(600, 480));
-        setPreferredSize(new java.awt.Dimension(600, 480));
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
         jTabbedPane1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -619,19 +617,11 @@ public class ModuloUsuarios extends javax.swing.JFrame {
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 5);
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 10);
         panelConsul.add(tConsulBuscarTarjeta, gridBagConstraints);
-
-        bConsulBuscar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        bConsulBuscar.setText("Buscar");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 10);
-        panelConsul.add(bConsulBuscar, gridBagConstraints);
 
         jTabbedPane1.addTab("Consultar Usuario", panelConsul);
 
@@ -704,7 +694,6 @@ public class ModuloUsuarios extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton bConsulActualizar;
-    public javax.swing.JButton bConsulBuscar;
     public javax.swing.JButton bCrearUsuario;
     public javax.swing.JButton bHistoryBuscar;
     public javax.swing.JButton bModifBuscar;

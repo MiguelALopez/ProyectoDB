@@ -13,7 +13,10 @@ package Modelo;
 
 import java.math.BigDecimal;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 
 public class TarjetaDAO {
     ConexionBD conexionBD;
@@ -109,5 +112,28 @@ public class TarjetaDAO {
             conexionBD.cerrarConexion();
         }
         return exito;
+    }
+
+    public ArrayList<Tarjeta> consultarTarjetas(){
+        ArrayList<Tarjeta> tarjetas = null;
+
+        String query = "SELECT * FROM tarjeta WHERE tarjeta_estado <> 'BLOQUEADA'";
+        conexionBD.conectar();
+        try {
+            Statement st = conexionBD.conexion.createStatement();
+            ResultSet tabla = st.executeQuery(query);
+
+            tarjetas = new ArrayList<>();
+
+            while (tabla.next()){
+                tarjetas.add(new Tarjeta(tabla.getString(1),
+                        tabla.getInt(2),
+                        tabla.getString(3)));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return tarjetas;
     }
 }
