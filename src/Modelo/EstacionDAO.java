@@ -125,7 +125,7 @@ public class EstacionDAO
         //String query1 = "DELETE FROM venta WHERE estacion_nombre = ?;";
         //String query2 = "DELETE FROM solicitud WHERE estacion_nombre = ?;";
         //String query3 = "DELETE FROM estacion_ruta WHERE estacion_nombre = ?;";
-        String query = "UPDATE estacin SET estacion_estado = ? WHERE estacion_nombre = ?;";
+        String query = "UPDATE estacion SET estacion_estado = ? WHERE estacion_nombre = ?;";
         
         try
         {
@@ -208,7 +208,7 @@ public class EstacionDAO
         try
         {
             PreparedStatement st = conexionBD.conexion.prepareStatement(query);
-            ResultSet tabla = st.executeQuery(query);
+            ResultSet tabla = st.executeQuery();
             
             lista = new ArrayList();
             
