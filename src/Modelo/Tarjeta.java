@@ -21,10 +21,15 @@ public class Tarjeta
      * Constructor usado para simular una tarjeta del sistema MIO
      * @param id numero de identificacion de la tarjeta
      * @param saldo saldo de la tarjeta
-     * @param estado estado de la tarjeta "ACTIVA" o "INACTIVA"
+     * @param estado estado de la tarjeta "ACTIVA" o "BLOQUEADA"
      */
     public Tarjeta(String id, double saldo, String estado){
         this.id = id;
+        this.saldo = saldo;
+        this.estado = estado;
+    }
+
+    public Tarjeta(double saldo, String estado){
         this.saldo = saldo;
         this.estado = estado;
     }

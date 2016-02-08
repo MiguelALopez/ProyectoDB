@@ -33,9 +33,8 @@ public class ModuloTarjetas extends javax.swing.JFrame {
         buttonGroupVenta = new javax.swing.ButtonGroup();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
-        jButton1 = new javax.swing.JButton();
-        jButton2 = new javax.swing.JButton();
-        jComboBox1 = new javax.swing.JComboBox<>();
+        bVentaVender = new javax.swing.JButton();
+        comboVentaIdTarjeta = new javax.swing.JComboBox<>();
         tVentaSaldo = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jLabel3 = new javax.swing.JLabel();
@@ -47,15 +46,12 @@ public class ModuloTarjetas extends javax.swing.JFrame {
         jLabel11 = new javax.swing.JLabel();
         jLabel12 = new javax.swing.JLabel();
         jLabel13 = new javax.swing.JLabel();
-        jLabel14 = new javax.swing.JLabel();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
-        jLabel8 = new javax.swing.JLabel();
         tCrearTelefono = new javax.swing.JTextField();
         tCrearDireccion = new javax.swing.JTextField();
         tCrearEmail = new javax.swing.JTextField();
-        tCrearTarjeta = new javax.swing.JTextField();
         jLabel15 = new javax.swing.JLabel();
         jLabel16 = new javax.swing.JLabel();
         radioGenerica = new javax.swing.JRadioButton();
@@ -64,38 +60,42 @@ public class ModuloTarjetas extends javax.swing.JFrame {
         jSeparator1 = new javax.swing.JSeparator();
         jPanel2 = new javax.swing.JPanel();
         jPanel3 = new javax.swing.JPanel();
+        spinnerCrearNumTarj = new javax.swing.JSpinner();
+        jLabel2 = new javax.swing.JLabel();
+        tCrearSaldo = new javax.swing.JTextField();
+        bCrearTarjeta = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        comboCrearEstado = new javax.swing.JComboBox<>();
+        jLabel14 = new javax.swing.JLabel();
+        jSeparator2 = new javax.swing.JSeparator();
         jPanel4 = new javax.swing.JPanel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        tableTarjetas = new javax.swing.JTable();
+        bConsulActualizar = new javax.swing.JButton();
+        jLabel30 = new javax.swing.JLabel();
+        tConsulBuscarTarjeta = new javax.swing.JTextField();
 
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
         jPanel1.setLayout(new java.awt.GridBagLayout());
 
-        jButton1.setText("Cancelar");
+        bVentaVender.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        bVentaVender.setText("Vender");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 10;
-        gridBagConstraints.gridwidth = 2;
-        gridBagConstraints.ipadx = 25;
-        gridBagConstraints.ipady = 5;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 0);
-        jPanel1.add(jButton1, gridBagConstraints);
-
-        jButton2.setText("Vender");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 4;
-        gridBagConstraints.gridy = 10;
+        gridBagConstraints.gridwidth = 5;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 30;
         gridBagConstraints.ipady = 5;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
-        gridBagConstraints.insets = new java.awt.Insets(10, 0, 10, 10);
-        jPanel1.add(jButton2, gridBagConstraints);
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+        jPanel1.add(bVentaVender, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.insets = new java.awt.Insets(20, 10, 15, 10);
-        jPanel1.add(jComboBox1, gridBagConstraints);
+        jPanel1.add(comboVentaIdTarjeta, gridBagConstraints);
 
         tVentaSaldo.setText("0");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -132,6 +132,7 @@ public class ModuloTarjetas extends javax.swing.JFrame {
         jPanel1.add(jLabel9, gridBagConstraints);
 
         tCrearCedula.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tCrearCedula.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 3;
@@ -160,6 +161,7 @@ public class ModuloTarjetas extends javax.swing.JFrame {
         jPanel1.add(jLabel10, gridBagConstraints);
 
         tCrearNombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tCrearNombre.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 4;
@@ -196,15 +198,6 @@ public class ModuloTarjetas extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 0);
         jPanel1.add(jLabel13, gridBagConstraints);
 
-        jLabel14.setForeground(new java.awt.Color(255, 0, 0));
-        jLabel14.setText("*");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 8;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 0);
-        jPanel1.add(jLabel14, gridBagConstraints);
-
         jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("Telefono:");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -232,16 +225,8 @@ public class ModuloTarjetas extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 0);
         jPanel1.add(jLabel7, gridBagConstraints);
 
-        jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel8.setText("ID Tarjeta");
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 8;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 0);
-        jPanel1.add(jLabel8, gridBagConstraints);
-
         tCrearTelefono.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tCrearTelefono.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 5;
@@ -252,6 +237,7 @@ public class ModuloTarjetas extends javax.swing.JFrame {
         jPanel1.add(tCrearTelefono, gridBagConstraints);
 
         tCrearDireccion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tCrearDireccion.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 6;
@@ -262,6 +248,7 @@ public class ModuloTarjetas extends javax.swing.JFrame {
         jPanel1.add(tCrearDireccion, gridBagConstraints);
 
         tCrearEmail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tCrearEmail.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 7;
@@ -270,16 +257,6 @@ public class ModuloTarjetas extends javax.swing.JFrame {
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 10);
         jPanel1.add(tCrearEmail, gridBagConstraints);
-
-        tCrearTarjeta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 8;
-        gridBagConstraints.gridwidth = 3;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 10);
-        jPanel1.add(tCrearTarjeta, gridBagConstraints);
 
         jLabel15.setText("Campos Obligatorios");
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -342,29 +319,140 @@ public class ModuloTarjetas extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("Recarga de Tarjetas", jPanel2);
 
-        javax.swing.GroupLayout jPanel3Layout = new javax.swing.GroupLayout(jPanel3);
-        jPanel3.setLayout(jPanel3Layout);
-        jPanel3Layout.setHorizontalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 588, Short.MAX_VALUE)
-        );
-        jPanel3Layout.setVerticalGroup(
-            jPanel3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 458, Short.MAX_VALUE)
-        );
+        jPanel3.setLayout(new java.awt.GridBagLayout());
+
+        spinnerCrearNumTarj.setModel(new javax.swing.SpinnerNumberModel(1, 1, null, 1));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(0, 15, 0, 15);
+        jPanel3.add(spinnerCrearNumTarj, gridBagConstraints);
+        spinnerCrearNumTarj.setValue(1);
+
+        jLabel2.setText("Cantidad de Tarjetas");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(0, 80, 0, 0);
+        jPanel3.add(jLabel2, gridBagConstraints);
+
+        tCrearSaldo.setText("0");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(30, 15, 20, 15);
+        jPanel3.add(tCrearSaldo, gridBagConstraints);
+
+        bCrearTarjeta.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        bCrearTarjeta.setText("Crear");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 4;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(20, 15, 15, 15);
+        jPanel3.add(bCrearTarjeta, gridBagConstraints);
+
+        jLabel8.setText("Saldo Inical");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(30, 15, 20, 0);
+        jPanel3.add(jLabel8, gridBagConstraints);
+
+        comboCrearEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ACTIVA", "BLOQUEADA" }));
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(0, 15, 0, 0);
+        jPanel3.add(comboCrearEstado, gridBagConstraints);
+
+        jLabel14.setText("Estado");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(0, 15, 0, 0);
+        jPanel3.add(jLabel14, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 10;
+        gridBagConstraints.gridwidth = 6;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weighty = 1.0;
+        jPanel3.add(jSeparator2, gridBagConstraints);
 
         jTabbedPane1.addTab("Crear Tarjetas", jPanel3);
 
-        javax.swing.GroupLayout jPanel4Layout = new javax.swing.GroupLayout(jPanel4);
-        jPanel4.setLayout(jPanel4Layout);
-        jPanel4Layout.setHorizontalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 588, Short.MAX_VALUE)
-        );
-        jPanel4Layout.setVerticalGroup(
-            jPanel4Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 458, Short.MAX_VALUE)
-        );
+        jPanel4.setLayout(new java.awt.GridBagLayout());
+
+        tableTarjetas.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tableTarjetas.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "TARJETA ID", "SALDO", "ESTADO"
+            }
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        tableTarjetas.getTableHeader().setReorderingAllowed(false);
+        jScrollPane1.setViewportView(tableTarjetas);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 5, 10);
+        jPanel4.add(jScrollPane1, gridBagConstraints);
+
+        bConsulActualizar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        bConsulActualizar.setText("Actualizar");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 10, 10);
+        jPanel4.add(bConsulActualizar, gridBagConstraints);
+
+        jLabel30.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel30.setText("Buscar Tarjeta (ID Tarjeta): ");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 0);
+        jPanel4.add(jLabel30, gridBagConstraints);
+
+        tConsulBuscarTarjeta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 10);
+        jPanel4.add(tConsulBuscarTarjeta, gridBagConstraints);
 
         jTabbedPane1.addTab("Consultar Tarjetas", jPanel4);
 
@@ -375,10 +463,12 @@ public class ModuloTarjetas extends javax.swing.JFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    public javax.swing.JButton bConsulActualizar;
+    public javax.swing.JButton bCrearTarjeta;
+    public javax.swing.JButton bVentaVender;
     private javax.swing.ButtonGroup buttonGroupVenta;
-    private javax.swing.JButton jButton1;
-    private javax.swing.JButton jButton2;
-    private javax.swing.JComboBox<String> jComboBox1;
+    public javax.swing.JComboBox<String> comboCrearEstado;
+    public javax.swing.JComboBox<String> comboVentaIdTarjeta;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -388,7 +478,9 @@ public class ModuloTarjetas extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel16;
     private javax.swing.JLabel jLabel19;
+    private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel30;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
@@ -399,16 +491,21 @@ public class ModuloTarjetas extends javax.swing.JFrame {
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JSeparator jSeparator1;
-    private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JRadioButton radioGenerica;
-    private javax.swing.JRadioButton radioPerson;
+    private javax.swing.JSeparator jSeparator2;
+    public javax.swing.JTabbedPane jTabbedPane1;
+    public javax.swing.JRadioButton radioGenerica;
+    public javax.swing.JRadioButton radioPerson;
+    public javax.swing.JSpinner spinnerCrearNumTarj;
+    public javax.swing.JTextField tConsulBuscarTarjeta;
     public javax.swing.JTextField tCrearCedula;
     public javax.swing.JTextField tCrearDireccion;
     public javax.swing.JTextField tCrearEmail;
     public javax.swing.JTextField tCrearNombre;
-    public javax.swing.JTextField tCrearTarjeta;
+    public javax.swing.JTextField tCrearSaldo;
     public javax.swing.JTextField tCrearTelefono;
     private javax.swing.JTextField tVentaSaldo;
+    public javax.swing.JTable tableTarjetas;
     // End of variables declaration//GEN-END:variables
 }
