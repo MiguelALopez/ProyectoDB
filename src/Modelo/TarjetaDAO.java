@@ -26,10 +26,10 @@ public class TarjetaDAO {
     }
 
     /**
-     * Metodo encargado de insertar una tarjeta nueva en la base de datos
-     * @return retorna verdadero en caso de que se halla insertado con exito y falso de lo contrario
+     * Metodo encargado de insertar varias tarjetas nueva en la base de datos
+     * @return retorna verdadero en caso de que se hallan insertado con exito y falso de lo contrario
      */
-    public boolean insertarTarjeta(){
+    public boolean insertarTarjetas(ArrayList<Tarjeta> tarjetas){
         boolean exito = false;
 
         String query = "INSERT INTO tarjeta(tarjeta_saldo, tarjeta_estado)" +
@@ -37,12 +37,14 @@ public class TarjetaDAO {
 
         conexionBD.conectar();
         try {
-            PreparedStatement st = conexionBD.conexion.prepareStatement(query);
+            PreparedStatement st;
+            for (int i = 0; i < tarjetas.size(); i++) {
+                st = conexionBD.conexion.prepareStatement(query);
+                st.setBigDecimal(1, BigDecimal.valueOf(tarjetas.get(i).getSaldo()));
+                st.setString(2, tarjetas.get(i).getEstado());
 
-            st.setBigDecimal(1, new BigDecimal(0));
-            st.setString(2, "ACTIVA");
-
-            int resultado = st.executeUpdate();
+                int resultado = st.executeUpdate();
+            }
             exito = true;
         } catch (SQLException e) {
             System.err.println("Error al insertar una tarjeta");

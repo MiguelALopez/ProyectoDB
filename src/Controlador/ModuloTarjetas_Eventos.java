@@ -41,7 +41,7 @@ public class ModuloTarjetas_Eventos {
                     @Override
                     public void actionPerformed(ActionEvent e) {
                         enableCamposVenta(false);
-                        limpiarCampos();
+                        limpiarCamposVentaCrear();
                     }
                 }
         );
@@ -86,6 +86,15 @@ public class ModuloTarjetas_Eventos {
                     }
                 }
         );
+
+        this.moduloTarjetas.bCrearTarjeta.addActionListener(
+                new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        crearTarjetas();
+                    }
+                }
+        );
     }
 
     public void enableCamposVenta(boolean enable){
@@ -96,12 +105,34 @@ public class ModuloTarjetas_Eventos {
         moduloTarjetas.tCrearEmail.setEnabled(enable);
     }
 
-    public void limpiarCampos(){
+    public void limpiarCamposVentaCrear(){
         moduloTarjetas.tCrearCedula.setText("");
         moduloTarjetas.tCrearNombre.setText("");
         moduloTarjetas.tCrearTelefono.setText("");
         moduloTarjetas.tCrearDireccion.setText("");
         moduloTarjetas.tCrearEmail.setText("");
+    }
+
+    public void limpiarCamposCrear(){
+        moduloTarjetas.tCrearSaldo.setText("0");
+        moduloTarjetas.spinnerCrearNumTarj.setValue(1);
+        moduloTarjetas.comboCrearEstado.setSelectedItem(0);
+    }
+
+    public boolean verificarCamposCrear(){
+        boolean exito = true;
+        if (moduloTarjetas.tCrearSaldo.getText().isEmpty()){
+            JOptionPane.showMessageDialog(moduloTarjetas, "El campo saldo es obligatorio.", "Error", JOptionPane.ERROR_MESSAGE);
+            exito = false;
+        }else {
+            try {
+                Integer.parseInt(moduloTarjetas.tCrearSaldo.getText());
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(moduloTarjetas, "El campo saldo debe ser numerico.", "Error", JOptionPane.ERROR_MESSAGE);
+                exito = false;
+            }
+        }
+        return exito;
     }
 
     public void consultarTarjetasVenta(){
@@ -131,5 +162,24 @@ public class ModuloTarjetas_Eventos {
 
     public void filtro() {
         sorter.setRowFilter(RowFilter.regexFilter(moduloTarjetas.tConsulBuscarTarjeta.getText(), 0));
+    }
+
+    public void crearTarjetas(){
+        if (verificarCamposCrear()){
+            int saldo = Integer.parseInt(moduloTarjetas.tCrearSaldo.getText());
+            String estado = moduloTarjetas.comboCrearEstado.getSelectedItem().toString();
+            ArrayList<Tarjeta> tarjetas = new ArrayList<>();
+            for (int i = 0; i < Integer.parseInt(moduloTarjetas.spinnerCrearNumTarj.getValue().toString()); i++) {
+                tarjetas.add(new Tarjeta(saldo, estado));
+            }
+            boolean exito = new TarjetaDAO().insertarTarjetas(tarjetas);
+
+            if (exito){
+                JOptionPane.showMessageDialog(moduloTarjetas, "Tarjetas creadas exitosamente.", "", JOptionPane.INFORMATION_MESSAGE);
+                limpiarCamposCrear();
+            }else {
+                JOptionPane.showMessageDialog(moduloTarjetas, "Error al crear las tarjetas", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
     }
 }

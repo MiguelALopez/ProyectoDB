@@ -29,6 +29,11 @@ public class Tarjeta
         this.estado = estado;
     }
 
+    public Tarjeta(double saldo, String estado){
+        this.saldo = saldo;
+        this.estado = estado;
+    }
+
     public String getId() {
         return id;
     }
