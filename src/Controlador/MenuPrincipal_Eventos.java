@@ -133,15 +133,28 @@ public class MenuPrincipal_Eventos
         );
 
         this.menuPrincipal.bTarjetas.addActionListener(
-                new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        ModuloTarjetas m = new ModuloTarjetas();
-                        ModuloTarjetas_Eventos me = new ModuloTarjetas_Eventos(m);
-                        m.setLocationRelativeTo(null);
-                        m.setVisible(true);
-                    }
+            new ActionListener() {
+                @Override
+                public void actionPerformed(ActionEvent e) {
+                    ModuloTarjetas m = new ModuloTarjetas();
+                    ModuloTarjetas_Eventos me = new ModuloTarjetas_Eventos(m);
+                    m.setLocationRelativeTo(null);
+                    m.setVisible(true);
                 }
+            }
         );
+        
+        this.menuPrincipal.bSolicitudes.addActionListener(
+        new ActionListener()
+        {
+
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                ModuloSolicitud s = new ModuloSolicitud();
+                ModuloSolicitud_Eventos se = new ModuloSolicitud_Eventos(s);
+                s.setVisible(true);
+            }
+        });
     }
 }
