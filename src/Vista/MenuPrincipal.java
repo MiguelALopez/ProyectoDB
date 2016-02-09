@@ -31,7 +31,8 @@ public class MenuPrincipal extends javax.swing.JFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
         java.awt.GridBagConstraints gridBagConstraints;
 
         panelPrincipal = new javax.swing.JPanel();
@@ -50,6 +51,7 @@ public class MenuPrincipal extends javax.swing.JFrame
         bUsuarios = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         jPanel8 = new javax.swing.JPanel();
+        bSolicitudes = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
         bReportes = new javax.swing.JButton();
 
@@ -201,6 +203,11 @@ public class MenuPrincipal extends javax.swing.JFrame
 
         jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "C", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
         jPanel8.setLayout(new java.awt.GridBagLayout());
+
+        bSolicitudes.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        bSolicitudes.setText("Solicitudes");
+        jPanel8.add(bSolicitudes, new java.awt.GridBagConstraints());
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
@@ -250,6 +257,7 @@ public class MenuPrincipal extends javax.swing.JFrame
     public javax.swing.JButton bEstaciones;
     public javax.swing.JButton bReportes;
     public javax.swing.JButton bRutas;
+    public javax.swing.JButton bSolicitudes;
     public javax.swing.JButton bTarjetas;
     public javax.swing.JButton bTurnos;
     public javax.swing.JButton bUsuarios;
