@@ -16,7 +16,7 @@ import java.awt.event.ActionListener;
  */
 public class MenuPrincipal_Eventos 
 {
-    private MenuPrincipal menuPrincipal;
+    private final MenuPrincipal menuPrincipal;
     
     public MenuPrincipal_Eventos(final MenuPrincipal menuPrincipal)
     {
@@ -107,15 +107,17 @@ public class MenuPrincipal_Eventos
         );
 
         this.menuPrincipal.bUsuarios.addActionListener(
-                new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        ModuloUsuarios m = new ModuloUsuarios();
-                        ModuloUsuarios_Eventos me = new ModuloUsuarios_Eventos(m);
-                        m.setLocationRelativeTo(null);
-                        m.setVisible(true);
-                    }
+            new ActionListener() 
+            {
+                @Override
+                public void actionPerformed(ActionEvent e) 
+                {
+                    ModuloUsuarios m = new ModuloUsuarios();
+                    ModuloUsuarios_Eventos me = new ModuloUsuarios_Eventos(m);
+                    m.setLocationRelativeTo(null);
+                    m.setVisible(true);
                 }
+            }
         );
         
         this.menuPrincipal.bReportes.addActionListener(
@@ -145,16 +147,30 @@ public class MenuPrincipal_Eventos
         );
         
         this.menuPrincipal.bSolicitudes.addActionListener(
-        new ActionListener()
-        {
-
-            @Override
-            public void actionPerformed(ActionEvent e)
+            new ActionListener()
             {
-                ModuloSolicitud s = new ModuloSolicitud();
-                ModuloSolicitud_Eventos se = new ModuloSolicitud_Eventos(s);
-                s.setVisible(true);
+                @Override
+                public void actionPerformed(ActionEvent e)
+                {
+                    ModuloSolicitud s = new ModuloSolicitud();
+                    ModuloSolicitud_Eventos se = new ModuloSolicitud_Eventos(s);
+                    s.setVisible(true);
+                }
             }
-        });
+        );
+        
+        this.menuPrincipal.bServicios.addActionListener(
+            new ActionListener()
+            {
+                @Override
+                public void actionPerformed(ActionEvent e)
+                {
+                    ModuloServicios ms = new ModuloServicios();
+                    ModuloServicios_Eventos mse = new ModuloServicios_Eventos(ms);
+                    ms.setLocationRelativeTo(null);
+                    ms.setVisible(true);
+                }
+            }
+        );
     }
 }

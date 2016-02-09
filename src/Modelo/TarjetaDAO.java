@@ -53,6 +53,30 @@ public class TarjetaDAO {
         }
         return exito;
     }
+    
+    public boolean modificarTarjeta(Tarjeta t){
+        boolean exito = false;
+
+        String query = "UPDATE tarjeta SET "
+                + "tarjeta_saldo = ?, "
+                + "tarjeta_estado = ? "
+                + "WHERE tarjeta_id = ?;";
+
+        conexionBD.conectar();
+        try {
+            PreparedStatement st = conexionBD.conexion.prepareStatement(query);
+            st.setDouble(1, t.getSaldo());
+            st.setString(2, t.getEstado());
+            st.setString(3, t.getId());
+            int resultado = st.executeUpdate();            
+            exito = true;
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            conexionBD.cerrarConexion();
+        }
+        return exito;
+    }
 
     /**
      * Metodo encargado de cambiar el estado de una tarjeta especifica
@@ -119,7 +143,7 @@ public class TarjetaDAO {
     public ArrayList<Tarjeta> consultarTarjetas(){
         ArrayList<Tarjeta> tarjetas = null;
 
-        String query = "SELECT * FROM tarjeta WHERE tarjeta_estado <> 'BLOQUEADA'";
+        String query = "SELECT * FROM tarjeta ORDER BY tarjeta_id;";
         conexionBD.conectar();
         try {
             Statement st = conexionBD.conexion.createStatement();
@@ -137,5 +161,30 @@ public class TarjetaDAO {
         }
 
         return tarjetas;
+    }
+    
+    public Tarjeta consultarTarjeta(String id){
+        Tarjeta t = null;
+
+        String query = "SELECT * FROM tarjeta WHERE tarjeta_id = ?;";
+        conexionBD.conectar();
+        try {
+            PreparedStatement st = conexionBD.conexion.prepareStatement(query);
+            st.setString(1, id);
+            ResultSet tabla = st.executeQuery();
+
+            if (tabla.next()){
+                t = new Tarjeta(tabla.getString(1), tabla.getInt(2), tabla.getString(3));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        return t;
+    }
+    
+    public boolean esGenerica(String id)
+    {
+        return new PasajeroDAO().consultarPasajero(id) == null;
     }
 }

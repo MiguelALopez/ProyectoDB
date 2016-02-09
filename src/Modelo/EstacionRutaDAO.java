@@ -95,7 +95,9 @@ public class EstacionRutaDAO
         conexionBD.conectar();
         EstacionRuta er = null;
         
-        String query = "SELECT * FROM estacion_ruta WHERE estacion_nombre = ? AND ruta_nombre = ?;";
+        String query = "SELECT * FROM estacion_ruta "
+                + "WHERE estacion_nombre = ? AND ruta_nombre = ? "
+                + "ORDER BY estacion_nombre, ruta_nombre;";
         
         try
         {
@@ -130,7 +132,7 @@ public class EstacionRutaDAO
         conexionBD.conectar();        
         ArrayList<EstacionRuta> lista = null;
         
-        String query = "SELECT * FROM estacion_ruta;";
+        String query = "SELECT * FROM estacion_ruta ORDER BY estacion_nombre, ruta_nombre;";
         
         try
         {

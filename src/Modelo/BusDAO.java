@@ -195,7 +195,7 @@ public class BusDAO
         conexionBD.conectar();        
         ArrayList<Bus> lista = null;
         
-        String query = "SELECT * FROM bus;";
+        String query = "SELECT * FROM bus ORDER BY bus_serial;";
         
         try
         {
@@ -230,7 +230,9 @@ public class BusDAO
         conexionBD.conectar();        
         ArrayList<Bus> lista = null;
         
-        String query = "SELECT * FROM bus WHERE ruta_nombre = ?;";
+        String query = "SELECT * FROM bus "
+                + "WHERE ruta_nombre = ? "
+                + "ORDER BY bus_serial;";
         
         try
         {
@@ -266,7 +268,9 @@ public class BusDAO
         conexionBD.conectar();        
         ArrayList<Bus> lista = null;
         
-        String query = "SELECT * FROM bus WHERE ruta_nombre = ? AND bus_estado = ?;";
+        String query = "SELECT * FROM bus "
+                + "WHERE ruta_nombre = ? AND bus_estado = ? "
+                + "ORDER BY bus_serial;";
         
         try
         {
@@ -303,7 +307,9 @@ public class BusDAO
         conexionBD.conectar();        
         ArrayList<Bus> lista = null;
         
-        String query = "SELECT * FROM bus WHERE bus_estado = ?;";
+        String query = "SELECT * FROM bus "
+                + "WHERE bus_estado = ? "
+                + "ORDER BY bus_serial;";
         
         try
         {

@@ -254,7 +254,8 @@ public class EmpleadoDAO
         conexionBD.conectar();        
         ArrayList<Empleado> lista = null;
         
-        String query = "SELECT * FROM empleado WHERE empleado_cargo = 'Director' AND empleado_estado = true;";
+        String query = "SELECT * FROM empleado "
+                + "WHERE empleado_cargo = 'Director' AND empleado_estado = TRUE;";
         
         try
         {

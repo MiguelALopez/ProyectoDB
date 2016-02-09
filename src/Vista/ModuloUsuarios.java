@@ -660,11 +660,11 @@ public class ModuloUsuarios extends javax.swing.JFrame {
 
             },
             new String [] {
-                "RUTA", "FECHA", "HORA"
+                "RUTA", "FECHA"
             }
         ) {
             boolean[] canEdit = new boolean [] {
-                false, false, false
+                false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex) {

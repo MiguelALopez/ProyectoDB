@@ -200,7 +200,7 @@ public class RutaDAO
         conexionBD.conectar();        
         ArrayList<Ruta> lista = null;
         
-        String query = "SELECT * FROM ruta;";
+        String query = "SELECT * FROM ruta ORDER BY ruta_nombre;";
         
         try
         {
@@ -236,7 +236,8 @@ public class RutaDAO
         
         String query = "SELECT ruta_nombre, ruta_descripcion, ruta_estado "
                 + "FROM ruta NATURAL JOIN estacion_ruta "
-                + "WHERE estacion_nombre = ?;";
+                + "WHERE estacion_nombre = ?"
+                + "ORDER BY ruta_nombre;";
         
         try
         {
@@ -267,17 +268,101 @@ public class RutaDAO
         return lista;
     }
     
+    public ArrayList<Ruta> consultarRutas(String estacion, boolean estado)
+    {
+        conexionBD.conectar();        
+        ArrayList<Ruta> lista = null;
+        
+        String query = "SELECT ruta_nombre, ruta_descripcion, ruta_estado "
+                + "FROM ruta NATURAL JOIN estacion_ruta "
+                + "WHERE estacion_nombre = ? AND ruta_estado = ?"
+                + "ORDER BY ruta_nombre;";
+        
+        try
+        {
+            PreparedStatement st = conexionBD.conexion.prepareStatement(query);
+            st.setString(1, estacion);
+            st.setBoolean(2, estado);
+            
+            ResultSet tabla = st.executeQuery();
+            
+            lista = new ArrayList();
+            
+            while (tabla.next())
+            {
+                lista.add(new Ruta(tabla.getString(1), tabla.getString(2), tabla.getBoolean(3)));
+            }        
+        } 
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(RutaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally
+        {
+            if (conexionBD != null)
+            {
+                conexionBD.cerrarConexion();
+            }
+        }
+        
+        return lista;
+    }
+    
     public ArrayList<Ruta> consultarRutas(boolean estado)
     {
         conexionBD.conectar();        
         ArrayList<Ruta> lista = null;
         
-        String query = "SELECT * FROM ruta WHERE ruta_estado = ?;";
+        String query = "SELECT * FROM ruta "
+                + "WHERE ruta_estado = ?"
+                + "ORDER BY ruta_nombre;";
         
         try
         {
             PreparedStatement st = conexionBD.conexion.prepareStatement(query);
             st.setBoolean(1, estado);
+            ResultSet tabla = st.executeQuery();
+            
+            lista = new ArrayList();
+            
+            while (tabla.next())
+            {
+                lista.add(new Ruta(tabla.getString(1), tabla.getString(2), tabla.getBoolean(3)));
+            }        
+        } 
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(RutaDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally
+        {
+            if (conexionBD != null)
+            {
+                conexionBD.cerrarConexion();
+            }
+        }
+        
+        return lista;
+    }
+    
+    public ArrayList<Ruta> consultarRutasOrigenDestino(String origen, String destino)
+    {
+        conexionBD.conectar();        
+        ArrayList<Ruta> lista = null;
+        
+        String query = "SELECT ruta_nombre, ruta_descripcion, ruta_estado "
+                + "FROM ruta NATURAL JOIN estacion_ruta "
+                + "WHERE estacion_nombre = ? "
+                + "INTERSECT "
+                + "SELECT ruta_nombre, ruta_descripcion, ruta_estado "
+                + "FROM ruta NATURAL JOIN estacion_ruta "
+                + "WHERE estacion_nombre = ?;";
+        
+        try
+        {
+            PreparedStatement st = conexionBD.conexion.prepareStatement(query);
+            st.setString(1, origen);
+            st.setString(2, destino);
             ResultSet tabla = st.executeQuery();
             
             lista = new ArrayList();

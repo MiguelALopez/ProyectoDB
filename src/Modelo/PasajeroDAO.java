@@ -107,7 +107,8 @@ public class PasajeroDAO {
         conexionBD.conectar();
         Pasajero pasajero = null;
 
-        String query = "SELECT * FROM pasajero WHERE tarjeta_id = ?;";
+        String query = "SELECT * FROM pasajero "
+                + "WHERE tarjeta_id = ?;";
 
         try {
             PreparedStatement st = conexionBD.conexion.prepareStatement(query);

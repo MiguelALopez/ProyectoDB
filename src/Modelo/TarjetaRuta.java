@@ -11,27 +11,22 @@
  */
 package Modelo;
 
-import java.sql.Date;
-import java.sql.Time;
 
 public class TarjetaRuta {
     private String tarjeta_id;
     private String ruta_nombre;
-    private Date fecha;
-    private Time hora;
+    private String fecha;
 
     /**
      * Constructor usado para llevar registro de las rutas tomadas por un pasajero
      * @param tarjeta_id numero de identificacion de la tarjeta del pasajero
      * @param ruta_nombre nombre de la ruta abordada por el pasajaero
      * @param fecha fecha en la cual fue abordada la ruta
-     * @param hora hora en la cual fue abordada la ruta
      */
-    public TarjetaRuta(String tarjeta_id, String ruta_nombre, Date fecha, Time hora) {
+    public TarjetaRuta(String tarjeta_id, String ruta_nombre, String fecha) {
         this.tarjeta_id = tarjeta_id;
         this.ruta_nombre = ruta_nombre;
         this.fecha = fecha;
-        this.hora = hora;
     }
 
     // Getters and setters
@@ -52,19 +47,11 @@ public class TarjetaRuta {
         this.ruta_nombre = ruta_nombre;
     }
 
-    public Date getFecha() {
+    public String getFecha() {
         return fecha;
     }
 
-    public void setFecha(Date fecha) {
+    public void setFecha(String fecha) {
         this.fecha = fecha;
-    }
-
-    public Time getHora() {
-        return hora;
-    }
-
-    public void setHora(Time hora) {
-        this.hora = hora;
     }
 }

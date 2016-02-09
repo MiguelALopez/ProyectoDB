@@ -27,25 +27,41 @@ public class TarjetaRutaDAO {
      * @param tarjetaRuta registro nuevo que se insertara en la base de datos
      * @return retorna verdadero si la operacion se realizo con exito false de lo contrario
      */
-    public boolean insertarRegistro(TarjetaRuta tarjetaRuta){
+    public boolean abordarRuta(Tarjeta t, TarjetaRuta tarjetaRuta)
+    {
         boolean exito = false;
-
-        String query = "INSERT INTO tarjeta_ruta(tarjeta_id, ruta_nombre, tarjeta_ruta_fecha, tarjeta_ruta_hora) " +
-                "VALUES (?,?,?,?);";
+        String query = "BEGIN;"
+                + "UPDATE tarjeta SET "
+                + "tarjeta_saldo = ?, "
+                + "tarjeta_estado = ? "
+                + "WHERE tarjeta_id = ?;"
+                + "INSERT INTO tarjeta_ruta(tarjeta_id, ruta_nombre, tarjeta_ruta_fecha) " 
+                + "VALUES (?,?,CAST(? AS TIMESTAMP));"
+                + "COMMIT;";
+        
         conexionBD.conectar();
-        try {
+        
+        try 
+        {
             PreparedStatement st = conexionBD.conexion.prepareStatement(query);
-            st.setString(1, tarjetaRuta.getTarjeta_id());
-            st.setString(2, tarjetaRuta.getRuta_nombre());
-            st.setDate(3, tarjetaRuta.getFecha());
-            st.setTime(4, tarjetaRuta.getHora());
-            st.executeUpdate();
+            st.setDouble(1, t.getSaldo());
+            st.setString(2, t.getEstado());
+            st.setString(3, t.getId());            
+            st.setString(4, tarjetaRuta.getTarjeta_id());
+            st.setString(5, tarjetaRuta.getRuta_nombre());
+            st.setString(6, tarjetaRuta.getFecha());
+            int res = st.executeUpdate();
             exito = true;
-        } catch (SQLException e) {
+        }
+        catch (SQLException e) 
+        {
             e.printStackTrace();
-        }finally {
+        }
+        finally 
+        {
             conexionBD.cerrarConexion();
         }
+        
         return exito;
     }
 
@@ -66,12 +82,7 @@ public class TarjetaRutaDAO {
             list = new ArrayList<>();
 
             while (tabla.next()){
-                list.add(new TarjetaRuta(
-                        tabla.getString(1),
-                        tabla.getString(2),
-                        tabla.getDate(3),
-                        tabla.getTime(4)
-                ));
+                list.add(new TarjetaRuta(tabla.getString(1), tabla.getString(2), tabla.getString(3)));
             }
         } catch (SQLException e) {
             e.printStackTrace();

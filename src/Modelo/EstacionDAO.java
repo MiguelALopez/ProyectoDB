@@ -203,7 +203,7 @@ public class EstacionDAO
         conexionBD.conectar();        
         ArrayList<Estacion> lista = null;
         
-        String query = "SELECT * FROM estacion;";
+        String query = "SELECT * FROM estacion ORDER BY estacion_nombre;";
         
         try
         {
@@ -238,7 +238,9 @@ public class EstacionDAO
         ArrayList<Estacion> lista = null;
         
         String query = "SELECT estacion_nombre, estacion_ubicacion, director_empleado_id, estacion_estado "
-                + "FROM estacion NATURAL JOIN estacion_ruta WHERE ruta_nombre = ?;";
+                + "FROM estacion NATURAL JOIN estacion_ruta "
+                + "WHERE ruta_nombre = ? "
+                + "ORDER BY estacion_nombre;";
         
         try
         {
@@ -274,12 +276,54 @@ public class EstacionDAO
         conexionBD.conectar();        
         ArrayList<Estacion> lista = null;
         
-        String query = "SELECT * FROM estacion WHERE estacion_estado = ?;";
+        String query = "SELECT * FROM estacion "
+                + "WHERE estacion_estado = ?"
+                + "ORDER BY estacion_nombre;";
         
         try
         {
             PreparedStatement st = conexionBD.conexion.prepareStatement(query);
             st.setBoolean(1, estado);
+            
+            ResultSet tabla = st.executeQuery();
+            
+            lista = new ArrayList();
+            
+            while (tabla.next())
+            {
+                lista.add(new Estacion(tabla.getString(1), tabla.getString(2), tabla.getString(3), tabla.getBoolean(4)));
+            }        
+        } 
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(EstacionDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally
+        {
+            if (conexionBD != null)
+            {
+                conexionBD.cerrarConexion();
+            }
+        }
+        
+        return lista;
+    }
+    
+    public ArrayList<Estacion> consultarDestinos(String origen)
+    {
+        conexionBD.conectar();        
+        ArrayList<Estacion> lista = null;
+        
+        String query = "SELECT DISTINCT estacion_nombre, estacion_ubicacion, director_empleado_id, estacion_estado "
+                + "FROM (SELECT ruta_nombre "
+                        + "FROM estacion NATURAL JOIN estacion_ruta "
+                        + "WHERE estacion_nombre = ?) AS T NATURAL JOIN estacion_ruta NATURAL JOIN estacion "
+                + "ORDER BY estacion_nombre;";
+        
+        try
+        {
+            PreparedStatement st = conexionBD.conexion.prepareStatement(query);
+            st.setString(1, origen);
             
             ResultSet tabla = st.executeQuery();
             

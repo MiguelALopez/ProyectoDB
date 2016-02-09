@@ -304,7 +304,6 @@ public class ModuloUsuarios_Eventos {
             for (int i = 0; i < list.size(); i++) {
                 model.setValueAt(list.get(i).getRuta_nombre(),i,0);
                 model.setValueAt(list.get(i).getFecha(),i,1);
-                model.setValueAt(list.get(i).getHora(),i,2);
             }
         }
     }

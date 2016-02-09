@@ -31,8 +31,7 @@ public class MenuPrincipal extends javax.swing.JFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
         panelPrincipal = new javax.swing.JPanel();
@@ -50,6 +49,7 @@ public class MenuPrincipal extends javax.swing.JFrame
         bTarjetas = new javax.swing.JButton();
         bUsuarios = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
+        bServicios = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
         bSolicitudes = new javax.swing.JButton();
         jPanel6 = new javax.swing.JPanel();
@@ -193,6 +193,17 @@ public class MenuPrincipal extends javax.swing.JFrame
 
         jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Modulo de Venta y Recarga de Tarjetas", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
         jPanel5.setLayout(new java.awt.GridBagLayout());
+
+        bServicios.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        bServicios.setText("Modulo de Servicios");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+        jPanel5.add(bServicios, gridBagConstraints);
+
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -257,6 +268,7 @@ public class MenuPrincipal extends javax.swing.JFrame
     public javax.swing.JButton bEstaciones;
     public javax.swing.JButton bReportes;
     public javax.swing.JButton bRutas;
+    public javax.swing.JButton bServicios;
     public javax.swing.JButton bSolicitudes;
     public javax.swing.JButton bTarjetas;
     public javax.swing.JButton bTurnos;
