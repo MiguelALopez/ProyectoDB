@@ -26,6 +26,7 @@ public class ModuloSolicitud_Eventos
 {
     private ModuloSolicitud moduloSolicitud;
     private String tipo = "";
+    private String id = "";
 
     public ModuloSolicitud_Eventos(final ModuloSolicitud moduloSolicitud)
     {
@@ -35,6 +36,8 @@ public class ModuloSolicitud_Eventos
         DateFormat fecha = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
         Date date = new Date();
         this.moduloSolicitud.tfGenFecha.setText(fecha.format(date));
+        
+        this.moduloSolicitud.bConResponder.setEnabled(false);
         
         ActionListener alCerrar = new ActionListener()
         {
@@ -111,6 +114,26 @@ public class ModuloSolicitud_Eventos
             }
         });
         
+        this.moduloSolicitud.bConResponder.addActionListener(
+        new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                mostrarResponder();
+            }
+        });
+        
+        this.moduloSolicitud.bResponder.addActionListener(
+        new ActionListener()
+        {
+            @Override
+            public void actionPerformed(ActionEvent e)
+            {
+                responder();
+            }
+        });
+        
     }
     /**
      * Limpia los campos del panel Generar
@@ -131,6 +154,11 @@ public class ModuloSolicitud_Eventos
         this.moduloSolicitud.tfConPasajero.setText("");
         this.moduloSolicitud.tfConMotivo.setText("");
         this.moduloSolicitud.taConDescripcion.setText("");
+    }
+    
+    private void resLimpiarCampos()
+    {
+        this.moduloSolicitud.taRespuesta.setText("");
     }
     /**
      * Cerrar formulario
@@ -243,12 +271,12 @@ public class ModuloSolicitud_Eventos
             else if ( this.tipo.equals("solicitud") )
             {
                 this.moduloSolicitud.tfConNumero.setText(id);
-                consulta();
+                consultaSolicitud();
             }
         }
         
-        
         this.tipo = "";
+        this.moduloSolicitud.bConResponder.setEnabled(true);
         this.moduloSolicitud.fListar.setVisible(false);
     }
     /**
@@ -256,7 +284,7 @@ public class ModuloSolicitud_Eventos
      */
     private void agregarSolicitud()
     {
-        int op = JOptionPane.showConfirmDialog(moduloSolicitud, "Desea agregar la solicitud a la Base de Datos?", "Confirmacion", JOptionPane.YES_NO_OPTION);
+        int op = JOptionPane.showConfirmDialog(moduloSolicitud, "¿Desea agregar la solicitud a la Base de Datos?", "Confirmacion", JOptionPane.YES_NO_OPTION);
         
         if (op == JOptionPane.YES_OPTION)
         {
@@ -275,6 +303,8 @@ public class ModuloSolicitud_Eventos
             Datos[4] = this.moduloSolicitud.tfGenPasajero.getText();
             // estacion
             Datos[5] = this.moduloSolicitud.tfGenEstacion.getText();
+            
+            // Verificar que todos los campos hayan sido escritos
             boolean flag = true;
             for (int i = 0; i < Datos.length; i++)
             {
@@ -309,12 +339,12 @@ public class ModuloSolicitud_Eventos
     /**
      
      */
-    private void consulta()
+    private void consultaSolicitud()
     {
-        String id = this.moduloSolicitud.tfConNumero.getText();
+        this.id = this.moduloSolicitud.tfConNumero.getText();
         SolicitudDAO solDAO = new SolicitudDAO();
         
-        Solicitud sol = solDAO.consultarSolicitud(id);
+        Solicitud sol = solDAO.consultarSolicitud(this.id);
         
         if( sol != null )
         {
@@ -332,5 +362,43 @@ public class ModuloSolicitud_Eventos
     private void cancelar()
     {
         this.moduloSolicitud.fListar.setVisible(false);
+    }
+    /**
+     * Crear respuesta a la solicitud
+     */
+    private void responder()
+    {
+        String respuesta = this.moduloSolicitud.taRespuesta.getText();
+        int op = JOptionPane.showConfirmDialog(moduloSolicitud, "¿Desea agregar la respuesta?", "Confirmacion", JOptionPane.YES_NO_OPTION);
+        boolean go = true;
+        
+        if (this.moduloSolicitud.taRespuesta.getText().isEmpty())
+        {
+            go = false;
+            JOptionPane.showMessageDialog(moduloSolicitud, "Digite una respuesta", "Error", JOptionPane.ERROR_MESSAGE);
+        }
+        
+        if( (op == JOptionPane.YES_OPTION) && go)
+        {
+            SolicitudDAO solDAO = new SolicitudDAO();
+
+            boolean medida = solDAO.insertarMedida(id, respuesta);
+            if( !medida )
+            {
+                JOptionPane.showMessageDialog(moduloSolicitud, "Error al agregar respuesta","Error", JOptionPane.ERROR_MESSAGE);
+            }
+            else
+            {
+                this.moduloSolicitud.fResponder.setVisible(false);
+                this.id = null;
+                JOptionPane.showMessageDialog(moduloSolicitud, "Solicitud agregada correctamente");
+            }
+        }
+    }
+    
+    private void mostrarResponder()
+    {
+        this.moduloSolicitud.fResponder.setVisible(true);
+        this.moduloSolicitud.fResponder.setLocationRelativeTo(null);
     }
 }

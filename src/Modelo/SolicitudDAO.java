@@ -194,4 +194,38 @@ public class SolicitudDAO
         
         return solicitud;
     }
+    
+    public boolean insertarMedida(String id, String medida)
+    {
+        this.conexionBD.conectar();
+        boolean exito = false;
+        
+        String query ="INSERT INTO solicitud_medidas (solicitud_id, solicitud_medida) "
+            + "VALUES(?,?)";
+        
+        try
+        {
+            PreparedStatement st = conexionBD.conexion.prepareStatement(query);
+            
+            st.setString(1, id);
+            
+            st.setString(2, medida);
+            
+            int resultado = st.executeUpdate();
+            exito = true;
+        } 
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(EstacionDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally
+        {
+            if (conexionBD != null)
+            {
+                conexionBD.cerrarConexion();
+            }
+        }
+        
+        return exito;
+    }
 }

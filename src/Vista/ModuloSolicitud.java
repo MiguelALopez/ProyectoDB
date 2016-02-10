@@ -36,6 +36,12 @@ public class ModuloSolicitud extends javax.swing.JFrame
         tSeleccionar = new javax.swing.JTable();
         bListarCancelar = new javax.swing.JButton();
         bListarSeleccionar = new javax.swing.JButton();
+        fResponder = new javax.swing.JFrame();
+        jPanel9 = new javax.swing.JPanel();
+        jLabel12 = new javax.swing.JLabel();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        taRespuesta = new javax.swing.JTextArea();
+        bResponder = new javax.swing.JButton();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -69,7 +75,6 @@ public class ModuloSolicitud extends javax.swing.JFrame
         jPanel7 = new javax.swing.JPanel();
         bConResponder = new javax.swing.JButton();
         bConCerrar = new javax.swing.JButton();
-        jButton6 = new javax.swing.JButton();
         jScrollPane3 = new javax.swing.JScrollPane();
         taConDescripcion = new javax.swing.JTextArea();
         jPanel3 = new javax.swing.JPanel();
@@ -77,13 +82,12 @@ public class ModuloSolicitud extends javax.swing.JFrame
         bConBuscar = new javax.swing.JButton();
         tfConNumero = new javax.swing.JTextField();
 
-        fListar.setMaximumSize(null);
         fListar.setMinimumSize(new java.awt.Dimension(400, 300));
-        fListar.setPreferredSize(new java.awt.Dimension(400, 300));
         fListar.getContentPane().setLayout(new java.awt.GridBagLayout());
 
         jPanel5.setLayout(new java.awt.GridBagLayout());
 
+        tSeleccionar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tSeleccionar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][]
             {
@@ -91,13 +95,13 @@ public class ModuloSolicitud extends javax.swing.JFrame
             },
             new String []
             {
-                "Nombre", "Ubicacion", "Estado"
+                "Nombre", "Ubicacion", "Otro", "Otro2", "Estado"
             }
         )
         {
             boolean[] canEdit = new boolean []
             {
-                false, false, false
+                false, false, false, false, false
             };
 
             public boolean isCellEditable(int rowIndex, int columnIndex)
@@ -108,12 +112,6 @@ public class ModuloSolicitud extends javax.swing.JFrame
         tSeleccionar.setMaximumSize(new java.awt.Dimension(60, 64));
         tSeleccionar.setPreferredSize(new java.awt.Dimension(60, 64));
         jScrollPane1.setViewportView(tSeleccionar);
-        if (tSeleccionar.getColumnModel().getColumnCount() > 0)
-        {
-            tSeleccionar.getColumnModel().getColumn(0).setHeaderValue("Nombre");
-            tSeleccionar.getColumnModel().getColumn(1).setHeaderValue("Ubicacion");
-            tSeleccionar.getColumnModel().getColumn(2).setHeaderValue("Estado");
-        }
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -157,6 +155,51 @@ public class ModuloSolicitud extends javax.swing.JFrame
         gridBagConstraints.weighty = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         fListar.getContentPane().add(jPanel5, gridBagConstraints);
+
+        fResponder.setMinimumSize(new java.awt.Dimension(400, 300));
+        fResponder.getContentPane().setLayout(new java.awt.GridBagLayout());
+
+        jPanel9.setLayout(new java.awt.GridBagLayout());
+
+        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel12.setText("RESPUESTA");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.insets = new java.awt.Insets(0, 0, 5, 0);
+        jPanel9.add(jLabel12, gridBagConstraints);
+
+        taRespuesta.setColumns(20);
+        taRespuesta.setRows(5);
+        jScrollPane4.setViewportView(taRespuesta);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(5, 0, 5, 0);
+        jPanel9.add(jScrollPane4, gridBagConstraints);
+
+        bResponder.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        bResponder.setText("RESPONDER");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(5, 0, 0, 0);
+        jPanel9.add(bResponder, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+        fResponder.getContentPane().add(jPanel9, gridBagConstraints);
 
         setMinimumSize(new java.awt.Dimension(500, 330));
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
@@ -442,19 +485,6 @@ public class ModuloSolicitud extends javax.swing.JFrame
         gridBagConstraints.insets = new java.awt.Insets(10, 5, 10, 10);
         jPanel7.add(bConCerrar, gridBagConstraints);
 
-        jButton6.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jButton6.setText("ACTUALIZAR");
-        jButton6.setMaximumSize(new java.awt.Dimension(85, 25));
-        jButton6.setMinimumSize(new java.awt.Dimension(85, 25));
-        jButton6.setPreferredSize(new java.awt.Dimension(85, 25));
-        gridBagConstraints = new java.awt.GridBagConstraints();
-        gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
-        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(10, 5, 10, 5);
-        jPanel7.add(jButton6, gridBagConstraints);
-
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
@@ -500,6 +530,7 @@ public class ModuloSolicitud extends javax.swing.JFrame
 
         tfConNumero.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tfConNumero.setEnabled(false);
+        tfConNumero.setMaximumSize(new java.awt.Dimension(6, 23));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
@@ -532,11 +563,13 @@ public class ModuloSolicitud extends javax.swing.JFrame
     public javax.swing.JButton bListarCancelar;
     public javax.swing.JButton bListarSeleccionar;
     public javax.swing.JButton bPasajero;
+    public javax.swing.JButton bResponder;
     public javax.swing.JFrame fListar;
-    private javax.swing.JButton jButton6;
+    public javax.swing.JFrame fResponder;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
+    private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -553,13 +586,16 @@ public class ModuloSolicitud extends javax.swing.JFrame
     private javax.swing.JPanel jPanel6;
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
+    private javax.swing.JPanel jPanel9;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     public javax.swing.JTabbedPane jTabbedPane1;
     public javax.swing.JTable tSeleccionar;
     public javax.swing.JTextArea taConDescripcion;
     public javax.swing.JTextArea taGenDescripcion;
+    public javax.swing.JTextArea taRespuesta;
     public javax.swing.JTextField tfConEstacion;
     public javax.swing.JTextField tfConFecha;
     public javax.swing.JTextField tfConMotivo;
