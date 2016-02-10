@@ -217,7 +217,13 @@ public class MenuPrincipal extends javax.swing.JFrame
 
         bSolicitudes.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         bSolicitudes.setText("Solicitudes");
-        jPanel8.add(bSolicitudes, new java.awt.GridBagConstraints());
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+        jPanel8.add(bSolicitudes, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -237,6 +243,7 @@ public class MenuPrincipal extends javax.swing.JFrame
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel6.add(bReportes, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();

@@ -446,6 +446,13 @@ VALUES ('126', 'pepito4', '1234567', 'Carrera', 'no tengo', 100003, TRUE);
 INSERT INTO pasajero (pasajero_id, pasajero_nombre, pasajero_telefono, pasajero_direccion, pasajero_email, tarjeta_id, pasajero_estado)
 VALUES ('127', 'pepito5', '1234567', 'Carrera', 'no tengo', 100004, FALSE);
 
+INSERT INTO venta (venta_fecha, venta_valor, estacion_nombre, tarjeta_id)
+VALUES ('2015-11-30 12:00:00', 2000, 'UNIVERSIDADES', '100000');
+INSERT INTO venta (venta_fecha, venta_valor, estacion_nombre, tarjeta_id)
+VALUES ('2015-11-30 12:03:00', 2000, 'UNIVERSIDADES', '100001');
+INSERT INTO venta (venta_fecha, venta_valor, estacion_nombre, tarjeta_id)
+VALUES ('2015-11-30 12:10:00', 2000, 'UNIVERSIDADES', '100005');
+
 INSERT INTO tarjeta_ruta (tarjeta_id, ruta_nombre, tarjeta_ruta_fecha)
 VALUES ('100000','P10A','2015-12-15 12:45:00');
 INSERT INTO tarjeta_ruta (tarjeta_id, ruta_nombre, tarjeta_ruta_fecha)

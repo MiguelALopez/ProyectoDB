@@ -36,6 +36,10 @@ public class ModuloServicios extends javax.swing.JFrame
         tEstaciones = new javax.swing.JTable();
         bSeleccionar = new javax.swing.JButton();
         bCancelar = new javax.swing.JButton();
+        fRecorrido = new javax.swing.JFrame();
+        jScrollPane3 = new javax.swing.JScrollPane();
+        jPanel4 = new javax.swing.JPanel();
+        lRecorrido = new javax.swing.JLabel();
         tabs = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -47,6 +51,12 @@ public class ModuloServicios extends javax.swing.JFrame
         tfAbordarTarjeta = new javax.swing.JTextField();
         bAbordar = new javax.swing.JButton();
         jSeparator1 = new javax.swing.JSeparator();
+        jSeparator2 = new javax.swing.JSeparator();
+        jLabel7 = new javax.swing.JLabel();
+        tfConsultarSaldo = new javax.swing.JTextField();
+        bConsultarSaldo = new javax.swing.JButton();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
         jPanel2 = new javax.swing.JPanel();
         jScrollPane5 = new javax.swing.JScrollPane();
         tRutas = new javax.swing.JTable();
@@ -130,6 +140,31 @@ public class ModuloServicios extends javax.swing.JFrame
         gridBagConstraints.insets = new java.awt.Insets(0, 5, 10, 10);
         fSelEstacion.getContentPane().add(bCancelar, gridBagConstraints);
 
+        fRecorrido.setMinimumSize(new java.awt.Dimension(800, 700));
+        fRecorrido.getContentPane().setLayout(new java.awt.GridBagLayout());
+
+        jPanel4.setLayout(new java.awt.GridBagLayout());
+
+        lRecorrido.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+        jPanel4.add(lRecorrido, gridBagConstraints);
+
+        jScrollPane3.setViewportView(jPanel4);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        fRecorrido.getContentPane().add(jScrollPane3, gridBagConstraints);
+
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         tabs.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -142,7 +177,7 @@ public class ModuloServicios extends javax.swing.JFrame
         jLabel1.setText("Estacion:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridy = 5;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 5, 0);
         jPanel1.add(jLabel1, gridBagConstraints);
@@ -151,7 +186,7 @@ public class ModuloServicios extends javax.swing.JFrame
         tfAbordarEstacion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridy = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 5, 5);
@@ -161,7 +196,7 @@ public class ModuloServicios extends javax.swing.JFrame
         bAbordarBuscar.setText("...");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridy = 5;
         gridBagConstraints.insets = new java.awt.Insets(10, 0, 5, 10);
         jPanel1.add(bAbordarBuscar, gridBagConstraints);
 
@@ -169,7 +204,7 @@ public class ModuloServicios extends javax.swing.JFrame
         jLabel2.setText("Ruta:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 6;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 0);
         jPanel1.add(jLabel2, gridBagConstraints);
@@ -177,7 +212,7 @@ public class ModuloServicios extends javax.swing.JFrame
         cbAbordarRuta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 6;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
@@ -188,7 +223,7 @@ public class ModuloServicios extends javax.swing.JFrame
         jLabel3.setText("ID de Tarjeta:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 7;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(5, 10, 10, 0);
         jPanel1.add(jLabel3, gridBagConstraints);
@@ -196,7 +231,7 @@ public class ModuloServicios extends javax.swing.JFrame
         tfAbordarTarjeta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 7;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
@@ -207,7 +242,7 @@ public class ModuloServicios extends javax.swing.JFrame
         bAbordar.setText("Abordar Ruta");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 8;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
@@ -215,13 +250,67 @@ public class ModuloServicios extends javax.swing.JFrame
         jPanel1.add(bAbordar, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridy = 9;
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weighty = 1.0;
         jPanel1.add(jSeparator1, gridBagConstraints);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        jPanel1.add(jSeparator2, gridBagConstraints);
 
-        tabs.addTab("Abordar Ruta", jPanel1);
+        jLabel7.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel7.setText("ID de Tarjeta:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 0);
+        jPanel1.add(jLabel7, gridBagConstraints);
+
+        tfConsultarSaldo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+        jPanel1.add(tfConsultarSaldo, gridBagConstraints);
+
+        bConsultarSaldo.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        bConsultarSaldo.setText("Consultar Saldo");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+        jPanel1.add(bConsultarSaldo, gridBagConstraints);
+
+        jLabel8.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel8.setText("Abordaje");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 4;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.insets = new java.awt.Insets(20, 10, 0, 10);
+        jPanel1.add(jLabel8, gridBagConstraints);
+
+        jLabel9.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel9.setText("Consulta de Saldo");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.insets = new java.awt.Insets(20, 10, 0, 10);
+        jPanel1.add(jLabel9, gridBagConstraints);
+
+        tabs.addTab("Consulta de Saldo y Abordaje de Ruta", jPanel1);
 
         jPanel2.setLayout(new java.awt.GridBagLayout());
 
@@ -401,6 +490,7 @@ public class ModuloServicios extends javax.swing.JFrame
     public javax.swing.JButton bAbordar;
     public javax.swing.JButton bAbordarBuscar;
     public javax.swing.JButton bCancelar;
+    public javax.swing.JButton bConsultarSaldo;
     public javax.swing.JButton bRecorrido;
     public javax.swing.JButton bRecorridoSugeridas;
     public javax.swing.JButton bSeleccionar;
@@ -408,6 +498,7 @@ public class ModuloServicios extends javax.swing.JFrame
     public javax.swing.JComboBox<String> cbDestino;
     public javax.swing.JComboBox<String> cbEstaciones;
     public javax.swing.JComboBox<String> cbOrigen;
+    public javax.swing.JFrame fRecorrido;
     public javax.swing.JFrame fSelEstacion;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel15;
@@ -418,18 +509,26 @@ public class ModuloServicios extends javax.swing.JFrame
     private javax.swing.JLabel jLabel47;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
+    private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
     private javax.swing.JPanel jPanel3;
+    private javax.swing.JPanel jPanel4;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
+    private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JSeparator jSeparator1;
+    private javax.swing.JSeparator jSeparator2;
+    public javax.swing.JLabel lRecorrido;
     public javax.swing.JTable tEstaciones;
     public javax.swing.JTable tRutas;
     public javax.swing.JTable tRutasSugeridas;
     public javax.swing.JTabbedPane tabs;
     public javax.swing.JTextField tfAbordarEstacion;
     public javax.swing.JTextField tfAbordarTarjeta;
+    public javax.swing.JTextField tfConsultarSaldo;
     // End of variables declaration//GEN-END:variables
 }

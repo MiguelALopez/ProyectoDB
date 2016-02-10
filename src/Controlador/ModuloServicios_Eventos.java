@@ -22,6 +22,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -35,6 +36,7 @@ public class ModuloServicios_Eventos
 {
     private final ModuloServicios moduloServicios;
     private final double VALOR_PASAJE;
+    private ImageIcon rec;
 
     public ModuloServicios_Eventos(final ModuloServicios moduloServicios) 
     {
@@ -49,6 +51,17 @@ public class ModuloServicios_Eventos
                 {
                     tabChanged();
                 }
+            }
+        );
+        
+        this.moduloServicios.bConsultarSaldo.addActionListener(
+            new ActionListener()
+            {
+                @Override
+                public void actionPerformed(ActionEvent ae) 
+                {
+                    consultarSaldo();
+                }                
             }
         );
         
@@ -107,6 +120,17 @@ public class ModuloServicios_Eventos
             }
         );
         
+        this.moduloServicios.bRecorrido.addActionListener(
+            new ActionListener()
+            {
+                @Override
+                public void actionPerformed(ActionEvent e) 
+                {
+                    seleccionarRuta();
+                }                
+            }
+        );
+        
         this.moduloServicios.cbOrigen.addItemListener(
             new ItemListener()
             {
@@ -128,6 +152,73 @@ public class ModuloServicios_Eventos
                 }                
             }
         );
+        
+        this.moduloServicios.bRecorridoSugeridas.addActionListener(
+            new ActionListener()
+            {
+                @Override
+                public void actionPerformed(ActionEvent e) 
+                {
+                    seleccionarRutaSugerida();
+                }                
+            }
+        );
+    }
+    
+    public void verRecorrido(String ruta)
+    {
+        try
+        {
+            rec = new ImageIcon(getClass().getResource("../img/"+ruta+".png"));
+            this.moduloServicios.lRecorrido.setIcon(rec);
+        }
+        catch (NullPointerException ex)
+        {
+            try
+            {
+                rec = new ImageIcon(getClass().getResource("../img/default.png"));
+                this.moduloServicios.lRecorrido.setIcon(rec);
+            }
+            catch (NullPointerException ex2)
+            {
+                System.out.println("No image available");
+            }
+        }
+        
+        this.moduloServicios.fRecorrido.setLocationRelativeTo(moduloServicios);
+        this.moduloServicios.fRecorrido.setVisible(true);
+    }
+    
+    public void consultarSaldo()
+    {
+        String id = this.moduloServicios.tfConsultarSaldo.getText();
+        
+        if (!id.isEmpty())
+        {
+            Tarjeta t = new TarjetaDAO().consultarTarjetaVendida(id);
+            
+            if (t != null)
+            {
+                String mensaje = "Tarjeta ID: "+t.getId()+"\nSaldo: "+t.getSaldo();
+            
+                if (new TarjetaDAO().esGenerica(id))
+                {
+                    JOptionPane.showMessageDialog(moduloServicios, "Tarjeta Generica\n"+mensaje, "", JOptionPane.INFORMATION_MESSAGE);
+                }
+                else
+                {
+                    JOptionPane.showMessageDialog(moduloServicios, "Tarjeta Personalizada\n"+mensaje, "", JOptionPane.INFORMATION_MESSAGE);
+                }
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(moduloServicios, "Tarjeta inexistente.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(moduloServicios, "Debe ingresar un id de tarjeta.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
     
     public void consultarEstacionesAbordar()
@@ -232,7 +323,7 @@ public class ModuloServicios_Eventos
     {
         if (verificarCamposAbordar())
         {
-            Tarjeta t = new TarjetaDAO().consultarTarjeta(this.moduloServicios.tfAbordarTarjeta.getText());
+            Tarjeta t = new TarjetaDAO().consultarTarjetaVendida(this.moduloServicios.tfAbordarTarjeta.getText());
             
             if (t != null)
             {
@@ -338,6 +429,21 @@ public class ModuloServicios_Eventos
         }
     }
     
+    public void seleccionarRuta()
+    {
+        int row = this.moduloServicios.tRutas.getSelectedRow();
+        
+        if(row != -1)
+        {
+            String ruta = (String) this.moduloServicios.tRutas.getValueAt(row, 0);
+            verRecorrido(ruta);
+        }
+	else
+	{
+	    JOptionPane.showMessageDialog(moduloServicios, "Seleccione una Ruta.", "Error", JOptionPane.ERROR_MESSAGE);
+	}
+    }
+    
     public void consultarOrigen()
     {
         ArrayList<Estacion> lista = new EstacionDAO().consultarEstaciones(true);
@@ -399,5 +505,20 @@ public class ModuloServicios_Eventos
                 }
             }
         }
+    }
+    
+    public void seleccionarRutaSugerida()
+    {
+        int row = this.moduloServicios.tRutasSugeridas.getSelectedRow();
+        
+        if(row != -1)
+        {
+            String ruta = (String) this.moduloServicios.tRutasSugeridas.getValueAt(row, 0);
+            verRecorrido(ruta);
+        }
+	else
+	{
+	    JOptionPane.showMessageDialog(moduloServicios, "Seleccione una Ruta.", "Error", JOptionPane.ERROR_MESSAGE);
+	}
     }
 }
