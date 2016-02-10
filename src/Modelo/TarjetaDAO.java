@@ -153,7 +153,7 @@ public class TarjetaDAO {
 
             while (tabla.next()){
                 tarjetas.add(new Tarjeta(tabla.getString(1),
-                        tabla.getInt(2),
+                        tabla.getDouble(2),
                         tabla.getString(3)));
             }
         } catch (SQLException e) {
@@ -163,10 +163,70 @@ public class TarjetaDAO {
         return tarjetas;
     }
     
-    public Tarjeta consultarTarjeta(String id){
+    public ArrayList<Tarjeta> consultarTarjetasNoVendidas()
+    {
+        ArrayList<Tarjeta> tarjetas = null;
+        String query = "SELECT * FROM tarjeta "
+                + "EXCEPT "
+                + "SELECT tarjeta_id, tarjeta_saldo, tarjeta_estado "
+                + "FROM tarjeta NATURAL JOIN venta;";
+        
+        conexionBD.conectar();
+        
+        try 
+        {
+            PreparedStatement st = conexionBD.conexion.prepareStatement(query);
+            ResultSet tabla = st.executeQuery();
+
+            tarjetas = new ArrayList<>();
+
+            while (tabla.next())
+            {
+                tarjetas.add(new Tarjeta(tabla.getString(1), tabla.getDouble(2), tabla.getString(3)));
+            }
+        }
+        catch (SQLException e) 
+        {
+            e.printStackTrace();
+        }
+
+        return tarjetas;
+    }
+    
+    public ArrayList<Tarjeta> consultarTarjetasVendidas()
+    {
+        ArrayList<Tarjeta> tarjetas = null;
+        String query = "SELECT tarjeta_id, tarjeta_saldo, tarjeta_estado "
+                + "FROM tarjeta NATURAL JOIN venta;";
+        
+        conexionBD.conectar();
+        
+        try 
+        {
+            PreparedStatement st = conexionBD.conexion.prepareStatement(query);
+            ResultSet tabla = st.executeQuery();
+
+            tarjetas = new ArrayList<>();
+
+            while (tabla.next())
+            {
+                tarjetas.add(new Tarjeta(tabla.getString(1), tabla.getDouble(2), tabla.getString(3)));
+            }
+        }
+        catch (SQLException e) 
+        {
+            e.printStackTrace();
+        }
+
+        return tarjetas;
+    }
+    
+    public Tarjeta consultarTarjetaVendida(String id){
         Tarjeta t = null;
 
-        String query = "SELECT * FROM tarjeta WHERE tarjeta_id = ?;";
+        String query = "SELECT tarjeta_id, tarjeta_saldo, tarjeta_estado "
+                + "FROM tarjeta NATURAL JOIN venta "
+                + "WHERE tarjeta_id = ?;";
         conexionBD.conectar();
         try {
             PreparedStatement st = conexionBD.conexion.prepareStatement(query);
@@ -174,7 +234,7 @@ public class TarjetaDAO {
             ResultSet tabla = st.executeQuery();
 
             if (tabla.next()){
-                t = new Tarjeta(tabla.getString(1), tabla.getInt(2), tabla.getString(3));
+                t = new Tarjeta(tabla.getString(1), tabla.getDouble(2), tabla.getString(3));
             }
         } catch (SQLException e) {
             e.printStackTrace();

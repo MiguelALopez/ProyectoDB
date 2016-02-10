@@ -136,7 +136,7 @@ public class ModuloTarjetas_Eventos {
     }
 
     public void consultarTarjetasVenta(){
-        ArrayList<Tarjeta> tarjetas = new TarjetaDAO().consultarTarjetas();
+        ArrayList<Tarjeta> tarjetas = new TarjetaDAO().consultarTarjetasNoVendidas();
         moduloTarjetas.comboVentaIdTarjeta.removeAllItems();
         if (tarjetas != null){
             for (int i = 0; i < tarjetas.size(); i++) {
