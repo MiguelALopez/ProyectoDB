@@ -36,7 +36,7 @@ import org.apache.pdfbox.pdmodel.font.PDType1Font;
  */
 public class ModuloReportes_Eventos 
 {
-    private ModuloReportes moduloReportes;
+    private final ModuloReportes moduloReportes;
     
     public ModuloReportes_Eventos(final ModuloReportes moduloReportes)
     {
@@ -263,12 +263,7 @@ public class ModuloReportes_Eventos
         cell.setFontSize(12);
         cell.setFillColor(Color.LIGHT_GRAY);
 
-        //ArrayList<Pasajero> lista = new ReportesDAO().reporte1();
-        ArrayList<Pasajero> lista = new ArrayList();
-        lista.add(new Pasajero("1144082592", "Camilo Ruiz Casanova", "", "", "", "100000024"));
-        lista.add(new Pasajero("1144312312", "Andres Felipe Martinez Polanco", "", "", "", "100001231"));
-        lista.add(new Pasajero("1144083", "Miguel Angel Lopez Fernandez", "", "", "", "100012312"));
-        lista.add(new Pasajero("114408259232", "Camilo Ruiz Casanova", "", "", "", "100000026"));
+        ArrayList<Pasajero> lista = new ReportesDAO().reporte1();
         
         Row<PDPage> row; 
         

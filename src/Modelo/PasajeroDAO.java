@@ -30,29 +30,26 @@ public class PasajeroDAO {
         conexionBD.conectar();
         boolean exito = false;
 
-        String query = "INSERT INTO pasajero(pasajero_id, pasajero_nombre, pasajero_telefono, pasajero_direccion, pasajero_email, tarjeta_id)" +
-                "VALUES (?,?,?,?,?,?);";
+        String query = "INSERT INTO pasajero(pasajero_id, pasajero_nombre, pasajero_telefono, pasajero_direccion, pasajero_email, tarjeta_id, pasajero_estado) " 
+                + "VALUES (?,?,?,?,?,?,?);";
         try{
             PreparedStatement st = conexionBD.conexion.prepareStatement(query);
-
             st.setString(1, pasajero.getId());
             st.setString(2, pasajero.getNombre());
             st.setString(3, pasajero.getTelefono());
             st.setString(4, pasajero.getDireccion());
-            if (pasajero.getEmail().isEmpty()){ // Por si no tiene email
-                st.setNull(5, Types.VARCHAR);
-            }else {
-                st.setString(5, pasajero.getEmail());
-            }
+            st.setString(5, pasajero.getEmail());            
             st.setString(6, pasajero.getTarjeta());
-
+            st.setBoolean(7, pasajero.isEstado());
             int resultado = st.executeUpdate();
+            
             exito = true;
         }catch (SQLException e){
-            System.err.println("Error al insertar el pasajero");
+            e.printStackTrace();
         }finally {
             conexionBD.cerrarConexion();
         }
+        
         return exito;
     }
 
@@ -65,31 +62,28 @@ public class PasajeroDAO {
         conexionBD.conectar();
         boolean exito = false;
 
-        String query = "UPDATE pasajero SET " +
-                "pasajero_id = ?," +
-                "pasajero_nombre = ?," +
-                "pasajero_telefono = ?," +
-                "pasajero_direccion = ?," +
-                "pasajero_email = ?" +
-                "WHERE tarjeta_id = ?;";
+        String query = "UPDATE pasajero SET " 
+                //+ "pasajero_id = ?, " +
+                + "pasajero_nombre = ?, "
+                + "pasajero_telefono = ?, "
+                + "pasajero_direccion = ?, "
+                + "pasajero_email = ?, "
+                + "pasajero_estado = ? "
+                + "WHERE tarjeta_id = ?;";
 
         try{
             PreparedStatement st = conexionBD.conexion.prepareStatement(query);
-
             st.setString(1, pasajero.getNombre());
             st.setString(2, pasajero.getTelefono());
             st.setString(3, pasajero.getDireccion());
-            if (pasajero.getEmail().isEmpty()){ // Por si no tiene email
-                st.setNull(4, Types.VARCHAR);
-            }else {
-                st.setString(4, pasajero.getEmail());
-            }
-            st.setString(5, pasajero.getTarjeta());
-
+            st.setString(4, pasajero.getEmail());
+            st.setBoolean(5, pasajero.isEstado());
+            st.setString(6, pasajero.getTarjeta());
             st.executeUpdate();
+            
             exito = true;
         }catch (SQLException e){
-            System.err.println("Error al Modificar un pasajero");
+            e.printStackTrace();
         }finally {
             conexionBD.cerrarConexion();
         }
@@ -103,31 +97,36 @@ public class PasajeroDAO {
      * @return retorna el pasajero asociado al id de la tarjeta, o null si no se encuentra
      * @throws NullPointerException Puede retornar null si no se encuentra el pasajero
      */
-    public Pasajero consultarPasajero(String tarjeta_id) throws NullPointerException{
+    public Pasajero consultarPasajero(String tarjeta_id) 
+    {
         conexionBD.conectar();
         Pasajero pasajero = null;
 
         String query = "SELECT * FROM pasajero "
                 + "WHERE tarjeta_id = ?;";
 
-        try {
+        try 
+        {
             PreparedStatement st = conexionBD.conexion.prepareStatement(query);
-
             st.setString(1, tarjeta_id);
             ResultSet tabla = st.executeQuery();
-            if (tabla.next()){
-                pasajero = new Pasajero(tabla.getString(1),
-                        tabla.getString(2),
-                        tabla.getString(3),
-                        tabla.getString(4),
-                        tabla.getString(5),
-                        tabla.getString(6));
+            
+            if (tabla.next())
+            {
+                pasajero = new Pasajero(tabla.getString(1), tabla.getString(2), tabla.getString(3),
+                        tabla.getString(4), tabla.getString(5), tabla.getString(6),
+                        tabla.getBoolean(7));
             }
-        }catch (SQLException e){
-            System.err.println("Error al buscar al usuario");
-        }finally {
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+        finally 
+        {
             conexionBD.cerrarConexion();
         }
+        
         return pasajero;
     }
 
@@ -136,32 +135,37 @@ public class PasajeroDAO {
      * @return retorna a todos los pasajeros de la base de datos
      * @throws NullPointerException puede ocasionar fallos si la lista esta vacia
      */
-    public ArrayList<Pasajero> consultarPasajeros() throws NullPointerException{
+    public ArrayList<Pasajero> consultarPasajeros() 
+    {
         conexionBD.conectar();
         ArrayList<Pasajero> lista = null;
 
         String query = "SELECT * FROM pasajero;";
 
-        try {
-            Statement st = conexionBD.conexion.createStatement();
-            ResultSet tabla = st.executeQuery(query);
+        try 
+        {
+            PreparedStatement st = conexionBD.conexion.prepareStatement(query);
+            ResultSet tabla = st.executeQuery();
 
             lista = new ArrayList<>();
 
-            while (tabla.next()){
-                lista.add(new Pasajero(tabla.getString(1),
-                        tabla.getString(2),
-                        tabla.getString(3),
-                        tabla.getString(4),
-                        tabla.getString(5),
-                        tabla.getString(6)));
+            while (tabla.next())
+            {
+                lista.add(new Pasajero(tabla.getString(1), tabla.getString(2), tabla.getString(3),
+                        tabla.getString(4), tabla.getString(5), tabla.getString(6),
+                        tabla.getBoolean(7)));
             }
 
-        } catch (SQLException e) {
-            System.err.println("Error al consultar la lista de pasajeros");
-        }finally {
+        }
+        catch (SQLException e) 
+        {
+            e.printStackTrace();
+        }
+        finally 
+        {
             conexionBD.cerrarConexion();
         }
+        
         return lista;
     }
 }

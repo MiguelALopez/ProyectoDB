@@ -13,6 +13,7 @@ package Modelo;
 
 import java.sql.*;
 import java.util.ArrayList;
+import javafx.util.Pair;
 
 public class TarjetaRutaDAO {
 
@@ -70,7 +71,7 @@ public class TarjetaRutaDAO {
      * @param tarjetaID identificacion de la tarjeta que se le desea hacer el seguimiento
      * @return retorna un ArrayList con los registros de rutas abordadas
      */
-    public ArrayList<TarjetaRuta> consultarRegistrosUsuario(String tarjetaID){
+    public ArrayList<TarjetaRuta> consultarHistorialPasajero(String tarjetaID){
         ArrayList<TarjetaRuta> list = null;
         String query = "SELECT * FROM tarjeta_ruta WHERE tarjeta_id = ? ORDER BY tarjeta_ruta_fecha;";
         conexionBD.conectar();
@@ -89,6 +90,42 @@ public class TarjetaRutaDAO {
         }finally {
             conexionBD.cerrarConexion();
         }
+        return list;
+    }
+    
+    public ArrayList<Pair> consultarFrecuencias(String tarjetaID)
+    {
+        ArrayList<Pair> list = null;
+        String query = "SELECT ruta_nombre, COUNT(*) "
+                + "FROM tarjeta_ruta "
+                + "WHERE tarjeta_id = ? "
+                + "GROUP BY ruta_nombre "
+                + "ORDER BY COUNT(*) DESC;";
+        
+        conexionBD.conectar();
+        
+        try 
+        {
+            PreparedStatement st = conexionBD.conexion.prepareStatement(query);
+            st.setString(1, tarjetaID);
+            ResultSet tabla = st.executeQuery();
+
+            list = new ArrayList<>();
+
+            while (tabla.next())
+            {
+                list.add(new Pair(tabla.getString(1), tabla.getInt(2)));
+            }
+        }
+        catch (SQLException e) 
+        {
+            e.printStackTrace();
+        }
+        finally 
+        {
+            conexionBD.cerrarConexion();
+        }
+        
         return list;
     }
 }

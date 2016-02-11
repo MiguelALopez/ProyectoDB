@@ -19,6 +19,7 @@ public class Pasajero
     private String direccion;
     private String email;
     private String tarjeta;
+    private boolean estado;
 
     /**
      * Constructor usado para simular a un pasajero registrado en el sistema MIO
@@ -29,7 +30,7 @@ public class Pasajero
      * @param email email del pasajero
      * @param tarjeta numero de la tarjeta asignada al pasajero
      */
-    public Pasajero(String id, String nombre, String telefono, String direccion, String email, String tarjeta) 
+    public Pasajero(String id, String nombre, String telefono, String direccion, String email, String tarjeta, boolean estado) 
     {
         this.id = id;
         this.nombre = nombre;
@@ -37,6 +38,7 @@ public class Pasajero
         this.direccion = direccion;
         this.email = email;
         this.tarjeta = tarjeta;
+        this.estado = estado;
     }
 
     public String getId() {
@@ -85,5 +87,20 @@ public class Pasajero
 
     public void setTarjeta(String tarjeta) {
         this.tarjeta = tarjeta;
-    }    
+    }
+    
+    public String getEstado() {
+        if (this.estado)
+            return "Activo";
+        else
+            return "Inactivo";
+    }
+
+    public boolean isEstado() {
+        return estado;
+    }
+
+    public void setEstado(boolean estado) {
+        this.estado = estado;
+    }
 }
