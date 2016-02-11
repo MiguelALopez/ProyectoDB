@@ -106,14 +106,14 @@ public class MenuPrincipal_Eventos
             }
         );
 
-        this.menuPrincipal.bUsuarios.addActionListener(
+        this.menuPrincipal.bPasajeros.addActionListener(
             new ActionListener() 
             {
                 @Override
                 public void actionPerformed(ActionEvent e) 
                 {
-                    ModuloUsuarios m = new ModuloUsuarios();
-                    ModuloUsuarios_Eventos me = new ModuloUsuarios_Eventos(m);
+                    ModuloPasajeros m = new ModuloPasajeros();
+                    ModuloPasajeros_Eventos me = new ModuloPasajeros_Eventos(m);
                     m.setLocationRelativeTo(null);
                     m.setVisible(true);
                 }

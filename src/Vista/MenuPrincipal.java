@@ -47,7 +47,7 @@ public class MenuPrincipal extends javax.swing.JFrame
         bTurnos = new javax.swing.JButton();
         jPanel4 = new javax.swing.JPanel();
         bTarjetas = new javax.swing.JButton();
-        bUsuarios = new javax.swing.JButton();
+        bPasajeros = new javax.swing.JButton();
         jPanel5 = new javax.swing.JPanel();
         bServicios = new javax.swing.JButton();
         jPanel8 = new javax.swing.JPanel();
@@ -58,7 +58,6 @@ public class MenuPrincipal extends javax.swing.JFrame
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setTitle("SistemaMIO");
         setMinimumSize(new java.awt.Dimension(800, 600));
-        setPreferredSize(new java.awt.Dimension(800, 600));
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
         panelPrincipal.setLayout(new java.awt.GridBagLayout());
@@ -173,15 +172,15 @@ public class MenuPrincipal extends javax.swing.JFrame
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 5, 10);
         jPanel4.add(bTarjetas, gridBagConstraints);
 
-        bUsuarios.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        bUsuarios.setText("Modulo de Usuarios");
+        bPasajeros.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        bPasajeros.setText("Modulo de Pasajeros");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(5, 10, 10, 10);
-        jPanel4.add(bUsuarios, gridBagConstraints);
+        jPanel4.add(bPasajeros, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -273,13 +272,13 @@ public class MenuPrincipal extends javax.swing.JFrame
     public javax.swing.JButton bEmpleados;
     public javax.swing.JButton bEstacionRutas;
     public javax.swing.JButton bEstaciones;
+    public javax.swing.JButton bPasajeros;
     public javax.swing.JButton bReportes;
     public javax.swing.JButton bRutas;
     public javax.swing.JButton bServicios;
     public javax.swing.JButton bSolicitudes;
     public javax.swing.JButton bTarjetas;
     public javax.swing.JButton bTurnos;
-    public javax.swing.JButton bUsuarios;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;

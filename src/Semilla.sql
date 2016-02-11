@@ -428,12 +428,14 @@ INSERT INTO estacion_ruta (estacion_nombre, ruta_nombre)
 VALUES ('MENGA', 'E21'), ('MENGA', 'E27'), ('MENGA', 'P12A'), ('MENGA', 'P21B'), ('MENGA', 'P24A'), ('MENGA', 'P24C'),
 ('MENGA', 'P27C'), ('MENGA', 'P30A');
 
-INSERT INTO tarjeta (tarjeta_id, tarjeta_saldo, tarjeta_estado) VALUES (100000, 1000, 'ACTIVA');
-INSERT INTO tarjeta (tarjeta_id, tarjeta_saldo, tarjeta_estado) VALUES (100001, 1000, 'ACTIVA');
-INSERT INTO tarjeta (tarjeta_id, tarjeta_saldo, tarjeta_estado) VALUES (100002, 1000, 'ACTIVA');
-INSERT INTO tarjeta (tarjeta_id, tarjeta_saldo, tarjeta_estado) VALUES (100003, 1000, 'ACTIVA');
-INSERT INTO tarjeta (tarjeta_id, tarjeta_saldo, tarjeta_estado) VALUES (100004, 1000, 'ACTIVA');
-INSERT INTO tarjeta (tarjeta_id, tarjeta_saldo, tarjeta_estado) VALUES (100005, 1000, 'ACTIVA');
+INSERT INTO tarjeta (tarjeta_saldo, tarjeta_estado) VALUES (1000, 'ACTIVA');
+INSERT INTO tarjeta (tarjeta_saldo, tarjeta_estado) VALUES (1000, 'ACTIVA');
+INSERT INTO tarjeta (tarjeta_saldo, tarjeta_estado) VALUES (1000, 'ACTIVA');
+INSERT INTO tarjeta (tarjeta_saldo, tarjeta_estado) VALUES (1000, 'ACTIVA');
+INSERT INTO tarjeta (tarjeta_saldo, tarjeta_estado) VALUES (1000, 'ACTIVA');
+INSERT INTO tarjeta (tarjeta_saldo, tarjeta_estado) VALUES (1000, 'ACTIVA');
+INSERT INTO tarjeta (tarjeta_saldo, tarjeta_estado) VALUES (1000, 'ACTIVA');
+INSERT INTO tarjeta (tarjeta_saldo, tarjeta_estado) VALUES (1000, 'ACTIVA');
 
 INSERT INTO pasajero (pasajero_id, pasajero_nombre, pasajero_telefono, pasajero_direccion, pasajero_email, tarjeta_id, pasajero_estado)
 VALUES ('123', 'pepito1', '1234567', 'Carrera', 'no tengo', 100000, TRUE);
@@ -451,7 +453,13 @@ VALUES ('2015-11-30 12:00:00', 2000, 'UNIVERSIDADES', '100000');
 INSERT INTO venta (venta_fecha, venta_valor, estacion_nombre, tarjeta_id)
 VALUES ('2015-11-30 12:03:00', 2000, 'UNIVERSIDADES', '100001');
 INSERT INTO venta (venta_fecha, venta_valor, estacion_nombre, tarjeta_id)
-VALUES ('2015-11-30 12:10:00', 2000, 'UNIVERSIDADES', '100005');
+VALUES ('2015-11-30 13:03:00', 2000, 'UNIVERSIDADES', '100002');
+INSERT INTO venta (venta_fecha, venta_valor, estacion_nombre, tarjeta_id)
+VALUES ('2015-11-30 14:03:00', 2000, 'UNIVERSIDADES', '100003');
+INSERT INTO venta (venta_fecha, venta_valor, estacion_nombre, tarjeta_id)
+VALUES ('2015-11-30 17:03:00', 2000, 'UNIVERSIDADES', '100004');
+INSERT INTO venta (venta_fecha, venta_valor, estacion_nombre, tarjeta_id)
+VALUES ('2015-11-30 17:30:00', 2000, 'UNIVERSIDADES', '100005');
 
 INSERT INTO tarjeta_ruta (tarjeta_id, ruta_nombre, tarjeta_ruta_fecha)
 VALUES ('100000','P10A','2015-12-15 12:45:00');
