@@ -11,6 +11,7 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.util.Pair;
 
 /**
  *
@@ -30,14 +31,14 @@ public class ReportesDAO
         return new PasajeroDAO().consultarPasajeros();
     }
     
-    public ArrayList<ArrayList<String>> reporte2(String fecha)
+    public ArrayList<Pair> reporte2(String fecha)
     {
         conexionBD.conectar();        
-        ArrayList<ArrayList<String>> lista = null;
+        ArrayList<Pair> lista = null;
         
         String query = "SELECT ruta_nombre, COUNT(*) "
                 + "FROM tarjeta_ruta "
-                + "WHERE tarjeta_ruta_fecha = DATE(?) "                
+                + "WHERE CAST(tarjeta_ruta_fecha AS DATE) = DATE(?) "                
                 + "GROUP BY ruta_nombre;";
         
         try
@@ -50,10 +51,7 @@ public class ReportesDAO
             
             while (tabla.next())
             {
-                ArrayList<String> a = new ArrayList();
-                a.add(tabla.getString(1));
-                a.add(tabla.getString(2));
-                lista.add(a);
+                lista.add(new Pair(tabla.getString(1), tabla.getInt(2)));
             }        
         } 
         catch (SQLException ex) 
@@ -71,14 +69,14 @@ public class ReportesDAO
         return lista;
     }
     
-    public ArrayList<ArrayList<String>> reporte3(String fecha)
+    public ArrayList<Pair> reporte3(String fecha)
     {
         conexionBD.conectar();        
-        ArrayList<ArrayList<String>> lista = null;
+        ArrayList<Pair> lista = null;
         
         String query = "SELECT estacion_nombre, SUM(venta_valor) "
                 + "FROM venta "
-                + "WHERE venta_fecha = ? "                
+                + "WHERE CAST(venta_fecha AS DATE) = DATE(?) "                
                 + "GROUP BY estacion_nombre;";
         
         try
@@ -91,10 +89,7 @@ public class ReportesDAO
             
             while (tabla.next())
             {
-                ArrayList<String> a = new ArrayList();
-                a.add(tabla.getString(1));
-                a.add(tabla.getString(2));
-                lista.add(a);
+                lista.add(new Pair(tabla.getString(1), tabla.getDouble(2)));
             }        
         } 
         catch (SQLException ex) 
@@ -180,10 +175,10 @@ public class ReportesDAO
         return new EstacionDAO().consultarEstaciones();
     }
     
-    public ArrayList<ArrayList<String>> reporte6()
+    public ArrayList<Pair> reporte6()
     {
         conexionBD.conectar();        
-        ArrayList<ArrayList<String>> lista = null;
+        ArrayList<Pair> lista = null;
         
         String query = "SELECT ruta_nombre, COUNT(*) "
                 + "FROM ruta NATURAL JOIN tarjeta_ruta "
@@ -203,10 +198,7 @@ public class ReportesDAO
             
             while (tabla.next())
             {
-                ArrayList<String> a = new ArrayList();
-                a.add(tabla.getString(1));
-                a.add(tabla.getString(2));
-                lista.add(a);
+                lista.add(new Pair(tabla.getString(1), tabla.getInt(2)));
             }
             
             st = conexionBD.conexion.prepareStatement(query2);
@@ -214,10 +206,7 @@ public class ReportesDAO
             
             while (tabla.next())
             {
-                ArrayList<String> a = new ArrayList();
-                a.add(tabla.getString(1));
-                a.add("0");
-                lista.add(a);
+                lista.add(new Pair(tabla.getString(1), 0));
             }
         } 
         catch (SQLException ex) 

@@ -25,6 +25,7 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javafx.util.Pair;
 import javax.swing.JOptionPane;
 import org.apache.pdfbox.pdmodel.PDDocument;
 import org.apache.pdfbox.pdmodel.PDPage;
@@ -358,20 +359,19 @@ public class ModuloReportes_Eventos
         cell.setFontSize(12);
         cell.setFillColor(Color.LIGHT_GRAY);
 
-        ArrayList<ArrayList<String>> lista = new ReportesDAO().reporte2(fecha);
-        //ArrayList<ArrayList<String>> lista = new ArrayList();
+        ArrayList<Pair> lista = new ReportesDAO().reporte2(fecha);
         
         if (lista != null)
         {
-            for (ArrayList<String> p : lista) 
+            for (Pair p : lista) 
             {
                 row = table.createRow(15f);
 
-                cell = row.createCell((100 / 2), p.get(0));
+                cell = row.createCell((100 / 2), String.valueOf(p.getKey()));
                 cell.setFont(PDType1Font.HELVETICA);
                 cell.setFontSize(11);
 
-                cell = row.createCell((100 / 2), p.get(1));
+                cell = row.createCell((100 / 2), String.valueOf(p.getValue()));
                 cell.setFont(PDType1Font.HELVETICA);
                 cell.setFontSize(11);
             }
@@ -448,20 +448,19 @@ public class ModuloReportes_Eventos
         cell.setFontSize(12);
         cell.setFillColor(Color.LIGHT_GRAY);
 
-        ArrayList<ArrayList<String>> lista = new ReportesDAO().reporte3(fecha);
-        //ArrayList<ArrayList<String>> lista = new ArrayList();
+        ArrayList<Pair> lista = new ReportesDAO().reporte3(fecha);
         
         if (lista != null)
         {
-            for (ArrayList<String> p : lista) 
+            for (Pair p : lista) 
             {
                 row = table.createRow(15f);
 
-                cell = row.createCell((100 / 2), p.get(0));
+                cell = row.createCell((100 / 2), String.valueOf(p.getKey()));
                 cell.setFont(PDType1Font.HELVETICA);
                 cell.setFontSize(11);
 
-                cell = row.createCell((100 / 2), p.get(1));
+                cell = row.createCell((100 / 2), String.valueOf(p.getValue()));
                 cell.setFont(PDType1Font.HELVETICA);
                 cell.setFontSize(11);
             }
@@ -635,7 +634,6 @@ public class ModuloReportes_Eventos
         cell.setFillColor(Color.LIGHT_GRAY);
 
         ArrayList<Ruta> lista = new ReportesDAO().reporte5_1();
-        //ArrayList<ArrayList<String>> lista = new ArrayList();
         
         if (lista != null)
         {
@@ -714,7 +712,6 @@ public class ModuloReportes_Eventos
         cell.setFillColor(Color.LIGHT_GRAY);
 
         ArrayList<Estacion> lista2 = new ReportesDAO().reporte5_2();
-        //ArrayList<ArrayList<String>> lista = new ArrayList();
         
         if (lista != null)
         {
@@ -736,7 +733,7 @@ public class ModuloReportes_Eventos
             }
             
             row = table.createRow(15f);            
-            cell = row.createCell(100, "<< " + lista.size() + " filas >>");
+            cell = row.createCell(100, "<< " + lista2.size() + " filas >>");
             cell.setFont(PDType1Font.HELVETICA);
             cell.setFontSize(11);
         }
@@ -801,20 +798,19 @@ public class ModuloReportes_Eventos
         cell.setFontSize(12);
         cell.setFillColor(Color.LIGHT_GRAY);
 
-        ArrayList<ArrayList<String>> lista = new ReportesDAO().reporte6();
-        //ArrayList<ArrayList<String>> lista = new ArrayList();
+        ArrayList<Pair> lista = new ReportesDAO().reporte6();
         
         if (lista != null)
         {
-            for (ArrayList<String> p : lista) 
+            for (Pair p : lista) 
             {
                 row = table.createRow(15f);
 
-                cell = row.createCell((100 / 2), p.get(0));
+                cell = row.createCell((100 / 2), String.valueOf(p.getKey()));
                 cell.setFont(PDType1Font.HELVETICA);
                 cell.setFontSize(11);
 
-                cell = row.createCell((100 / 2), p.get(1));
+                cell = row.createCell((100 / 2), String.valueOf(p.getValue()));
                 cell.setFont(PDType1Font.HELVETICA);
                 cell.setFontSize(11);
             }
@@ -900,7 +896,6 @@ public class ModuloReportes_Eventos
         cell.setFillColor(Color.LIGHT_GRAY);
 
         ArrayList<Solicitud> lista = new ReportesDAO().reporte7(pasajero);
-        //ArrayList<Pasajero> lista = new ArrayList();
         
         if (lista != null)
         {
@@ -941,7 +936,7 @@ public class ModuloReportes_Eventos
         table.draw();
 
         //cerrar flujo y guardar pdf
-        File file = new File("Reporte1.pdf");
+        File file = new File("Reporte7.pdf");
         System.out.println("Sample file saved at : " + file.getAbsolutePath());
         doc.save(file);
         doc.close();

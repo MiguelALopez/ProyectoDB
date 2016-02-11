@@ -106,7 +106,7 @@ public class MenuPrincipal_Eventos
             }
         );
 
-        this.menuPrincipal.bUsuarios.addActionListener(
+        this.menuPrincipal.bPasajeros.addActionListener(
             new ActionListener() 
             {
                 @Override
