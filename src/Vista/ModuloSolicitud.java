@@ -26,7 +26,8 @@ public class ModuloSolicitud extends javax.swing.JFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents() {
+    private void initComponents()
+    {
         java.awt.GridBagConstraints gridBagConstraints;
 
         fListar = new javax.swing.JFrame();
@@ -42,7 +43,7 @@ public class ModuloSolicitud extends javax.swing.JFrame
         taRespuesta = new javax.swing.JTextArea();
         bResponder = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
-        cbResEstado = new javax.swing.JComboBox<>();
+        cbResEstado = new javax.swing.JComboBox<String>();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -84,6 +85,9 @@ public class ModuloSolicitud extends javax.swing.JFrame
         tfConNumero = new javax.swing.JTextField();
         jLabel13 = new javax.swing.JLabel();
         tfConEstado = new javax.swing.JTextField();
+        jLabel15 = new javax.swing.JLabel();
+        jScrollPane1 = new javax.swing.JScrollPane();
+        taConRespuestas = new javax.swing.JTextArea();
 
         fListar.setMinimumSize(new java.awt.Dimension(400, 300));
         fListar.getContentPane().setLayout(new java.awt.GridBagLayout());
@@ -116,13 +120,15 @@ public class ModuloSolicitud extends javax.swing.JFrame
         jPanel5.add(bListarSeleccionar, gridBagConstraints);
 
         tSeleccionar.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
+            new Object [][]
+            {
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null}
             },
-            new String [] {
+            new String []
+            {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
@@ -195,7 +201,7 @@ public class ModuloSolicitud extends javax.swing.JFrame
         jPanel9.add(jLabel14, gridBagConstraints);
 
         cbResEstado.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        cbResEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "INICIADO", "EN PROCESO", "SOLUCIONADO" }));
+        cbResEstado.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "INICIADO", "EN PROCESO", "SOLUCIONADO" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
@@ -213,7 +219,8 @@ public class ModuloSolicitud extends javax.swing.JFrame
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         fResponder.getContentPane().add(jPanel9, gridBagConstraints);
 
-        setMinimumSize(new java.awt.Dimension(500, 330));
+        setMinimumSize(new java.awt.Dimension(500, 480));
+        setPreferredSize(new java.awt.Dimension(500, 480));
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
         jTabbedPane1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -435,7 +442,7 @@ public class ModuloSolicitud extends javax.swing.JFrame
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 10, 5);
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 5);
         jPanel2.add(jLabel11, gridBagConstraints);
 
         tfConEstacion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -495,7 +502,7 @@ public class ModuloSolicitud extends javax.swing.JFrame
 
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 7;
+        gridBagConstraints.gridy = 8;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
@@ -523,7 +530,7 @@ public class ModuloSolicitud extends javax.swing.JFrame
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_END;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 5, 5);
         jPanel3.add(jLabel6, gridBagConstraints);
 
@@ -532,8 +539,7 @@ public class ModuloSolicitud extends javax.swing.JFrame
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.insets = new java.awt.Insets(10, 5, 5, 10);
         jPanel3.add(bConBuscar, gridBagConstraints);
 
@@ -573,6 +579,30 @@ public class ModuloSolicitud extends javax.swing.JFrame
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 10);
         jPanel2.add(tfConEstado, gridBagConstraints);
 
+        jLabel15.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel15.setText("Respuestas");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 5);
+        jPanel2.add(jLabel15, gridBagConstraints);
+
+        taConRespuestas.setColumns(20);
+        taConRespuestas.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        taConRespuestas.setRows(5);
+        taConRespuestas.setEnabled(false);
+        jScrollPane1.setViewportView(taConRespuestas);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 7;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.weighty = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 10);
+        jPanel2.add(jScrollPane1, gridBagConstraints);
+
         jTabbedPane1.addTab("Consultar", jPanel2);
 
         getContentPane().add(jTabbedPane1);
@@ -600,6 +630,7 @@ public class ModuloSolicitud extends javax.swing.JFrame
     private javax.swing.JLabel jLabel12;
     private javax.swing.JLabel jLabel13;
     private javax.swing.JLabel jLabel14;
+    private javax.swing.JLabel jLabel15;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -617,6 +648,7 @@ public class ModuloSolicitud extends javax.swing.JFrame
     private javax.swing.JPanel jPanel7;
     private javax.swing.JPanel jPanel8;
     private javax.swing.JPanel jPanel9;
+    private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
@@ -624,6 +656,7 @@ public class ModuloSolicitud extends javax.swing.JFrame
     public javax.swing.JTabbedPane jTabbedPane1;
     public javax.swing.JTable tSeleccionar;
     public javax.swing.JTextArea taConDescripcion;
+    public javax.swing.JTextArea taConRespuestas;
     public javax.swing.JTextArea taGenDescripcion;
     public javax.swing.JTextArea taRespuesta;
     public javax.swing.JTextField tfConEstacion;

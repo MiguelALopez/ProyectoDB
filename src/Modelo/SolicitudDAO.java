@@ -132,7 +132,7 @@ public class SolicitudDAO
         ArrayList<Solicitud> lista = null;
         this.conexionBD.conectar();
         
-        String query ="SELECT * FROM solicitud";
+        String query ="SELECT * FROM solicitud ORDER BY solicitud_id";
         
         try
         {
@@ -233,5 +233,40 @@ public class SolicitudDAO
         }
         
         return exito;
+    }
+    
+    public String consultarMedida(String id)
+    {
+        conexionBD.conectar();        
+        String medidas = "";
+        
+        String query = "SELECT * FROM solicitud_medidas WHERE solicitud_id = ?;";
+        
+        try
+        {
+            PreparedStatement st = conexionBD.conexion.prepareStatement(query);            
+            st.setString(1, id);
+            
+            ResultSet tabla = st.executeQuery();
+            int indice = 1;
+            while (tabla.next())
+            {
+                medidas += indice + " - " + tabla.getString(2) + "\n";
+                indice++;
+            }
+        } 
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(EstacionDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally
+        {
+            if (conexionBD != null)
+            {
+                conexionBD.cerrarConexion();
+            }
+        }
+        
+        return medidas;
     }
 }

@@ -162,6 +162,7 @@ public class ModuloSolicitud_Eventos
         this.moduloSolicitud.tfConPasajero.setText("");
         this.moduloSolicitud.tfConMotivo.setText("");
         this.moduloSolicitud.taConDescripcion.setText("");
+        this.moduloSolicitud.taConRespuestas.setText("");
         this.moduloSolicitud.tfConEstado.setText("");
     }
     
@@ -179,7 +180,7 @@ public class ModuloSolicitud_Eventos
         this.moduloSolicitud.setVisible(false);
     }
     /**
-     * Listar los datos de estaciones o pasajeros segun corresponda
+     * Listar los datos de estaciones pasajeros o solicitudes segun corresponda
      */
     private void fListar()
     {
@@ -273,11 +274,12 @@ public class ModuloSolicitud_Eventos
             {
                 this.moduloSolicitud.tfConNumero.setText(id);
                 consultaSolicitud();
+                this.moduloSolicitud.bConResponder.setEnabled(true);
             }
         }
         
         this.tipo = "";
-        this.moduloSolicitud.bConResponder.setEnabled(true);
+        
         this.moduloSolicitud.fListar.setVisible(false);
     }
     /**
@@ -356,9 +358,11 @@ public class ModuloSolicitud_Eventos
             this.moduloSolicitud.tfConPasajero.setText(sol.getPasajero());
             this.moduloSolicitud.taConDescripcion.setText(sol.getDescripcion());
             this.moduloSolicitud.tfConEstado.setText(sol.getEstado());
+            this.moduloSolicitud.taConRespuestas.setText(solDAO.consultarMedida(id));
         }
         else
         {
+            this.moduloSolicitud.bConResponder.setEnabled(false);
             JOptionPane.showMessageDialog(moduloSolicitud, "Solicitud no encontrada", "Error", JOptionPane.ERROR_MESSAGE);
         }
         
@@ -402,7 +406,7 @@ public class ModuloSolicitud_Eventos
             {
                 
                 this.id = null;
-                JOptionPane.showMessageDialog(moduloSolicitud, "Solicitud agregada correctamente");
+                JOptionPane.showMessageDialog(moduloSolicitud, "Solicitsud agregada correctamente");
                 conLimpiarCampos();
             }
         }
