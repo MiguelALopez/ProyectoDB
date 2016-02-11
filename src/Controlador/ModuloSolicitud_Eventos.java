@@ -90,7 +90,14 @@ public class ModuloSolicitud_Eventos
             public void actionPerformed(ActionEvent e)
             {
                 tipo = "solicitud";
-                fListar();
+                if(moduloSolicitud.tfConNumero.getText().isEmpty())
+                {
+                    fListar();
+                }
+                else
+                {
+                    consultaSolicitud();
+                }
             }
         });
         
@@ -151,9 +158,11 @@ public class ModuloSolicitud_Eventos
     private void conLimpiarCampos()
     {
         this.moduloSolicitud.tfConEstacion.setText("");
+        this.moduloSolicitud.tfConFecha.setText("");
         this.moduloSolicitud.tfConPasajero.setText("");
         this.moduloSolicitud.tfConMotivo.setText("");
         this.moduloSolicitud.taConDescripcion.setText("");
+        this.moduloSolicitud.tfConEstado.setText("");
     }
     
     private void resLimpiarCampos()
@@ -230,22 +239,14 @@ public class ModuloSolicitud_Eventos
             if (solicitudes != null)
             {
                 DefaultTableModel model = (DefaultTableModel) this.moduloSolicitud.tSeleccionar.getModel();
-                model.setColumnCount(5);
+                model.setColumnCount(1);
                 this.moduloSolicitud.tSeleccionar.getColumnModel().getColumn(0).setHeaderValue("Id");
-                this.moduloSolicitud.tSeleccionar.getColumnModel().getColumn(1).setHeaderValue("Motivo");
-                this.moduloSolicitud.tSeleccionar.getColumnModel().getColumn(2).setHeaderValue("Descripcion");
-                this.moduloSolicitud.tSeleccionar.getColumnModel().getColumn(3).setHeaderValue("Fecha");
-                this.moduloSolicitud.tSeleccionar.getColumnModel().getColumn(4).setHeaderValue("Estado");
                 
                 model.setRowCount(solicitudes.size());
 
                 for (int i = 0; i < solicitudes.size(); i++) 
                 {
                     this.moduloSolicitud.tSeleccionar.setValueAt(solicitudes.get(i).getId(), i, 0);
-                    this.moduloSolicitud.tSeleccionar.setValueAt(solicitudes.get(i).getMotivo(), i, 1);
-                    this.moduloSolicitud.tSeleccionar.setValueAt(solicitudes.get(i).getDescripcion(), i, 2);
-                    this.moduloSolicitud.tSeleccionar.setValueAt(solicitudes.get(i).getFecha(), i, 3);
-                    this.moduloSolicitud.tSeleccionar.setValueAt(solicitudes.get(i).getEstado(), i, 4);
                 }
             }
         }
@@ -298,7 +299,7 @@ public class ModuloSolicitud_Eventos
             // fecha
             Datos[2] = this.moduloSolicitud.tfGenFecha.getText();
             //estado
-            Datos[3] = "ACTIVO";
+            Datos[3] = "INCIADO";
             // pasajero
             Datos[4] = this.moduloSolicitud.tfGenPasajero.getText();
             // estacion
@@ -341,6 +342,7 @@ public class ModuloSolicitud_Eventos
      */
     private void consultaSolicitud()
     {
+        conLimpiarCampos();
         this.id = this.moduloSolicitud.tfConNumero.getText();
         SolicitudDAO solDAO = new SolicitudDAO();
         
@@ -353,6 +355,11 @@ public class ModuloSolicitud_Eventos
             this.moduloSolicitud.tfConMotivo.setText(sol.getMotivo());
             this.moduloSolicitud.tfConPasajero.setText(sol.getPasajero());
             this.moduloSolicitud.taConDescripcion.setText(sol.getDescripcion());
+            this.moduloSolicitud.tfConEstado.setText(sol.getEstado());
+        }
+        else
+        {
+            JOptionPane.showMessageDialog(moduloSolicitud, "Solicitud no encontrada", "Error", JOptionPane.ERROR_MESSAGE);
         }
         
     }
@@ -380,18 +387,23 @@ public class ModuloSolicitud_Eventos
         
         if( (op == JOptionPane.YES_OPTION) && go)
         {
+            this.moduloSolicitud.fResponder.setVisible(false);
             SolicitudDAO solDAO = new SolicitudDAO();
+            
+            String estado = this.moduloSolicitud.cbResEstado.getSelectedItem().toString();
 
-            boolean medida = solDAO.insertarMedida(id, respuesta);
+            boolean medida = solDAO.insertarMedida(id, respuesta, estado);
             if( !medida )
             {
                 JOptionPane.showMessageDialog(moduloSolicitud, "Error al agregar respuesta","Error", JOptionPane.ERROR_MESSAGE);
+                this.moduloSolicitud.fResponder.setVisible(true);
             }
             else
             {
-                this.moduloSolicitud.fResponder.setVisible(false);
+                
                 this.id = null;
                 JOptionPane.showMessageDialog(moduloSolicitud, "Solicitud agregada correctamente");
+                conLimpiarCampos();
             }
         }
     }
