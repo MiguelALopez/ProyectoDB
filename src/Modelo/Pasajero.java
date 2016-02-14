@@ -29,6 +29,7 @@ public class Pasajero
      * @param direccion direccion del pasajero
      * @param email email del pasajero
      * @param tarjeta numero de la tarjeta asignada al pasajero
+     * @param estado estado encargado de indicar si esta activo o inactivo un pasajero
      */
     public Pasajero(String id, String nombre, String telefono, String direccion, String email, String tarjeta, boolean estado) 
     {

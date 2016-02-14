@@ -120,21 +120,21 @@ public class TarjetaDAO {
     public boolean eliminarTarjeta(String id){
         boolean exito = false;
 
-        String query1 = "DELETE FROM solicitud WHERE pasajero_id = (SELECT pasajero_id FROM pasajero WHERE tarjeta_id = ?);";
-        String query2 = "DELETE FROM pasajero WHERE tarjeta_id = ?";
-        String query3 = "DELETE FROM tarjeta WHERE tarjeta_id = ?;";
+        String query1 = "UPDATE tarjeta SET tarjeta_estado = ? WHERE tarjeta_id = ?;";
+        String query2 = "UPDATE pasajero SET pasajero_estado = ? WHERE tarjeta_id = ?;";
         conexionBD.conectar();
         try {
             PreparedStatement st = conexionBD.conexion.prepareStatement(query1);
-            st.setString(1, id);
-            st.executeUpdate();
+            st.setString(1, "BLOQUEADA");
+            st.setString(2, id);
+            int resultado = st.executeUpdate();
+            if (resultado == 0){
+                return false;
+            }
 
             st = conexionBD.conexion.prepareStatement(query2);
-            st.setString(1,id);
-            st.executeUpdate();
-
-            st = conexionBD.conexion.prepareStatement(query3);
-            st.setString(1, id);
+            st.setBoolean(1, false);
+            st.setString(2, id);
             st.executeUpdate();
 
             exito = true;
@@ -175,47 +175,23 @@ public class TarjetaDAO {
         return tarjetas;
     }
     
-    public ArrayList<Tarjeta> consultarTarjetasNoVendidas()
+    public ArrayList<Tarjeta> consultarTarjetasVendidas(boolean vendida)
     {
         ArrayList<Tarjeta> tarjetas = null;
-        String query = "SELECT * FROM tarjeta WHERE tarjeta_estado <> 'BLOQUEADA' "
-                + "EXCEPT "
-                + "SELECT tarjeta_id, tarjeta_saldo, tarjeta_estado "
-                + "FROM tarjeta NATURAL JOIN venta ORDER BY tarjeta_id;";
-        
+        String query;
+        if (vendida){
+            query = "SELECT tarjeta_id, tarjeta_saldo, tarjeta_estado "
+                    + "FROM tarjeta NATURAL JOIN venta WHERE tarjeta_estado <> 'BLOQUEADA';";
+        }else {
+            query = "SELECT * FROM tarjeta WHERE tarjeta_estado <> 'BLOQUEADA' "
+                    + "EXCEPT "
+                    + "SELECT tarjeta_id, tarjeta_saldo, tarjeta_estado "
+                    + "FROM tarjeta NATURAL JOIN venta ORDER BY tarjeta_id;";
+        }
+
         conexionBD.conectar();
         try 
         {
-            PreparedStatement st = conexionBD.conexion.prepareStatement(query);
-            ResultSet tabla = st.executeQuery();
-
-            tarjetas = new ArrayList<>();
-
-            while (tabla.next())
-            {
-                tarjetas.add(new Tarjeta(tabla.getString(1), tabla.getDouble(2), tabla.getString(3)));
-            }
-        }
-        catch (SQLException e){
-            e.printStackTrace();
-        }finally {
-            if (conexionBD.conexion != null){
-                conexionBD.cerrarConexion();
-            }
-        }
-
-        return tarjetas;
-    }
-    
-    public ArrayList<Tarjeta> consultarTarjetasVendidas()
-    {
-        ArrayList<Tarjeta> tarjetas = null;
-        String query = "SELECT tarjeta_id, tarjeta_saldo, tarjeta_estado "
-                + "FROM tarjeta NATURAL JOIN venta;";
-        
-        conexionBD.conectar();
-        
-        try{
             PreparedStatement st = conexionBD.conexion.prepareStatement(query);
             ResultSet tabla = st.executeQuery();
 

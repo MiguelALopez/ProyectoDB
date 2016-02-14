@@ -41,7 +41,7 @@ public class ModuloTarjetas_Eventos {
                     public void stateChanged(ChangeEvent e) {
                         JTabbedPane TabbedPane = (JTabbedPane) e.getSource();
                         int tab = TabbedPane.getSelectedIndex();
-                        if (tab == 3){
+                        if (tab == 1){
                             consultarTarjetas();
                         }
                     }
@@ -65,6 +65,15 @@ public class ModuloTarjetas_Eventos {
                     }
                 }
         );
+
+        this.moduloTarjetas.bEliminar.addActionListener(
+                new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        eliminarTarjeta();
+                    }
+                }
+        );
     }
 
     public void limpiarCamposCrear(){
@@ -83,6 +92,22 @@ public class ModuloTarjetas_Eventos {
                 Integer.parseInt(moduloTarjetas.tCrearSaldo.getText());
             } catch (NumberFormatException e) {
                 JOptionPane.showMessageDialog(moduloTarjetas, "El campo saldo debe ser numerico.", "Error", JOptionPane.ERROR_MESSAGE);
+                exito = false;
+            }
+        }
+        return exito;
+    }
+
+    public boolean verificarCamposEliminar(){
+        boolean exito = true;
+        if (moduloTarjetas.tEliminarTarjeta.getText().isEmpty()){
+            JOptionPane.showMessageDialog(moduloTarjetas, "El campo Tarjeta ID obligatorio.", "Error", JOptionPane.ERROR_MESSAGE);
+            exito = false;
+        }else{
+            try{
+                Integer.parseInt(moduloTarjetas.tEliminarTarjeta.getText());
+            }catch (NumberFormatException e){
+                JOptionPane.showMessageDialog(moduloTarjetas, "El campo Tarjeta ID debe ser numerico.", "Error", JOptionPane.ERROR_MESSAGE);
                 exito = false;
             }
         }
@@ -123,6 +148,21 @@ public class ModuloTarjetas_Eventos {
                 limpiarCamposCrear();
             }else {
                 JOptionPane.showMessageDialog(moduloTarjetas, "Error al crear las tarjetas", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
+
+    public void eliminarTarjeta(){
+        if (verificarCamposEliminar()){
+            boolean exito;
+            String tarjeta_id = moduloTarjetas.tEliminarTarjeta.getText();
+            exito = new TarjetaDAO().eliminarTarjeta(tarjeta_id);
+
+            if (exito){
+                JOptionPane.showMessageDialog(moduloTarjetas, "Tarjeta eliminada exitosamente.", "", JOptionPane.INFORMATION_MESSAGE);
+                moduloTarjetas.tEliminarTarjeta.setText("");
+            }else {
+                JOptionPane.showMessageDialog(moduloTarjetas, "Error al eliminar la tarjeta", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }
