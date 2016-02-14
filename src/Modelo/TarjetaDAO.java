@@ -49,7 +49,9 @@ public class TarjetaDAO {
         } catch (SQLException e) {
             System.err.println("Error al insertar una tarjeta");
         }finally {
-            conexionBD.cerrarConexion();
+            if (conexionBD.conexion != null){
+                conexionBD.cerrarConexion();
+            }
         }
         return exito;
     }
@@ -73,7 +75,9 @@ public class TarjetaDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }finally {
-            conexionBD.cerrarConexion();
+            if (conexionBD.conexion != null){
+                conexionBD.cerrarConexion();
+            }
         }
         return exito;
     }
@@ -101,7 +105,9 @@ public class TarjetaDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }finally {
-            conexionBD.cerrarConexion();
+            if (conexionBD.conexion != null){
+                conexionBD.cerrarConexion();
+            }
         }
         return exito;
     }
@@ -135,7 +141,9 @@ public class TarjetaDAO {
         } catch (SQLException e) {
             e.printStackTrace();
         }finally {
-            conexionBD.cerrarConexion();
+            if (conexionBD.conexion != null){
+                conexionBD.cerrarConexion();
+            }
         }
         return exito;
     }
@@ -158,6 +166,10 @@ public class TarjetaDAO {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            if (conexionBD.conexion != null){
+                conexionBD.cerrarConexion();
+            }
         }
 
         return tarjetas;
@@ -166,13 +178,12 @@ public class TarjetaDAO {
     public ArrayList<Tarjeta> consultarTarjetasNoVendidas()
     {
         ArrayList<Tarjeta> tarjetas = null;
-        String query = "SELECT * FROM tarjeta "
+        String query = "SELECT * FROM tarjeta WHERE tarjeta_estado <> 'BLOQUEADA' "
                 + "EXCEPT "
                 + "SELECT tarjeta_id, tarjeta_saldo, tarjeta_estado "
-                + "FROM tarjeta NATURAL JOIN venta;";
+                + "FROM tarjeta NATURAL JOIN venta ORDER BY tarjeta_id;";
         
         conexionBD.conectar();
-        
         try 
         {
             PreparedStatement st = conexionBD.conexion.prepareStatement(query);
@@ -185,9 +196,12 @@ public class TarjetaDAO {
                 tarjetas.add(new Tarjeta(tabla.getString(1), tabla.getDouble(2), tabla.getString(3)));
             }
         }
-        catch (SQLException e) 
-        {
+        catch (SQLException e){
             e.printStackTrace();
+        }finally {
+            if (conexionBD.conexion != null){
+                conexionBD.cerrarConexion();
+            }
         }
 
         return tarjetas;
@@ -201,8 +215,7 @@ public class TarjetaDAO {
         
         conexionBD.conectar();
         
-        try 
-        {
+        try{
             PreparedStatement st = conexionBD.conexion.prepareStatement(query);
             ResultSet tabla = st.executeQuery();
 
@@ -213,9 +226,12 @@ public class TarjetaDAO {
                 tarjetas.add(new Tarjeta(tabla.getString(1), tabla.getDouble(2), tabla.getString(3)));
             }
         }
-        catch (SQLException e) 
-        {
+        catch (SQLException e){
             e.printStackTrace();
+        }finally {
+            if (conexionBD.conexion != null){
+                conexionBD.cerrarConexion();
+            }
         }
 
         return tarjetas;
@@ -238,6 +254,10 @@ public class TarjetaDAO {
             }
         } catch (SQLException e) {
             e.printStackTrace();
+        }finally {
+            if (conexionBD.conexion != null){
+                conexionBD.cerrarConexion();
+            }
         }
 
         return t;
@@ -246,5 +266,32 @@ public class TarjetaDAO {
     public boolean esGenerica(String id)
     {
         return new PasajeroDAO().consultarPasajero(id) == null;
+    }
+
+    public boolean recargarTarjeta(String id, double cantidad){
+        boolean exito = false;
+        String query = "SELECT tarjeta_saldo FROM tarjeta WHERE tarjeta_id = ?;";
+        String query2 = "UPDATE tarjeta SET tarjeta_saldo = ? WHERE tarjeta_id = ?;";
+        conexionBD.conectar();
+        try {
+            PreparedStatement st = conexionBD.conexion.prepareStatement(query);
+            st.setString(1,id);
+            ResultSet tabla = st.executeQuery();
+            int saldo = -1;
+            if (tabla.next()){
+                saldo = tabla.getInt(1);
+                st = conexionBD.conexion.prepareStatement(query2);
+                st.setBigDecimal(1, BigDecimal.valueOf(saldo + cantidad));
+                st.executeUpdate();
+                exito = true;
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            if (conexionBD.conexion != null){
+                conexionBD.cerrarConexion();
+            }
+        }
+        return exito;
     }
 }

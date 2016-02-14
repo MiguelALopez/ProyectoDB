@@ -34,46 +34,16 @@ public class ModuloTarjetas_Eventos {
         this.moduloTarjetas = moduloTarjetas;
         sorter = new TableRowSorter<>(moduloTarjetas.tableTarjetas.getModel());
         moduloTarjetas.tableTarjetas.setRowSorter(sorter);
-        consultarTarjetasVenta();
 
-        this.moduloTarjetas.radioGenerica.addActionListener(
-                new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        enableCamposVenta(false);
-                        limpiarCamposVentaCrear();
-                    }
-                }
-        );
-
-        this.moduloTarjetas.radioPerson.addActionListener(
-                new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        enableCamposVenta(true);
-                    }
-                }
-        );
         this.moduloTarjetas.jTabbedPane1.addChangeListener(
                 new ChangeListener() {
                     @Override
                     public void stateChanged(ChangeEvent e) {
                         JTabbedPane TabbedPane = (JTabbedPane) e.getSource();
                         int tab = TabbedPane.getSelectedIndex();
-                        if (tab == 0) {
-                            consultarTarjetasVenta();
-                        }else if (tab == 3){
+                        if (tab == 3){
                             consultarTarjetas();
                         }
-                    }
-                }
-        );
-
-        this.moduloTarjetas.bVentaVender.addActionListener(
-                new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-
                     }
                 }
         );
@@ -97,22 +67,6 @@ public class ModuloTarjetas_Eventos {
         );
     }
 
-    public void enableCamposVenta(boolean enable){
-        moduloTarjetas.tCrearCedula.setEnabled(enable);
-        moduloTarjetas.tCrearNombre.setEnabled(enable);
-        moduloTarjetas.tCrearTelefono.setEnabled(enable);
-        moduloTarjetas.tCrearDireccion.setEnabled(enable);
-        moduloTarjetas.tCrearEmail.setEnabled(enable);
-    }
-
-    public void limpiarCamposVentaCrear(){
-        moduloTarjetas.tCrearCedula.setText("");
-        moduloTarjetas.tCrearNombre.setText("");
-        moduloTarjetas.tCrearTelefono.setText("");
-        moduloTarjetas.tCrearDireccion.setText("");
-        moduloTarjetas.tCrearEmail.setText("");
-    }
-
     public void limpiarCamposCrear(){
         moduloTarjetas.tCrearSaldo.setText("0");
         moduloTarjetas.spinnerCrearNumTarj.setValue(1);
@@ -133,16 +87,6 @@ public class ModuloTarjetas_Eventos {
             }
         }
         return exito;
-    }
-
-    public void consultarTarjetasVenta(){
-        ArrayList<Tarjeta> tarjetas = new TarjetaDAO().consultarTarjetasNoVendidas();
-        moduloTarjetas.comboVentaIdTarjeta.removeAllItems();
-        if (tarjetas != null){
-            for (int i = 0; i < tarjetas.size(); i++) {
-                moduloTarjetas.comboVentaIdTarjeta.addItem(tarjetas.get(i).getId());
-            }
-        }
     }
 
     public void consultarTarjetas(){

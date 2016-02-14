@@ -17,6 +17,13 @@ public class Venta
     private String estacion;
     private String tarjeta;
 
+    public Venta(String fecha, double valor, String estacion, String tarjeta){
+        this.fecha = fecha;
+        this.valor = valor;
+        this.estacion = estacion;
+        this.tarjeta = tarjeta;
+    }
+
     public Venta(String id, String fecha, double valor, String estacion, String tarjeta) {
         this.id = id;
         this.fecha = fecha;
