@@ -184,6 +184,7 @@ public class ModuloServicios extends javax.swing.JFrame
         fRecorrido.getContentPane().add(jScrollPane3, gridBagConstraints);
 
         setMinimumSize(new java.awt.Dimension(800, 600));
+        setPreferredSize(new java.awt.Dimension(800, 600));
         getContentPane().setLayout(new java.awt.GridBagLayout());
 
         tabs.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -192,135 +193,154 @@ public class ModuloServicios extends javax.swing.JFrame
 
         jPanel5.setLayout(new java.awt.GridBagLayout());
 
-        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder("Venta de Tarjetas"));
+        jPanel6.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Venta de Tarjetas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
         jPanel6.setLayout(new java.awt.GridBagLayout());
 
-        bVentaVender.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        bVentaVender.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         bVentaVender.setText("Vender");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 2;
         gridBagConstraints.gridwidth = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipadx = 30;
-        gridBagConstraints.ipady = 5;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 10, 10);
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel6.add(bVentaVender, gridBagConstraints);
 
+        comboVentaIdTarjeta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.insets = new java.awt.Insets(15, 10, 15, 10);
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 5, 10);
         jPanel6.add(comboVentaIdTarjeta, gridBagConstraints);
 
+        tVentaValor.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tVentaValor.setText("2000");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(15, 10, 15, 10);
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 5, 10);
         jPanel6.add(tVentaValor, gridBagConstraints);
 
+        jLabel10.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel10.setText("Tarjeta ID:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(15, 15, 15, 0);
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 5, 0);
         jPanel6.add(jLabel10, gridBagConstraints);
 
+        jLabel25.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel25.setText("Valor:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(15, 10, 15, 10);
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 5, 0);
         jPanel6.add(jLabel25, gridBagConstraints);
 
+        jLabel14.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel14.setText("Estacion:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 15, 10);
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 10, 10);
         jPanel6.add(jLabel14, gridBagConstraints);
 
+        comboVentaEstaciones.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 2;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 15, 10);
+        gridBagConstraints.gridy = 1;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 10, 10);
         jPanel6.add(comboVentaEstaciones, gridBagConstraints);
 
+        jLabel17.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel17.setText("Fecha:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 15, 10);
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 10, 10);
         jPanel6.add(jLabel17, gridBagConstraints);
 
+        tVentaFecha.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tVentaFecha.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 15, 10);
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 10, 10);
         jPanel6.add(tVentaFecha, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(25, 15, 15, 15);
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 5, 10);
         jPanel5.add(jPanel6, gridBagConstraints);
 
-        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder("Recarga de Tarjetas"));
+        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Recarga de Tarjetas", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
         jPanel7.setToolTipText("");
         jPanel7.setLayout(new java.awt.GridBagLayout());
 
+        jLabel12.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel12.setText("Tarjeta ID:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 15, 10);
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 0);
         jPanel7.add(jLabel12, gridBagConstraints);
 
+        tRecargaTarjeta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tRecargaTarjeta.setName(""); // NOI18N
-        tRecargaTarjeta.setPreferredSize(new java.awt.Dimension(80, 27));
+        tRecargaTarjeta.setPreferredSize(new java.awt.Dimension(14, 23));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 15, 10);
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel7.add(tRecargaTarjeta, gridBagConstraints);
 
+        jLabel13.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel13.setText("Cantidad:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
-        gridBagConstraints.gridy = 1;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 15, 10);
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 0);
         jPanel7.add(jLabel13, gridBagConstraints);
 
+        tRecargaCantidad.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tRecargaCantidad.setText("0");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
-        gridBagConstraints.gridy = 1;
+        gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 15, 10);
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel7.add(tRecargaCantidad, gridBagConstraints);
 
-        bRecargaRecargar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        bRecargaRecargar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         bRecargaRecargar.setText("Recargar");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 2;
+        gridBagConstraints.gridy = 1;
         gridBagConstraints.gridwidth = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.ipadx = 30;
-        gridBagConstraints.ipady = 5;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 10, 10);
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel7.add(bRecargaRecargar, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -328,7 +348,7 @@ public class ModuloServicios extends javax.swing.JFrame
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(15, 15, 15, 15);
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 10, 10);
         jPanel5.add(jPanel7, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
