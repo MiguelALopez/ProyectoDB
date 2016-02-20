@@ -240,6 +240,33 @@ public class TarjetaDAO {
         return t;
     }
     
+    public Tarjeta consultaTarjeta(String id)
+    {
+        Tarjeta t = null;
+
+        String query = "SELECT tarjeta_id, tarjeta_saldo, tarjeta_estado "
+                + "FROM tarjeta "
+                + "WHERE tarjeta_id=?;";
+        conexionBD.conectar();
+        try {
+            PreparedStatement st = conexionBD.conexion.prepareStatement(query);
+            st.setString(1, id);
+            ResultSet tabla = st.executeQuery();
+
+            if (tabla.next()){
+                t = new Tarjeta(tabla.getString(1), tabla.getDouble(2), tabla.getString(3));
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }finally {
+            if (conexionBD.conexion != null){
+                conexionBD.cerrarConexion();
+            }
+        }
+
+        return t;
+    }
+    
     public boolean esGenerica(String id)
     {
         return new PasajeroDAO().consultarPasajero(id) == null;

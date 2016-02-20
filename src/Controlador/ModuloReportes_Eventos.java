@@ -15,10 +15,12 @@ package Controlador;
 import Modelo.Estacion;
 import Modelo.Pasajero;
 import Modelo.PasajeroDAO;
+import Modelo.TarjetaDAO;
 import Modelo.ReportesDAO;
 import Modelo.Ruta;
 import Modelo.Solicitud;
 import Modelo.SolicitudDAO;
+import Modelo.Tarjeta;
 import Vista.ModuloReportes;
 import be.quodlibet.boxable.BaseTable;
 import be.quodlibet.boxable.Cell;
@@ -989,10 +991,21 @@ public class ModuloReportes_Eventos
         
         PasajeroDAO pasDAO = new PasajeroDAO();
         Pasajero pasajero = pasDAO.consultarPasajeroById(solicitud.getPasajero());
+        TarjetaDAO tarDAO = new TarjetaDAO();
+        Tarjeta tar;
+        tar = tarDAO.consultaTarjeta(pasajero.getTarjeta());
         
-        //Fila pasajero
-        
+        // Escribir datos personales
         Row<PDPage> row = table.createRow(15f);
+        
+        
+        cell = row.createCell((100), "DATOS PERSONALES", HorizontalAlignment.CENTER, VerticalAlignment.MIDDLE);
+        cell.setFont(PDType1Font.HELVETICA);
+        cell.setFontSize(12);
+        cell.setFillColor(Color.LIGHT_GRAY);
+        
+        row = table.createRow(15f);
+        
         cell = row.createCell(25, "CEDULA", HorizontalAlignment.CENTER, VerticalAlignment.MIDDLE);
         cell.setFontSize(12);
         cell.setFillColor(Color.LIGHT_GRAY);
@@ -1005,7 +1018,6 @@ public class ModuloReportes_Eventos
         cell = row.createCell(25, solicitud.getId(), HorizontalAlignment.RIGHT, VerticalAlignment.MIDDLE);
         cell.setFontSize(12);
         
-        // Fila nueva
         row = table.createRow(15f);
         
         cell = row.createCell(25, "PASAJERO", HorizontalAlignment.CENTER, VerticalAlignment.MIDDLE);
@@ -1013,7 +1025,53 @@ public class ModuloReportes_Eventos
         cell.setFillColor(Color.LIGHT_GRAY);
         cell = row.createCell(75, pasajero.getNombre());
         cell.setFontSize(12);
-        //fila de los campos
+        
+        // Escribir Informacion de la tarjeta
+        
+        row = table.createRow(15f);
+
+        cell = row.createCell((100), "TARJETA DEL CLIENTE", HorizontalAlignment.CENTER, VerticalAlignment.MIDDLE);
+        cell.setFont(PDType1Font.HELVETICA);
+        cell.setFontSize(12);
+        cell.setFillColor(Color.LIGHT_GRAY);
+        
+        // Si el cliente no posee tarjeta no se muestra la info
+        if(tar != null)
+        {
+            System.out.println("Tarjeta del Cliente cargada");
+            row = table.createRow(15f);
+
+            cell = row.createCell(25, "ID", HorizontalAlignment.CENTER, VerticalAlignment.MIDDLE);
+            cell.setFontSize(12);
+            cell.setFillColor(Color.LIGHT_GRAY);
+            cell = row.createCell(75, tar.getId());
+            cell.setFontSize(12);
+
+//            cell = row.createCell(25, "SALDO", HorizontalAlignment.CENTER, VerticalAlignment.MIDDLE);
+//            cell.setFontSize(12);
+//            cell.setFillColor(Color.LIGHT_GRAY);
+//            cell = row.createCell(25, tar.getSaldo()+"", HorizontalAlignment.RIGHT, VerticalAlignment.MIDDLE);
+//            cell.setFontSize(12);
+//            
+//            row = table.createRow(15f);
+//            
+//            cell = row.createCell(25, "ESTADO", HorizontalAlignment.CENTER, VerticalAlignment.MIDDLE);
+//            cell.setFontSize(12);
+//            cell.setFillColor(Color.LIGHT_GRAY);
+//            cell = row.createCell(75, tar.getEstado(), HorizontalAlignment.LEFT, VerticalAlignment.MIDDLE);
+//            cell.setFontSize(12);
+        
+        }
+        
+        // Escribir informacion de la solicitud
+        
+        row = table.createRow(15f);
+
+        cell = row.createCell((100), "INFORMACION DE SOLICITUD", HorizontalAlignment.CENTER, VerticalAlignment.MIDDLE);
+        cell.setFont(PDType1Font.HELVETICA);
+        cell.setFontSize(12);
+        cell.setFillColor(Color.LIGHT_GRAY);
+        
         Row<PDPage> campos = table.createRow(15f);
 
         cell = campos.createCell((100 / 4), "ESTACION", HorizontalAlignment.CENTER, VerticalAlignment.MIDDLE);
@@ -1039,7 +1097,7 @@ public class ModuloReportes_Eventos
         // Fila nueva
         campos = table.createRow(15f);
         
-        cell = campos.createCell((100), "Descripcion", HorizontalAlignment.CENTER, VerticalAlignment.MIDDLE);
+        cell = campos.createCell((100), "DESCRIPCION", HorizontalAlignment.CENTER, VerticalAlignment.MIDDLE);
         cell.setFont(PDType1Font.HELVETICA);
         cell.setFontSize(12);
         cell.setFillColor(Color.LIGHT_GRAY);
@@ -1047,7 +1105,7 @@ public class ModuloReportes_Eventos
         // Fila nueva
         campos = table.createRow(15f);
         
-        cell = campos.createCell((100), solicitud.getDescripcion(), HorizontalAlignment.CENTER, VerticalAlignment.MIDDLE);
+        cell = campos.createCell((100), solicitud.getDescripcion().replace('\n', ' '), HorizontalAlignment.CENTER, VerticalAlignment.MIDDLE);
         cell.setFont(PDType1Font.HELVETICA);
         cell.setFontSize(12);
         // cell.setFillColor(Color.LIGHT_GRAY);

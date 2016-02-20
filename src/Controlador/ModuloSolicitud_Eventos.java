@@ -201,7 +201,7 @@ public class ModuloSolicitud_Eventos
         if ( this.tipo.equals("estacion") )
         {
             EstacionDAO estDAO = new EstacionDAO();
-            ArrayList<Estacion> estaciones = estDAO.consultarEstaciones();
+            ArrayList<Estacion> estaciones = estDAO.consultarEstaciones(true);
             
             if (estaciones != null)
             {
