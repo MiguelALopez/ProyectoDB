@@ -1,8 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * ********************************************
+ * Autor: Camilo Ruiz Casanova - 1324486
+ * Autor: Miguel Angel Lopez - 1326691
+ * Autor: Andres Felipe Polanco - 1324539
+ * Fecha: 03-oct-2015
+ * Nombre del Archivo: .java
+ * Plan: Ingeniería de Sistemas - 3743
+ * Institución Educativa: Universidad del Valle (Cali - Colombia)
+ * *********************************************
  */
+
 package Vista;
 
 /**
@@ -29,6 +36,7 @@ public class ModuloRutas extends javax.swing.JFrame
     private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
+        fileChooser = new javax.swing.JFileChooser();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -41,6 +49,9 @@ public class ModuloRutas extends javax.swing.JFrame
         jLabel4 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
+        jLabel21 = new javax.swing.JLabel();
+        tfImagenCrear = new javax.swing.JTextField();
+        bCargarImagenCrear = new javax.swing.JButton();
         jPanel2 = new javax.swing.JPanel();
         jLabel5 = new javax.swing.JLabel();
         bModificarBuscar = new javax.swing.JButton();
@@ -58,6 +69,10 @@ public class ModuloRutas extends javax.swing.JFrame
         jLabel17 = new javax.swing.JLabel();
         jLabel20 = new javax.swing.JLabel();
         cbModificarEstado = new javax.swing.JComboBox<>();
+        jLabel22 = new javax.swing.JLabel();
+        jPanel6 = new javax.swing.JPanel();
+        tfImagenModificar = new javax.swing.JTextField();
+        bCargarImagenModificar = new javax.swing.JButton();
         jPanel3 = new javax.swing.JPanel();
         jLabel14 = new javax.swing.JLabel();
         bEliminarBuscar = new javax.swing.JButton();
@@ -80,6 +95,9 @@ public class ModuloRutas extends javax.swing.JFrame
         jScrollPane5 = new javax.swing.JScrollPane();
         tBuses = new javax.swing.JTable();
 
+        fileChooser.setMinimumSize(new java.awt.Dimension(650, 400));
+        fileChooser.setPreferredSize(new java.awt.Dimension(650, 400));
+
         setMinimumSize(new java.awt.Dimension(700, 500));
         setPreferredSize(new java.awt.Dimension(700, 500));
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
@@ -94,7 +112,7 @@ public class ModuloRutas extends javax.swing.JFrame
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 5, 0);
+        gridBagConstraints.insets = new java.awt.Insets(10, 5, 5, 0);
         jPanel1.add(jLabel1, gridBagConstraints);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -103,13 +121,14 @@ public class ModuloRutas extends javax.swing.JFrame
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 0);
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 0);
         jPanel1.add(jLabel2, gridBagConstraints);
 
         tfCrearNombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
+        gridBagConstraints.gridwidth = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 5, 10);
@@ -123,7 +142,7 @@ public class ModuloRutas extends javax.swing.JFrame
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
-        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridwidth = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
@@ -134,8 +153,8 @@ public class ModuloRutas extends javax.swing.JFrame
         bCrearRuta.setText("Crear Ruta");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 4;
-        gridBagConstraints.gridwidth = 3;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
@@ -162,7 +181,7 @@ public class ModuloRutas extends javax.swing.JFrame
         jLabel6.setText("Campos Obligatorios");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 0);
         jPanel1.add(jLabel6, gridBagConstraints);
@@ -171,10 +190,37 @@ public class ModuloRutas extends javax.swing.JFrame
         jLabel7.setText("*");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 3;
+        gridBagConstraints.gridy = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(5, 10, 0, 0);
         jPanel1.add(jLabel7, gridBagConstraints);
+
+        jLabel21.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel21.setText("Imagen del Recorrido:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 0);
+        jPanel1.add(jLabel21, gridBagConstraints);
+
+        tfImagenCrear.setEditable(false);
+        tfImagenCrear.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 5);
+        jPanel1.add(tfImagenCrear, gridBagConstraints);
+
+        bCargarImagenCrear.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        bCargarImagenCrear.setText("Cargar");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 3;
+        gridBagConstraints.gridy = 3;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 10);
+        jPanel1.add(bCargarImagenCrear, gridBagConstraints);
 
         jTabbedPane1.addTab("Crear Ruta", jPanel1);
 
@@ -258,7 +304,7 @@ public class ModuloRutas extends javax.swing.JFrame
         bModificarRuta.setText("Modificar Ruta");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 6;
+        gridBagConstraints.gridy = 7;
         gridBagConstraints.gridwidth = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
@@ -286,7 +332,7 @@ public class ModuloRutas extends javax.swing.JFrame
         jLabel12.setText("Campos Obligatorios");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
-        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridy = 6;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 0, 0);
         jPanel2.add(jLabel12, gridBagConstraints);
@@ -295,7 +341,7 @@ public class ModuloRutas extends javax.swing.JFrame
         jLabel13.setText("*");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
-        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridy = 6;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(5, 10, 0, 0);
         jPanel2.add(jLabel13, gridBagConstraints);
@@ -329,6 +375,44 @@ public class ModuloRutas extends javax.swing.JFrame
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 10);
         jPanel2.add(cbModificarEstado, gridBagConstraints);
+
+        jLabel22.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel22.setText("Imagen del Recorrido:");
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 0);
+        jPanel2.add(jLabel22, gridBagConstraints);
+
+        jPanel6.setLayout(new java.awt.GridBagLayout());
+
+        tfImagenModificar.setEditable(false);
+        tfImagenModificar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 0;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 5);
+        jPanel6.add(tfImagenModificar, gridBagConstraints);
+
+        bCargarImagenModificar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        bCargarImagenModificar.setText("Cargar");
+        bCargarImagenModificar.setEnabled(false);
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 1;
+        gridBagConstraints.gridy = 0;
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 10);
+        jPanel6.add(bCargarImagenModificar, gridBagConstraints);
+
+        gridBagConstraints = new java.awt.GridBagConstraints();
+        gridBagConstraints.gridx = 2;
+        gridBagConstraints.gridy = 5;
+        gridBagConstraints.gridwidth = 2;
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.weightx = 1.0;
+        jPanel2.add(jPanel6, gridBagConstraints);
 
         jTabbedPane1.addTab("Modificar Ruta", jPanel2);
 
@@ -544,6 +628,8 @@ public class ModuloRutas extends javax.swing.JFrame
     }// </editor-fold>//GEN-END:initComponents
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton bActualizar;
+    public javax.swing.JButton bCargarImagenCrear;
+    public javax.swing.JButton bCargarImagenModificar;
     public javax.swing.JButton bConsultarBuscar;
     public javax.swing.JButton bCrearRuta;
     public javax.swing.JButton bEliminarBuscar;
@@ -551,6 +637,7 @@ public class ModuloRutas extends javax.swing.JFrame
     public javax.swing.JButton bModificarBuscar;
     public javax.swing.JButton bModificarRuta;
     public javax.swing.JComboBox<String> cbModificarEstado;
+    public javax.swing.JFileChooser fileChooser;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel11;
@@ -564,6 +651,8 @@ public class ModuloRutas extends javax.swing.JFrame
     private javax.swing.JLabel jLabel19;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel20;
+    private javax.swing.JLabel jLabel21;
+    private javax.swing.JLabel jLabel22;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
@@ -576,6 +665,7 @@ public class ModuloRutas extends javax.swing.JFrame
     private javax.swing.JPanel jPanel3;
     private javax.swing.JPanel jPanel4;
     private javax.swing.JPanel jPanel5;
+    private javax.swing.JPanel jPanel6;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
@@ -591,6 +681,8 @@ public class ModuloRutas extends javax.swing.JFrame
     public javax.swing.JTextField tfCrearNombre;
     public javax.swing.JTextField tfEliminarBuscar;
     public javax.swing.JTextField tfEliminarNombre;
+    public javax.swing.JTextField tfImagenCrear;
+    public javax.swing.JTextField tfImagenModificar;
     public javax.swing.JTextField tfModificarBuscar;
     public javax.swing.JTextField tfModificarNombre;
     // End of variables declaration//GEN-END:variables

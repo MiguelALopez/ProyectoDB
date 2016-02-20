@@ -1,8 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * ********************************************
+ * Autor: Camilo Ruiz Casanova - 1324486
+ * Autor: Miguel Angel Lopez - 1326691
+ * Autor: Andres Felipe Polanco - 1324539
+ * Fecha: 03-oct-2015
+ * Nombre del Archivo: SoftwareMio.java
+ * Plan: Ingeniería de Sistemas - 3743
+ * Institución Educativa: Universidad del Valle (Cali - Colombia)
+ * *********************************************
  */
+
 package Controlador;
 
 import Modelo.Bus;
@@ -12,8 +19,17 @@ import Modelo.RutaDAO;
 import Vista.ModuloRutas;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.IOException;
+import java.nio.file.Files;
+import java.nio.file.StandardCopyOption;
 import java.util.ArrayList;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.ImageIcon;
+import javax.swing.JFileChooser;
 import javax.swing.JOptionPane;
+import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.DefaultTableModel;
 
 /**
@@ -22,11 +38,22 @@ import javax.swing.table.DefaultTableModel;
  */
 public class ModuloRutas_Eventos
 {
-    private ModuloRutas moduloRutas;
+    private final ModuloRutas moduloRutas;
 
     public ModuloRutas_Eventos(final ModuloRutas moduloRutas) 
     {
         this.moduloRutas = moduloRutas;
+        
+        this.moduloRutas.bCargarImagenCrear.addActionListener(
+            new ActionListener()
+            {
+                @Override
+                public void actionPerformed(ActionEvent ae) 
+                {
+                    cargarImagenCrear();
+                }                
+            }
+        );
         
         this.moduloRutas.bCrearRuta.addActionListener(
             new ActionListener()
@@ -35,6 +62,17 @@ public class ModuloRutas_Eventos
                 public void actionPerformed(ActionEvent ae) 
                 {
                     crearRuta();
+                }                
+            }
+        );
+        
+        this.moduloRutas.tfModificarBuscar.addActionListener(
+            new ActionListener()
+            {
+                @Override
+                public void actionPerformed(ActionEvent ae) 
+                {
+                    buscarRutaModificar();
                 }                
             }
         );
@@ -50,6 +88,17 @@ public class ModuloRutas_Eventos
             }
         );
         
+        this.moduloRutas.bCargarImagenModificar.addActionListener(
+            new ActionListener()
+            {
+                @Override
+                public void actionPerformed(ActionEvent ae) 
+                {
+                    cargarImagenModificar();
+                }                
+            }
+        );
+        
         this.moduloRutas.bModificarRuta.addActionListener(
             new ActionListener()
             {
@@ -57,6 +106,17 @@ public class ModuloRutas_Eventos
                 public void actionPerformed(ActionEvent ae) 
                 {
                     modificarRuta();
+                }                
+            }
+        );
+        
+        this.moduloRutas.tfEliminarBuscar.addActionListener(
+            new ActionListener()
+            {
+                @Override
+                public void actionPerformed(ActionEvent ae) 
+                {
+                    buscarRutaEliminar();
                 }                
             }
         );
@@ -94,6 +154,17 @@ public class ModuloRutas_Eventos
             }
         );
         
+        this.moduloRutas.tfConsultarBuscar.addActionListener(
+            new ActionListener()
+            {
+                @Override
+                public void actionPerformed(ActionEvent ae) 
+                {
+                    buscarRutaConsultar();
+                }                
+            }
+        );
+        
         this.moduloRutas.bConsultarBuscar.addActionListener(
             new ActionListener()
             {
@@ -104,6 +175,18 @@ public class ModuloRutas_Eventos
                 }                
             }
         );
+    }
+    
+    public void cargarImagenCrear()
+    {
+        this.moduloRutas.fileChooser.setFileFilter(new FileNameExtensionFilter("JPG", "jpg"));
+        int op = this.moduloRutas.fileChooser.showOpenDialog(moduloRutas);
+        
+        if (op == JFileChooser.APPROVE_OPTION)
+        {
+            String imagen = this.moduloRutas.fileChooser.getSelectedFile().getAbsolutePath();
+            this.moduloRutas.tfImagenCrear.setText(imagen);
+        }
     }
     
     public void crearRuta()
@@ -124,6 +207,19 @@ public class ModuloRutas_Eventos
                 
                 if (exito)
                 {
+                    File src = new File(this.moduloRutas.tfImagenCrear.getText());
+                    File dest = new File("img/"+e.getNombre()+".jpg");
+                    
+                    try 
+                    {
+                        Files.copy(src.toPath(), dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                    }
+                    catch (IOException ex) 
+                    {
+                        Logger.getLogger(ModuloRutas_Eventos.class.getName()).log(Level.SEVERE, null, ex);
+                        JOptionPane.showMessageDialog(moduloRutas, "Error al cargar la imagen.", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                    
                     JOptionPane.showMessageDialog(moduloRutas, "Ruta creada exitosamente.", "", JOptionPane.INFORMATION_MESSAGE);
                     limpiarCamposCrear();
                 }
@@ -156,6 +252,7 @@ public class ModuloRutas_Eventos
     {
         this.moduloRutas.tfCrearNombre.setText("");
         this.moduloRutas.taCrearDescripcion.setText("");
+        this.moduloRutas.tfImagenCrear.setText("");
     }
     
     public void buscarRutaModificar()
@@ -168,6 +265,24 @@ public class ModuloRutas_Eventos
         {
             this.moduloRutas.tfModificarNombre.setText(e.getNombre());
             this.moduloRutas.taModificarDescripcion.setText(e.getDescripcion());
+            
+            try
+            {
+                ImageIcon im = new ImageIcon("img/"+e.getNombre()+".png");
+                this.moduloRutas.tfImagenModificar.setText("img/"+e.getNombre()+".png");
+            }
+            catch (NullPointerException ex)
+            {
+                try
+                {
+                    ImageIcon im = new ImageIcon("img/"+e.getNombre()+".jpg");
+                    this.moduloRutas.tfImagenModificar.setText("img/"+e.getNombre()+".jpg");
+                }
+                catch (NullPointerException ex2)
+                {
+                    this.moduloRutas.tfImagenModificar.setText("");
+                }
+            }
             
             habilitarCamposModificar(true);
         }
@@ -182,6 +297,19 @@ public class ModuloRutas_Eventos
         //this.moduloRutas.tfModificarNombre.setEditable(b);
         this.moduloRutas.taModificarDescripcion.setEditable(b);
         this.moduloRutas.cbModificarEstado.setEnabled(b);
+        this.moduloRutas.bCargarImagenModificar.setEnabled(b);
+    }
+    
+    public void cargarImagenModificar()
+    {
+        this.moduloRutas.fileChooser.setFileFilter(new FileNameExtensionFilter("JPG", "jpg"));
+        int op = this.moduloRutas.fileChooser.showOpenDialog(moduloRutas);
+        
+        if (op == JFileChooser.APPROVE_OPTION)
+        {
+            String imagen = this.moduloRutas.fileChooser.getSelectedFile().getAbsolutePath();
+            this.moduloRutas.tfImagenModificar.setText(imagen);
+        }
     }
     
     public void modificarRuta()
@@ -211,6 +339,19 @@ public class ModuloRutas_Eventos
                 
                 if (exito)
                 {
+                    File src = new File(this.moduloRutas.tfImagenModificar.getText());
+                    File dest = new File("img/"+e.getNombre()+".jpg");
+                    
+                    try 
+                    {
+                        Files.copy(src.toPath(), dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                    }
+                    catch (IOException ex) 
+                    {
+                        Logger.getLogger(ModuloRutas_Eventos.class.getName()).log(Level.SEVERE, null, ex);
+                        JOptionPane.showMessageDialog(moduloRutas, "Error al cargar la imagen.", "Error", JOptionPane.ERROR_MESSAGE);
+                    }
+                    
                     JOptionPane.showMessageDialog(moduloRutas, "Ruta modificada exitosamente.", "", JOptionPane.INFORMATION_MESSAGE);
                     limpiarCamposModificar();
                     habilitarCamposModificar(false);
@@ -247,6 +388,7 @@ public class ModuloRutas_Eventos
         this.moduloRutas.tfModificarNombre.setText("");
         this.moduloRutas.taModificarDescripcion.setText("");
         this.moduloRutas.cbModificarEstado.setSelectedIndex(0);
+        this.moduloRutas.tfImagenModificar.setText("");
     }
     
     public void buscarRutaEliminar()

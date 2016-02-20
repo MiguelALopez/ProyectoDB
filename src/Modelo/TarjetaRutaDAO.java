@@ -1,14 +1,15 @@
 /**
  * ********************************************
- * Autor: Miguel Angel Lopez Fernandez
- * Correo: miguel.angel.lopez@correounivalle.edu.co
- * Código: 1326691
- * Fecha: 11-ene-2016
- * Nombre del Archivo: TarjetaRutaDAO.java
+ * Autor: Camilo Ruiz Casanova - 1324486
+ * Autor: Miguel Angel Lopez - 1326691
+ * Autor: Andres Felipe Polanco - 1324539
+ * Fecha: 03-oct-2015
+ * Nombre del Archivo: .java
  * Plan: Ingeniería de Sistemas - 3743
  * Institución Educativa: Universidad del Valle (Cali - Colombia)
  * *********************************************
  */
+
 package Modelo;
 
 import java.sql.*;

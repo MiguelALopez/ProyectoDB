@@ -1,8 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * ********************************************
+ * Autor: Camilo Ruiz Casanova - 1324486
+ * Autor: Miguel Angel Lopez - 1326691
+ * Autor: Andres Felipe Polanco - 1324539
+ * Fecha: 03-oct-2015
+ * Nombre del Archivo: .java
+ * Plan: Ingeniería de Sistemas - 3743
+ * Institución Educativa: Universidad del Valle (Cali - Colombia)
+ * *********************************************
  */
+
 package Vista;
 
 /**
@@ -26,8 +33,7 @@ public class ModuloSolicitud extends javax.swing.JFrame
      */
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
-    private void initComponents()
-    {
+    private void initComponents() {
         java.awt.GridBagConstraints gridBagConstraints;
 
         fListar = new javax.swing.JFrame();
@@ -43,7 +49,7 @@ public class ModuloSolicitud extends javax.swing.JFrame
         taRespuesta = new javax.swing.JTextArea();
         bResponder = new javax.swing.JButton();
         jLabel14 = new javax.swing.JLabel();
-        cbResEstado = new javax.swing.JComboBox<String>();
+        cbResEstado = new javax.swing.JComboBox<>();
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanel1 = new javax.swing.JPanel();
         jLabel1 = new javax.swing.JLabel();
@@ -120,15 +126,13 @@ public class ModuloSolicitud extends javax.swing.JFrame
         jPanel5.add(bListarSeleccionar, gridBagConstraints);
 
         tSeleccionar.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][]
-            {
+            new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null},
                 {null, null, null, null}
             },
-            new String []
-            {
+            new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
@@ -201,7 +205,7 @@ public class ModuloSolicitud extends javax.swing.JFrame
         jPanel9.add(jLabel14, gridBagConstraints);
 
         cbResEstado.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        cbResEstado.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "INICIADO", "EN PROCESO", "SOLUCIONADO" }));
+        cbResEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "INICIADO", "EN PROCESO", "SOLUCIONADO" }));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 1;

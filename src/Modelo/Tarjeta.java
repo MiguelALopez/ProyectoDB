@@ -3,12 +3,13 @@
  * Autor: Camilo Ruiz Casanova - 1324486
  * Autor: Miguel Angel Lopez - 1326691
  * Autor: Andres Felipe Polanco - 1324539
- * Fecha: 11-ene-2016
- * Nombre del Archivo: Tarjeta.java
+ * Fecha: 03-oct-2015
+ * Nombre del Archivo: .java
  * Plan: Ingeniería de Sistemas - 3743
  * Institución Educativa: Universidad del Valle (Cali - Colombia)
  * *********************************************
  */
+
 package Modelo;
 
 public class Tarjeta 
