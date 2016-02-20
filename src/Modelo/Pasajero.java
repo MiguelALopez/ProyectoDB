@@ -3,12 +3,13 @@
  * Autor: Camilo Ruiz Casanova - 1324486
  * Autor: Miguel Angel Lopez - 1326691
  * Autor: Andres Felipe Polanco - 1324539
- * Fecha: 10-ene-2016
- * Nombre del Archivo: Pasajero.java
+ * Fecha: 03-oct-2015
+ * Nombre del Archivo: .java
  * Plan: Ingeniería de Sistemas - 3743
  * Institución Educativa: Universidad del Valle (Cali - Colombia)
  * *********************************************
  */
+
 package Modelo;
 
 public class Pasajero
@@ -29,6 +30,7 @@ public class Pasajero
      * @param direccion direccion del pasajero
      * @param email email del pasajero
      * @param tarjeta numero de la tarjeta asignada al pasajero
+     * @param estado estado encargado de indicar si esta activo o inactivo un pasajero
      */
     public Pasajero(String id, String nombre, String telefono, String direccion, String email, String tarjeta, boolean estado) 
     {

@@ -1,18 +1,18 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * ********************************************
+ * Autor: Camilo Ruiz Casanova - 1324486
+ * Autor: Miguel Angel Lopez - 1326691
+ * Autor: Andres Felipe Polanco - 1324539
+ * Fecha: 03-oct-2015
+ * Nombre del Archivo: SoftwareMio.java
+ * Plan: Ingeniería de Sistemas - 3743
+ * Institución Educativa: Universidad del Valle (Cali - Colombia)
+ * *********************************************
  */
+
 package Controlador;
 
-import Modelo.Estacion;
-import Modelo.EstacionDAO;
-import Modelo.Ruta;
-import Modelo.RutaDAO;
-import Modelo.Tarjeta;
-import Modelo.TarjetaDAO;
-import Modelo.TarjetaRuta;
-import Modelo.TarjetaRutaDAO;
+import Modelo.*;
 import Vista.ModuloServicios;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -22,16 +22,13 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Date;
 import javax.swing.ImageIcon;
 import javax.swing.JOptionPane;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Camilo Ruiz Casanova
- */
 public class ModuloServicios_Eventos 
 {
     private final ModuloServicios moduloServicios;
@@ -41,7 +38,7 @@ public class ModuloServicios_Eventos
     public ModuloServicios_Eventos(final ModuloServicios moduloServicios) 
     {
         this.moduloServicios = moduloServicios;
-        this.VALOR_PASAJE = 1700;
+        this.VALOR_PASAJE = 1700;     
         
         this.moduloServicios.tabs.addChangeListener(
             new ChangeListener()
@@ -163,30 +160,301 @@ public class ModuloServicios_Eventos
                 }                
             }
         );
+
+        this.moduloServicios.bVentaVender.addActionListener(
+            new ActionListener() 
+            {
+                @Override
+                public void actionPerformed(ActionEvent e) 
+                {
+                    venderTarjeta();
+                }
+            }
+        );
+
+        this.moduloServicios.bRecargaRecargar.addActionListener(
+            new ActionListener() 
+            {
+                @Override
+                public void actionPerformed(ActionEvent e) 
+                {
+                    recargarTarjeta();
+                }
+            }
+        );
+        this.moduloServicios.radioPerson.addActionListener(
+                new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        enableCamposVenta(true);
+                    }
+                }
+        );
+
+        this.moduloServicios.radioGenerica.addActionListener(
+                new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        enableCamposVenta(false);
+                    }
+                }
+        );
+        
+        tabChanged();
+    }
+    
+    private void tabChanged()
+    {       
+        switch (this.moduloServicios.tabs.getSelectedIndex()) 
+        {
+            case 0:
+            {
+                consultarTarjetasVenta();
+                consultarEstacionesVenta();
+                DateFormat fecha = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+                Date date = new Date();
+                moduloServicios.tVentaFecha.setText(fecha.format(date));
+                break;
+            }
+            case 1:
+            {
+                break;
+            }
+            case 2:
+            {
+                consultarEstaciones();
+                break;
+            }
+            case 3:
+            {
+                consultarOrigen();
+                break;
+            }
+            default:
+            {
+                break;
+            }
+        }
     }
     
     public void verRecorrido(String ruta)
     {
         try
         {
-            rec = new ImageIcon(getClass().getResource("../img/"+ruta+".png"));
+            rec = new ImageIcon("img/"+ruta+".png");
             this.moduloServicios.lRecorrido.setIcon(rec);
         }
         catch (NullPointerException ex)
         {
             try
             {
-                rec = new ImageIcon(getClass().getResource("../img/default.png"));
+                rec = new ImageIcon("img/"+ruta+".jpg");
                 this.moduloServicios.lRecorrido.setIcon(rec);
             }
             catch (NullPointerException ex2)
             {
-                System.out.println("No image available");
+                try
+                {
+                    rec = new ImageIcon("img/default.png");
+                    this.moduloServicios.lRecorrido.setIcon(rec);
+                }
+                catch (NullPointerException ex3)
+                {
+                    System.out.println("No image available");
+                }
             }
         }
         
         this.moduloServicios.fRecorrido.setLocationRelativeTo(moduloServicios);
         this.moduloServicios.fRecorrido.setVisible(true);
+    }
+
+    public boolean verificarCamposVenta()
+    {
+        boolean exito = true;
+        
+        if(moduloServicios.comboVentaIdTarjeta.getItemCount() == 0)
+        {
+            JOptionPane.showMessageDialog(moduloServicios, "No hay tarjetas en el sistema por favor cree nuevas tarjetas.", "Error", JOptionPane.ERROR_MESSAGE);
+            exito = false;
+        }
+        else if (moduloServicios.comboVentaEstaciones.getItemCount() == 0)
+        {
+            JOptionPane.showMessageDialog(moduloServicios, "No hay estaciones en el sistema por favor cree nuevas estaciones.", "Error", JOptionPane.ERROR_MESSAGE);
+            exito = false;
+        }
+        
+        if (moduloServicios.tVentaValor.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(moduloServicios, "El campo valor es obligatorio.", "Error", JOptionPane.ERROR_MESSAGE);
+            exito = false;
+        }
+        else 
+        {
+            try 
+            {
+                Double.parseDouble(moduloServicios.tVentaValor.getText());
+            }
+            catch (NumberFormatException e)
+            {
+                JOptionPane.showMessageDialog(moduloServicios, "El campo valor debe ser numerico.", "Error", JOptionPane.ERROR_MESSAGE);
+                exito = false;
+            }
+        }
+        
+        return exito;
+    }
+
+    public void limpiarCamposVenta(){
+        moduloServicios.tVentaCedula.setText("");
+        moduloServicios.tVentaNombre.setText("");
+        moduloServicios.tVentaTelefono.setText("");
+        moduloServicios.tVentaDireccion.setText("");
+        moduloServicios.tVentaEmail.setText("");
+    }
+
+    public void enableCamposVenta(boolean enable){
+        moduloServicios.tVentaCedula.setEnabled(enable);
+        moduloServicios.tVentaNombre.setEnabled(enable);
+        moduloServicios.tVentaTelefono.setEnabled(enable);
+        moduloServicios.tVentaDireccion.setEnabled(enable);
+        moduloServicios.tVentaEmail.setEnabled(enable);
+        if (!enable){
+            limpiarCamposVenta();
+        }
+    }
+    
+    public void consultarTarjetasVenta()
+    {
+        ArrayList<Tarjeta> tarjetas = new TarjetaDAO().consultarTarjetasVendidas(false);
+        moduloServicios.comboVentaIdTarjeta.removeAllItems();
+        
+        if (tarjetas != null)
+        {
+            for (int i = 0; i < tarjetas.size(); i++) 
+            {
+                moduloServicios.comboVentaIdTarjeta.addItem(tarjetas.get(i).getId());
+            }
+        }
+    }
+
+    public void consultarEstacionesVenta()
+    {
+        ArrayList<Estacion> estaciones = new EstacionDAO().consultarEstaciones(true);
+        moduloServicios.comboVentaEstaciones.removeAllItems();
+        
+        if (estaciones != null)
+        {
+            for (int i = 0; i < estaciones.size(); i++) 
+            {
+                moduloServicios.comboVentaEstaciones.addItem(estaciones.get(i).getNombre());
+            }
+        }
+    }
+
+    public void venderTarjeta()
+    {
+        if (verificarCamposVenta()) 
+        {
+            String tarjetaID = moduloServicios.comboVentaIdTarjeta.getSelectedItem().toString();
+            double valor = Double.parseDouble(moduloServicios.tVentaValor.getText());
+            String estacion = moduloServicios.comboVentaEstaciones.getSelectedItem().toString();
+            String fecha = moduloServicios.tVentaFecha.getText();
+
+            Venta venta = new Venta(fecha, valor, estacion, tarjetaID);
+
+            if (moduloServicios.radioPerson.isSelected()){
+                String cedula = moduloServicios.tVentaCedula.getText();
+                String nombre = moduloServicios.tVentaNombre.getText();
+                String telefono = moduloServicios.tVentaTelefono.getText();
+                String direccion = moduloServicios.tVentaDireccion.getText();
+                String email = moduloServicios.tVentaEmail.getText();
+
+                Pasajero pasajero = new Pasajero(cedula,nombre,telefono,direccion,email,tarjetaID,true);
+                boolean exitoPersonalizada = new VentaDAO().insertarVentaPersonalizada(venta, pasajero);
+
+                if (exitoPersonalizada){
+                    JOptionPane.showMessageDialog(moduloServicios, "La venta personalizada fue registrada exitosamente.", "", JOptionPane.INFORMATION_MESSAGE);
+                    consultarTarjetasVenta();
+                }
+                else{
+                    JOptionPane.showMessageDialog(moduloServicios, "Error al registrar la venta personalizada", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }else {
+
+                boolean exitoVenta = new VentaDAO().insertarVenta(venta);
+                if (exitoVenta){
+                    JOptionPane.showMessageDialog(moduloServicios, "Venta registrada exitosamente.", "", JOptionPane.INFORMATION_MESSAGE);
+                    consultarTarjetasVenta();
+                }
+                else{
+                    JOptionPane.showMessageDialog(moduloServicios, "Error al registrar la venta", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }
+        }
+    }
+
+    public boolean verificarCamposRecarga()
+    {
+        boolean exito = true;
+        
+        if (moduloServicios.tRecargaTarjeta.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(moduloServicios, "El campo Tarjeta ID es obligatorio.", "Error", JOptionPane.ERROR_MESSAGE);
+            exito = false;
+        }
+        else
+        {
+            try
+            {
+                Integer.parseInt(moduloServicios.tRecargaTarjeta.getText());
+            }
+            catch (NumberFormatException e)
+            {
+                JOptionPane.showMessageDialog(moduloServicios, "El campo Tarjeta ID debe ser numerico.", "Error", JOptionPane.ERROR_MESSAGE);
+                exito = false;
+            }
+        }
+        
+        if (moduloServicios.tRecargaCantidad.getText().isEmpty())
+        {
+            JOptionPane.showMessageDialog(moduloServicios, "El campo Cantidad es obligatorio.", "Error", JOptionPane.ERROR_MESSAGE);
+            exito = false;
+        }
+        else 
+        {
+            try
+            {
+                Double.parseDouble(moduloServicios.tRecargaCantidad.getText());
+            }
+            catch (NumberFormatException e)
+            {
+                JOptionPane.showMessageDialog(moduloServicios, "El campo Cantidad debe ser numerico.", "Error", JOptionPane.ERROR_MESSAGE);
+                exito = false;
+            }
+        }
+        
+        return exito;
+    }
+    
+    public void recargarTarjeta()
+    {
+        if (verificarCamposRecarga()) 
+        {
+            String tarjetaID = moduloServicios.tRecargaTarjeta.getText();
+            double cantidad = Double.parseDouble(moduloServicios.tRecargaCantidad.getText());
+
+            boolean exito = new TarjetaDAO().recargarTarjeta(tarjetaID, cantidad);
+
+            if (exito) 
+            {
+                JOptionPane.showMessageDialog(moduloServicios, "Recarga registrada exitosamente.", "", JOptionPane.INFORMATION_MESSAGE);
+            }
+            else 
+            {
+                JOptionPane.showMessageDialog(moduloServicios, "Error al recargar la tarjeta.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
     }
     
     public void consultarSaldo()
@@ -379,18 +647,6 @@ public class ModuloServicios_Eventos
         this.moduloServicios.tfAbordarTarjeta.setText("");
     }
     
-    public void tabChanged()
-    {
-        if (this.moduloServicios.tabs.getSelectedIndex() == 1)
-        {
-            consultarEstaciones();
-        }
-        else if (this.moduloServicios.tabs.getSelectedIndex() == 2)
-        {
-            consultarOrigen();
-        }
-    }
-    
     public void consultarEstaciones()
     {
         ArrayList<Estacion> lista = new EstacionDAO().consultarEstaciones(true);
@@ -516,9 +772,9 @@ public class ModuloServicios_Eventos
             String ruta = (String) this.moduloServicios.tRutasSugeridas.getValueAt(row, 0);
             verRecorrido(ruta);
         }
-	else
-	{
-	    JOptionPane.showMessageDialog(moduloServicios, "Seleccione una Ruta.", "Error", JOptionPane.ERROR_MESSAGE);
-	}
+        else
+        {
+            JOptionPane.showMessageDialog(moduloServicios, "Seleccione una Ruta.", "Error", JOptionPane.ERROR_MESSAGE);
+        }
     }
 }

@@ -1,10 +1,23 @@
+/**
+ * ********************************************
+ * Autor: Camilo Ruiz Casanova - 1324486
+ * Autor: Miguel Angel Lopez - 1326691
+ * Autor: Andres Felipe Polanco - 1324539
+ * Fecha: 03-oct-2015
+ * Nombre del Archivo: .java
+ * Plan: Ingeniería de Sistemas - 3743
+ * Institución Educativa: Universidad del Valle (Cali - Colombia)
+ * *********************************************
+ */
+
 package Vista;
 
 
-public class ModuloPasajeros extends javax.swing.JFrame {
-    
+public class ModuloPasajeros extends javax.swing.JFrame 
+{    
 
-    public ModuloPasajeros() {
+    public ModuloPasajeros() 
+    {
         initComponents();
     }
 
@@ -271,6 +284,7 @@ public class ModuloPasajeros extends javax.swing.JFrame {
         fDetalles.getContentPane().add(panelModif1);
 
         setMinimumSize(new java.awt.Dimension(800, 600));
+        setPreferredSize(new java.awt.Dimension(800, 600));
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
         jTabbedPane1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -961,8 +975,6 @@ public class ModuloPasajeros extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
-
     // Variables declaration - do not modify//GEN-BEGIN:variables
     public javax.swing.JButton bCerrar;
     public javax.swing.JButton bConsulActualizar;

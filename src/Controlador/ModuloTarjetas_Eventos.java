@@ -1,20 +1,20 @@
 /**
  * ********************************************
- * Autor: Miguel Angel Lopez Fernandez
- * Correo: miguel.angel.lopez@correounivalle.edu.co
- * Código: 1326691
- * Fecha: 07-feb-2016
- * Nombre del Archivo: ModuloTarjetas_Eventos.java
+ * Autor: Camilo Ruiz Casanova - 1324486
+ * Autor: Miguel Angel Lopez - 1326691
+ * Autor: Andres Felipe Polanco - 1324539
+ * Fecha: 03-oct-2015
+ * Nombre del Archivo: SoftwareMio.java
  * Plan: Ingeniería de Sistemas - 3743
  * Institución Educativa: Universidad del Valle (Cali - Colombia)
  * *********************************************
  */
+
 package Controlador;
 
 import Modelo.Tarjeta;
 import Modelo.TarjetaDAO;
 import Vista.ModuloTarjetas;
-
 import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
@@ -34,46 +34,16 @@ public class ModuloTarjetas_Eventos {
         this.moduloTarjetas = moduloTarjetas;
         sorter = new TableRowSorter<>(moduloTarjetas.tableTarjetas.getModel());
         moduloTarjetas.tableTarjetas.setRowSorter(sorter);
-        consultarTarjetasVenta();
 
-        this.moduloTarjetas.radioGenerica.addActionListener(
-                new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        enableCamposVenta(false);
-                        limpiarCamposVentaCrear();
-                    }
-                }
-        );
-
-        this.moduloTarjetas.radioPerson.addActionListener(
-                new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        enableCamposVenta(true);
-                    }
-                }
-        );
         this.moduloTarjetas.jTabbedPane1.addChangeListener(
                 new ChangeListener() {
                     @Override
                     public void stateChanged(ChangeEvent e) {
                         JTabbedPane TabbedPane = (JTabbedPane) e.getSource();
                         int tab = TabbedPane.getSelectedIndex();
-                        if (tab == 0) {
-                            consultarTarjetasVenta();
-                        }else if (tab == 3){
+                        if (tab == 1){
                             consultarTarjetas();
                         }
-                    }
-                }
-        );
-
-        this.moduloTarjetas.bVentaVender.addActionListener(
-                new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-
                     }
                 }
         );
@@ -95,22 +65,15 @@ public class ModuloTarjetas_Eventos {
                     }
                 }
         );
-    }
 
-    public void enableCamposVenta(boolean enable){
-        moduloTarjetas.tCrearCedula.setEnabled(enable);
-        moduloTarjetas.tCrearNombre.setEnabled(enable);
-        moduloTarjetas.tCrearTelefono.setEnabled(enable);
-        moduloTarjetas.tCrearDireccion.setEnabled(enable);
-        moduloTarjetas.tCrearEmail.setEnabled(enable);
-    }
-
-    public void limpiarCamposVentaCrear(){
-        moduloTarjetas.tCrearCedula.setText("");
-        moduloTarjetas.tCrearNombre.setText("");
-        moduloTarjetas.tCrearTelefono.setText("");
-        moduloTarjetas.tCrearDireccion.setText("");
-        moduloTarjetas.tCrearEmail.setText("");
+        this.moduloTarjetas.bEliminar.addActionListener(
+                new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        eliminarTarjeta();
+                    }
+                }
+        );
     }
 
     public void limpiarCamposCrear(){
@@ -135,14 +98,20 @@ public class ModuloTarjetas_Eventos {
         return exito;
     }
 
-    public void consultarTarjetasVenta(){
-        ArrayList<Tarjeta> tarjetas = new TarjetaDAO().consultarTarjetasNoVendidas();
-        moduloTarjetas.comboVentaIdTarjeta.removeAllItems();
-        if (tarjetas != null){
-            for (int i = 0; i < tarjetas.size(); i++) {
-                moduloTarjetas.comboVentaIdTarjeta.addItem(tarjetas.get(i).getId());
+    public boolean verificarCamposEliminar(){
+        boolean exito = true;
+        if (moduloTarjetas.tEliminarTarjeta.getText().isEmpty()){
+            JOptionPane.showMessageDialog(moduloTarjetas, "El campo Tarjeta ID obligatorio.", "Error", JOptionPane.ERROR_MESSAGE);
+            exito = false;
+        }else{
+            try{
+                Integer.parseInt(moduloTarjetas.tEliminarTarjeta.getText());
+            }catch (NumberFormatException e){
+                JOptionPane.showMessageDialog(moduloTarjetas, "El campo Tarjeta ID debe ser numerico.", "Error", JOptionPane.ERROR_MESSAGE);
+                exito = false;
             }
         }
+        return exito;
     }
 
     public void consultarTarjetas(){
@@ -179,6 +148,21 @@ public class ModuloTarjetas_Eventos {
                 limpiarCamposCrear();
             }else {
                 JOptionPane.showMessageDialog(moduloTarjetas, "Error al crear las tarjetas", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
+
+    public void eliminarTarjeta(){
+        if (verificarCamposEliminar()){
+            boolean exito;
+            String tarjeta_id = moduloTarjetas.tEliminarTarjeta.getText();
+            exito = new TarjetaDAO().eliminarTarjeta(tarjeta_id);
+
+            if (exito){
+                JOptionPane.showMessageDialog(moduloTarjetas, "Tarjeta eliminada exitosamente.", "", JOptionPane.INFORMATION_MESSAGE);
+                moduloTarjetas.tEliminarTarjeta.setText("");
+            }else {
+                JOptionPane.showMessageDialog(moduloTarjetas, "Error al eliminar la tarjeta", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }

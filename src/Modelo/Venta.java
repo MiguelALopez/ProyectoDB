@@ -1,8 +1,15 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+/**
+ * ********************************************
+ * Autor: Camilo Ruiz Casanova - 1324486
+ * Autor: Miguel Angel Lopez - 1326691
+ * Autor: Andres Felipe Polanco - 1324539
+ * Fecha: 03-oct-2015
+ * Nombre del Archivo: .java
+ * Plan: Ingeniería de Sistemas - 3743
+ * Institución Educativa: Universidad del Valle (Cali - Colombia)
+ * *********************************************
  */
+
 package Modelo;
 
 /**
@@ -16,6 +23,13 @@ public class Venta
     private double valor;
     private String estacion;
     private String tarjeta;
+
+    public Venta(String fecha, double valor, String estacion, String tarjeta){
+        this.fecha = fecha;
+        this.valor = valor;
+        this.estacion = estacion;
+        this.tarjeta = tarjeta;
+    }
 
     public Venta(String id, String fecha, double valor, String estacion, String tarjeta) {
         this.id = id;
