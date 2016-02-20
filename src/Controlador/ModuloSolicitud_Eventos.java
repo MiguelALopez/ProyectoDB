@@ -15,10 +15,13 @@ import Modelo.SolicitudDAO;
 import Vista.ModuloSolicitud;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.io.IOException;
 import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Date;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
@@ -118,6 +121,7 @@ public class ModuloSolicitud_Eventos
             public void actionPerformed(ActionEvent e)
             {
                 agregarSolicitud();
+                
             }
         });
         
@@ -138,6 +142,7 @@ public class ModuloSolicitud_Eventos
             public void actionPerformed(ActionEvent e)
             {
                 responder();
+                resLimpiarCampos();
             }
         });
         
@@ -326,6 +331,14 @@ public class ModuloSolicitud_Eventos
                 if (resultado)
                 {
                     JOptionPane.showMessageDialog(moduloSolicitud, "Solicitud agregada satisfactoriamente", "", JOptionPane.INFORMATION_MESSAGE);
+                    ModuloReportes_Eventos reporte = new ModuloReportes_Eventos();
+                    try
+                    {
+                        reporte.reporteSolicitud(solDAO.getLastSolByPass(Datos[4]));
+                    } catch (IOException ex)
+                    {
+                        Logger.getLogger(ModuloSolicitud_Eventos.class.getName()).log(Level.SEVERE, null, ex);
+                    }
                 }
                 else
                 {

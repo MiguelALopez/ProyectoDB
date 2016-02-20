@@ -269,4 +269,41 @@ public class SolicitudDAO
         
         return medidas;
     }
+    
+    public Solicitud getLastSolByPass(String pasajero)
+    {
+        Solicitud solicitud = null;
+        
+        conexionBD.conectar();        
+        String medidas = "";
+        
+        String query = "SELECT * FROM solicitud WHERE pasajero_id = ? ORDER BY solicitud_id DESC LIMIT 1;";
+        
+        try
+        {
+            PreparedStatement st = conexionBD.conexion.prepareStatement(query);            
+            st.setString(1, pasajero);
+            
+            ResultSet tabla = st.executeQuery();
+            
+            if (tabla.next())
+            {
+                solicitud = new Solicitud(tabla.getString(1), tabla.getString(2), tabla.getString(3), tabla.getString(4), tabla.getString(5), tabla.getString(6), tabla.getString(7));
+            }
+        } 
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(EstacionDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally
+        {
+            if (conexionBD != null)
+            {
+                conexionBD.cerrarConexion();
+            }
+        }
+        
+        
+        return solicitud;
+    }
 }

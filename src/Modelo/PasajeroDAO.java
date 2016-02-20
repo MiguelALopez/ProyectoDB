@@ -129,6 +129,39 @@ public class PasajeroDAO {
         
         return pasajero;
     }
+    
+    public Pasajero consultarPasajeroById(String pasajero_id) 
+    {
+        conexionBD.conectar();
+        Pasajero pasajero = null;
+
+        String query = "SELECT * FROM pasajero "
+                + "WHERE pasajero_id = ?;";
+
+        try 
+        {
+            PreparedStatement st = conexionBD.conexion.prepareStatement(query);
+            st.setString(1, pasajero_id);
+            ResultSet tabla = st.executeQuery();
+            
+            if (tabla.next())
+            {
+                pasajero = new Pasajero(tabla.getString(1), tabla.getString(2), tabla.getString(3),
+                        tabla.getString(4), tabla.getString(5), tabla.getString(6),
+                        tabla.getBoolean(7));
+            }
+        }
+        catch (SQLException e)
+        {
+            e.printStackTrace();
+        }
+        finally 
+        {
+            conexionBD.cerrarConexion();
+        }
+        
+        return pasajero;
+    }
 
     /**
      * Metodo encargado de buscar a todos los pasajaros que hacen parte de la base de datos

@@ -7,9 +7,11 @@ package Controlador;
 
 import Modelo.Estacion;
 import Modelo.Pasajero;
+import Modelo.PasajeroDAO;
 import Modelo.ReportesDAO;
 import Modelo.Ruta;
 import Modelo.Solicitud;
+import Modelo.SolicitudDAO;
 import Vista.ModuloReportes;
 import be.quodlibet.boxable.BaseTable;
 import be.quodlibet.boxable.Cell;
@@ -38,6 +40,11 @@ import org.apache.pdfbox.pdmodel.font.PDType1Font;
 public class ModuloReportes_Eventos 
 {
     private final ModuloReportes moduloReportes;
+    
+    public ModuloReportes_Eventos()
+    {
+        this.moduloReportes = null;
+    }
     
     public ModuloReportes_Eventos(final ModuloReportes moduloReportes)
     {
@@ -152,7 +159,7 @@ public class ModuloReportes_Eventos
             }
         );
     }
-    
+
     public void generarReporte()
     {
         try
@@ -937,6 +944,134 @@ public class ModuloReportes_Eventos
 
         //cerrar flujo y guardar pdf
         File file = new File("Reporte7.pdf");
+        System.out.println("Sample file saved at : " + file.getAbsolutePath());
+        doc.save(file);
+        doc.close();
+        
+        Desktop.getDesktop().open(file);
+    }
+    
+    public void reporteSolicitud(Solicitud solicitud) throws IOException
+    {
+        //margenes
+        float margin = 10;
+
+        //inicializacion del documento
+        PDDocument doc = new PDDocument();
+        PDPage page = agregarPagina(doc);
+        float yStartNewPage = page.getMediaBox().getHeight() - (2 * margin);
+
+        //inicializacion de la tabla
+        float tableWidth = page.getMediaBox().getWidth() - (2 * margin);
+        boolean drawContent = true;
+        float yStart = yStartNewPage;
+        float bottomMargin = 70;
+        BaseTable table  = new BaseTable(yStart,yStartNewPage, bottomMargin, tableWidth, margin, doc, page, true, drawContent);
+
+        //fila de titulo
+        Row<PDPage> headerRow = table.createRow(15f);
+        Cell<PDPage> cell = headerRow.createCell(100, "Reporte - Solicitud realizada");
+        cell.setFont(PDType1Font.HELVETICA_BOLD);
+        cell.setFontSize(28);
+        cell.setFillColor(Color.BLACK);
+        cell.setTextColor(Color.WHITE);
+
+        table.setHeader(headerRow);
+        
+        //Cargar informacion
+        
+        PasajeroDAO pasDAO = new PasajeroDAO();
+        Pasajero pasajero = pasDAO.consultarPasajeroById(solicitud.getPasajero());
+        
+        //Fila pasajero
+        
+        Row<PDPage> row = table.createRow(15f);
+        cell = row.createCell(25, "CEDULA", HorizontalAlignment.CENTER, VerticalAlignment.MIDDLE);
+        cell.setFontSize(12);
+        cell.setFillColor(Color.LIGHT_GRAY);
+        cell = row.createCell(25, pasajero.getId());
+        cell.setFontSize(12);
+        
+        cell = row.createCell(25, "TICKET", HorizontalAlignment.CENTER, VerticalAlignment.MIDDLE);
+        cell.setFontSize(12);
+        cell.setFillColor(Color.LIGHT_GRAY);
+        cell = row.createCell(25, solicitud.getId(), HorizontalAlignment.RIGHT, VerticalAlignment.MIDDLE);
+        cell.setFontSize(12);
+        
+        // Fila nueva
+        row = table.createRow(15f);
+        
+        cell = row.createCell(25, "PASAJERO", HorizontalAlignment.CENTER, VerticalAlignment.MIDDLE);
+        cell.setFontSize(12);
+        cell.setFillColor(Color.LIGHT_GRAY);
+        cell = row.createCell(75, pasajero.getNombre());
+        cell.setFontSize(12);
+        //fila de los campos
+        Row<PDPage> campos = table.createRow(15f);
+
+        cell = campos.createCell((100 / 4), "ESTACION", HorizontalAlignment.CENTER, VerticalAlignment.MIDDLE);
+        cell.setFont(PDType1Font.HELVETICA);
+        cell.setFontSize(12);
+        cell.setFillColor(Color.LIGHT_GRAY);        
+
+        cell = campos.createCell((100 / 4), solicitud.getEstacion(), HorizontalAlignment.CENTER, VerticalAlignment.MIDDLE);
+        cell.setFont(PDType1Font.HELVETICA);
+        cell.setFontSize(12);
+        // cell.setFillColor(Color.LIGHT_GRAY);
+        
+        cell = campos.createCell((100 / 4), "MOTIVO", HorizontalAlignment.CENTER, VerticalAlignment.MIDDLE);
+        cell.setFont(PDType1Font.HELVETICA);
+        cell.setFontSize(12);
+        cell.setFillColor(Color.LIGHT_GRAY);
+        
+        cell = campos.createCell((100 / 4), solicitud.getMotivo(), HorizontalAlignment.CENTER, VerticalAlignment.MIDDLE);
+        cell.setFont(PDType1Font.HELVETICA);
+        cell.setFontSize(12);
+        // cell.setFillColor(Color.LIGHT_GRAY);
+        
+        // Fila nueva
+        campos = table.createRow(15f);
+        
+        cell = campos.createCell((100), "Descripcion", HorizontalAlignment.CENTER, VerticalAlignment.MIDDLE);
+        cell.setFont(PDType1Font.HELVETICA);
+        cell.setFontSize(12);
+        cell.setFillColor(Color.LIGHT_GRAY);
+        
+        // Fila nueva
+        campos = table.createRow(15f);
+        
+        cell = campos.createCell((100), solicitud.getDescripcion(), HorizontalAlignment.CENTER, VerticalAlignment.MIDDLE);
+        cell.setFont(PDType1Font.HELVETICA);
+        cell.setFontSize(12);
+        // cell.setFillColor(Color.LIGHT_GRAY);
+        
+        // Fila nueva
+        campos = table.createRow(15f);
+        
+        cell = campos.createCell((100 / 4), "FECHA", HorizontalAlignment.CENTER, VerticalAlignment.MIDDLE);
+        cell.setFont(PDType1Font.HELVETICA);
+        cell.setFontSize(12);
+        cell.setFillColor(Color.LIGHT_GRAY);        
+
+        cell = campos.createCell((100 / 4), solicitud.getFecha(), HorizontalAlignment.CENTER, VerticalAlignment.MIDDLE);
+        cell.setFont(PDType1Font.HELVETICA);
+        cell.setFontSize(12);
+        // cell.setFillColor(Color.LIGHT_GRAY);
+        
+        cell = campos.createCell((100 / 4), "ESTADO", HorizontalAlignment.CENTER, VerticalAlignment.MIDDLE);
+        cell.setFont(PDType1Font.HELVETICA);
+        cell.setFontSize(12);
+        cell.setFillColor(Color.LIGHT_GRAY);
+        
+        cell = campos.createCell((100 / 4), solicitud.getEstado(), HorizontalAlignment.CENTER, VerticalAlignment.MIDDLE);
+        cell.setFont(PDType1Font.HELVETICA);
+        cell.setFontSize(12);
+        // cell.setFillColor(Color.LIGHT_GRAY);
+        
+        table.draw();
+        
+        //cerrar flujo y guardar pdf
+        File file = new File("SolicitudReporte.pdf");
         System.out.println("Sample file saved at : " + file.getAbsolutePath());
         doc.save(file);
         doc.close();
