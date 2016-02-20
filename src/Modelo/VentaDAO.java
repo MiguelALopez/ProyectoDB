@@ -55,6 +55,75 @@ public class VentaDAO {
         return exito;
     }
 
+    public boolean insertarVentaPersonalizada(Venta venta, Pasajero pasajero){
+        boolean exito = false;
+        String query1 = "SELECT * FROM venta WHERE tarjeta_id = ?";
+        String query2 = "SELECT * FROM pasajero WHERE pasajero_id = ?";
+        String query3 = "INSERT INTO venta(venta_fecha, venta_valor, estacion_nombre, tarjeta_id)" +
+                "VALUES (?, ?, ?, ?)";
+        String query4 = "INSERT INTO pasajero(pasajero_id, pasajero_nombre, pasajero_telefono, pasajero_direccion, pasajero_email, tarjeta_id, pasajero_estado) " +
+                "VALUES (?, ?, ?, ?, ?, ?, ?)";
+        String query5 = "UPDATE pasajero SET pasajero_nombre = ?, pasajero_telefono = ?, pasajero_direccion = ?, pasajero_email = ?, tarjeta_id = ?, pasajero_estado = ?" +
+                "WHERE pasajero_id = ?";
+        conexionBD.conectar();
+
+        try {
+            PreparedStatement st = conexionBD.conexion.prepareStatement(query1);
+            st.setString(1, venta.getTarjeta());
+            ResultSet resultSet1 = st.executeQuery();
+            if (!resultSet1.next()){
+                st = conexionBD.conexion.prepareStatement(query2);
+                st.setString(1, pasajero.getId());
+                ResultSet resultSet2 = st.executeQuery();
+                if (!resultSet2.next()){
+                    st = conexionBD.conexion.prepareStatement(query3);
+                    st.setTimestamp(1, Timestamp.valueOf(venta.getFecha()));
+                    st.setBigDecimal(2, BigDecimal.valueOf(venta.getValor()));
+                    st.setString(3, venta.getEstacion());
+                    st.setString(4, venta.getTarjeta());
+
+                    st.executeUpdate();
+
+                    st = conexionBD.conexion.prepareStatement(query4);
+                    st.setString(1, pasajero.getId());
+                    st.setString(2, pasajero.getNombre());
+                    st.setString(3, pasajero.getTelefono());
+                    st.setString(4, pasajero.getDireccion());
+                    st.setString(5, pasajero.getEmail());
+                    st.setString(6, pasajero.getTarjeta());
+                    st.setBoolean(7, pasajero.isEstado());
+                    st.executeUpdate();
+
+                    exito = true;
+                }else if (!resultSet2.getBoolean(7)){
+                    st = conexionBD.conexion.prepareStatement(query3);
+                    st.setTimestamp(1, Timestamp.valueOf(venta.getFecha()));
+                    st.setBigDecimal(2, BigDecimal.valueOf(venta.getValor()));
+                    st.setString(3, venta.getEstacion());
+                    st.setString(4, venta.getTarjeta());
+
+                    st.executeUpdate();
+
+                    st = conexionBD.conexion.prepareStatement(query5);
+                    st.setString(1, pasajero.getNombre());
+                    st.setString(2, pasajero.getTelefono());
+                    st.setString(3, pasajero.getDireccion());
+                    st.setString(4, pasajero.getEmail());
+                    st.setString(5, pasajero.getTarjeta());
+                    st.setBoolean(6, pasajero.isEstado());
+                    st.setString(7, pasajero.getId());
+
+                    st.executeUpdate();
+                    exito = true;
+
+                }
+            }
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+        return exito;
+    }
+
     public Venta consultarVenta(String tarjeta_id){
         Venta venta = null;
 

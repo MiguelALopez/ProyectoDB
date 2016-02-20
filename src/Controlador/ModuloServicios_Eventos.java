@@ -182,6 +182,23 @@ public class ModuloServicios_Eventos
                 }
             }
         );
+        this.moduloServicios.radioPerson.addActionListener(
+                new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        enableCamposVenta(true);
+                    }
+                }
+        );
+
+        this.moduloServicios.radioGenerica.addActionListener(
+                new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        enableCamposVenta(false);
+                    }
+                }
+        );
         
         tabChanged();
     }
@@ -287,6 +304,25 @@ public class ModuloServicios_Eventos
         
         return exito;
     }
+
+    public void limpiarCamposVenta(){
+        moduloServicios.tVentaCedula.setText("");
+        moduloServicios.tVentaNombre.setText("");
+        moduloServicios.tVentaTelefono.setText("");
+        moduloServicios.tVentaDireccion.setText("");
+        moduloServicios.tVentaEmail.setText("");
+    }
+
+    public void enableCamposVenta(boolean enable){
+        moduloServicios.tVentaCedula.setEnabled(enable);
+        moduloServicios.tVentaNombre.setEnabled(enable);
+        moduloServicios.tVentaTelefono.setEnabled(enable);
+        moduloServicios.tVentaDireccion.setEnabled(enable);
+        moduloServicios.tVentaEmail.setEnabled(enable);
+        if (!enable){
+            limpiarCamposVenta();
+        }
+    }
     
     public void consultarTarjetasVenta()
     {
@@ -326,16 +362,34 @@ public class ModuloServicios_Eventos
             String fecha = moduloServicios.tVentaFecha.getText();
 
             Venta venta = new Venta(fecha, valor, estacion, tarjetaID);
-            boolean exito = new VentaDAO().insertarVenta(venta);
 
-            if (exito) 
-            {
-                JOptionPane.showMessageDialog(moduloServicios, "Venta registrada exitosamente.", "", JOptionPane.INFORMATION_MESSAGE);
-                consultarTarjetasVenta();
-            }
-            else 
-            {
-                JOptionPane.showMessageDialog(moduloServicios, "Error al registrar la venta", "Error", JOptionPane.ERROR_MESSAGE);
+            if (moduloServicios.radioPerson.isSelected()){
+                String cedula = moduloServicios.tVentaCedula.getText();
+                String nombre = moduloServicios.tVentaNombre.getText();
+                String telefono = moduloServicios.tVentaTelefono.getText();
+                String direccion = moduloServicios.tVentaDireccion.getText();
+                String email = moduloServicios.tVentaEmail.getText();
+
+                Pasajero pasajero = new Pasajero(cedula,nombre,telefono,direccion,email,tarjetaID,true);
+                boolean exitoPersonalizada = new VentaDAO().insertarVentaPersonalizada(venta, pasajero);
+
+                if (exitoPersonalizada){
+                    JOptionPane.showMessageDialog(moduloServicios, "La venta personalizada fue registrada exitosamente.", "", JOptionPane.INFORMATION_MESSAGE);
+                    consultarTarjetasVenta();
+                }
+                else{
+                    JOptionPane.showMessageDialog(moduloServicios, "Error al registrar la venta personalizada", "Error", JOptionPane.ERROR_MESSAGE);
+                }
+            }else {
+
+                boolean exitoVenta = new VentaDAO().insertarVenta(venta);
+                if (exitoVenta){
+                    JOptionPane.showMessageDialog(moduloServicios, "Venta registrada exitosamente.", "", JOptionPane.INFORMATION_MESSAGE);
+                    consultarTarjetasVenta();
+                }
+                else{
+                    JOptionPane.showMessageDialog(moduloServicios, "Error al registrar la venta", "Error", JOptionPane.ERROR_MESSAGE);
+                }
             }
         }
     }
