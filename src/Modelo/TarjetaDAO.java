@@ -44,7 +44,7 @@ public class TarjetaDAO {
                 st.setBigDecimal(1, BigDecimal.valueOf(tarjetas.get(i).getSaldo()));
                 st.setString(2, tarjetas.get(i).getEstado());
 
-                int resultado = st.executeUpdate();
+                st.executeUpdate();
             }
             exito = true;
         } catch (SQLException e) {
@@ -59,49 +59,28 @@ public class TarjetaDAO {
     
     public boolean modificarTarjeta(Tarjeta t){
         boolean exito = false;
-
-        String query = "UPDATE tarjeta SET "
+        String query1 = "UPDATE tarjeta SET "
                 + "tarjeta_saldo = ?, "
                 + "tarjeta_estado = ? "
                 + "WHERE tarjeta_id = ?;";
-
+        String query2 = "UPDATE pasajero SET pasajero_estado = ? WHERE tarjeta_id = ?";
         conexionBD.conectar();
         try {
-            PreparedStatement st = conexionBD.conexion.prepareStatement(query);
+            PreparedStatement st = conexionBD.conexion.prepareStatement(query1);
             st.setDouble(1, t.getSaldo());
             st.setString(2, t.getEstado());
             st.setString(3, t.getId());
-            int resultado = st.executeUpdate();            
-            exito = true;
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }finally {
-            if (conexionBD.conexion != null){
-                conexionBD.cerrarConexion();
+            st.executeUpdate();
+
+            st = conexionBD.conexion.prepareStatement(query2);
+            boolean estado = true;
+            if (t.getEstado().equals("BLOQUEADA")){
+                estado = false;
             }
-        }
-        return exito;
-    }
+            st.setBoolean(1, estado);
+            st.setString(2, t.getId());
+            st.executeUpdate();
 
-    /**
-     * Metodo encargado de cambiar el estado de una tarjeta especifica
-     * @param id identificacion de la tarjeta que se desea modificar
-     * @param estado nuevo estado que se desea agregar
-     * @return retorna verdadero si la operacion se realizo con exito
-     */
-    public boolean cambiarEstadoTarjeta(String id, String estado){
-        boolean exito = false;
-
-        String query = "UPDATE tarjeta SET tarjeta_estado = ? WHERE tarjeta_id = ?;";
-
-        conexionBD.conectar();
-        try {
-            PreparedStatement st = conexionBD.conexion.prepareStatement(query);
-
-            st.setString(1, estado);
-            st.setString(2, id);
-
-            int resultado = st.executeUpdate();
             exito = true;
         } catch (SQLException e) {
             e.printStackTrace();
@@ -214,39 +193,20 @@ public class TarjetaDAO {
         return tarjetas;
     }
     
-    public Tarjeta consultarTarjetaVendida(String id){
-        Tarjeta t = null;
-
-        String query = "SELECT tarjeta_id, tarjeta_saldo, tarjeta_estado "
-                + "FROM tarjeta NATURAL JOIN venta "
-                + "WHERE tarjeta_id = ?;";
-        conexionBD.conectar();
-        try {
-            PreparedStatement st = conexionBD.conexion.prepareStatement(query);
-            st.setString(1, id);
-            ResultSet tabla = st.executeQuery();
-
-            if (tabla.next()){
-                t = new Tarjeta(tabla.getString(1), tabla.getDouble(2), tabla.getString(3));
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
-        }finally {
-            if (conexionBD.conexion != null){
-                conexionBD.cerrarConexion();
-            }
-        }
-
-        return t;
-    }
-    
-    public Tarjeta consultaTarjeta(String id)
+    public Tarjeta consultarTarjeta(String id, boolean vendida)
     {
         Tarjeta t = null;
+        String query;
 
-        String query = "SELECT tarjeta_id, tarjeta_saldo, tarjeta_estado "
-                + "FROM tarjeta "
-                + "WHERE tarjeta_id=?;";
+        if (vendida){
+            query = "SELECT tarjeta_id, tarjeta_saldo, tarjeta_estado "
+                    + "FROM tarjeta NATURAL JOIN venta "
+                    + "WHERE tarjeta_id = ?;";
+        }else {
+            query = "SELECT tarjeta_id, tarjeta_saldo, tarjeta_estado "
+                    + "FROM tarjeta "
+                    + "WHERE tarjeta_id=?;";
+        }
         conexionBD.conectar();
         try {
             PreparedStatement st = conexionBD.conexion.prepareStatement(query);
@@ -281,7 +241,7 @@ public class TarjetaDAO {
             PreparedStatement st = conexionBD.conexion.prepareStatement(query);
             st.setString(1,id);
             ResultSet tabla = st.executeQuery();
-            int saldo = -1;
+            int saldo;
             if (tabla.next()){
                 saldo = tabla.getInt(1);
                 st = conexionBD.conexion.prepareStatement(query2);

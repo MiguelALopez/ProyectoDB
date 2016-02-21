@@ -993,7 +993,7 @@ public class ModuloReportes_Eventos
         Pasajero pasajero = pasDAO.consultarPasajeroById(solicitud.getPasajero());
         TarjetaDAO tarDAO = new TarjetaDAO();
         Tarjeta tar;
-        tar = tarDAO.consultaTarjeta(pasajero.getTarjeta());
+        tar = tarDAO.consultarTarjeta(pasajero.getTarjeta(), false);
         
         // Escribir datos personales
         Row<PDPage> row = table.createRow(15f);

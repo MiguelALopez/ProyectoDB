@@ -463,7 +463,7 @@ public class ModuloServicios_Eventos
         
         if (!id.isEmpty())
         {
-            Tarjeta t = new TarjetaDAO().consultarTarjetaVendida(id);
+            Tarjeta t = new TarjetaDAO().consultarTarjeta(id, true);
             
             if (t != null)
             {
@@ -591,7 +591,7 @@ public class ModuloServicios_Eventos
     {
         if (verificarCamposAbordar())
         {
-            Tarjeta t = new TarjetaDAO().consultarTarjetaVendida(this.moduloServicios.tfAbordarTarjeta.getText());
+            Tarjeta t = new TarjetaDAO().consultarTarjeta(this.moduloServicios.tfAbordarTarjeta.getText(), true);
             
             if (t != null)
             {

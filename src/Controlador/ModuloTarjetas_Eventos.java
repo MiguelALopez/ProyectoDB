@@ -74,12 +74,45 @@ public class ModuloTarjetas_Eventos {
                     }
                 }
         );
+
+        this.moduloTarjetas.bModifiBuscar.addActionListener(
+                new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        modificarBusqueda();
+                    }
+                }
+        );
+
+        this.moduloTarjetas.bModifiCancelar.addActionListener(
+                new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        limpiarCamposModificar();
+                        enableModificar(false);
+                    }
+                }
+        );
+        this.moduloTarjetas.bModificar.addActionListener(
+                new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        modificarTarjeta();
+                    }
+                }
+        );
     }
 
     public void limpiarCamposCrear(){
         moduloTarjetas.tCrearSaldo.setText("0");
         moduloTarjetas.spinnerCrearNumTarj.setValue(1);
         moduloTarjetas.comboCrearEstado.setSelectedItem(0);
+    }
+
+    public void limpiarCamposModificar(){
+        moduloTarjetas.tModifiTarjeta.setText("");
+        moduloTarjetas.tModifiSaldo.setText("");
+        moduloTarjetas.comboModifiEstado.setSelectedIndex(0);
     }
 
     public boolean verificarCamposCrear(){
@@ -101,17 +134,55 @@ public class ModuloTarjetas_Eventos {
     public boolean verificarCamposEliminar(){
         boolean exito = true;
         if (moduloTarjetas.tEliminarTarjeta.getText().isEmpty()){
-            JOptionPane.showMessageDialog(moduloTarjetas, "El campo Tarjeta ID obligatorio.", "Error", JOptionPane.ERROR_MESSAGE);
+            JOptionPane.showMessageDialog(moduloTarjetas, "El campo Tarjeta ID es obligatorio.", "Error", JOptionPane.ERROR_MESSAGE);
             exito = false;
         }else{
             try{
-                Integer.parseInt(moduloTarjetas.tEliminarTarjeta.getText());
+                Long.parseLong(moduloTarjetas.tEliminarTarjeta.getText());
             }catch (NumberFormatException e){
                 JOptionPane.showMessageDialog(moduloTarjetas, "El campo Tarjeta ID debe ser numerico.", "Error", JOptionPane.ERROR_MESSAGE);
                 exito = false;
             }
         }
         return exito;
+    }
+
+    public boolean verificarCamposModifiBuscar(){
+        boolean exito = true;
+        if (moduloTarjetas.tModifiTarjeta.getText().isEmpty()){
+            JOptionPane.showMessageDialog(moduloTarjetas, "El campo Tarjeta es ID obligatorio.", "Error", JOptionPane.ERROR_MESSAGE);
+            exito = false;
+        }else {
+            try {
+                Double.parseDouble(moduloTarjetas.tModifiTarjeta.getText());
+            }catch (NumberFormatException e){
+                JOptionPane.showMessageDialog(moduloTarjetas, "El campo Tarjeta ID debe ser numerico.", "Error", JOptionPane.ERROR_MESSAGE);
+                exito = false;
+            }
+        }
+        return exito;
+    }
+
+    public boolean verificarCamposModificar(){
+        boolean exito = true;
+        if (moduloTarjetas.tModifiSaldo.getText().isEmpty()){
+            JOptionPane.showMessageDialog(moduloTarjetas, "El campo saldo es obligatorio.", "Error", JOptionPane.ERROR_MESSAGE);
+            exito = false;
+        }else {
+            try {
+                Long.parseLong(moduloTarjetas.tModifiSaldo.getText());
+            }catch (NumberFormatException e){
+                JOptionPane.showMessageDialog(moduloTarjetas, "El campo saldo debe ser numerico.", "Error", JOptionPane.ERROR_MESSAGE);
+                exito = false;
+            }
+        }
+        return exito;
+    }
+
+    public void enableModificar(boolean enable){
+        moduloTarjetas.tModifiTarjeta.setEnabled(!enable);
+        moduloTarjetas.tModifiSaldo.setEnabled(enable);
+        moduloTarjetas.comboModifiEstado.setEnabled(enable);
     }
 
     public void consultarTarjetas(){
@@ -163,6 +234,39 @@ public class ModuloTarjetas_Eventos {
                 moduloTarjetas.tEliminarTarjeta.setText("");
             }else {
                 JOptionPane.showMessageDialog(moduloTarjetas, "Error al eliminar la tarjeta", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
+
+    public void modificarBusqueda(){
+        if (verificarCamposModifiBuscar()){
+            String tarjeta_id = moduloTarjetas.tModifiTarjeta.getText();
+            Tarjeta tarjeta = new TarjetaDAO().consultarTarjeta(tarjeta_id, false);
+            if (tarjeta != null){
+                moduloTarjetas.tModifiSaldo.setText(String.valueOf(tarjeta.getSaldo()));
+                if(tarjeta.getEstado().equals("BLOQUEADA")){
+                    moduloTarjetas.comboModifiEstado.setSelectedIndex(1);
+                }
+                enableModificar(true);
+            }else {
+                JOptionPane.showMessageDialog(moduloTarjetas, "La tarjeta que busca no existe.", "Error", JOptionPane.ERROR_MESSAGE);
+            }
+        }
+    }
+
+    public void modificarTarjeta(){
+        if (verificarCamposModifiBuscar()){
+            String id = moduloTarjetas.tModifiTarjeta.getText();
+            double saldo = Double.parseDouble(moduloTarjetas.tModifiSaldo.getText());
+            String estado = moduloTarjetas.comboModifiEstado.getSelectedItem().toString();
+            Tarjeta tarjeta = new Tarjeta(id,saldo,estado);
+            boolean exito = new TarjetaDAO().modificarTarjeta(tarjeta);
+            if (exito){
+                JOptionPane.showMessageDialog(moduloTarjetas, "Tarjeta modificada exitosamente.", "", JOptionPane.INFORMATION_MESSAGE);
+                limpiarCamposModificar();
+                enableModificar(false);
+            }else {
+                JOptionPane.showMessageDialog(moduloTarjetas, "Error al modificar la tarjeta", "Error", JOptionPane.ERROR_MESSAGE);
             }
         }
     }
