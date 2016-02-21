@@ -3,7 +3,7 @@
  * Autor: Miguel Angel Lopez - 1326691
  * Autor: Andres Felipe Polanco - 1324539
  * Fecha: 09-oct-2015
- * Nombre del Archivo: .java
+ * Nombre del Archivo: ConexionBD.java
  * Plan: Ingeniería de Sistemas - 3743
  * Institución Educativa: Universidad del Valle
  **********************************************/
@@ -14,10 +14,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
 
-/**
- *
- * @author Camilo Ruiz Casanova
- */
 public class ConexionBD 
 {
     private String url; // direccion de la base de datos

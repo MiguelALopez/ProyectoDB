@@ -4,7 +4,7 @@
  * Autor: Miguel Angel Lopez - 1326691
  * Autor: Andres Felipe Polanco - 1324539
  * Fecha: 03-oct-2015
- * Nombre del Archivo: .java
+ * Nombre del Archivo: ModuloEmpleados_Eventos.java
  * Plan: Ingeniería de Sistemas - 3743
  * Institución Educativa: Universidad del Valle (Cali - Colombia)
  * *********************************************
@@ -23,10 +23,6 @@ import java.util.ArrayList;
 import javax.swing.JOptionPane;
 import javax.swing.table.DefaultTableModel;
 
-/**
- *
- * @author Camilo Ruiz Casanova
- */
 public class ModuloEmpleados_Eventos
 {
     private final ModuloEmpleados moduloEmpleados;

@@ -4,7 +4,7 @@
  * Autor: Miguel Angel Lopez - 1326691
  * Autor: Andres Felipe Polanco - 1324539
  * Fecha: 03-oct-2015
- * Nombre del Archivo: SoftwareMio.java
+ * Nombre del Archivo: EmpleadoDAO.java
  * Plan: Ingeniería de Sistemas - 3743
  * Institución Educativa: Universidad del Valle (Cali - Colombia)
  * *********************************************
@@ -19,11 +19,7 @@ import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
-/**
- *
- * @author Camilo Ruiz Casanova
- */
-public class EmpleadoDAO 
+public class EmpleadoDAO
 {
     ConexionBD conexionBD;
 

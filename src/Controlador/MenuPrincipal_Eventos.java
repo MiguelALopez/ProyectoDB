@@ -4,7 +4,7 @@
  * Autor: Miguel Angel Lopez - 1326691
  * Autor: Andres Felipe Polanco - 1324539
  * Fecha: 03-oct-2015
- * Nombre del Archivo: SoftwareMio.java
+ * Nombre del Archivo: MenuPrincipal.java
  * Plan: Ingeniería de Sistemas - 3743
  * Institución Educativa: Universidad del Valle (Cali - Colombia)
  * *********************************************
@@ -16,10 +16,6 @@ import Vista.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
-/**
- *
- * @author Camilo Ruiz Casanova
- */
 public class MenuPrincipal_Eventos 
 {
     private final MenuPrincipal menuPrincipal;
