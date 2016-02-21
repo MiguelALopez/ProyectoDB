@@ -160,7 +160,7 @@ public class MenuPrincipal extends javax.swing.JFrame
         gridBagConstraints.weighty = 1.0;
         jPanel1.add(jPanel3, gridBagConstraints);
 
-        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Modulo de Tarjetas y Usuarios", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
+        jPanel4.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Gestion de Tarjetas y Usuarios", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
         jPanel4.setLayout(new java.awt.GridBagLayout());
 
         bTarjetas.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -191,7 +191,7 @@ public class MenuPrincipal extends javax.swing.JFrame
         gridBagConstraints.weighty = 1.0;
         jPanel1.add(jPanel4, gridBagConstraints);
 
-        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Modulo de Venta y Recarga de Tarjetas", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
+        jPanel5.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Gestion de Servicios", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
         jPanel5.setLayout(new java.awt.GridBagLayout());
 
         bServicios.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -212,11 +212,11 @@ public class MenuPrincipal extends javax.swing.JFrame
         gridBagConstraints.weighty = 1.0;
         jPanel1.add(jPanel5, gridBagConstraints);
 
-        jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "C", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
+        jPanel8.setBorder(javax.swing.BorderFactory.createTitledBorder(null, "Gestion de Solicitudes", javax.swing.border.TitledBorder.CENTER, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
         jPanel8.setLayout(new java.awt.GridBagLayout());
 
         bSolicitudes.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        bSolicitudes.setText("Solicitudes");
+        bSolicitudes.setText("Modulo de Solicitudes");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;

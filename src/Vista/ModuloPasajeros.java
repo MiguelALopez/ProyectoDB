@@ -477,7 +477,7 @@ public class ModuloPasajeros extends javax.swing.JFrame
         gridBagConstraints.weighty = 1.0;
         panelCrear.add(jSeparator1, gridBagConstraints);
 
-        bCrearPasajero.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        bCrearPasajero.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         bCrearPasajero.setText("Crear Pasajero");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
