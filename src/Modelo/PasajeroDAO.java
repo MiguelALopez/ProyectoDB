@@ -23,34 +23,61 @@ public class PasajeroDAO {
     }
 
     /**
-     * Metodo encargado de insertar un pasajero en la base de datos
+     * Metodo encargado de insertar un pasajero en la base de datos, si el pasajero ya existe y se encuentra inactivo se reactiva con una nueva tarjeta
      * @param pasajero: parametro que contiene el pasajero a insertar
      * @return retorna true si se completo la insercion correctamente
      */
     public boolean insertarPasajero(Pasajero pasajero){
-        conexionBD.conectar();
-        boolean exito = false;
 
-        String query = "INSERT INTO pasajero(pasajero_id, pasajero_nombre, pasajero_telefono, pasajero_direccion, pasajero_email, tarjeta_id, pasajero_estado) " 
+        boolean exito = false;
+        String query1 = "(SELECT tarjeta_id FROM venta NATURAL JOIN tarjeta WHERE tarjeta_id = ? AND tarjeta_estado = ?)" +
+                "EXCEPT (SELECT tarjeta_id FROM venta NATURAL JOIN tarjeta NATURAL JOIN pasajero WHERE tarjeta_id = ?);";
+        String query2 = "SELECT * FROM pasajero WHERE pasajero_id = ?;";
+        String query3 = "INSERT INTO pasajero(pasajero_id, pasajero_nombre, pasajero_telefono, pasajero_direccion, pasajero_email, tarjeta_id, pasajero_estado) "
                 + "VALUES (?,?,?,?,?,?,?);";
+        String query4 = "UPDATE pasajero SET pasajero_nombre = ?, pasajero_telefono = ?, pasajero_direccion = ?, pasajero_email = ?, tarjeta_id = ?, pasajero_estado = ?" +
+                "WHERE pasajero_id = ?;";
+
+        conexionBD.conectar();
         try{
-            PreparedStatement st = conexionBD.conexion.prepareStatement(query);
-            st.setString(1, pasajero.getId());
-            st.setString(2, pasajero.getNombre());
-            st.setString(3, pasajero.getTelefono());
-            st.setString(4, pasajero.getDireccion());
-            st.setString(5, pasajero.getEmail());            
-            st.setString(6, pasajero.getTarjeta());
-            st.setBoolean(7, pasajero.isEstado());
-            int resultado = st.executeUpdate();
-            
-            exito = true;
+            PreparedStatement st = conexionBD.conexion.prepareStatement(query1);
+            st.setString(1, pasajero.getTarjeta());
+            st.setString(2, "ACTIVA");
+            st.setString(3, pasajero.getTarjeta());
+            ResultSet result1 = st.executeQuery();
+            if (result1.next()) { // Se verifica que la tarjeta se halla vendido, esta activa y no le pertenece a alguien
+                st = conexionBD.conexion.prepareStatement(query2);
+                st.setString(1, pasajero.getId());
+                ResultSet result2 = st.executeQuery();
+                if (!result2.next()) { // Se verifica que el usuario no exista
+                    st = conexionBD.conexion.prepareStatement(query3);
+                    st.setString(1, pasajero.getId());
+                    st.setString(2, pasajero.getNombre());
+                    st.setString(3, pasajero.getTelefono());
+                    st.setString(4, pasajero.getDireccion());
+                    st.setString(5, pasajero.getEmail());
+                    st.setString(6, pasajero.getTarjeta());
+                    st.setBoolean(7, pasajero.isEstado());
+                    st.executeUpdate();
+                    exito = true;
+                } else if (!result2.getBoolean(7)) { // Si existe el usuario se verifica que esta inactivo
+                    st = conexionBD.conexion.prepareStatement(query4);
+                    st.setString(1, pasajero.getNombre());
+                    st.setString(2, pasajero.getTelefono());
+                    st.setString(3, pasajero.getDireccion());
+                    st.setString(4, pasajero.getEmail());
+                    st.setString(5, pasajero.getTarjeta());
+                    st.setBoolean(6, pasajero.isEstado());
+                    st.setString(7, pasajero.getId());
+                    st.executeUpdate();
+                    exito = true;
+                }
+            }
         }catch (SQLException e){
             e.printStackTrace();
         }finally {
             conexionBD.cerrarConexion();
         }
-        
         return exito;
     }
 
