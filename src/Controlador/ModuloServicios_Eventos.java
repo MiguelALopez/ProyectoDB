@@ -301,6 +301,37 @@ public class ModuloServicios_Eventos
                 exito = false;
             }
         }
+        if (moduloServicios.radioPerson.isSelected()){
+            if (moduloServicios.tVentaCedula.getText().isEmpty()){
+                JOptionPane.showMessageDialog(moduloServicios, "El campo cedula es obligatorio.", "Error", JOptionPane.ERROR_MESSAGE);
+                exito = false;
+            }else if (moduloServicios.tVentaNombre.getText().isEmpty()){
+                JOptionPane.showMessageDialog(moduloServicios, "El campo nombre es obligatorio.", "Error", JOptionPane.ERROR_MESSAGE);
+                exito = false;
+            }else if (moduloServicios.tVentaTelefono.getText().isEmpty()){
+                JOptionPane.showMessageDialog(moduloServicios, "El campo telefono es obligatorio.", "Error", JOptionPane.ERROR_MESSAGE);
+                exito = false;
+            }else if (moduloServicios.tVentaDireccion.getText().isEmpty()){
+                JOptionPane.showMessageDialog(moduloServicios, "El campo direccion es obligatorio.", "Error", JOptionPane.ERROR_MESSAGE);
+                exito = false;
+            }else if (moduloServicios.tVentaEmail.getText().isEmpty()){
+                JOptionPane.showMessageDialog(moduloServicios, "El campo email es obligatorio.", "Error", JOptionPane.ERROR_MESSAGE);
+                exito = false;
+            }else {
+                try{
+                    Long.parseLong(moduloServicios.tVentaCedula.getText());
+                }catch (NumberFormatException e){
+                    JOptionPane.showMessageDialog(moduloServicios, "El campo cedula debe ser numerico.", "Error", JOptionPane.ERROR_MESSAGE);
+                    exito = false;
+                }
+                try{
+                    Long.parseLong(moduloServicios.tVentaTelefono.getText());
+                }catch (NumberFormatException e){
+                    JOptionPane.showMessageDialog(moduloServicios, "El campo telefono debe ser numerico.", "Error", JOptionPane.ERROR_MESSAGE);
+                    exito = false;
+                }
+            }
+        }
         
         return exito;
     }
