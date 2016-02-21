@@ -94,55 +94,28 @@ public class PasajeroDAO {
 
     /**
      * Metodo encargado de consultar un determinado pasajero atravez del id de su tarjeta
-     * @param tarjeta_id identificacion de la terjeta del pasajero
+     * @param id identificacion encargada de buscar un usuario puede ser el ID de la tarjeta o el ID del pasajero
+     * @param typeID encargado de identificar que tipo de ID se ingresa si es un ID tarjeta o una cedula del pasajero,
+     *               si el TRUE identifica la cedula de un pasajero, si es FALSE identifica el id ID de una terjeta
      * @return retorna el pasajero asociado al id de la tarjeta, o null si no se encuentra
      * @throws NullPointerException Puede retornar null si no se encuentra el pasajero
      */
-    public Pasajero consultarPasajero(String tarjeta_id) 
+    public Pasajero consultarPasajero(String id, boolean typeID)
     {
         conexionBD.conectar();
         Pasajero pasajero = null;
-
-        String query = "SELECT * FROM pasajero "
-                + "WHERE tarjeta_id = ?;";
-
+        String query;
+        if (typeID) {
+            query = "SELECT * FROM pasajero "
+                    + "WHERE pasajero_id = ?;";
+        }else {
+            query = "SELECT * FROM pasajero "
+                    + "WHERE tarjeta_id = ?;";
+        }
         try 
         {
             PreparedStatement st = conexionBD.conexion.prepareStatement(query);
-            st.setString(1, tarjeta_id);
-            ResultSet tabla = st.executeQuery();
-            
-            if (tabla.next())
-            {
-                pasajero = new Pasajero(tabla.getString(1), tabla.getString(2), tabla.getString(3),
-                        tabla.getString(4), tabla.getString(5), tabla.getString(6),
-                        tabla.getBoolean(7));
-            }
-        }
-        catch (SQLException e)
-        {
-            e.printStackTrace();
-        }
-        finally 
-        {
-            conexionBD.cerrarConexion();
-        }
-        
-        return pasajero;
-    }
-    
-    public Pasajero consultarPasajeroById(String pasajero_id) 
-    {
-        conexionBD.conectar();
-        Pasajero pasajero = null;
-
-        String query = "SELECT * FROM pasajero "
-                + "WHERE pasajero_id = ?;";
-
-        try 
-        {
-            PreparedStatement st = conexionBD.conexion.prepareStatement(query);
-            st.setString(1, pasajero_id);
+            st.setString(1, id);
             ResultSet tabla = st.executeQuery();
             
             if (tabla.next())

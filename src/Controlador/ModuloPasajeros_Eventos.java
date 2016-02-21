@@ -312,7 +312,7 @@ public class ModuloPasajeros_Eventos
         if (!moduloPasajeros.tModifBuscarTarjeta.getText().isEmpty())
         {
             String tarjeta_id = moduloPasajeros.tModifBuscarTarjeta.getText();
-            Pasajero pasajero = new PasajeroDAO().consultarPasajero(tarjeta_id);
+            Pasajero pasajero = new PasajeroDAO().consultarPasajero(tarjeta_id, false);
             
             if (pasajero != null)
             {
@@ -409,7 +409,7 @@ public class ModuloPasajeros_Eventos
         {
             String id = (String) moduloPasajeros.tablePasajeros.getValueAt(row, 0);
             
-            Pasajero p = new PasajeroDAO().consultarPasajero(id);
+            Pasajero p = new PasajeroDAO().consultarPasajero(id, false);
 
             if (p != null)
             {

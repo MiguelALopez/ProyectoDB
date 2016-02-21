@@ -229,7 +229,7 @@ public class TarjetaDAO {
     
     public boolean esGenerica(String id)
     {
-        return new PasajeroDAO().consultarPasajero(id) == null;
+        return new PasajeroDAO().consultarPasajero(id, false) == null;
     }
 
     public boolean recargarTarjeta(String id, double cantidad){

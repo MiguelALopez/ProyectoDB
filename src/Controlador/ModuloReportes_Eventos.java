@@ -990,7 +990,7 @@ public class ModuloReportes_Eventos
         //Cargar informacion
         
         PasajeroDAO pasDAO = new PasajeroDAO();
-        Pasajero pasajero = pasDAO.consultarPasajeroById(solicitud.getPasajero());
+        Pasajero pasajero = pasDAO.consultarPasajero(solicitud.getPasajero(), true);
         TarjetaDAO tarDAO = new TarjetaDAO();
         Tarjeta tar;
         tar = tarDAO.consultarTarjeta(pasajero.getTarjeta(), false);
