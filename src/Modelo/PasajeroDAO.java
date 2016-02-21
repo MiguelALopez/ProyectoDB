@@ -90,8 +90,7 @@ public class PasajeroDAO {
         conexionBD.conectar();
         boolean exito = false;
 
-        String query = "UPDATE pasajero SET " 
-                //+ "pasajero_id = ?, " +
+        String query1 = "UPDATE pasajero SET "
                 + "pasajero_nombre = ?, "
                 + "pasajero_telefono = ?, "
                 + "pasajero_direccion = ?, "
@@ -99,8 +98,11 @@ public class PasajeroDAO {
                 + "pasajero_estado = ? "
                 + "WHERE tarjeta_id = ?;";
 
+        String query2 = "UPDATE tarjeta SET " +
+                "tarjeta_estado = ? WHERE tarjeta_id = ?;";
+
         try{
-            PreparedStatement st = conexionBD.conexion.prepareStatement(query);
+            PreparedStatement st = conexionBD.conexion.prepareStatement(query1);
             st.setString(1, pasajero.getNombre());
             st.setString(2, pasajero.getTelefono());
             st.setString(3, pasajero.getDireccion());
@@ -108,7 +110,15 @@ public class PasajeroDAO {
             st.setBoolean(5, pasajero.isEstado());
             st.setString(6, pasajero.getTarjeta());
             st.executeUpdate();
-            
+
+            String estado = "ACTIVA";
+            if (!pasajero.isEstado()){
+                estado = "BLOQUEADA";
+            }
+            st = conexionBD.conexion.prepareStatement(query2);
+            st.setString(1, estado);
+            st.setString(2, pasajero.getTarjeta());
+            st.executeUpdate();
             exito = true;
         }catch (SQLException e){
             e.printStackTrace();
