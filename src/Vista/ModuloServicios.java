@@ -307,7 +307,7 @@ public class ModuloServicios extends javax.swing.JFrame
         jPanel6.add(tVentaFecha, gridBagConstraints);
 
         jLabel11.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        jLabel11.setText("Cedula del Pasajero: ");
+        jLabel11.setText("ID del Pasajero: ");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 3;

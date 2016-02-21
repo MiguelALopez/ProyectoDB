@@ -183,21 +183,25 @@ public class ModuloServicios_Eventos
             }
         );
         this.moduloServicios.radioPerson.addActionListener(
-                new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        enableCamposVenta(true);
-                    }
+            new ActionListener() 
+            {
+                @Override
+                public void actionPerformed(ActionEvent e) 
+                {
+                    enableCamposVenta(true);
                 }
+            }
         );
 
         this.moduloServicios.radioGenerica.addActionListener(
-                new ActionListener() {
-                    @Override
-                    public void actionPerformed(ActionEvent e) {
-                        enableCamposVenta(false);
-                    }
+            new ActionListener() 
+            {
+                @Override
+                public void actionPerformed(ActionEvent e) 
+                {
+                    enableCamposVenta(false);
                 }
+            }
         );
         
         tabChanged();
@@ -301,32 +305,52 @@ public class ModuloServicios_Eventos
                 exito = false;
             }
         }
-        if (moduloServicios.radioPerson.isSelected()){
-            if (moduloServicios.tVentaCedula.getText().isEmpty()){
+        
+        if (moduloServicios.radioPerson.isSelected())
+        {
+            if (moduloServicios.tVentaCedula.getText().isEmpty())
+            {
                 JOptionPane.showMessageDialog(moduloServicios, "El campo cedula es obligatorio.", "Error", JOptionPane.ERROR_MESSAGE);
                 exito = false;
-            }else if (moduloServicios.tVentaNombre.getText().isEmpty()){
+            }
+            else if (moduloServicios.tVentaNombre.getText().isEmpty())
+            {
                 JOptionPane.showMessageDialog(moduloServicios, "El campo nombre es obligatorio.", "Error", JOptionPane.ERROR_MESSAGE);
                 exito = false;
-            }else if (moduloServicios.tVentaTelefono.getText().isEmpty()){
+            }
+            else if (moduloServicios.tVentaTelefono.getText().isEmpty())
+            {
                 JOptionPane.showMessageDialog(moduloServicios, "El campo telefono es obligatorio.", "Error", JOptionPane.ERROR_MESSAGE);
                 exito = false;
-            }else if (moduloServicios.tVentaDireccion.getText().isEmpty()){
+            }
+            else if (moduloServicios.tVentaDireccion.getText().isEmpty())
+            {
                 JOptionPane.showMessageDialog(moduloServicios, "El campo direccion es obligatorio.", "Error", JOptionPane.ERROR_MESSAGE);
                 exito = false;
-            }else if (moduloServicios.tVentaEmail.getText().isEmpty()){
+            }
+            else if (moduloServicios.tVentaEmail.getText().isEmpty())
+            {
                 JOptionPane.showMessageDialog(moduloServicios, "El campo email es obligatorio.", "Error", JOptionPane.ERROR_MESSAGE);
                 exito = false;
-            }else {
-                try{
+            }
+            else 
+            {
+                try
+                {
                     Long.parseLong(moduloServicios.tVentaCedula.getText());
-                }catch (NumberFormatException e){
+                }
+                catch (NumberFormatException e)
+                {
                     JOptionPane.showMessageDialog(moduloServicios, "El campo cedula debe ser numerico.", "Error", JOptionPane.ERROR_MESSAGE);
                     exito = false;
                 }
-                try{
+                
+                try
+                {
                     Long.parseLong(moduloServicios.tVentaTelefono.getText());
-                }catch (NumberFormatException e){
+                }
+                catch (NumberFormatException e)
+                {
                     JOptionPane.showMessageDialog(moduloServicios, "El campo telefono debe ser numerico.", "Error", JOptionPane.ERROR_MESSAGE);
                     exito = false;
                 }
@@ -336,7 +360,8 @@ public class ModuloServicios_Eventos
         return exito;
     }
 
-    public void limpiarCamposVenta(){
+    public void limpiarCamposVenta()
+    {
         moduloServicios.tVentaCedula.setText("");
         moduloServicios.tVentaNombre.setText("");
         moduloServicios.tVentaTelefono.setText("");
@@ -344,13 +369,16 @@ public class ModuloServicios_Eventos
         moduloServicios.tVentaEmail.setText("");
     }
 
-    public void enableCamposVenta(boolean enable){
+    public void enableCamposVenta(boolean enable)
+    {
         moduloServicios.tVentaCedula.setEnabled(enable);
         moduloServicios.tVentaNombre.setEnabled(enable);
         moduloServicios.tVentaTelefono.setEnabled(enable);
         moduloServicios.tVentaDireccion.setEnabled(enable);
         moduloServicios.tVentaEmail.setEnabled(enable);
-        if (!enable){
+        
+        if (!enable)
+        {
             limpiarCamposVenta();
         }
     }
@@ -394,7 +422,8 @@ public class ModuloServicios_Eventos
 
             Venta venta = new Venta(fecha, valor, estacion, tarjetaID);
 
-            if (moduloServicios.radioPerson.isSelected()){
+            if (moduloServicios.radioPerson.isSelected())
+            {
                 String cedula = moduloServicios.tVentaCedula.getText();
                 String nombre = moduloServicios.tVentaNombre.getText();
                 String telefono = moduloServicios.tVentaTelefono.getText();
@@ -404,21 +433,28 @@ public class ModuloServicios_Eventos
                 Pasajero pasajero = new Pasajero(cedula,nombre,telefono,direccion,email,tarjetaID,true);
                 boolean exitoPersonalizada = new VentaDAO().insertarVentaPersonalizada(venta, pasajero);
 
-                if (exitoPersonalizada){
+                if (exitoPersonalizada)
+                {
                     JOptionPane.showMessageDialog(moduloServicios, "La venta personalizada fue registrada exitosamente.", "", JOptionPane.INFORMATION_MESSAGE);
                     consultarTarjetasVenta();
+                    limpiarCamposVenta();
                 }
-                else{
+                else
+                {
                     JOptionPane.showMessageDialog(moduloServicios, "Error al registrar la venta personalizada", "Error", JOptionPane.ERROR_MESSAGE);
                 }
-            }else {
-
+            }
+            else 
+            {
                 boolean exitoVenta = new VentaDAO().insertarVenta(venta);
-                if (exitoVenta){
+                
+                if (exitoVenta)
+                {
                     JOptionPane.showMessageDialog(moduloServicios, "Venta registrada exitosamente.", "", JOptionPane.INFORMATION_MESSAGE);
                     consultarTarjetasVenta();
                 }
-                else{
+                else
+                {
                     JOptionPane.showMessageDialog(moduloServicios, "Error al registrar la venta", "Error", JOptionPane.ERROR_MESSAGE);
                 }
             }
@@ -438,7 +474,15 @@ public class ModuloServicios_Eventos
         {
             try
             {
-                Integer.parseInt(moduloServicios.tRecargaTarjeta.getText());
+                Long.parseLong(moduloServicios.tRecargaTarjeta.getText());
+                
+                Tarjeta t = new TarjetaDAO().consultarTarjeta(moduloServicios.tRecargaTarjeta.getText(), true);
+                
+                if (t == null)
+                {
+                    JOptionPane.showMessageDialog(moduloServicios, "Tarjeta inexistente.", "Error", JOptionPane.ERROR_MESSAGE);
+                    exito = false;
+                }
             }
             catch (NumberFormatException e)
             {
@@ -456,7 +500,13 @@ public class ModuloServicios_Eventos
         {
             try
             {
-                Double.parseDouble(moduloServicios.tRecargaCantidad.getText());
+                double c = Double.parseDouble(moduloServicios.tRecargaCantidad.getText());
+                
+                if (c <= 0)
+                {
+                    JOptionPane.showMessageDialog(moduloServicios, "Ingrese una cantidad mayor a cero.", "Error", JOptionPane.ERROR_MESSAGE);
+                    exito = false;
+                }
             }
             catch (NumberFormatException e)
             {
@@ -480,6 +530,8 @@ public class ModuloServicios_Eventos
             if (exito) 
             {
                 JOptionPane.showMessageDialog(moduloServicios, "Recarga registrada exitosamente.", "", JOptionPane.INFORMATION_MESSAGE);
+                this.moduloServicios.tRecargaTarjeta.setText("");
+                this.moduloServicios.tRecargaCantidad.setText("0");
             }
             else 
             {

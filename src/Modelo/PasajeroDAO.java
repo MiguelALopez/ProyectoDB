@@ -212,4 +212,39 @@ public class PasajeroDAO {
         
         return lista;
     }
+    
+    public ArrayList<Pasajero> consultarPasajeros(boolean estado) 
+    {
+        conexionBD.conectar();
+        ArrayList<Pasajero> lista = null;
+
+        String query = "SELECT * FROM pasajero WHERE pasajero_estado = ?;";
+
+        try 
+        {
+            PreparedStatement st = conexionBD.conexion.prepareStatement(query);
+            st.setBoolean(1, estado);
+            ResultSet tabla = st.executeQuery();
+
+            lista = new ArrayList<>();
+
+            while (tabla.next())
+            {
+                lista.add(new Pasajero(tabla.getString(1), tabla.getString(2), tabla.getString(3),
+                        tabla.getString(4), tabla.getString(5), tabla.getString(6),
+                        tabla.getBoolean(7)));
+            }
+
+        }
+        catch (SQLException e) 
+        {
+            e.printStackTrace();
+        }
+        finally 
+        {
+            conexionBD.cerrarConexion();
+        }
+        
+        return lista;
+    }
 }

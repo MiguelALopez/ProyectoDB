@@ -246,6 +246,7 @@ public class TarjetaDAO {
                 saldo = tabla.getInt(1);
                 st = conexionBD.conexion.prepareStatement(query2);
                 st.setBigDecimal(1, BigDecimal.valueOf(saldo + cantidad));
+                st.setString(2, id);
                 st.executeUpdate();
                 exito = true;
             }

@@ -39,7 +39,7 @@ public class ModuloSolicitud_Eventos
         this.moduloSolicitud = moduloSolicitud;
         
         // Asignacion de fecha automaticamente
-        DateFormat fecha = new SimpleDateFormat("dd-MM-yyyy hh:mm:ss");
+        DateFormat fecha = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
         Date date = new Date();
         this.moduloSolicitud.tfGenFecha.setText(fecha.format(date));
         
@@ -220,7 +220,7 @@ public class ModuloSolicitud_Eventos
         else if ( this.tipo.equals("pasajero") )
         {
             PasajeroDAO pasDAO = new PasajeroDAO();
-            ArrayList<Pasajero> pasajeros = pasDAO.consultarPasajeros();
+            ArrayList<Pasajero> pasajeros = pasDAO.consultarPasajeros(true);
             
             if (pasajeros != null)
             {
