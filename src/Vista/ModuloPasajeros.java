@@ -283,8 +283,8 @@ public class ModuloPasajeros extends javax.swing.JFrame
 
         fDetalles.getContentPane().add(panelModif1);
 
-        setMinimumSize(new java.awt.Dimension(800, 600));
-        setPreferredSize(new java.awt.Dimension(800, 600));
+        setMinimumSize(new java.awt.Dimension(700, 600));
+        setPreferredSize(new java.awt.Dimension(700, 600));
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
         jTabbedPane1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -297,7 +297,7 @@ public class ModuloPasajeros extends javax.swing.JFrame
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(10, 5, 5, 0);
+        gridBagConstraints.insets = new java.awt.Insets(15, 5, 5, 0);
         panelCrear.add(jLabel1, gridBagConstraints);
 
         jLabel9.setForeground(new java.awt.Color(255, 0, 0));
@@ -306,7 +306,7 @@ public class ModuloPasajeros extends javax.swing.JFrame
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 5, 0);
+        gridBagConstraints.insets = new java.awt.Insets(15, 15, 5, 0);
         panelCrear.add(jLabel9, gridBagConstraints);
 
         tCrearCedula.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -315,7 +315,7 @@ public class ModuloPasajeros extends javax.swing.JFrame
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 5, 10);
+        gridBagConstraints.insets = new java.awt.Insets(15, 10, 5, 15);
         panelCrear.add(tCrearCedula, gridBagConstraints);
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -333,7 +333,7 @@ public class ModuloPasajeros extends javax.swing.JFrame
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 0);
+        gridBagConstraints.insets = new java.awt.Insets(5, 15, 5, 0);
         panelCrear.add(jLabel10, gridBagConstraints);
 
         tCrearNombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -342,7 +342,7 @@ public class ModuloPasajeros extends javax.swing.JFrame
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 10);
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 15);
         panelCrear.add(tCrearNombre, gridBagConstraints);
 
         jLabel11.setForeground(new java.awt.Color(255, 0, 0));
@@ -351,7 +351,7 @@ public class ModuloPasajeros extends javax.swing.JFrame
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 0);
+        gridBagConstraints.insets = new java.awt.Insets(5, 15, 5, 0);
         panelCrear.add(jLabel11, gridBagConstraints);
 
         jLabel12.setForeground(new java.awt.Color(255, 0, 0));
@@ -360,7 +360,7 @@ public class ModuloPasajeros extends javax.swing.JFrame
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 0);
+        gridBagConstraints.insets = new java.awt.Insets(5, 15, 5, 0);
         panelCrear.add(jLabel12, gridBagConstraints);
 
         jLabel13.setForeground(new java.awt.Color(255, 0, 0));
@@ -369,7 +369,7 @@ public class ModuloPasajeros extends javax.swing.JFrame
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 0);
+        gridBagConstraints.insets = new java.awt.Insets(5, 15, 5, 0);
         panelCrear.add(jLabel13, gridBagConstraints);
 
         jLabel14.setForeground(new java.awt.Color(255, 0, 0));
@@ -378,7 +378,7 @@ public class ModuloPasajeros extends javax.swing.JFrame
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 5;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 0);
+        gridBagConstraints.insets = new java.awt.Insets(5, 15, 5, 0);
         panelCrear.add(jLabel14, gridBagConstraints);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -423,7 +423,7 @@ public class ModuloPasajeros extends javax.swing.JFrame
         gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 10);
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 15);
         panelCrear.add(tCrearTelefono, gridBagConstraints);
 
         tCrearDireccion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -432,7 +432,7 @@ public class ModuloPasajeros extends javax.swing.JFrame
         gridBagConstraints.gridy = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 10);
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 15);
         panelCrear.add(tCrearDireccion, gridBagConstraints);
 
         tCrearEmail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -441,7 +441,7 @@ public class ModuloPasajeros extends javax.swing.JFrame
         gridBagConstraints.gridy = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 10);
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 15);
         panelCrear.add(tCrearEmail, gridBagConstraints);
 
         tCrearTarjeta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -450,7 +450,7 @@ public class ModuloPasajeros extends javax.swing.JFrame
         gridBagConstraints.gridy = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 10);
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 15);
         panelCrear.add(tCrearTarjeta, gridBagConstraints);
 
         jLabel15.setText("Campos Obligatorios");
@@ -467,7 +467,7 @@ public class ModuloPasajeros extends javax.swing.JFrame
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 0);
+        gridBagConstraints.insets = new java.awt.Insets(5, 15, 5, 0);
         panelCrear.add(jLabel16, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -486,7 +486,7 @@ public class ModuloPasajeros extends javax.swing.JFrame
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.ipadx = 5;
         gridBagConstraints.ipady = 5;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+        gridBagConstraints.insets = new java.awt.Insets(10, 15, 10, 10);
         panelCrear.add(bCrearPasajero, gridBagConstraints);
 
         jTabbedPane1.addTab("Crear Pasajero", panelCrear);
@@ -508,17 +508,18 @@ public class ModuloPasajeros extends javax.swing.JFrame
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 5, 0);
+        gridBagConstraints.insets = new java.awt.Insets(10, 15, 5, 0);
         panelModif.add(jLabel17, gridBagConstraints);
 
         tModifCedula.setEditable(false);
         tModifCedula.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tModifCedula.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 5, 10);
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 5, 15);
         panelModif.add(tModifCedula, gridBagConstraints);
 
         jLabel8.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -536,17 +537,17 @@ public class ModuloPasajeros extends javax.swing.JFrame
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 0);
+        gridBagConstraints.insets = new java.awt.Insets(5, 15, 5, 0);
         panelModif.add(jLabel18, gridBagConstraints);
 
-        tModifNombre.setEditable(false);
         tModifNombre.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tModifNombre.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 2;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 10);
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 15);
         panelModif.add(tModifNombre, gridBagConstraints);
 
         jLabel19.setForeground(new java.awt.Color(255, 0, 0));
@@ -555,7 +556,7 @@ public class ModuloPasajeros extends javax.swing.JFrame
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 0);
+        gridBagConstraints.insets = new java.awt.Insets(5, 15, 5, 0);
         panelModif.add(jLabel19, gridBagConstraints);
 
         jLabel20.setForeground(new java.awt.Color(255, 0, 0));
@@ -564,7 +565,7 @@ public class ModuloPasajeros extends javax.swing.JFrame
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 0);
+        gridBagConstraints.insets = new java.awt.Insets(5, 15, 5, 0);
         panelModif.add(jLabel20, gridBagConstraints);
 
         jLabel21.setForeground(new java.awt.Color(255, 0, 0));
@@ -573,7 +574,7 @@ public class ModuloPasajeros extends javax.swing.JFrame
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 5;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 0);
+        gridBagConstraints.insets = new java.awt.Insets(5, 15, 5, 0);
         panelModif.add(jLabel21, gridBagConstraints);
 
         jLabel22.setForeground(new java.awt.Color(255, 0, 0));
@@ -582,7 +583,7 @@ public class ModuloPasajeros extends javax.swing.JFrame
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 6;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 0);
+        gridBagConstraints.insets = new java.awt.Insets(5, 15, 5, 0);
         panelModif.add(jLabel22, gridBagConstraints);
 
         jLabel23.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -621,44 +622,45 @@ public class ModuloPasajeros extends javax.swing.JFrame
         gridBagConstraints.insets = new java.awt.Insets(5, 5, 5, 0);
         panelModif.add(jLabel26, gridBagConstraints);
 
-        tModifTelefono.setEditable(false);
         tModifTelefono.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tModifTelefono.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 10);
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 15);
         panelModif.add(tModifTelefono, gridBagConstraints);
 
-        tModifDireccion.setEditable(false);
         tModifDireccion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tModifDireccion.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 4;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 10);
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 15);
         panelModif.add(tModifDireccion, gridBagConstraints);
 
-        tModifEmail.setEditable(false);
         tModifEmail.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tModifEmail.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 5;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 10);
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 15);
         panelModif.add(tModifEmail, gridBagConstraints);
 
         tModifTarjeta.setEditable(false);
         tModifTarjeta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        tModifTarjeta.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 6;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 10);
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 15);
         panelModif.add(tModifTarjeta, gridBagConstraints);
 
         jLabel27.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -676,7 +678,7 @@ public class ModuloPasajeros extends javax.swing.JFrame
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 8;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 0);
+        gridBagConstraints.insets = new java.awt.Insets(5, 15, 5, 0);
         panelModif.add(jLabel28, gridBagConstraints);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -695,7 +697,7 @@ public class ModuloPasajeros extends javax.swing.JFrame
         gridBagConstraints.gridy = 0;
         gridBagConstraints.gridwidth = 2;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 0);
+        gridBagConstraints.insets = new java.awt.Insets(15, 15, 10, 0);
         jPanel1.add(jLabel29, gridBagConstraints);
 
         tModifBuscarTarjeta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -704,7 +706,7 @@ public class ModuloPasajeros extends javax.swing.JFrame
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 5);
+        gridBagConstraints.insets = new java.awt.Insets(15, 10, 10, 5);
         jPanel1.add(tModifBuscarTarjeta, gridBagConstraints);
 
         bModifBuscar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -713,7 +715,7 @@ public class ModuloPasajeros extends javax.swing.JFrame
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.insets = new java.awt.Insets(10, 5, 10, 10);
+        gridBagConstraints.insets = new java.awt.Insets(15, 5, 10, 15);
         jPanel1.add(bModifBuscar, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -735,7 +737,7 @@ public class ModuloPasajeros extends javax.swing.JFrame
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 5);
+        gridBagConstraints.insets = new java.awt.Insets(10, 15, 10, 5);
         jPanel2.add(bModifCancelar, gridBagConstraints);
 
         bModificarPasajero.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
@@ -746,7 +748,7 @@ public class ModuloPasajeros extends javax.swing.JFrame
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(10, 5, 10, 10);
+        gridBagConstraints.insets = new java.awt.Insets(10, 5, 10, 15);
         jPanel2.add(bModificarPasajero, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -772,7 +774,7 @@ public class ModuloPasajeros extends javax.swing.JFrame
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 7;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 0);
+        gridBagConstraints.insets = new java.awt.Insets(5, 15, 5, 0);
         panelModif.add(jLabel34, gridBagConstraints);
 
         cbModifEstado.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -783,7 +785,7 @@ public class ModuloPasajeros extends javax.swing.JFrame
         gridBagConstraints.gridy = 7;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 10);
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 15);
         panelModif.add(cbModifEstado, gridBagConstraints);
 
         jTabbedPane1.addTab("Modificar Pasajero", panelModif);
@@ -817,7 +819,7 @@ public class ModuloPasajeros extends javax.swing.JFrame
         gridBagConstraints.fill = java.awt.GridBagConstraints.BOTH;
         gridBagConstraints.weightx = 1.0;
         gridBagConstraints.weighty = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 5, 10);
+        gridBagConstraints.insets = new java.awt.Insets(15, 15, 5, 15);
         panelConsul.add(jScrollPane1, gridBagConstraints);
 
         jLabel30.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -826,7 +828,7 @@ public class ModuloPasajeros extends javax.swing.JFrame
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 1;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 0);
+        gridBagConstraints.insets = new java.awt.Insets(5, 15, 5, 0);
         panelConsul.add(jLabel30, gridBagConstraints);
 
         tConsulBuscarTarjeta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -835,7 +837,7 @@ public class ModuloPasajeros extends javax.swing.JFrame
         gridBagConstraints.gridy = 1;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 10);
+        gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 15);
         panelConsul.add(tConsulBuscarTarjeta, gridBagConstraints);
 
         jPanel3.setLayout(new java.awt.GridBagLayout());
@@ -847,7 +849,7 @@ public class ModuloPasajeros extends javax.swing.JFrame
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(5, 5, 10, 10);
+        gridBagConstraints.insets = new java.awt.Insets(5, 5, 10, 15);
         jPanel3.add(bDetalles, gridBagConstraints);
 
         bConsulActualizar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
@@ -857,7 +859,7 @@ public class ModuloPasajeros extends javax.swing.JFrame
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(5, 10, 10, 5);
+        gridBagConstraints.insets = new java.awt.Insets(5, 15, 10, 5);
         jPanel3.add(bConsulActualizar, gridBagConstraints);
 
         gridBagConstraints = new java.awt.GridBagConstraints();
@@ -878,7 +880,7 @@ public class ModuloPasajeros extends javax.swing.JFrame
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 5, 0);
+        gridBagConstraints.insets = new java.awt.Insets(15, 10, 5, 0);
         paneHistory.add(jLabel31, gridBagConstraints);
 
         bHistoryBuscar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -887,7 +889,7 @@ public class ModuloPasajeros extends javax.swing.JFrame
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
-        gridBagConstraints.insets = new java.awt.Insets(10, 5, 5, 10);
+        gridBagConstraints.insets = new java.awt.Insets(15, 5, 5, 10);
         paneHistory.add(bHistoryBuscar, gridBagConstraints);
 
         tHistoryBuscarTarjeta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -896,7 +898,7 @@ public class ModuloPasajeros extends javax.swing.JFrame
         gridBagConstraints.gridy = 0;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 5, 5);
+        gridBagConstraints.insets = new java.awt.Insets(15, 10, 5, 5);
         paneHistory.add(tHistoryBuscarTarjeta, gridBagConstraints);
 
         tableHistory.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N

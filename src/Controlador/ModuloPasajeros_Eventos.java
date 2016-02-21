@@ -275,12 +275,11 @@ public class ModuloPasajeros_Eventos
             String direccion = moduloPasajeros.tCrearDireccion.getText();
             String email = moduloPasajeros.tCrearEmail.getText();
             String tarjeta = moduloPasajeros.tCrearTarjeta.getText();
-            boolean estado = true;
 
             int op = JOptionPane.showConfirmDialog(moduloPasajeros, "Desea crear el usuario " + id + "?", "", JOptionPane.YES_NO_OPTION );
             if (op == JOptionPane.YES_OPTION)
             {
-                Pasajero pasajero = new Pasajero(id,nombre,telefono,direccion,email,tarjeta,estado);
+                Pasajero pasajero = new Pasajero(id,nombre,telefono,direccion,email,tarjeta,true);
 
                 boolean exito = new PasajeroDAO().insertarPasajero(pasajero);
 
@@ -298,10 +297,10 @@ public class ModuloPasajeros_Eventos
     {
         moduloPasajeros.bModifCancelar.setEnabled(enable);
         //moduloPasajeros.tModifCedula.setEditable(enable);
-        moduloPasajeros.tModifNombre.setEditable(enable);
-        moduloPasajeros.tModifTelefono.setEditable(enable);
-        moduloPasajeros.tModifDireccion.setEditable(enable);
-        moduloPasajeros.tModifEmail.setEditable(enable);
+        moduloPasajeros.tModifNombre.setEnabled(enable);
+        moduloPasajeros.tModifTelefono.setEnabled(enable);
+        moduloPasajeros.tModifDireccion.setEnabled(enable);
+        moduloPasajeros.tModifEmail.setEnabled(enable);
         //moduloPasajeros.tModifTarjeta.setEditable(enable);
         moduloPasajeros.cbModifEstado.setEnabled(enable);
         moduloPasajeros.tModifBuscarTarjeta.setEnabled(!enable);
