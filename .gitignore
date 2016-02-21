@@ -22,7 +22,9 @@ ProyectoDB.iml
 /nbproject/
 /build.xml
 /manifest.mf
+/out/
+/build/
+
 
 # Archivos externos
 *.pdf
-/build/
