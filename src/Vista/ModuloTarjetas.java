@@ -194,21 +194,25 @@ public class ModuloTarjetas extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 10);
         jPanel3.add(jPanel2, gridBagConstraints);
 
-        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder("Editar Tarjeta")));
+        jPanel7.setBorder(javax.swing.BorderFactory.createTitledBorder(javax.swing.BorderFactory.createTitledBorder("Editar Tarjeta"), "Modifcar Tarjeta", javax.swing.border.TitledBorder.DEFAULT_JUSTIFICATION, javax.swing.border.TitledBorder.DEFAULT_POSITION, new java.awt.Font("Tahoma", 0, 14))); // NOI18N
         jPanel7.setLayout(new java.awt.GridBagLayout());
 
+        jLabel3.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel3.setText("Tarjeta ID:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 0);
         jPanel7.add(jLabel3, gridBagConstraints);
+
+        tModifiTarjeta.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridwidth = 3;
         gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
         gridBagConstraints.weightx = 1.0;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 5);
         jPanel7.add(tModifiTarjeta, gridBagConstraints);
 
+        bModifiBuscar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         bModifiBuscar.setText("Buscar");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 4;
@@ -217,6 +221,7 @@ public class ModuloTarjetas extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(10, 5, 10, 10);
         jPanel7.add(bModifiBuscar, gridBagConstraints);
 
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Saldo:");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -225,6 +230,7 @@ public class ModuloTarjetas extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 0);
         jPanel7.add(jLabel4, gridBagConstraints);
 
+        tModifiSaldo.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         tModifiSaldo.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
@@ -234,6 +240,7 @@ public class ModuloTarjetas extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel7.add(tModifiSaldo, gridBagConstraints);
 
+        jLabel5.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel5.setText("Estado");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
@@ -242,17 +249,19 @@ public class ModuloTarjetas extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 0);
         jPanel7.add(jLabel5, gridBagConstraints);
 
+        comboModifiEstado.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         comboModifiEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "ACTIVA", "BLOQUEADA" }));
         comboModifiEstado.setEnabled(false);
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 3;
         gridBagConstraints.gridy = 1;
-        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
+        gridBagConstraints.fill = java.awt.GridBagConstraints.HORIZONTAL;
+        gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 5);
         jPanel7.add(comboModifiEstado, gridBagConstraints);
 
         jPanel5.setLayout(new java.awt.GridBagLayout());
 
-        bModifiCancelar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        bModifiCancelar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         bModifiCancelar.setText("Cancelar");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
@@ -264,7 +273,7 @@ public class ModuloTarjetas extends javax.swing.JFrame {
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         jPanel5.add(bModifiCancelar, gridBagConstraints);
 
-        bModificar.setFont(new java.awt.Font("Arial", 0, 18)); // NOI18N
+        bModificar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
         bModificar.setText("Modificar");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;

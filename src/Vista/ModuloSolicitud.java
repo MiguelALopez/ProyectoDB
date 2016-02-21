@@ -219,8 +219,8 @@ public class ModuloSolicitud extends javax.swing.JFrame
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 10);
         fResponder.getContentPane().add(jPanel9, gridBagConstraints);
 
-        setMinimumSize(new java.awt.Dimension(500, 480));
-        setPreferredSize(new java.awt.Dimension(500, 480));
+        setMinimumSize(new java.awt.Dimension(600, 600));
+        setPreferredSize(new java.awt.Dimension(600, 600));
         getContentPane().setLayout(new javax.swing.BoxLayout(getContentPane(), javax.swing.BoxLayout.LINE_AXIS));
 
         jTabbedPane1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -283,8 +283,8 @@ public class ModuloSolicitud extends javax.swing.JFrame
 
         jPanel6.setLayout(new java.awt.GridBagLayout());
 
-        bGenCerrar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        bGenCerrar.setText("CERRAR");
+        bGenCerrar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        bGenCerrar.setText("Cerrar");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 1;
         gridBagConstraints.gridy = 0;
@@ -293,11 +293,11 @@ public class ModuloSolicitud extends javax.swing.JFrame
         gridBagConstraints.insets = new java.awt.Insets(10, 5, 10, 10);
         jPanel6.add(bGenCerrar, gridBagConstraints);
 
-        bGenAgregar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        bGenAgregar.setText("AGREGAR");
+        bGenAgregar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        bGenAgregar.setText("Agregar");
         bGenAgregar.setMaximumSize(new java.awt.Dimension(85, 25));
         bGenAgregar.setMinimumSize(new java.awt.Dimension(85, 25));
-        bGenAgregar.setPreferredSize(new java.awt.Dimension(85, 25));
+        bGenAgregar.setPreferredSize(new java.awt.Dimension(79, 31));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -314,6 +314,7 @@ public class ModuloSolicitud extends javax.swing.JFrame
         jPanel1.add(jPanel6, gridBagConstraints);
 
         taGenDescripcion.setColumns(20);
+        taGenDescripcion.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         taGenDescripcion.setRows(5);
         jScrollPane2.setViewportView(taGenDescripcion);
 
@@ -477,11 +478,11 @@ public class ModuloSolicitud extends javax.swing.JFrame
 
         jPanel7.setLayout(new java.awt.GridBagLayout());
 
-        bConResponder.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        bConResponder.setText("RESPONDER");
+        bConResponder.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        bConResponder.setText("Responder");
         bConResponder.setMaximumSize(new java.awt.Dimension(85, 25));
         bConResponder.setMinimumSize(new java.awt.Dimension(85, 25));
-        bConResponder.setPreferredSize(new java.awt.Dimension(85, 25));
+        bConResponder.setPreferredSize(new java.awt.Dimension(79, 31));
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 0;
@@ -490,8 +491,8 @@ public class ModuloSolicitud extends javax.swing.JFrame
         gridBagConstraints.insets = new java.awt.Insets(10, 10, 10, 5);
         jPanel7.add(bConResponder, gridBagConstraints);
 
-        bConCerrar.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-        bConCerrar.setText("CERRAR");
+        bConCerrar.setFont(new java.awt.Font("Tahoma", 0, 18)); // NOI18N
+        bConCerrar.setText("Cerrar");
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 2;
         gridBagConstraints.gridy = 0;
@@ -584,7 +585,7 @@ public class ModuloSolicitud extends javax.swing.JFrame
         gridBagConstraints = new java.awt.GridBagConstraints();
         gridBagConstraints.gridx = 0;
         gridBagConstraints.gridy = 7;
-        gridBagConstraints.anchor = java.awt.GridBagConstraints.LINE_START;
+        gridBagConstraints.anchor = java.awt.GridBagConstraints.FIRST_LINE_START;
         gridBagConstraints.insets = new java.awt.Insets(5, 10, 5, 5);
         jPanel2.add(jLabel15, gridBagConstraints);
 
