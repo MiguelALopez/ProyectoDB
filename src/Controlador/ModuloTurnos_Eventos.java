@@ -12,6 +12,8 @@
 
 package Controlador;
 
+import Modelo.Empleado;
+import Modelo.EmpleadoDAO;
 import Modelo.Turno;
 import Modelo.TurnoDAO;
 import Vista.ModuloTurnos;
@@ -24,10 +26,12 @@ import javax.swing.table.DefaultTableModel;
 public class ModuloTurnos_Eventos
 {
     private final ModuloTurnos moduloTurnos;
+    Turno old;
 
     public ModuloTurnos_Eventos(final ModuloTurnos moduloTurnos) 
     {
         this.moduloTurnos = moduloTurnos;
+        old = null;
         
         this.moduloTurnos.bAsignarTurno.addActionListener(
             new ActionListener()
@@ -154,6 +158,24 @@ public class ModuloTurnos_Eventos
             JOptionPane.showMessageDialog(moduloTurnos, "El campo ID es obligatorio.", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
         }
+        else
+        {
+            Empleado e = new EmpleadoDAO().consultarEmpleado(this.moduloTurnos.tfCrearID.getText());
+            
+            if (e != null)
+            {
+                if (!e.getCargo().equals("Conductor"))
+                {
+                    JOptionPane.showMessageDialog(moduloTurnos, "El empleado no es conductor.", "Error", JOptionPane.ERROR_MESSAGE);
+                    return false;
+                }
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(moduloTurnos, "Empleado inexistente.", "Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
+        }
         
         if (this.moduloTurnos.tfCrearSerial.getText().isEmpty())
         {
@@ -176,6 +198,7 @@ public class ModuloTurnos_Eventos
         String conductor = this.moduloTurnos.tfBuscarID1.getText();
         
         Turno e = new TurnoDAO().consultarTurno(conductor);
+        this.old = e;
         
         if (e != null)
         {
@@ -183,7 +206,7 @@ public class ModuloTurnos_Eventos
             this.moduloTurnos.tfModificarSerial.setText(e.getBus());
             this.moduloTurnos.cbModificarTurno.setSelectedItem(e.getTurno());
             
-            habilitarCamposModificar1(true);
+            habilitarCamposModificar(true);
         }
         else
         {
@@ -197,6 +220,7 @@ public class ModuloTurnos_Eventos
         String turno = (String) this.moduloTurnos.cbBuscarTurno1.getSelectedItem();
         
         Turno e = new TurnoDAO().consultarTurno(bus, turno);
+        this.old = e;
         
         if (e != null)
         {
@@ -204,7 +228,7 @@ public class ModuloTurnos_Eventos
             this.moduloTurnos.tfModificarSerial.setText(e.getBus());
             this.moduloTurnos.cbModificarTurno.setSelectedItem(e.getTurno());
             
-            habilitarCamposModificar2(true);
+            habilitarCamposModificar(true);
         }
         else
         {
@@ -212,15 +236,11 @@ public class ModuloTurnos_Eventos
         }
     }
     
-    public void habilitarCamposModificar1(boolean b)
-    {
-        this.moduloTurnos.tfModificarSerial.setEditable(b);
-        this.moduloTurnos.cbModificarTurno.setEnabled(b);
-    }
-    
-    public void habilitarCamposModificar2(boolean b)
+    public void habilitarCamposModificar(boolean b)
     {
         this.moduloTurnos.tfModificarID.setEditable(b);
+        this.moduloTurnos.tfModificarSerial.setEditable(b);
+        this.moduloTurnos.cbModificarTurno.setEnabled(b);
     }
     
     public void modificarTurno()
@@ -237,14 +257,13 @@ public class ModuloTurnos_Eventos
             {
                 Turno e = new Turno(bus, turno, conductor);
                 
-                boolean exito = new TurnoDAO().modificarTurno(e);
+                boolean exito = new TurnoDAO().modificarTurno(this.old, e);
                 
                 if (exito)
                 {
                     JOptionPane.showMessageDialog(moduloTurnos, "Turno modificada exitosamente.", "", JOptionPane.INFORMATION_MESSAGE);
                     limpiarCamposModificar();
-                    habilitarCamposModificar1(false);
-                    habilitarCamposModificar2(false);
+                    habilitarCamposModificar(false);
                 }
                 else
                 {
@@ -260,6 +279,24 @@ public class ModuloTurnos_Eventos
         {
             JOptionPane.showMessageDialog(moduloTurnos, "El campo ID es obligatorio.", "Error", JOptionPane.ERROR_MESSAGE);
             return false;
+        }
+        else
+        {
+            Empleado e = new EmpleadoDAO().consultarEmpleado(this.moduloTurnos.tfCrearID.getText());
+            
+            if (e != null)
+            {
+                if (!e.getCargo().equals("Conductor"))
+                {
+                    JOptionPane.showMessageDialog(moduloTurnos, "El empleado no es conductor.", "Error", JOptionPane.ERROR_MESSAGE);
+                    return false;
+                }
+            }
+            else
+            {
+                JOptionPane.showMessageDialog(moduloTurnos, "Empleado inexistente.", "Error", JOptionPane.ERROR_MESSAGE);
+                return false;
+            }
         }
         
         if (this.moduloTurnos.tfModificarSerial.getText().isEmpty())
@@ -322,6 +359,12 @@ public class ModuloTurnos_Eventos
     public void eliminarTurno()
     {
         String conductor = this.moduloTurnos.tfEliminarID.getText();
+        
+        if (conductor.isEmpty())
+        {
+            JOptionPane.showMessageDialog(moduloTurnos, "No ha buscado ningun turno.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
         int op = JOptionPane.showConfirmDialog(moduloTurnos, "Desea eliminar la Turno " + conductor + "?", "", JOptionPane.YES_NO_OPTION);
 

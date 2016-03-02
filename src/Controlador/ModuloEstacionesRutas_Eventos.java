@@ -144,6 +144,17 @@ public class ModuloEstacionesRutas_Eventos
     {
         String estacion = this.moduloEstacionesRutas.tfEliminarNombreEstacion.getText();
         String ruta = this.moduloEstacionesRutas.tfEliminarNombreRuta.getText();
+        
+        if (estacion.isEmpty() || ruta.isEmpty())
+        {
+            JOptionPane.showMessageDialog(moduloEstacionesRutas, "Todos los campos son obligatorios.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }        
+        else if (new EstacionRutaDAO().consultarEstacionRuta(estacion, ruta) == null)
+        {
+            JOptionPane.showMessageDialog(moduloEstacionesRutas, "Asignacion inexistente.", "Error", JOptionPane.ERROR_MESSAGE);
+            return;
+        }
 
         int op = JOptionPane.showConfirmDialog(moduloEstacionesRutas, "Desea eliminar la Ruta " + ruta + " de la Estacion " + estacion + "?", "", JOptionPane.YES_NO_OPTION);
 

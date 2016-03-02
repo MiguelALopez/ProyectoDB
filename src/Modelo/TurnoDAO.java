@@ -62,24 +62,27 @@ public class TurnoDAO
         return exito;
     }
     
-    public boolean modificarTurno(Turno turno)
+    public boolean modificarTurno(Turno old, Turno nuevo)
     {
         conexionBD.conectar();
         boolean exito = false;
         
         String query = "UPDATE turno SET "
-                //+ "bus_serial = ?, "
-                //+ "turno_turno = ?, "
+                + "bus_serial = ?, "
+                + "turno_turno = ?, "
                 + "conductor_empleado_id = ? "
-                + "WHERE bus_serial = ? AND turno_turno = ?;";
+                + "WHERE bus_serial = ? AND turno_turno = ? AND conductor_empleado_id = ?;";
         
         try
         {
             PreparedStatement st = conexionBD.conexion.prepareStatement(query);
             
-            st.setString(3, turno.getTurno());
-            st.setString(2, turno.getBus());
-            st.setString(1, turno.getConductor());
+            st.setString(1, nuevo.getBus());
+            st.setString(2, nuevo.getTurno());
+            st.setString(3, nuevo.getConductor());
+            st.setString(4, old.getBus());
+            st.setString(5, old.getTurno());
+            st.setString(6, old.getConductor());
             
             int resultado = st.executeUpdate();
             exito = true;
