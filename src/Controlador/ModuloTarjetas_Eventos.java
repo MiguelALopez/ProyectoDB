@@ -101,6 +101,14 @@ public class ModuloTarjetas_Eventos {
                     }
                 }
         );
+        this.moduloTarjetas.bConsulActualizar.addActionListener(
+                new ActionListener() {
+                    @Override
+                    public void actionPerformed(ActionEvent e) {
+                        consultarTarjetas();
+                    }
+                }
+        );
     }
 
     public void limpiarCamposCrear(){
