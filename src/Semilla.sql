@@ -536,31 +536,29 @@ VALUES ('100001', 'P10D', '2015-12-11 12:45:00');
 
 -- Buses:
 INSERT INTO bus (bus_serial, bus_tipo, bus_capacidad, ruta_nombre, bus_estado)
-VALUES ('001122','Articulado','180','E31','TRUE');
+VALUES ('001122','Articulado',180,'E31','TRUE');
 INSERT INTO bus (bus_serial, bus_tipo, bus_capacidad, ruta_nombre, bus_estado)
-VALUES ('112233','Padron','90','','TRUE');
+VALUES ('112233','Padron',90,NULL,'TRUE');
 INSERT INTO bus (bus_serial, bus_tipo, bus_capacidad, ruta_nombre, bus_estado)
-VALUES ('223344','Alimentador','50','','FALSE');
+VALUES ('223344','Alimentador',50,NULL,'FALSE');
 INSERT INTO bus (bus_serial, bus_tipo, bus_capacidad, ruta_nombre, bus_estado)
-VALUES ('334455','Articulado','180','E21','TRUE');
+VALUES ('334455','Articulado',180,'E21','TRUE');
 INSERT INTO bus (bus_serial, bus_tipo, bus_capacidad, ruta_nombre, bus_estado)
-VALUES ('445566','Padron','80','','TRUE');
+VALUES ('445566','Padron',80,NULL,'TRUE');
 INSERT INTO bus (bus_serial, bus_tipo, bus_capacidad, ruta_nombre, bus_estado)
-VALUES ('556677','Articulado','180','','TRUE');
+VALUES ('556677','Articulado',180,NULL,'TRUE');
 INSERT INTO bus (bus_serial, bus_tipo, bus_capacidad, ruta_nombre, bus_estado)
-VALUES ('667788','Articulado','180','','TRUE');
+VALUES ('667788','Articulado',180,NULL,'TRUE');
 INSERT INTO bus (bus_serial, bus_tipo, bus_capacidad, ruta_nombre, bus_estado)
-VALUES ('778899','Articulado','180','','False');
+VALUES ('778899','Articulado',180,NULL,'False');
 INSERT INTO bus (bus_serial, bus_tipo, bus_capacidad, ruta_nombre, bus_estado)
-VALUES ('889900','Padron','90','P47C','TRUE');
+VALUES ('889900','Padron',90,'P47C','TRUE');
 INSERT INTO bus (bus_serial, bus_tipo, bus_capacidad, ruta_nombre, bus_estado)
-VALUES ('990011','Alimentador','50','','TRUE');
+VALUES ('990011','Alimentador',50,NULL,'TRUE');
 
 -- Turnos:
 INSERT INTO turno (bus_serial, turno_turno, conductor_empleado_id)
 VALUES ('001122', 'Dia', '11');
-INSERT INTO turno (bus_serial, turno_turno, conductor_empleado_id)
-VALUES ('112233', 'Noche', '11');
 INSERT INTO turno (bus_serial, turno_turno, conductor_empleado_id)
 VALUES ('556677', 'Dia', '12');
 INSERT INTO turno (bus_serial, turno_turno, conductor_empleado_id)
@@ -570,9 +568,9 @@ VALUES ('889900', 'Noche', '19');
 
 -- Solicitudes
 INSERT INTO solicitud (solicitud_id, solicitud_motivo, solicitud_descripcion, solicitud_fecha, solicitud_estado, pasajero_id, estacion_nombre)
-VALUES ('100000';'Inconformidad';'Me siento inconforme con el servicio';'2016-03-01 04:01:02';'EN PROCESO';'123';'UNIVERSIDADES');
+VALUES ('100000','Inconformidad','Me siento inconforme con el servicio','2016-03-01 04:01:02','EN PROCESO','123','UNIVERSIDADES');
 INSERT INTO solicitud (solicitud_id, solicitud_motivo, solicitud_descripcion, solicitud_fecha, solicitud_estado, pasajero_id, estacion_nombre)
-VALUES ('100001';'Reclamo';'Cobro pasaje';'2016-03-01 05:01:02';'INICIADO';'124';'UNIVERSIDADES');
+VALUES ('100001','Reclamo','Cobro pasaje','2016-03-01 05:01:02','INICIADO','124','UNIVERSIDADES');
 
 -- Medidas:
 INSERT INTO solicitud_medidas (solicitud_id, solicitud_medida, solicitud_medida_fecha)
