@@ -122,6 +122,7 @@ DROP TABLE IF EXISTS solicitud_medidas CASCADE;
 CREATE TABLE solicitud_medidas (
   solicitud_id     VARCHAR NOT NULL,
   solicitud_medida TEXT    NOT NULL,
+  solicitud_medida_fecha       TIMESTAMP                                             NOT NULL,
   PRIMARY KEY (solicitud_id, solicitud_medida),
   FOREIGN KEY (solicitud_id) REFERENCES solicitud (solicitud_id)
 );
@@ -146,6 +147,7 @@ CREATE TABLE estacion_ruta (
 );
 
 -- Valores iniciales
+-- Empleados:
 INSERT INTO empleado (empleado_id, empleado_nombre, empleado_telefono, empleado_direccion, empleado_email, empleado_cargo, empleado_salario, empleado_estado)
 VALUES ('1', 'Anne Diaz', '1111111', 'Calle 1', '1@1.com', 'Director', 10000, TRUE);
 INSERT INTO empleado (empleado_id, empleado_nombre, empleado_telefono, empleado_direccion, empleado_email, empleado_cargo, empleado_salario, empleado_estado)
@@ -187,6 +189,7 @@ VALUES ('19', 'Karen Edwards', '659760', 'Calle 19', '19@19.com', 'Conductor', 3
 INSERT INTO empleado (empleado_id, empleado_nombre, empleado_telefono, empleado_direccion, empleado_email, empleado_cargo, empleado_salario, empleado_estado)
 VALUES ('20', 'Richard Adams', '675674', 'Calle 20', '20@20.com', 'Conductor', 3000, TRUE);
 
+-- Rutas:
 INSERT INTO ruta (ruta_nombre, ruta_descripcion, ruta_estado) VALUES ('E21', 'TERMINAL MENGA - UNIVERSIDADES', TRUE);
 INSERT INTO ruta (ruta_nombre, ruta_descripcion, ruta_estado) VALUES ('E27', 'TERMINAL MENGA - CAPRI', TRUE);
 INSERT INTO ruta (ruta_nombre, ruta_descripcion, ruta_estado)
@@ -330,6 +333,7 @@ INSERT INTO ruta (ruta_nombre, ruta_descripcion, ruta_estado) VALUES ('A84A', 'L
 INSERT INTO ruta (ruta_nombre, ruta_descripcion, ruta_estado) VALUES ('A86', 'MORICHAL - CONQUISTADORES', FALSE);
 INSERT INTO ruta (ruta_nombre, ruta_descripcion, ruta_estado) VALUES ('A87', 'SENA ORIENTE - TERMINAL CALIPSO', FALSE);
 
+-- Estaciones:
 INSERT INTO estacion (estacion_nombre, estacion_ubicacion, estacion_estado)
 VALUES ('UNIVERSIDADES', 'Cr. 100 - Cl. 16', TRUE);
 INSERT INTO estacion (estacion_nombre, estacion_ubicacion, estacion_estado)
@@ -450,6 +454,7 @@ VALUES ('VIPASA', 'Av. 3 - Cl. 44', FALSE);
 INSERT INTO estacion (estacion_nombre, estacion_ubicacion, estacion_estado)
 VALUES ('ALAMOS', 'Av. 3 - Cl. 52', FALSE);
 
+-- Estacion - Ruta:
 INSERT INTO estacion_ruta (estacion_nombre, ruta_nombre)
 VALUES ('UNIVERSIDADES', 'E21'), ('UNIVERSIDADES', 'E31'), ('UNIVERSIDADES', 'T31'), ('UNIVERSIDADES', 'P12A'),
   ('UNIVERSIDADES', 'P14A'), ('UNIVERSIDADES', 'P21B'), ('UNIVERSIDADES', 'P27C');
@@ -477,6 +482,7 @@ INSERT INTO estacion_ruta (estacion_nombre, ruta_nombre)
 VALUES ('MENGA', 'E21'), ('MENGA', 'E27'), ('MENGA', 'P12A'), ('MENGA', 'P21B'), ('MENGA', 'P24A'), ('MENGA', 'P24C'),
   ('MENGA', 'P27C'), ('MENGA', 'P30A');
 
+-- Tarjetas:
 INSERT INTO tarjeta (tarjeta_saldo, tarjeta_estado) VALUES (1000, 'ACTIVA');
 INSERT INTO tarjeta (tarjeta_saldo, tarjeta_estado) VALUES (1000, 'ACTIVA');
 INSERT INTO tarjeta (tarjeta_saldo, tarjeta_estado) VALUES (1000, 'ACTIVA');
@@ -486,6 +492,7 @@ INSERT INTO tarjeta (tarjeta_saldo, tarjeta_estado) VALUES (1000, 'ACTIVA');
 INSERT INTO tarjeta (tarjeta_saldo, tarjeta_estado) VALUES (1000, 'ACTIVA');
 INSERT INTO tarjeta (tarjeta_saldo, tarjeta_estado) VALUES (1000, 'ACTIVA');
 
+-- Pasajeros:
 INSERT INTO pasajero (pasajero_id, pasajero_nombre, pasajero_telefono, pasajero_direccion, pasajero_email, tarjeta_id, pasajero_estado)
 VALUES ('123', 'pepito1', '1234567', 'Carrera', 'no tengo', 100000, TRUE);
 INSERT INTO pasajero (pasajero_id, pasajero_nombre, pasajero_telefono, pasajero_direccion, pasajero_email, tarjeta_id, pasajero_estado)
@@ -497,6 +504,7 @@ VALUES ('126', 'pepito4', '1234567', 'Carrera', 'no tengo', 100003, TRUE);
 INSERT INTO pasajero (pasajero_id, pasajero_nombre, pasajero_telefono, pasajero_direccion, pasajero_email, tarjeta_id, pasajero_estado)
 VALUES ('127', 'pepito5', '1234567', 'Carrera', 'no tengo', 100004, FALSE);
 
+-- Ventas:
 INSERT INTO venta (venta_fecha, venta_valor, estacion_nombre, tarjeta_id)
 VALUES ('2015-11-30 12:00:00', 2000, 'UNIVERSIDADES', '100000');
 INSERT INTO venta (venta_fecha, venta_valor, estacion_nombre, tarjeta_id)
@@ -510,6 +518,7 @@ VALUES ('2015-11-30 17:03:00', 2000, 'UNIVERSIDADES', '100004');
 INSERT INTO venta (venta_fecha, venta_valor, estacion_nombre, tarjeta_id)
 VALUES ('2015-11-30 17:30:00', 2000, 'UNIVERSIDADES', '100005');
 
+-- Tarjeta - Ruta:
 INSERT INTO tarjeta_ruta (tarjeta_id, ruta_nombre, tarjeta_ruta_fecha)
 VALUES ('100000', 'P10A', '2015-12-15 12:45:00');
 INSERT INTO tarjeta_ruta (tarjeta_id, ruta_nombre, tarjeta_ruta_fecha)
@@ -524,3 +533,49 @@ INSERT INTO tarjeta_ruta (tarjeta_id, ruta_nombre, tarjeta_ruta_fecha)
 VALUES ('100001', 'P10B', '2015-12-19 12:45:00');
 INSERT INTO tarjeta_ruta (tarjeta_id, ruta_nombre, tarjeta_ruta_fecha)
 VALUES ('100001', 'P10D', '2015-12-11 12:45:00');
+
+-- Buses:
+INSERT INTO bus (bus_serial, bus_tipo, bus_capacidad, ruta_nombre, bus_estado)
+VALUES ('001122','Articulado','180','E31','TRUE');
+INSERT INTO bus (bus_serial, bus_tipo, bus_capacidad, ruta_nombre, bus_estado)
+VALUES ('112233','Padron','90','','TRUE');
+INSERT INTO bus (bus_serial, bus_tipo, bus_capacidad, ruta_nombre, bus_estado)
+VALUES ('223344','Alimentador','50','','FALSE');
+INSERT INTO bus (bus_serial, bus_tipo, bus_capacidad, ruta_nombre, bus_estado)
+VALUES ('334455','Articulado','180','E21','TRUE');
+INSERT INTO bus (bus_serial, bus_tipo, bus_capacidad, ruta_nombre, bus_estado)
+VALUES ('445566','Padron','80','','TRUE');
+INSERT INTO bus (bus_serial, bus_tipo, bus_capacidad, ruta_nombre, bus_estado)
+VALUES ('556677','Articulado','180','','TRUE');
+INSERT INTO bus (bus_serial, bus_tipo, bus_capacidad, ruta_nombre, bus_estado)
+VALUES ('667788','Articulado','180','','TRUE');
+INSERT INTO bus (bus_serial, bus_tipo, bus_capacidad, ruta_nombre, bus_estado)
+VALUES ('778899','Articulado','180','','False');
+INSERT INTO bus (bus_serial, bus_tipo, bus_capacidad, ruta_nombre, bus_estado)
+VALUES ('889900','Padron','90','P47C','TRUE');
+INSERT INTO bus (bus_serial, bus_tipo, bus_capacidad, ruta_nombre, bus_estado)
+VALUES ('990011','Alimentador','50','','TRUE');
+
+-- Turnos:
+INSERT INTO turno (bus_serial, turno_turno, conductor_empleado_id)
+VALUES ('001122', 'Dia', '11');
+INSERT INTO turno (bus_serial, turno_turno, conductor_empleado_id)
+VALUES ('112233', 'Noche', '11');
+INSERT INTO turno (bus_serial, turno_turno, conductor_empleado_id)
+VALUES ('556677', 'Dia', '12');
+INSERT INTO turno (bus_serial, turno_turno, conductor_empleado_id)
+VALUES ('556677', 'Noche', '13');
+INSERT INTO turno (bus_serial, turno_turno, conductor_empleado_id)
+VALUES ('889900', 'Noche', '19');
+
+-- Solicitudes
+INSERT INTO solicitud (solicitud_id, solicitud_motivo, solicitud_descripcion, solicitud_fecha, solicitud_estado, pasajero_id, estacion_nombre)
+VALUES ('100000';'Inconformidad';'Me siento inconforme con el servicio';'2016-03-01 04:01:02';'EN PROCESO';'123';'UNIVERSIDADES');
+INSERT INTO solicitud (solicitud_id, solicitud_motivo, solicitud_descripcion, solicitud_fecha, solicitud_estado, pasajero_id, estacion_nombre)
+VALUES ('100001';'Reclamo';'Cobro pasaje';'2016-03-01 05:01:02';'INICIADO';'124';'UNIVERSIDADES');
+
+-- Medidas:
+INSERT INTO solicitud_medidas (solicitud_id, solicitud_medida)
+VALUES ('100000','In process');
+INSERT INTO solicitud_medidas (solicitud_id, solicitud_medida)
+VALUES ('100000','Respuesta a la calavera');
