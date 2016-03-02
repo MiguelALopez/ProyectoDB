@@ -233,6 +233,19 @@ public class ModuloPasajeros_Eventos
         }else if (moduloPasajeros.tCrearTarjeta.getText().isEmpty()){
             JOptionPane.showMessageDialog(moduloPasajeros, "El campo ID tarjeta es obligatorio.", "Error", JOptionPane.ERROR_MESSAGE);
             exito = false;
+        }else {
+            try {
+                Long.parseLong(moduloPasajeros.tCrearTelefono.getText());
+            }catch (NumberFormatException e){
+                JOptionPane.showMessageDialog(moduloPasajeros, "El campo Telefono debe ser numerico.", "Error", JOptionPane.ERROR_MESSAGE);
+                exito = false;
+            }
+            try {
+                Long.parseLong(moduloPasajeros.tCrearTarjeta.getText());
+            }catch (NumberFormatException e){
+                JOptionPane.showMessageDialog(moduloPasajeros, "El campo Tarjeta ID debe ser numerico.", "Error", JOptionPane.ERROR_MESSAGE);
+                exito = false;
+            }
         }
         
         return exito;
@@ -260,6 +273,19 @@ public class ModuloPasajeros_Eventos
         }else if (moduloPasajeros.tModifTarjeta.getText().isEmpty()){
             JOptionPane.showMessageDialog(moduloPasajeros, "El campo ID tarjeta es obligatorio.", "Error", JOptionPane.ERROR_MESSAGE);
             exito = false;
+        }else {
+            try {
+                Long.parseLong(moduloPasajeros.tModifTelefono.getText());
+            }catch (NumberFormatException e){
+                JOptionPane.showMessageDialog(moduloPasajeros, "El campo Telefono debe ser numerico.", "Error", JOptionPane.ERROR_MESSAGE);
+                exito = false;
+            }
+            try {
+                Long.parseLong(moduloPasajeros.tModifTarjeta.getText());
+            }catch (NumberFormatException e){
+                JOptionPane.showMessageDialog(moduloPasajeros, "El campo Tarjeta ID debe ser numerico.", "Error", JOptionPane.ERROR_MESSAGE);
+                exito = false;
+            }
         }
 
         return exito;

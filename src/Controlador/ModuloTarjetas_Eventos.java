@@ -178,7 +178,7 @@ public class ModuloTarjetas_Eventos {
             exito = false;
         }else {
             try {
-                Long.parseLong(moduloTarjetas.tModifiSaldo.getText());
+                Double.parseDouble(moduloTarjetas.tModifiSaldo.getText());
             }catch (NumberFormatException e){
                 JOptionPane.showMessageDialog(moduloTarjetas, "El campo saldo debe ser numerico.", "Error", JOptionPane.ERROR_MESSAGE);
                 exito = false;
@@ -263,7 +263,7 @@ public class ModuloTarjetas_Eventos {
     }
 
     public void modificarTarjeta(){
-        if (verificarCamposModifiBuscar()){
+        if (verificarCamposModificar()){
             String id = moduloTarjetas.tModifiTarjeta.getText();
             double saldo = Double.parseDouble(moduloTarjetas.tModifiSaldo.getText());
             String estado = moduloTarjetas.comboModifiEstado.getSelectedItem().toString();
