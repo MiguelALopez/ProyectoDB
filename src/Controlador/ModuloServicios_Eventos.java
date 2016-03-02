@@ -252,20 +252,12 @@ public class ModuloServicios_Eventos
         {
             try
             {
-                rec = new ImageIcon("img/"+ruta+".jpg");
+                rec = new ImageIcon("img/default.png");
                 this.moduloServicios.lRecorrido.setIcon(rec);
             }
-            catch (NullPointerException ex2)
+            catch (NullPointerException ex3)
             {
-                try
-                {
-                    rec = new ImageIcon("img/default.png");
-                    this.moduloServicios.lRecorrido.setIcon(rec);
-                }
-                catch (NullPointerException ex3)
-                {
-                    System.out.println("No image available");
-                }
+                System.out.println("No image available");
             }
         }
         

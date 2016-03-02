@@ -282,7 +282,7 @@ public class ModuloBuses_Eventos
     
     public void consultarRutasCrear()
     {
-        ArrayList<Ruta> listaRutas = new RutaDAO().consultarRutas();
+        ArrayList<Ruta> listaRutas = new RutaDAO().consultarRutas(true);
         
         if(listaRutas != null)
         {
@@ -454,7 +454,7 @@ public class ModuloBuses_Eventos
     
     public void consultarRutasModificar()
     {
-        ArrayList<Ruta> listaRutas = new RutaDAO().consultarRutas();
+        ArrayList<Ruta> listaRutas = new RutaDAO().consultarRutas(true);
         
         if(listaRutas != null)
         {
