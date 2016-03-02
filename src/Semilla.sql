@@ -567,10 +567,10 @@ INSERT INTO turno (bus_serial, turno_turno, conductor_empleado_id)
 VALUES ('889900', 'Noche', '19');
 
 -- Solicitudes
-INSERT INTO solicitud (solicitud_id, solicitud_motivo, solicitud_descripcion, solicitud_fecha, solicitud_estado, pasajero_id, estacion_nombre)
-VALUES ('100000','Inconformidad','Me siento inconforme con el servicio','2016-03-01 04:01:02','EN PROCESO','123','UNIVERSIDADES');
-INSERT INTO solicitud (solicitud_id, solicitud_motivo, solicitud_descripcion, solicitud_fecha, solicitud_estado, pasajero_id, estacion_nombre)
-VALUES ('100001','Reclamo','Cobro pasaje','2016-03-01 05:01:02','INICIADO','124','UNIVERSIDADES');
+INSERT INTO solicitud (solicitud_motivo, solicitud_descripcion, solicitud_fecha, solicitud_estado, pasajero_id, estacion_nombre)
+VALUES ('Inconformidad','Me siento inconforme con el servicio','2016-03-01 04:01:02','EN PROCESO','123','UNIVERSIDADES');
+INSERT INTO solicitud (solicitud_motivo, solicitud_descripcion, solicitud_fecha, solicitud_estado, pasajero_id, estacion_nombre)
+VALUES ('Reclamo','Cobro pasaje','2016-03-01 05:01:02','INICIADO','124','UNIVERSIDADES');
 
 -- Medidas:
 INSERT INTO solicitud_medidas (solicitud_id, solicitud_medida, solicitud_medida_fecha)
