@@ -410,10 +410,11 @@ public class ModuloSolicitud_Eventos
         {
             this.moduloSolicitud.fResponder.setVisible(false);
             SolicitudDAO solDAO = new SolicitudDAO();
-            
+            DateFormat fecha = new SimpleDateFormat("yyyy-MM-dd hh:mm:ss");
+            Date date = new Date();
             String estado = this.moduloSolicitud.cbResEstado.getSelectedItem().toString();
 
-            boolean medida = solDAO.insertarMedida(id, respuesta, estado);
+            boolean medida = solDAO.insertarMedida(id, respuesta, estado, fecha.format(date));
             if( !medida )
             {
                 JOptionPane.showMessageDialog(moduloSolicitud, "Error al agregar respuesta","Error", JOptionPane.ERROR_MESSAGE);
@@ -423,7 +424,7 @@ public class ModuloSolicitud_Eventos
             {
                 
                 this.id = null;
-                JOptionPane.showMessageDialog(moduloSolicitud, "Solicitsud agregada correctamente");
+                JOptionPane.showMessageDialog(moduloSolicitud, "Solicitud agregada correctamente");
                 conLimpiarCampos();
             }
         }

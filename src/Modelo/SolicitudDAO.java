@@ -196,14 +196,14 @@ public class SolicitudDAO
         return solicitud;
     }
     
-    public boolean insertarMedida(String id, String medida, String estado)
+    public boolean insertarMedida(String id, String medida, String estado, String fecha_medida)
     {
         this.conexionBD.conectar();
         boolean exito = false;
         
         String query ="BEGIN;"
-            + "INSERT INTO solicitud_medidas (solicitud_id, solicitud_medida) "
-            + "VALUES(?,?);"
+            + "INSERT INTO solicitud_medidas (solicitud_id, solicitud_medida, solicitud_medida_fecha) "
+            + "VALUES(?,?,CAST(? AS TIMESTAMP));"
             + "UPDATE solicitud SET solicitud_estado = ? WHERE solicitud_id = ?;"
                 + "COMMIT;";
         
@@ -214,8 +214,9 @@ public class SolicitudDAO
             st.setString(1, id);
             
             st.setString(2, medida);
-            st.setString(3, estado);
-            st.setString(4, id);
+            st.setString(3, fecha_medida);
+            st.setString(4, estado);
+            st.setString(5, id);
             
             
             int resultado = st.executeUpdate();
@@ -241,7 +242,7 @@ public class SolicitudDAO
         conexionBD.conectar();        
         String medidas = "";
         
-        String query = "SELECT * FROM solicitud_medidas WHERE solicitud_id = ?;";
+        String query = "SELECT * FROM solicitud_medidas WHERE solicitud_id = ? ORDER BY solicitud_medida_fecha ASC;";
         
         try
         {
