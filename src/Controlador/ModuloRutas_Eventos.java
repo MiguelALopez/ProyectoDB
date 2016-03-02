@@ -17,6 +17,7 @@ import Modelo.BusDAO;
 import Modelo.Ruta;
 import Modelo.RutaDAO;
 import Vista.ModuloRutas;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.io.File;
@@ -203,21 +204,24 @@ public class ModuloRutas_Eventos
                 
                 if (exito)
                 {
-                    File src = new File(this.moduloRutas.tfImagenCrear.getText());
-                    File dest = new File("img/"+e.getNombre()+".png");
-                    
-                    try 
+                    if (!this.moduloRutas.tfImagenCrear.getText().isEmpty())
                     {
-                        Files.copy(src.toPath(), dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                        File src = new File(this.moduloRutas.tfImagenCrear.getText());
+                        File dest = new File("img/"+e.getNombre()+".png");
+
+                        try 
+                        {
+                            Files.copy(src.toPath(), dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                        }
+                        catch (IOException ex) 
+                        {
+                            Logger.getLogger(ModuloRutas_Eventos.class.getName()).log(Level.SEVERE, null, ex);
+                            JOptionPane.showMessageDialog(moduloRutas, "Error al cargar la imagen.", "Error", JOptionPane.ERROR_MESSAGE);
+                        }
+
+                        JOptionPane.showMessageDialog(moduloRutas, "Ruta creada exitosamente.", "", JOptionPane.INFORMATION_MESSAGE);
+                        limpiarCamposCrear();
                     }
-                    catch (IOException ex) 
-                    {
-                        Logger.getLogger(ModuloRutas_Eventos.class.getName()).log(Level.SEVERE, null, ex);
-                        JOptionPane.showMessageDialog(moduloRutas, "Error al cargar la imagen.", "Error", JOptionPane.ERROR_MESSAGE);
-                    }
-                    
-                    JOptionPane.showMessageDialog(moduloRutas, "Ruta creada exitosamente.", "", JOptionPane.INFORMATION_MESSAGE);
-                    limpiarCamposCrear();
                 }
                 else
                 {
@@ -264,7 +268,7 @@ public class ModuloRutas_Eventos
             
             try
             {
-                ImageIcon im = new ImageIcon("img/"+e.getNombre()+".png");
+                Image im = new ImageIcon(getClass().getResource("../img/"+e.getNombre()+".png")).getImage();
                 this.moduloRutas.tfImagenModificar.setText("img/"+e.getNombre()+".png");
             }
             catch (NullPointerException ex)
@@ -327,22 +331,25 @@ public class ModuloRutas_Eventos
                 
                 if (exito)
                 {
-                    File src = new File(this.moduloRutas.tfImagenModificar.getText());
-                    File dest = new File("img/"+e.getNombre()+".png");
-                    
-                    try 
+                    if (!this.moduloRutas.tfImagenModificar.getText().isEmpty())
                     {
-                        Files.copy(src.toPath(), dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                        File src = new File(this.moduloRutas.tfImagenModificar.getText());
+                        File dest = new File("img/"+e.getNombre()+".png");
+
+                        try 
+                        {
+                            Files.copy(src.toPath(), dest.toPath(), StandardCopyOption.REPLACE_EXISTING);
+                        }
+                        catch (IOException ex) 
+                        {
+                            Logger.getLogger(ModuloRutas_Eventos.class.getName()).log(Level.SEVERE, null, ex);
+                            JOptionPane.showMessageDialog(moduloRutas, "Error al cargar la imagen.", "Error", JOptionPane.ERROR_MESSAGE);
+                        }
+
+                        JOptionPane.showMessageDialog(moduloRutas, "Ruta modificada exitosamente.", "", JOptionPane.INFORMATION_MESSAGE);
+                        limpiarCamposModificar();
+                        habilitarCamposModificar(false);
                     }
-                    catch (IOException ex) 
-                    {
-                        Logger.getLogger(ModuloRutas_Eventos.class.getName()).log(Level.SEVERE, null, ex);
-                        JOptionPane.showMessageDialog(moduloRutas, "Error al cargar la imagen.", "Error", JOptionPane.ERROR_MESSAGE);
-                    }
-                    
-                    JOptionPane.showMessageDialog(moduloRutas, "Ruta modificada exitosamente.", "", JOptionPane.INFORMATION_MESSAGE);
-                    limpiarCamposModificar();
-                    habilitarCamposModificar(false);
                 }
                 else
                 {
