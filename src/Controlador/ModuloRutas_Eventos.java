@@ -175,7 +175,7 @@ public class ModuloRutas_Eventos
     
     public void cargarImagenCrear()
     {
-        this.moduloRutas.fileChooser.setFileFilter(new FileNameExtensionFilter("JPG", "jpg"));
+        this.moduloRutas.fileChooser.setFileFilter(new FileNameExtensionFilter("PNG", "png"));
         int op = this.moduloRutas.fileChooser.showOpenDialog(moduloRutas);
         
         if (op == JFileChooser.APPROVE_OPTION)
@@ -204,7 +204,7 @@ public class ModuloRutas_Eventos
                 if (exito)
                 {
                     File src = new File(this.moduloRutas.tfImagenCrear.getText());
-                    File dest = new File("img/"+e.getNombre()+".jpg");
+                    File dest = new File("img/"+e.getNombre()+".png");
                     
                     try 
                     {
@@ -269,15 +269,7 @@ public class ModuloRutas_Eventos
             }
             catch (NullPointerException ex)
             {
-                try
-                {
-                    ImageIcon im = new ImageIcon("img/"+e.getNombre()+".jpg");
-                    this.moduloRutas.tfImagenModificar.setText("img/"+e.getNombre()+".jpg");
-                }
-                catch (NullPointerException ex2)
-                {
-                    this.moduloRutas.tfImagenModificar.setText("");
-                }
+                this.moduloRutas.tfImagenModificar.setText("");
             }
             
             habilitarCamposModificar(true);
@@ -298,7 +290,7 @@ public class ModuloRutas_Eventos
     
     public void cargarImagenModificar()
     {
-        this.moduloRutas.fileChooser.setFileFilter(new FileNameExtensionFilter("JPG", "jpg"));
+        this.moduloRutas.fileChooser.setFileFilter(new FileNameExtensionFilter("PNG", "png"));
         int op = this.moduloRutas.fileChooser.showOpenDialog(moduloRutas);
         
         if (op == JFileChooser.APPROVE_OPTION)
@@ -336,7 +328,7 @@ public class ModuloRutas_Eventos
                 if (exito)
                 {
                     File src = new File(this.moduloRutas.tfImagenModificar.getText());
-                    File dest = new File("img/"+e.getNombre()+".jpg");
+                    File dest = new File("img/"+e.getNombre()+".png");
                     
                     try 
                     {
