@@ -375,6 +375,7 @@ public class ModuloSolicitud_Eventos
             this.moduloSolicitud.taConDescripcion.setText(sol.getDescripcion());
             this.moduloSolicitud.tfConEstado.setText(sol.getEstado());
             this.moduloSolicitud.taConRespuestas.setText(solDAO.consultarMedida(id));
+            this.moduloSolicitud.bConResponder.setEnabled(true);
         }
         else
         {
