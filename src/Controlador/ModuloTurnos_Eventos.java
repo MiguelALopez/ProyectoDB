@@ -282,7 +282,7 @@ public class ModuloTurnos_Eventos
         }
         else
         {
-            Empleado e = new EmpleadoDAO().consultarEmpleado(this.moduloTurnos.tfCrearID.getText());
+            Empleado e = new EmpleadoDAO().consultarEmpleado(this.moduloTurnos.tfModificarID.getText());
             
             if (e != null)
             {
