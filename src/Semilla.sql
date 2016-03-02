@@ -575,7 +575,7 @@ INSERT INTO solicitud (solicitud_id, solicitud_motivo, solicitud_descripcion, so
 VALUES ('100001';'Reclamo';'Cobro pasaje';'2016-03-01 05:01:02';'INICIADO';'124';'UNIVERSIDADES');
 
 -- Medidas:
-INSERT INTO solicitud_medidas (solicitud_id, solicitud_medida)
-VALUES ('100000','In process');
-INSERT INTO solicitud_medidas (solicitud_id, solicitud_medida)
-VALUES ('100000','Respuesta a la calavera');
+INSERT INTO solicitud_medidas (solicitud_id, solicitud_medida, solicitud_medida_fecha)
+VALUES ('100000','In process','2016-03-01 03:01:02');
+INSERT INTO solicitud_medidas (solicitud_id, solicitud_medida, solicitud_medida_fecha)
+VALUES ('100000','Respuesta a la calavera','2016-03-01 04:01:02');
