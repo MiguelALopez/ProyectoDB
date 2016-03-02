@@ -229,7 +229,6 @@ public class ReportesDAO
     
     public ArrayList<Solicitud> reporte7(String tarjeta)
     {
-        //return new SolicitudDAO().consultarSolicitudes(tarjeta);
-        return null;
+        return new SolicitudDAO().consultarSolicitudes(tarjeta);
     }
 }

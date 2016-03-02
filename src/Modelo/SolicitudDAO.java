@@ -162,6 +162,41 @@ public class SolicitudDAO
         return lista;
     }
     
+    public ArrayList<Solicitud> consultarSolicitudes(String pasajero)
+    {
+        ArrayList<Solicitud> lista = null;
+        this.conexionBD.conectar();
+        
+        String query ="SELECT * FROM solicitud WHERE pasajero_id = ? ORDER BY solicitud_id";
+        
+        try
+        {
+            PreparedStatement st = conexionBD.conexion.prepareStatement(query);
+            st.setString(1, pasajero);
+            ResultSet tabla = st.executeQuery();
+            
+            lista = new ArrayList();
+            
+            while (tabla.next())
+            {
+                lista.add(new Solicitud(tabla.getString(1), tabla.getString(2), tabla.getString(3), tabla.getString(4), tabla.getString(5),tabla.getString(6),tabla.getString(7)));
+            }        
+        } 
+        catch (SQLException ex) 
+        {
+            Logger.getLogger(EstacionDAO.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        finally
+        {
+            if (conexionBD != null)
+            {
+                conexionBD.cerrarConexion();
+            }
+        }
+        
+        return lista;
+    }
+    
     public Solicitud consultarSolicitud(String id)
     {
         conexionBD.conectar();        
